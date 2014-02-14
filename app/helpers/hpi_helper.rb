@@ -1,0 +1,2 @@
+module HpiHelper
+end
