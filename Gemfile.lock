@@ -1,9 +1,9 @@
 GIT
   remote: git://github.com/alphagov/govuk_frontend_toolkit_gem.git
-  revision: ccf76d5d0c5d64a52a7ff7ffc56ab9af5b4b4e8e
+  revision: 814c0bf52cd0a7efe3a0c96088a819499bea536e
   submodules: true
   specs:
-    govuk_frontend_toolkit (0.43.0)
+    govuk_frontend_toolkit (0.43.1)
       rails (>= 3.1.0)
       sass (>= 3.2.0)
 
