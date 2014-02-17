@@ -48,3 +48,5 @@ gem 'capistrano-bundler', group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 gem 'pry', group: :development
+
+gem 'govuk_frontend_toolkit', github: "alphagov/govuk_frontend_toolkit_gem", :submodules => true

@@ -1,0 +1,24 @@
+!!! html
+%html
+  %head
+    %title Land Registry - search the house price index
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+    = stylesheet_link_tag "https://www.gov.uk/service-manual/assets/govuk_template/stylesheets/govuk-template.css", media: "all"
+    = stylesheet_link_tag "https://www.gov.uk/service-manual/assets/stylesheets/main.css", media: "all"
+  %body.gsdm-body.mainstream.full-width.wide.role-index
+    %header#global-header.with-proposition{ role: "banner" }
+      .header-wrapper
+        .header-global
+          .header-logo
+            = image_tag "lr-logo.png"
+        .header-proposition
+          .content
+            %nav#proposition-menu
+              %a#proposition-name{ href: "/fubar" }
+                Land Registry House Price Index
+                %a.beta{ href: ""}
+                  beta
+
+    = yield
