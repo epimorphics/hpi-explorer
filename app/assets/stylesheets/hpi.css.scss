@@ -4,3 +4,10 @@
 @import "_typography.scss";
 @import "design-patterns/_buttons.scss";
 @import "design-patterns/_alpha-beta.scss";
+
+.beta-banner {
+  @include phase-banner(beta);
+}
+.beta-tag{
+  @include phase-tag(beta);
+}

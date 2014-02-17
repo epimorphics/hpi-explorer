@@ -12,13 +12,33 @@
       .header-wrapper
         .header-global
           .header-logo
-            = image_tag "lr-logo.png"
+            %a#logo.content{ href: "https://www.gov.uk/", title: "Go to the GOV.UK homepage" }
+              = image_tag "lr-logo.png"
+              Land Registry
         .header-proposition
           .content
             %nav#proposition-menu
               %a#proposition-name{ href: "/fubar" }
-                Land Registry House Price Index
-                %a.beta{ href: ""}
+                House Price Index Open Data
+                %a.beta-tag{ href: ""}
                   beta
+              %ul#proposition-links
+                %li
+                  %a{ href: "" }
+                    Search HPI
+                %li
+                  %a{ href: "download.html" }
+                    Download data
+                %li
+                  %a{ href: "sparql.html" }
+                    SPARQL query
+      .beta-banner.beta-notice
+        %small
+          BETA: This is a trial service &ndash; your
+          %a{ href: "TODO"}
+            feedback
+          will help us to improve it.
 
-    = yield
+  #wrapper
+    #content.group{ role: "main"}
+      = yield
