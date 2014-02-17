@@ -1,0 +1,36 @@
+.measure-selection
+  %p
+    Select the indices you want to display:
+  .form-group
+    = label_tag( :m_hpi, "House price index", class: "col-sm-2 control-label checkbox-inline" )
+    .col-sm-10
+      = check_box_tag( :m_hpi, "", class: "form-control" )
+      = label_tag( :m_hpi_view, "Unadjusted", class: "radio-inline" )
+      = radio_button_tag( :m_hpi_view, "unadjusted")
+      = label_tag( :m_hpi_view, "Seasonally adjusted", class: "radio-inline" )
+      = radio_button_tag( :m_hpi_view, "sa")
+      = label_tag( :m_hpi_view, "Seasonally adjusted and smoothed", class: "radio-inline" )
+      = radio_button_tag( :m_hpi_view, "sasm")
+
+  .form-group
+    = label_tag( :m_ap, "Average price", class: "col-sm-2 control-label checkbox-inline" )
+    .col-sm-10
+      = check_box_tag( :m_ap, "", class: "form-control" )
+      = label_tag( :m_ap_view, "Seasonally adjusted", class: "radio-inline" )
+      = radio_button_tag( :m_ap_view, "sa")
+      = label_tag( :m_ap_view, "Seasonally adjusted and smoothed", class: "radio-inline" )
+      = radio_button_tag( :m_ap_view, "sasm")
+
+  .form-group
+    = label_tag( :m_ch, "Change", class: "col-sm-2 control-label checkbox-inline" )
+    .col-sm-10
+      = check_box_tag( :m_ch, "", class: "form-control" )
+      = label_tag( :m_ch_view, "Monthly", class: "radio-inline" )
+      = radio_button_tag( :m_ch_view, "monthly")
+      = label_tag( :m_ch_view, "Yearly", class: "radio-inline" )
+      = radio_button_tag( :m_ch_view, "yearly")
+
+  .form-group
+    = label_tag( :m_vol, "Number of sales", class: "col-sm-2 control-label checkbox-inline" )
+    .col-sm-10
+      = check_box_tag( :m_vol, "", class: "form-control" )

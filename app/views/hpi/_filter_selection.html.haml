@@ -1,0 +1,21 @@
+.filter-selection
+
+  %p
+    Filter your results by property type or date:
+
+  .form-group
+    = label_tag( :m_hpi, "Property type", class: "col-sm-2 control-label checkbox-inline" )
+    .col-sm-10
+      = label_tag( :pt, "Detached", class: "checkbox-inline" )
+      = check_box_tag( :pt, "d")
+      = label_tag( :pt, "Semi-detached", class: "checkbox-inline" )
+      = check_box_tag( :pt, "sd")
+      = label_tag( :pt, "Terraced", class: "checkbox-inline" )
+      = check_box_tag( :pt, "t")
+      = label_tag( :pt, "Flat or apartment", class: "checkbox-inline" )
+      = check_box_tag( :pt, "f")
+
+  .form-group
+    = label( :m_dates, "Dates", class: "col-sm-2 control-label checkbox-inline" )
+    .col-sm-10
+      TBC
