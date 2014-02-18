@@ -6,39 +6,40 @@
     .col-sm-1
       = check_box_tag( :m_hpi, "yes", true, class: "form-control" )
     .col-sm-9
-      %label.radio-inline
-        = radio_button_tag( :m_hpi_view, "unadjusted", true )
-        Unadjusted
-      %label.radio-inline
-        = radio_button_tag( :m_hpi_view, "sa")
-        Seasonally adjusted
-      %label.radio-inline
-        = radio_button_tag( :m_hpi_view, "sasm")
-        Seasonally adjusted and smoothed
 
   .form-group
     = label_tag( :m_ap, "Average price", class: "col-sm-2 control-label" )
     .col-sm-1
       = check_box_tag( :m_ap, 1, false, class: "form-control" )
     .col-sm-9
-      %label.radio-inline
-        = radio_button_tag( :m_ap_view, "sa", true )
-        Seasonally adjusted
-      %label.radio-inline
-        = radio_button_tag( :m_ap_view, "sasm")
-        Seasonally adjusted and smoothed
+      .property-types
+        %span
+          %strong
+            Only include:
+        %label.radio-inline
+          = check_box_tag( :f_pt, "d", false )
+          Detached
+        %label.radio-inline
+          = check_box_tag( :f_pt, "sd", false )
+          Semi-detached
+        %label.radio-inline
+          = check_box_tag( :f_pt, "t", false )
+          Terraced
+        %label.radio-inline
+          = check_box_tag( :f_pt, "f", false )
+          Flat or apartment
 
   .form-group
-    = label_tag( :m_ch, "Change", class: "col-sm-2 control-label" )
+    = label_tag( :m_chm, "Monthly change", class: "col-sm-2 control-label" )
     .col-sm-1
-      = check_box_tag( :m_ch, 1, false, class: "form-control" )
+      = check_box_tag( :m_chm, 1, false, class: "form-control" )
     .col-sm-9
-      %label.radio-inline
-        = radio_button_tag( :m_ch_view, "monthly", true )
-        Monthly
-      %label.radio-inline
-        = radio_button_tag( :m_ch_view, "yearly")
-        Yearly
+
+  .form-group
+    = label_tag( :m_chy, "Yearly change", class: "col-sm-2 control-label" )
+    .col-sm-1
+      = check_box_tag( :m_chy, 1, false, class: "form-control" )
+    .col-sm-9
 
   .form-group
     = label_tag( :m_vol, "Volume of sales", class: "col-sm-2 control-label" )

@@ -1,25 +1,5 @@
 .filter-selection
 
   %p
-    Filter your results by property type or date:
+    Select a time period: (TBC)
 
-  .form-group
-    = label_tag( :f_pt, "Property type", class: "col-sm-2 control-label" )
-    .col-sm-10
-      %label.checkbox-inline
-        = check_box_tag( :f_pt, "d", true )
-        Detached
-      %label.checkbox-inline
-        = check_box_tag( :f_pt, "sd", true )
-        Semi-detached
-      %label.checkbox-inline
-        = check_box_tag( :f_pt, "t", true )
-        Terraced
-      %label.checkbox-inline
-        = check_box_tag( :f_pt, "f", true )
-        Flat or apartment
-
-  .form-group
-    = label( :m_dates, "Dates", class: "col-sm-2 control-label" )
-    .col-sm-10
-      TBC
