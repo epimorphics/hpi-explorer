@@ -50,3 +50,5 @@ gem 'capistrano-bundler', group: :development
 gem 'pry', group: :development
 
 gem 'govuk_frontend_toolkit', github: "alphagov/govuk_frontend_toolkit_gem", :submodules => true
+gem 'capybara'
+gem 'capybara-webkit'
