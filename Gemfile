@@ -1,8 +1,6 @@
 source 'https://rubygems.org'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
-
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -50,5 +48,6 @@ gem 'capistrano-bundler', group: :development
 gem 'pry', group: :development
 
 gem 'govuk_frontend_toolkit', github: "alphagov/govuk_frontend_toolkit_gem", :submodules => true
-gem 'capybara'
+gem 'minitest-rg'
 gem 'capybara-webkit'
+gem 'minitest-capybara'

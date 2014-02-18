@@ -92,6 +92,12 @@ GEM
     mime-types (1.25.1)
     mini_portile (0.5.2)
     minitest (4.7.5)
+    minitest-capybara (0.4.2)
+      capybara (~> 2.0)
+      minitest (~> 4.0)
+      rake
+    minitest-rg (1.1.1)
+      minitest (< 5.0)
     multi_json (1.8.4)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
@@ -174,12 +180,13 @@ DEPENDENCIES
   bootstrap-sass
   capistrano-bundler
   capistrano-rails
-  capybara
   capybara-webkit
   govuk_frontend_toolkit!
   haml-rails
   jbuilder (~> 1.2)
   jquery-rails
+  minitest-capybara
+  minitest-rg
   pry
   rails (= 4.0.2)
   sass-rails (~> 4.0.0)

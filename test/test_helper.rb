@@ -1,17 +1,21 @@
 ENV["RAILS_ENV"] ||= "test"
 require File.expand_path('../../config/environment', __FILE__)
+
 require 'rails/test_help'
-require "minitest/spec"
+require 'minitest/spec'
 require 'capybara/rails'
+require 'minitest/capybara'
 
-class ActiveSupport::TestCase
-  # Add more helper methods to be used by all tests here...
+class AcceptanceTest < Minitest::Unit::TestCase
+  include Capybara::DSL
+  include Minitest::Capybara::Assertions
 
-  # Remove clash between minitest::spec describe and TestCase describe
-  # from http://blowmage.com/2013/07/08/minitest-spec-rails4
-  class << self
-    remove_method :describe
+  def teardown
+    Capybara.reset_session!
+    Capybara.use_default_driver
   end
+end
 
-  extend MiniTest::Spec::DSL
+class AcceptanceSpec < AcceptanceTest
+  extend Minitest::Spec::DSL
 end
