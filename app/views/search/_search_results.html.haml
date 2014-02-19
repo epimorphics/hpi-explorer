@@ -1,9 +1,0 @@
-%p
-  Matching locations:
-
-%ul
-  - @search_cmd.locations.each do |location|
-    %li
-      %a.search_result{href: "/preview?loc=#{location[:label]}"}
-        = location[:label]
-

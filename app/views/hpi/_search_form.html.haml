@@ -1,12 +1,10 @@
-= form_tag( "search", class: "form-horizontal", role: "form") do
+= form_tag( "preview", class: "form-horizontal", role: "form") do
   .row
     .col-md-6
-      .row
-        %p
-          Find a location
-      .row
-        = render partial: "area_selection", locals: {group: 1}
+      = render partial: "hpi/area_selection", locals: {group: 1}
 
     .col-md-6
-      %p.text-muted
-        TODO add a second location for comparison
+      = render @preferences.area_comparison_partial, locals: {group: 2}
+
+  .row
+    = render partial: @search_cmd.search_results_partial

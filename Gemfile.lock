@@ -9,9 +9,11 @@ GIT
 
 GIT
   remote: git@github.com:epimorphics/ds-api-ruby.git
-  revision: 0db67a9fd0f81ab11e20f514638e7e8aed1a55f3
+  revision: c7b7675dcc27ba9e3c5a05396fe78466107f6198
   specs:
     data_services_api (0.0.1)
+      faraday_middleware (< 0.9.0)
+      json (~> 1.8.0)
 
 GEM
   remote: https://rubygems.org/
@@ -74,6 +76,10 @@ GEM
     coffee-script-source (1.7.0)
     erubis (2.7.0)
     execjs (2.0.2)
+    faraday (0.8.9)
+      multipart-post (~> 1.2.0)
+    faraday_middleware (0.8.8)
+      faraday (>= 0.7.4, < 0.9)
     font-awesome-rails (4.0.3.1)
       railties (>= 3.2, < 5.0)
     haml (4.0.5)
@@ -111,6 +117,7 @@ GEM
       minitest (~> 4.7)
       rails (>= 3.0, < 4.1)
     multi_json (1.8.4)
+    multipart-post (1.2.0)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
     net-ssh (2.8.0)
@@ -194,6 +201,8 @@ DEPENDENCIES
   capistrano-rails
   capybara-webkit (~> 1.1)
   data_services_api!
+  faraday (~> 0.8.8)
+  faraday_middleware (< 0.9.0)
   font-awesome-rails
   govuk_frontend_toolkit!
   haml-rails

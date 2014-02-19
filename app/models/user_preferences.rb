@@ -10,6 +10,11 @@ class UserPreferences
     @attributes[:locations]
   end
 
+  def area_comparison_partial
+    "hpi/add_second_area_selection"
+  end
+
+
   private
 
   def parse_attributes( params, attributes )
