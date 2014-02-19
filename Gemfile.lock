@@ -74,6 +74,8 @@ GEM
     coffee-script-source (1.7.0)
     erubis (2.7.0)
     execjs (2.0.2)
+    font-awesome-rails (4.0.3.0)
+      railties (>= 3.2, < 5.0)
     haml (4.0.5)
       tilt
     haml-rails (0.5.3)
@@ -192,6 +194,7 @@ DEPENDENCIES
   capistrano-rails
   capybara-webkit (~> 1.1)
   data-services-api!
+  font-awesome-rails
   govuk_frontend_toolkit!
   haml-rails
   jbuilder (~> 1.2)

@@ -49,6 +49,7 @@ gem 'pry', group: :development
 
 gem 'govuk_frontend_toolkit', github: "alphagov/govuk_frontend_toolkit_gem", :submodules => true
 gem 'data-services-api', git: "git@github.com:epimorphics/ds-api-ruby.git"
+gem 'font-awesome-rails'
 
 group :test do
   gem 'minitest', '~> 4.7'

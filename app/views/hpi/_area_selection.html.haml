@@ -1,19 +1,6 @@
 .area-selection
-  %p
-    Select a location:
-  .form-group
-    = label_tag( :"country#{group}", "Country", class: "col-sm-2 control-label" )
-    .col-sm-10
-      = select_tag "country#{group}", options_for_select([ "England and Wales", "Wales" ], "England and Wales" ), class: 'form-control'
-  .form-group
-    = label_tag( :"region#{group}", "Region", class: "col-sm-2 control-label" )
-    .col-sm-10
-      = text_field_tag( :"region#{group}", "", class: "form-control" )
-  .form-group
-    = label_tag( :"county_or_ua#{group}", "County", class: "col-sm-2 control-label"  )
-    .col-sm-10
-      = text_field_tag( :"county_or_ua#{group}", "", class: "form-control" )
-  .form-group
-    = label_tag( :"borough#{group}", "Borough", class: "col-sm-2 control-label"  )
-    .col-sm-10
-      = text_field_tag( :"borough#{group}", "", class: "form-control" )
+  .col-sm-8
+    = text_field_tag( :search1, "", class: "form-control" )
+  .col-sm-2
+    %button#action_search.btn{ type: "submit" }
+      %i.fa.fa-search

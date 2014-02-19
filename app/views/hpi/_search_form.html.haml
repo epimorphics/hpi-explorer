@@ -1,15 +1,12 @@
-= form_tag( "hpi", class: "form-horizontal", role: "form") do
+= form_tag( "search", class: "form-horizontal", role: "form") do
   .row
     .col-md-6
-      = render partial: "area_selection", locals: {group: 1}
+      .row
+        %p
+          Find a location
+      .row
+        = render partial: "area_selection", locals: {group: 1}
 
-  .row
-    .col-md-12
-      = render partial: "measure_selection"
-
-  .row
-    .col-md-12
-      = render partial: "filter_selection"
-
-  .row
-    = submit_tag( "Preview your results" )
+    .col-md-6
+      %p.text-muted
+        TODO add a second location for comparison
