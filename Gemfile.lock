@@ -7,6 +7,12 @@ GIT
       rails (>= 3.1.0)
       sass (>= 3.2.0)
 
+GIT
+  remote: git@github.com:epimorphics/ds-api-ruby.git
+  revision: 1cbfc068b1c8c6c0c6d4de58fc46aa511dfa7def
+  specs:
+    data-services-api (0.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -84,6 +90,7 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
+    json_expressions (0.8.2)
     libv8 (3.16.14.3)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -183,14 +190,17 @@ DEPENDENCIES
   bootstrap-sass
   capistrano-bundler
   capistrano-rails
-  capybara-webkit
+  capybara-webkit (~> 1.1)
+  data-services-api!
   govuk_frontend_toolkit!
   haml-rails
   jbuilder (~> 1.2)
   jquery-rails
-  minitest-capybara
-  minitest-rg
-  minitest-spec-rails
+  json_expressions (~> 0.8)
+  minitest (~> 4.7)
+  minitest-capybara (~> 0.4)
+  minitest-rg (~> 1.1)
+  minitest-spec-rails (~> 4.7)
   pry
   rails (= 4.0.2)
   sass-rails (~> 4.0.0)

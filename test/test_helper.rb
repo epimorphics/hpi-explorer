@@ -5,6 +5,7 @@ require 'rails/test_help'
 require 'minitest/spec'
 require 'capybara/rails'
 require 'minitest/capybara'
+require 'json_expressions/minitest'
 
 class AcceptanceTest < Minitest::Unit::TestCase
   include Capybara::DSL

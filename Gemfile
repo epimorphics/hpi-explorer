@@ -48,7 +48,14 @@ gem 'capistrano-bundler', group: :development
 gem 'pry', group: :development
 
 gem 'govuk_frontend_toolkit', github: "alphagov/govuk_frontend_toolkit_gem", :submodules => true
-gem 'minitest-rg'
-gem 'capybara-webkit'
-gem 'minitest-capybara'
-gem 'minitest-spec-rails'
+gem 'data-services-api', git: "git@github.com:epimorphics/ds-api-ruby.git"
+
+group :test do
+  gem 'minitest', '~> 4.7'
+  gem 'minitest-rg', '~> 1.1'
+  gem 'capybara-webkit', '~> 1.1'
+  gem 'minitest-capybara', '~> 0.4'
+  gem 'minitest-spec-rails', '~> 4.7'
+  gem 'json_expressions', "~> 0.8"
+end
+
