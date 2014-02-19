@@ -51,3 +51,4 @@ gem 'govuk_frontend_toolkit', github: "alphagov/govuk_frontend_toolkit_gem", :su
 gem 'minitest-rg'
 gem 'capybara-webkit'
 gem 'minitest-capybara'
+gem 'minitest-spec-rails'

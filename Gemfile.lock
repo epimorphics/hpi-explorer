@@ -98,6 +98,9 @@ GEM
       rake
     minitest-rg (1.1.1)
       minitest (< 5.0)
+    minitest-spec-rails (4.7.6)
+      minitest (~> 4.7)
+      rails (>= 3.0, < 4.1)
     multi_json (1.8.4)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
@@ -187,6 +190,7 @@ DEPENDENCIES
   jquery-rails
   minitest-capybara
   minitest-rg
+  minitest-spec-rails
   pry
   rails (= 4.0.2)
   sass-rails (~> 4.0.0)
