@@ -48,7 +48,7 @@ gem 'capistrano-bundler', group: :development
 gem 'pry', group: :development
 
 gem 'govuk_frontend_toolkit', github: "alphagov/govuk_frontend_toolkit_gem", :submodules => true
-gem 'data-services-api', git: "git@github.com:epimorphics/ds-api-ruby.git"
+gem 'data_services_api', git: "git@github.com:epimorphics/ds-api-ruby.git"
 gem 'font-awesome-rails'
 
 group :test do

@@ -1,0 +1,9 @@
+.container
+  = render partial: 'search_form'
+
+  .row
+    - if @search_cmd.no_results?
+      %p
+        Sorry, that search did not return any results
+    - else
+      = render partial: search_results
