@@ -44,7 +44,7 @@ class SearchCommand
   def create_search_query( term )
     DataServicesApi::QueryGenerator
               .new
-              .equals( "hpi:refRegionName", term )
+              .search( "#{term}*" )
   end
 
   def data_service

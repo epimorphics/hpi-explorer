@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: git@github.com:epimorphics/ds-api-ruby.git
-  revision: c7b7675dcc27ba9e3c5a05396fe78466107f6198
+  revision: 26a7d93dbba736587fad5db84ace554f54acf204
   specs:
     data_services_api (0.0.1)
       faraday_middleware (< 0.9.0)
@@ -157,7 +157,7 @@ GEM
       json (~> 1.8)
       rdoc (~> 4.0, < 5.0)
     slop (3.4.7)
-    sprockets (2.10.1)
+    sprockets (2.11.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
