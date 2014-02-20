@@ -1,4 +1,4 @@
-= form_tag( "preview", class: "form-horizontal", role: "form") do
+= form_tag( "search", class: "form-horizontal", role: "form") do
   .row
     .col-md-6
       = render partial: "hpi/area_selection", locals: {group: 1}
@@ -7,4 +7,4 @@
       = render @preferences.area_comparison_partial, locals: {group: 2}
 
   .row
-    = render partial: @search_cmd.search_results_partial
+    = render partial: @search_cmd.search_results_partial if @search_cmd

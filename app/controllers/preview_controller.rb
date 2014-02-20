@@ -1,8 +1,10 @@
 class PreviewController < ApplicationController
-  def create
+  def index
     @preferences = UserPreferences.new( params )
+  end
 
-    @search_cmd = SearchCommand.new( params )
-    @search_cmd.find_unique_locations
+  def create
+    index
+    render action: :index
   end
 end
