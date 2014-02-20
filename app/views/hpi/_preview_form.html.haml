@@ -1,4 +1,4 @@
-= form_tag( "preview", class: "form-horizontal", role: "form" ) do
+= form_tag( {controller: :preview, action: :create}, class: "form-horizontal", role: "form" ) do
   .row
     = render partial: "hpi/selected_location" if @preferences.selected_location_name
 
