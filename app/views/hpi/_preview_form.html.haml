@@ -1,0 +1,12 @@
+= form_tag( "preview", class: "form-horizontal", role: "form" ) do
+  .row
+    = render partial: "hpi/selected_location" if @preferences.selected_location_name
+
+  .row
+    = render partial: "hpi/measure_selection"
+
+  .row
+    = render partial: "hpi/filter_selection"
+
+  .row
+    = submit_tag( "Preview your results")

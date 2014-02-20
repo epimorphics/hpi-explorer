@@ -1,6 +1,8 @@
 class SearchController < ApplicationController
   DEFAULT_SEARCH_TERM = "England and Wales"
 
+  DEFAULT_PREVIEW_OPTIONS = {m_hpi: true}
+
   def create
     @preferences = UserPreferences.new( params )
 

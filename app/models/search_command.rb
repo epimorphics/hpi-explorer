@@ -33,6 +33,7 @@ class SearchCommand
     end
   end
 
+
   private
 
 

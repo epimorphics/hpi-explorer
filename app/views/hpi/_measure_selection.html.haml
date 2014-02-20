@@ -4,44 +4,44 @@
   .form-group
     = label_tag( :m_hpi, "House price index", class: "col-sm-2 control-label" )
     .col-sm-1
-      = check_box_tag( :m_hpi, 1, true, class: "form-control" )
+      = check_box_tag( :m_hpi, 1, @preferences.selected_index?( "m_hpi" ), class: "form-control" )
     .col-sm-9
 
   .form-group
     = label_tag( :m_ap, "Average price", class: "col-sm-2 control-label" )
     .col-sm-1
-      = check_box_tag( :m_ap, 1, false, class: "form-control" )
+      = check_box_tag( :m_ap, 1, @preferences.selected_index?( "m_ap" ), class: "form-control" )
     .col-sm-9
       .property-types
         %span
           %strong
             Only include:
         %label.radio-inline
-          = check_box_tag( :f_pt, "d", false )
+          = check_box_tag( :f_pt, "d", @preferences.selected_index?( "f_pt", "d" ) )
           Detached
         %label.radio-inline
-          = check_box_tag( :f_pt, "sd", false )
+          = check_box_tag( :f_pt, "sd", @preferences.selected_index?( "f_pt", "sd" ) )
           Semi-detached
         %label.radio-inline
-          = check_box_tag( :f_pt, "t", false )
+          = check_box_tag( :f_pt, "t", @preferences.selected_index?( "f_pt", "t" ) )
           Terraced
         %label.radio-inline
-          = check_box_tag( :f_pt, "f", false )
+          = check_box_tag( :f_pt, "f", @preferences.selected_index?( "f_pt", "f" ) )
           Flat or apartment
 
   .form-group
     = label_tag( :m_chm, "Monthly change", class: "col-sm-2 control-label" )
     .col-sm-1
-      = check_box_tag( :m_chm, 1, false, class: "form-control" )
+      = check_box_tag( :m_chm, 1, @preferences.selected_index?( "m_chm" ), class: "form-control" )
     .col-sm-9
 
   .form-group
     = label_tag( :m_chy, "Yearly change", class: "col-sm-2 control-label" )
     .col-sm-1
-      = check_box_tag( :m_chy, 1, false, class: "form-control" )
+      = check_box_tag( :m_chy, 1, @preferences.selected_index?( "m_chy" ), class: "form-control" )
     .col-sm-9
 
   .form-group
     = label_tag( :m_vol, "Volume of sales", class: "col-sm-2 control-label" )
     .col-sm-1
-      = check_box_tag( :m_vol, 1, false, class: "form-control" )
+      = check_box_tag( :m_vol, 1, @preferences.selected_index?( "m_vol" ), class: "form-control" )
