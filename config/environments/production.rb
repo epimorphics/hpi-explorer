@@ -87,5 +87,4 @@ HpiExplorer::Application.configure do
 
   # Specify that we're not at the root
   config.action_controller.relative_url_root = "/hpi"
-  Rails.logger.info "Set relative_url_root to #{config.action_controller.relative_url_root}"
 end
