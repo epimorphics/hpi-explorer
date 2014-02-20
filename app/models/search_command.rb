@@ -1,15 +1,16 @@
-class SearchCommand
+class SearchCommand < DataService
   DEFAULT_SEARCH_TERM = "England and Wales"
 
   attr_reader :search_term, :locations, :query
 
-  def initialize( params )
-    @search_term = identify_search_term( params )
+  def initialize( preferences )
+    super( preferences )
+    @search_term = identify_search_term( preferences )
     @query = create_search_query( @search_term ) if @search_term
   end
 
   def find_unique_locations
-    results = @query ? hpi_dataset.query( @query ) : []
+    results = @query ? dataset( :hpi ).query( @query ) : []
     @locations = unique_locations( results )
   end
 
@@ -21,9 +22,7 @@ class SearchCommand
     @locations.size == 0
   end
 
-  def search_term?
-    @search_term
-  end
+  alias :search_term? :search_term
 
   def search_results_partial
     if search_term?
@@ -37,23 +36,12 @@ class SearchCommand
   private
 
 
-  def identify_search_term( params )
-    params[:search1] || params[:search2]
+  def identify_search_term( preferences )
+    preferences.param( :search1 ) || preferences.param( :search2 ) || DEFAULT_SEARCH_TERM
   end
 
   def create_search_query( term )
-    DataServicesApi::QueryGenerator
-              .new
-              .search( "#{term}*" )
-  end
-
-  def data_service
-    # TODO move endpoint location to config file
-    @data_service ||= DataServicesApi::Service.new
-  end
-
-  def hpi_dataset
-    @hpi_dataset ||= data_service.dataset( "hpi" )
+    base_query.search( term.split.map {|t| "+#{t}*"} .join( ' ' ) )
   end
 
   def unique_locations( results )

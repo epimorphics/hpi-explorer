@@ -9,4 +9,5 @@
     = render partial: "hpi/measure_selection"
 
   .row
+    = hidden_field_tag( :loc, params[:loc] )
     = submit_tag( "Preview your results")

@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: git@github.com:epimorphics/ds-api-ruby.git
-  revision: 26a7d93dbba736587fad5db84ace554f54acf204
+  revision: 7a0eacc7b19469ba72b847254a89a8c6032ccd4d
   specs:
     data_services_api (0.0.1)
       faraday_middleware (< 0.9.0)

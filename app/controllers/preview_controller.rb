@@ -1,8 +1,8 @@
 class PreviewController < ApplicationController
   def index
     @preferences = UserPreferences.new( params )
-    @query_command = QueryCommand.new( params )
-    @query_command.load_query_results( @preferences )
+    @query_command = QueryCommand.new( @preferences )
+    @query_command.load_query_results()
   end
 
   def create

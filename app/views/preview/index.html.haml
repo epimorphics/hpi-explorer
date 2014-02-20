@@ -4,5 +4,17 @@
   = render partial: 'hpi/preview_form'
 
   .row
-    %p
-      Here lieth the preview
+    %h2 Results preview
+
+    %table.table
+      %thead
+        %tr
+          - @query_command.columns.each do |col|
+            %th
+              = col[:label]
+      %tbody
+        - @query_command.results.each do |result|
+          %tr
+            - result.each do |value|
+              %td
+                = value

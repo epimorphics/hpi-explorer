@@ -11,13 +11,16 @@ class UserPreferences
   end
 
   def selected_location_name
-    params["loc"]
+    param( :loc )
   end
 
   def selected_index?( index_name, val = nil )
     @params[index_name] && (!val || @params[index_name] == val)
   end
 
-  private
+  def param( p )
+    pp = params[p]
+    (pp && pp.length > 0) ? pp : nil
+  end
 
 end
