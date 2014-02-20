@@ -1,5 +1,22 @@
 .filter-selection
-
-  %p
-    Select a time period: (TBC)
-
+  %row
+    %p
+      Select dates
+  .row
+    .form-group.date-range.no-js
+      .col-sm-3.col-sm-offset-2
+        - months = %w(January February March April May June July August September October November December)
+        - year = Time.now.year
+        - current_year = year.to_s
+        - previous_year = (year - 1).to_s
+        - current_month = Time.now.strftime( "%B" )
+        - years = (1996 .. year).map( &:to_s )
+        %label.control-label
+          From
+          = select_tag( :from_month, options_for_select( months, current_month ) )
+          = select_tag( :from_year, options_for_select( years, previous_year ) )
+      .col-sm-3
+        %label.control-label
+          To
+          = select_tag( :from_month, options_for_select( months, current_month ) )
+          = select_tag( :from_year, options_for_select( years, current_year ) )
