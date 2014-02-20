@@ -1,5 +1,10 @@
 
 class IndexPageAcceptanceTest < AcceptanceSpec
+  before do
+    VCR.config do |c|
+      c.allow_http_connections_when_no_cassette = true
+    end
+  end
 
   it "should have a place to search for locations" do
     visit "/"
@@ -12,17 +17,11 @@ class IndexPageAcceptanceTest < AcceptanceSpec
     page.has_css?("#search input[name='search2']").must_equal false
   end
 
-  # it "will have controls to select indicators" do
-  #   visit "/"
-  #   %w(m_hpi m_ap m_chm m_chm m_vol).each do |measure|
-  #     page.has_css?( "input[type='checkbox'][name='#{measure}']" ).must_be_same_as true
-  #   end
-  # end
+  it "will return a search result" do
+    visit "/"
+    fill_in( "search1", with: "coventry" )
+    click_on( "action_search" )
 
-  # it "will only have the hpi selected by default" do
-  #   visit "/"
-  #   %w(m_hpi m_ap m_chm m_chm m_vol).each do |measure|
-  #     page.has_checked_field?(measure).must_be_same_as (measure == "m_hpi")
-  #   end
-  # end
+    page.has_css?( "#search-results ul li a" )
+  end
 end

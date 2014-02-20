@@ -1,8 +1,9 @@
 %p
   Locations that match '#{@preferences.param(:search1) || @preferences.param(:search2)}':
 
-%ul
-  - @search_cmd.locations.each do |location|
-    %li
-      = link_to( location["label"], {controller: :preview, loc: location["label"]}.merge( SearchController.default_preview_options ))
+#search-results
+  %ul
+    - @search_cmd.locations.each do |location|
+      %li
+        = link_to( location["label"], {controller: :preview, loc: location["label"]}.merge( SearchController.default_preview_options ))
 
