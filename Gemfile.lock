@@ -42,6 +42,7 @@ GEM
       multi_json (~> 1.3)
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
+    addressable (2.3.5)
     arel (4.0.2)
     atomic (1.1.14)
     bootstrap-sass (3.1.1.0)
@@ -74,6 +75,9 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    crack (0.4.2)
+      safe_yaml (~> 1.0.0)
+    database_cleaner (1.2.0)
     erubis (2.7.0)
     execjs (2.0.2)
     faraday (0.8.9)
@@ -106,6 +110,8 @@ GEM
     method_source (0.8.2)
     mime-types (1.25.1)
     mini_portile (0.5.2)
+    minispec-metadata (2.0.0)
+      minitest
     minitest (4.7.5)
     minitest-capybara (0.5.0)
       capybara (~> 2.1.0)
@@ -116,6 +122,11 @@ GEM
     minitest-spec-rails (4.7.6)
       minitest (~> 4.7)
       rails (>= 3.0, < 4.1)
+    minitest-vcr (0.1.0)
+      database_cleaner (>= 1.0.1)
+      minispec-metadata (~> 2.0.0)
+      minitest (>= 4.7.5)
+      vcr (~> 2.8.0)
     multi_json (1.8.4)
     multipart-post (1.2.0)
     net-scp (1.1.2)
@@ -148,6 +159,7 @@ GEM
     rdoc (4.1.1)
       json (~> 1.4)
     ref (1.0.5)
+    safe_yaml (1.0.1)
     sass (3.2.14)
     sass-rails (4.0.1)
       railties (>= 4.0.0, < 5.0)
@@ -189,6 +201,10 @@ GEM
     uglifier (2.4.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    vcr (2.8.0)
+    webmock (1.15.2)
+      addressable (>= 2.2.7)
+      crack (>= 0.3.2)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -213,6 +229,7 @@ DEPENDENCIES
   minitest-capybara (~> 0.4)
   minitest-rg (~> 1.1)
   minitest-spec-rails (~> 4.7)
+  minitest-vcr
   pry
   rails (= 4.0.2)
   sass-rails (~> 4.0.0)
@@ -220,3 +237,5 @@ DEPENDENCIES
   therubyracer
   turbolinks
   uglifier (>= 1.3.0)
+  vcr
+  webmock

@@ -60,5 +60,8 @@ group :test do
   gem 'minitest-capybara', '~> 0.4'
   gem 'minitest-spec-rails', '~> 4.7'
   gem 'json_expressions', "~> 0.8"
+  gem 'vcr'
+  gem 'minitest-vcr'
+  gem 'webmock'
 end
 
