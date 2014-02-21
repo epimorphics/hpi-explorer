@@ -38,6 +38,7 @@
                   %a{ href: "sparql.html" }
                     SPARQL query
   .lr-top-bar
-  #wrapper
-    #content.group{ role: "main"}
-      = yield
+  .container{ role: "main"}
+    .row
+      .col-md-12
+        = yield

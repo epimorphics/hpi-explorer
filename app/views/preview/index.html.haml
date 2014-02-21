@@ -1,20 +1,19 @@
-.container
-  = render partial: 'hpi/search_form'
+= render partial: 'hpi/search_form'
 
-  = render partial: 'hpi/preview_form'
+= render partial: 'hpi/preview_form'
 
-  .row
-    %h2 Results preview
+.row
+  %h2 Results preview
 
-    %table.table
-      %thead
+  %table.table
+    %thead
+      %tr
+        - @query_command.columns.each do |col|
+          %th
+            = col[:label]
+    %tbody
+      - @query_command.results.each do |result|
         %tr
-          - @query_command.columns.each do |col|
-            %th
-              = col[:label]
-      %tbody
-        - @query_command.results.each do |result|
-          %tr
-            - result.each do |value|
-              %td
-                = value
+          - result.each do |value|
+            %td
+              = value
