@@ -13,6 +13,7 @@
  *= require lr-fonts
  *= require_tree .
  *= require font-awesome
+ *= require jquery.ui.autocomplete
  *= require hpi
  */
 

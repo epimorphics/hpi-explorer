@@ -1,0 +1,579 @@
+{
+  "head": {
+    "vars": [ "t" ]
+  } ,
+  "results": {
+    "bindings": [
+      {
+        "t":"Warrington"
+      } ,
+      {
+        "t":"South Tyneside"
+      } ,
+      {
+        "t":"Ealing"
+      } ,
+      {
+        "t":"North East"
+      } ,
+      {
+        "t":"Croydon"
+      } ,
+      {
+        "t":"Wrexham"
+      } ,
+      {
+        "t":"Barnsley"
+      } ,
+      {
+        "t":"Milton Keynes"
+      } ,
+      {
+        "t":"Newcastle upon Tyne"
+      } ,
+      {
+        "t":"City of Bristol"
+      } ,
+      {
+        "t":"Merton"
+      } ,
+      {
+        "t":"Thurrock"
+      } ,
+      {
+        "t":"Essex"
+      } ,
+      {
+        "t":"Rochdale"
+      } ,
+      {
+        "t":"Knowsley"
+      } ,
+      {
+        "t":"Greenwich"
+      } ,
+      {
+        "t":"City of Peterborough"
+      } ,
+      {
+        "t":"Bolton"
+      } ,
+      {
+        "t":"City of Nottingham"
+      } ,
+      {
+        "t":"Sandwell"
+      } ,
+      {
+        "t":"Stockton-on-Tees"
+      } ,
+      {
+        "t":"North West"
+      } ,
+      {
+        "t":"Greater London"
+      } ,
+      {
+        "t":"Wakefield"
+      } ,
+      {
+        "t":"Derbyshire"
+      } ,
+      {
+        "t":"Blackburn with Darwen"
+      } ,
+      {
+        "t":"Powys"
+      } ,
+      {
+        "t":"Hounslow"
+      } ,
+      {
+        "t":"West Sussex"
+      } ,
+      {
+        "t":"Northumberland"
+      } ,
+      {
+        "t":"Cumbria"
+      } ,
+      {
+        "t":"Worcestershire"
+      } ,
+      {
+        "t":"Darlington"
+      } ,
+      {
+        "t":"Devon"
+      } ,
+      {
+        "t":"City of Plymouth"
+      } ,
+      {
+        "t":"Gwynedd"
+      } ,
+      {
+        "t":"Salford"
+      } ,
+      {
+        "t":"Hartlepool"
+      } ,
+      {
+        "t":"Isle of Wight"
+      } ,
+      {
+        "t":"Richmond upon Thames"
+      } ,
+      {
+        "t":"Durham"
+      } ,
+      {
+        "t":"Cambridgeshire"
+      } ,
+      {
+        "t":"Bromley"
+      } ,
+      {
+        "t":"Coventry"
+      } ,
+      {
+        "t":"South East"
+      } ,
+      {
+        "t":"North Yorkshire"
+      } ,
+      {
+        "t":"North Lincolnshire"
+      } ,
+      {
+        "t":"Herefordshire"
+      } ,
+      {
+        "t":"Caerphilly"
+      } ,
+      {
+        "t":"Lancashire"
+      } ,
+      {
+        "t":"Barnet"
+      } ,
+      {
+        "t":"Gloucestershire"
+      } ,
+      {
+        "t":"Calderdale"
+      } ,
+      {
+        "t":"Flintshire"
+      } ,
+      {
+        "t":"Hammersmith and Fulham"
+      } ,
+      {
+        "t":"East Riding of Yorkshire"
+      } ,
+      {
+        "t":"Rhondda Cynon Taff"
+      } ,
+      {
+        "t":"Walsall"
+      } ,
+      {
+        "t":"Rotherham"
+      } ,
+      {
+        "t":"Bournemouth"
+      } ,
+      {
+        "t":"Rutland"
+      } ,
+      {
+        "t":"England and Wales"
+      } ,
+      {
+        "t":"Merthyr Tydfil"
+      } ,
+      {
+        "t":"Kirklees"
+      } ,
+      {
+        "t":"Lambeth"
+      } ,
+      {
+        "t":"Tameside"
+      } ,
+      {
+        "t":"Luton"
+      } ,
+      {
+        "t":"St Helens"
+      } ,
+      {
+        "t":"Surrey"
+      } ,
+      {
+        "t":"Torfaen"
+      } ,
+      {
+        "t":"Wirral"
+      } ,
+      {
+        "t":"City of Kingston upon Hull"
+      } ,
+      {
+        "t":"Brent"
+      } ,
+      {
+        "t":"Halton"
+      } ,
+      {
+        "t":"Leeds"
+      } ,
+      {
+        "t":"Wales"
+      } ,
+      {
+        "t":"Merseyside"
+      } ,
+      {
+        "t":"Havering"
+      } ,
+      {
+        "t":"Trafford"
+      } ,
+      {
+        "t":"Sheffield"
+      } ,
+      {
+        "t":"Birmingham"
+      } ,
+      {
+        "t":"Shropshire"
+      } ,
+      {
+        "t":"Ceredigion"
+      } ,
+      {
+        "t":"Sunderland"
+      } ,
+      {
+        "t":"Oldham"
+      } ,
+      {
+        "t":"Yorks and Humber"
+      } ,
+      {
+        "t":"City of Derby"
+      } ,
+      {
+        "t":"Tyne and Wear"
+      } ,
+      {
+        "t":"Redcar and Cleveland"
+      } ,
+      {
+        "t":"Wiltshire"
+      } ,
+      {
+        "t":"Isle of Anglesey"
+      } ,
+      {
+        "t":"North East Lincolnshire"
+      } ,
+      {
+        "t":"Torbay"
+      } ,
+      {
+        "t":"Kent"
+      } ,
+      {
+        "t":"Enfield"
+      } ,
+      {
+        "t":"Swindon"
+      } ,
+      {
+        "t":"Wigan"
+      } ,
+      {
+        "t":"Leicester"
+      } ,
+      {
+        "t":"Greater Manchester"
+      } ,
+      {
+        "t":"Lincolnshire"
+      } ,
+      {
+        "t":"South Gloucestershire"
+      } ,
+      {
+        "t":"Leicestershire"
+      } ,
+      {
+        "t":"Southend-on-Sea"
+      } ,
+      {
+        "t":"Lewisham"
+      } ,
+      {
+        "t":"Bury"
+      } ,
+      {
+        "t":"Waltham Forest"
+      } ,
+      {
+        "t":"Reading"
+      } ,
+      {
+        "t":"Cardiff"
+      } ,
+      {
+        "t":"Northamptonshire"
+      } ,
+      {
+        "t":"Tower Hamlets"
+      } ,
+      {
+        "t":"Sefton"
+      } ,
+      {
+        "t":"Suffolk"
+      } ,
+      {
+        "t":"Cornwall"
+      } ,
+      {
+        "t":"Conwy"
+      } ,
+      {
+        "t":"Wolverhampton"
+      } ,
+      {
+        "t":"Kensington and Chelsea"
+      } ,
+      {
+        "t":"Liverpool"
+      } ,
+      {
+        "t":"Hackney"
+      } ,
+      {
+        "t":"City of Westminster"
+      } ,
+      {
+        "t":"Bridgend"
+      } ,
+      {
+        "t":"The Vale of Glamorgan"
+      } ,
+      {
+        "t":"Camden"
+      } ,
+      {
+        "t":"East Sussex"
+      } ,
+      {
+        "t":"South West"
+      } ,
+      {
+        "t":"West Yorkshire"
+      } ,
+      {
+        "t":"Southampton"
+      } ,
+      {
+        "t":"Dudley"
+      } ,
+      {
+        "t":"Kingston upon Thames"
+      } ,
+      {
+        "t":"Newham"
+      } ,
+      {
+        "t":"Poole"
+      } ,
+      {
+        "t":"North Tyneside"
+      } ,
+      {
+        "t":"Newport"
+      } ,
+      {
+        "t":"Middlesbrough"
+      } ,
+      {
+        "t":"Bracknell Forest"
+      } ,
+      {
+        "t":"Islington"
+      } ,
+      {
+        "t":"Southwark"
+      } ,
+      {
+        "t":"Neath Port Talbot"
+      } ,
+      {
+        "t":"East"
+      } ,
+      {
+        "t":"Bradford"
+      } ,
+      {
+        "t":"Monmouthshire"
+      } ,
+      {
+        "t":"Wokingham"
+      } ,
+      {
+        "t":"Cheshire West and Chester"
+      } ,
+      {
+        "t":"North Somerset"
+      } ,
+      {
+        "t":"Brighton and Hove"
+      } ,
+      {
+        "t":"Denbighshire"
+      } ,
+      {
+        "t":"Swansea"
+      } ,
+      {
+        "t":"Wrekin"
+      } ,
+      {
+        "t":"Central Bedfordshire"
+      } ,
+      {
+        "t":"West Midlands (region)"
+      } ,
+      {
+        "t":"York"
+      } ,
+      {
+        "t":"Dorset"
+      } ,
+      {
+        "t":"Windsor and Maidenhead"
+      } ,
+      {
+        "t":"Oxfordshire"
+      } ,
+      {
+        "t":"Stoke-on-Trent"
+      } ,
+      {
+        "t":"Staffordshire"
+      } ,
+      {
+        "t":"Pembrokeshire"
+      } ,
+      {
+        "t":"Norfolk"
+      } ,
+      {
+        "t":"Buckinghamshire"
+      } ,
+      {
+        "t":"South Yorkshire"
+      } ,
+      {
+        "t":"Cheshire East"
+      } ,
+      {
+        "t":"West Berkshire"
+      } ,
+      {
+        "t":"East Midlands"
+      } ,
+      {
+        "t":"London"
+      } ,
+      {
+        "t":"Solihull"
+      } ,
+      {
+        "t":"Nottinghamshire"
+      } ,
+      {
+        "t":"Bath and North East Somerset"
+      } ,
+      {
+        "t":"Medway"
+      } ,
+      {
+        "t":"Wandsworth"
+      } ,
+      {
+        "t":"Haringey"
+      } ,
+      {
+        "t":"West Midlands"
+      } ,
+      {
+        "t":"Blackpool"
+      } ,
+      {
+        "t":"Carmarthenshire"
+      } ,
+      {
+        "t":"Portsmouth"
+      } ,
+      {
+        "t":"Hillingdon"
+      } ,
+      {
+        "t":"Stockport"
+      } ,
+      {
+        "t":"Harrow"
+      } ,
+      {
+        "t":"Bedford"
+      } ,
+      {
+        "t":"Hertfordshire"
+      } ,
+      {
+        "t":"Barking and Dagenham"
+      } ,
+      {
+        "t":"Doncaster"
+      } ,
+      {
+        "t":"Sutton"
+      } ,
+      {
+        "t":"Manchester"
+      } ,
+      {
+        "t":"Warwickshire"
+      } ,
+      {
+        "t":"Hampshire"
+      } ,
+      {
+        "t":"Slough"
+      } ,
+      {
+        "t":"Bexley"
+      } ,
+      {
+        "t":"Blaenau Gwent"
+      } ,
+      {
+        "t":"Somerset"
+      } ,
+      {
+        "t":"Redbridge"
+      } ,
+      {
+        "t":"Gateshead"
+      }
+    ]
+  }
+}
