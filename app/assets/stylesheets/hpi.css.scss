@@ -49,6 +49,20 @@ $lr-yellow: #e5ea08;
 
   section {
     border-top: 10px solid $lr-yellow;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  h2.results-title {
+    color: black;
+    background-color: $lr-mid-green;
+    border-radius: 3px;
+    padding: 5px;
+    margin-top: 30px;
+  }
+
+  p.info {
+    color: $lr-dark-green;
   }
 }
 

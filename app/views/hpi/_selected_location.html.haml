@@ -1,2 +1,12 @@
-%h2
-  Showing results for: #{@preferences.selected_location_name}
+%h2.results-title
+  Index data for: #{@preferences.selected_location_name}
+
+%p
+  %small
+    Part of:
+    %a{ href: "#todo"}
+      Todo link to parent region
+%p
+  %small
+    Contains:
+    %em links to areas this location contains, if any. Otherwise, will not appear
