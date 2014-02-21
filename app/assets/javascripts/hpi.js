@@ -13,11 +13,13 @@ var Hpi = function() {
   var bindEvents = function() {
     $("form.search").on( "submit", onSearchSubmit );
     $("form.search").on( "keydown", "input", onSeachInput );
+    $("form.preview").on( "click", "input", onChangePreviewSettings );
   };
 
   /** Widget and control initialisation */
   var initControls = function() {
     $("button#action_search").hide();
+    $("form.preview input[type=submit]").hide();
 
     // ensure we know which input field the user is entering text into
     $("form.search input").each( function( i, elem ) {
@@ -50,6 +52,11 @@ var Hpi = function() {
   /** User has started typing into an input field */
   var onSeachInput = function( e ) {
     delete _currentSelection[$(e.currentTarget).attr( "name" )];
+  };
+
+  /** User has clicked to change some of the preview settings */
+  var onChangePreviewSettings = function( e ) {
+    drawPreview();
   };
 
   var drawPreview = function() {
