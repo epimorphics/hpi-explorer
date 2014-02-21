@@ -1,6 +1,6 @@
-= form_tag( {controller: :preview, action: :create}, class: "form-horizontal", role: "form" ) do
+= form_tag( {controller: :preview, action: :create}, class: "form-horizontal preview", role: "form" ) do
   .row
-    .col-md-12
+    #results-header.col-md-12
       = render partial: "hpi/selected_location" if @preferences.selected_location_name
 
   .row
@@ -13,4 +13,5 @@
   .row
     .col-md-12
       = hidden_field_tag( :loc, params[:loc] )
+      = hidden_field_tag( :user_form, true )
       = submit_tag( "Preview your results")

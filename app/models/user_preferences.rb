@@ -31,7 +31,9 @@ class UserPreferences
 
   # Return true if the given index is currently selected
   def selected_index?( index_name, val = nil )
-    !!(@params[index_name] && (!val || @params[index_name] == val))
+    selected = !!(@params[index_name] && (!val || @params[index_name] == val))
+
+    selected || default_value?( index_name )
   end
 
   # Return an array of the index definitions if that index is
@@ -49,6 +51,20 @@ class UserPreferences
 
   def indifferent_access( h )
     h.is_a?( HashWithIndifferentAccess) ? h : HashWithIndifferentAccess.new( h )
+  end
+
+  # If the prefs are not explicitly set by the user via a form,
+  # some measures have a default value
+  def default_value?( index_name )
+    measures_on_by_default.include?( index_name ) && !input_provided_by_user
+  end
+
+  def measures_on_by_default
+    %w(m_hpi)
+  end
+
+  def input_provided_by_user
+    params[:user_form]
   end
 
 end

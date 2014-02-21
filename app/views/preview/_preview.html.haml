@@ -1,0 +1,23 @@
+%section.col-md-12
+  %h2
+    Results preview
+
+    .pull-right
+      .small
+        %a.btn.btn-primary{ href: "#"}
+          Show full results
+        %a.btn.btn-primary{ href: "#"}
+          Download data
+
+  %table.table
+    %thead
+      %tr
+        - @query_command.columns.each do |col|
+          %th
+            = col[:label]
+    %tbody
+      - @query_command.results.each do |result|
+        %tr
+          - result.each do |value|
+            %td
+              = value
