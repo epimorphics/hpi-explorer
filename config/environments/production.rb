@@ -86,5 +86,5 @@ HpiExplorer::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   # Specify that we're not at the root
-  config.action_controller.relative_url_root = "/hpi"
+  config.action_controller.relative_url_root = "/app/hpi"
 end
