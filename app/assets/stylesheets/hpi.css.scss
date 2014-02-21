@@ -5,9 +5,41 @@
 @import "design-patterns/_buttons.scss";
 @import "design-patterns/_alpha-beta.scss";
 
+/* variables */
+$lr-dark-green: #5A8006;
+$lr-mid-green: #ACCD40;
+
+/* styles */
+
 .beta-banner {
   @include phase-banner(beta);
 }
 .beta-tag{
   @include phase-tag(beta);
 }
+
+.lr {
+  #global-header {
+    background-color: white;
+  }
+
+  #global-header .header-proposition #proposition-links li a {
+    color: $lr-dark-green;
+  }
+
+  #global-header .header-proposition #proposition-name {
+    color: $lr-dark-green;
+  }
+
+  #global-header .header-proposition a.menu {
+    color: $lr-dark-green;
+  }
+
+  .lr-top-bar {
+    width: 100%;
+    height: 3px;
+    background-color: $lr-mid-green;
+    margin: 5px 0;
+  }
+}
+

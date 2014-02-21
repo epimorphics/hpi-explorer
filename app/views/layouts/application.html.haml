@@ -7,38 +7,37 @@
     = csrf_meta_tags
     = stylesheet_link_tag "https://www.gov.uk/service-manual/assets/govuk_template/stylesheets/govuk-template.css", media: "all"
     = stylesheet_link_tag "https://www.gov.uk/service-manual/assets/stylesheets/main.css", media: "all"
-  %body.gsdm-body.mainstream.full-width.wide.role-index
+
+  %body.government.website.role-index.lr.hpi
+    :javascript
+      document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
+
     %header#global-header.with-proposition{ role: "banner" }
       .header-wrapper
         .header-global
           .header-logo
-            %a#logo.content{ href: "https://www.gov.uk/", title: "Go to the GOV.UK homepage" }
-              = image_tag "lr-logo.png"
-              Land Registry
+            %a.content{ href: "https://www.landregistry.gov.uk/", title: "Go to the Land Registry homepage" }
+              = image_tag "lr_logo_221_80.png"
         .header-proposition
           .content
+            %a.js-header-toggle.menu{ href: "#proposition-links"}
+              Menu
             %nav#proposition-menu
-              %a#proposition-name{ href: "/fubar" }
-                House Price Index Open Data
+              %a#proposition-name{ href: "http://landregistry.data.gov.uk" }
+                Land Registry Linked Open Data
                 %a.beta-tag{ href: ""}
                   beta
               %ul#proposition-links
                 %li
-                  %a{ href: "" }
-                    Search HPI
+                  %a.active{ href: "" }
+                    House Price Index
                 %li
-                  %a{ href: "download.html" }
-                    Download data
+                  %a{ href: "ppd" }
+                    Price Paid Data
                 %li
                   %a{ href: "sparql.html" }
                     SPARQL query
-      .beta-banner.beta-notice
-        %small
-          BETA: This is a trial service &ndash; your
-          %a{ href: "TODO"}
-            feedback
-          will help us to improve it.
-
+  .lr-top-bar
   #wrapper
     #content.group{ role: "main"}
       = yield
