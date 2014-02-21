@@ -9,7 +9,8 @@ var HpiPreview = function() {
   /** Update the preview, based on the current form */
   var updatePreview = function( options ) {
     var interactionState = currentInteractionState( options );
-    $.post( "preview", interactionState, null, "json" )
+    $.post( Routes.preview_index_path(),
+            interactionState, null, "json" )
       .done( onPreviewDone )
       .fail( onPreviewFail );
   };

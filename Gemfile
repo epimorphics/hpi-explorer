@@ -54,6 +54,7 @@ gem 'font-awesome-rails'
 gem 'faraday', '~> 0.8.8'
 gem "faraday_middleware", "< 0.9.0"
 gem 'jquery-ui-rails'
+gem 'js-routes'
 
 group :test do
   gem 'minitest', '~> 4.7'

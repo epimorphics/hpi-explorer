@@ -103,6 +103,8 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (4.1.1)
       railties (>= 3.1.0)
+    js-routes (0.9.6)
+      rails (>= 3.2)
     json (1.8.1)
     json_expressions (0.8.2)
     libv8 (3.16.14.3)
@@ -229,6 +231,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   jquery-ui-rails
+  js-routes
   json_expressions (~> 0.8)
   minitest (~> 4.7)
   minitest-capybara (~> 0.4)

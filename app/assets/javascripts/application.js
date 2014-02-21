@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require jquery.ui.autocomplete
+//= require js-routes
 //= require_tree .
