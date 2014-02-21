@@ -1,13 +1,16 @@
 = form_tag( {controller: :preview, action: :create}, class: "form-horizontal", role: "form" ) do
   .row
-    = render partial: "hpi/selected_location" if @preferences.selected_location_name
+    .col-md-12
+      = render partial: "hpi/selected_location" if @preferences.selected_location_name
 
   .row
-    = render partial: "hpi/filter_selection"
+    .col-md-6
+      = render partial: "hpi/filter_selection"
+
+    .col-md-6
+      = render partial: "hpi/measure_selection"
 
   .row
-    = render partial: "hpi/measure_selection"
-
-  .row
-    = hidden_field_tag( :loc, params[:loc] )
-    = submit_tag( "Preview your results")
+    .col-md-12
+      = hidden_field_tag( :loc, params[:loc] )
+      = submit_tag( "Preview your results")

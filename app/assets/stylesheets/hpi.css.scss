@@ -8,6 +8,7 @@
 /* variables */
 $lr-dark-green: #5A8006;
 $lr-mid-green: #ACCD40;
+$lr-yellow: #e5ea08;
 
 /* styles */
 
@@ -35,10 +36,6 @@ $lr-mid-green: #ACCD40;
     color: $lr-dark-green;
   }
 
-  #global-header .header-wrapper .header-global .header-logo .content {
-    margin-left: 0;
-  }
-
   .lr-top-bar {
     width: 100%;
     height: 3px;
@@ -48,6 +45,10 @@ $lr-mid-green: #ACCD40;
 
   .container {
     max-width: 960px;
+  }
+
+  section {
+    border-top: 10px solid $lr-yellow;
   }
 }
 
