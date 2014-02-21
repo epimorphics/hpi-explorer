@@ -88,3 +88,7 @@ HpiExplorer::Application.configure do
   # Specify that we're not at the root
   config.action_controller.relative_url_root = "/app/hpi"
 end
+
+JsRoutes.setup do |config|
+  config.prefix = "/app/hpi"
+end
