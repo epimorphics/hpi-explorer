@@ -8,7 +8,7 @@
   - current_month = Time.now.month
   - years = (1996 .. year).map( &:to_s )
 
-  .row
+  .row.no-js
     .col-sm-3
       %label
         From
@@ -16,10 +16,16 @@
       = select_tag( :from_m, options_for_select( months, current_month ) )
       = select_tag( :from_y, options_for_select( years, previous_year ) )
 
-  .row
+  .row.no-js
     .col-sm-3
       %label
         To
     .col-sm-9
       = select_tag( :to_m, options_for_select( months, current_month ) )
       = select_tag( :to_y, options_for_select( years, current_year ) )
+
+  #date-slider
+
+
+  :javascript
+    $( function() {HpiDates.setDateRange( new Date( #{previous_year}, #{current_month} - 1, 1 ), new Date( #{current_year}, #{current_month} - 1, 1 ) ) } );

@@ -12,6 +12,6 @@
 
   .row
     .col-md-12
-      = hidden_field_tag( :loc, params[:loc] )
+      = hidden_field_tag( :loc, params["loc"] )
       = hidden_field_tag( :user_form, true )
       = submit_tag( "Preview your results")
