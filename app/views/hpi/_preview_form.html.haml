@@ -4,11 +4,11 @@
       = render partial: "hpi/selected_location" if @preferences.selected_location_name
 
   .row
-    .col-md-6
+    .col-md-12
       = render partial: "hpi/filter_selection"
 
-    .col-md-6
-      = render partial: "hpi/measure_selection"
+  .row
+    = render partial: "hpi/measure_selection"
 
   .row
     .col-md-12

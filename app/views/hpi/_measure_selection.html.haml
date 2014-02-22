@@ -1,54 +1,58 @@
-%section.measure-selection
+.measure-selection.col-md-12
   .row
     %h3.col-sm-12
       Show these indices:
   .row
-    .col-sm-5
-      = label_tag( :m_hpi, "House price index", class: "control-label text-right" )
-    .col-sm-2
-      = check_box_tag( :m_hpi, 1, @preferences.selected_index?( "m_hpi" ), class: "form-control" )
+    .col-md-6
+      .row
+        .col-sm-5
+          = label_tag( :m_hpi, "House price index", class: "control-label text-right" )
+        .col-sm-2
+          = check_box_tag( :m_hpi, 1, @preferences.selected_index?( "m_hpi" ), class: "form-control" )
 
-  .row
-    .col-sm-5
-      = label_tag( :m_ap, "Average price", class: "control-label text-right" )
-    .col-sm-2
-      = check_box_tag( :m_ap, 1, @preferences.selected_index?( "m_ap" ), class: "form-control" )
+      .row
+        .col-sm-5
+          = label_tag( :m_chm, "Monthly change", class: "control-label text-right" )
+        .col-sm-2
+          = check_box_tag( :m_chm, 1, @preferences.selected_index?( "m_chm" ), class: "form-control" )
 
-    .col-sm-5
-      .property-types
-        %div
-          %strong
-            Only include:
-          %br
-          %label.radio-inline
-            = check_box_tag( :f_pt, "d", @preferences.selected_index?( "f_pt", "d" ) )
-            Detached
-          %br
-          %label.radio-inline
-            = check_box_tag( :f_pt, "sd", @preferences.selected_index?( "f_pt", "sd" ) )
-            Semi-detached
-          %br
-          %label.radio-inline
-            = check_box_tag( :f_pt, "t", @preferences.selected_index?( "f_pt", "t" ) )
-            Terraced
-          %br
-          %label.radio-inline
-            = check_box_tag( :f_pt, "f", @preferences.selected_index?( "f_pt", "f" ) )
-            Flat or maisonette
-  .row
-    .col-sm-5
-      = label_tag( :m_chm, "Monthly change", class: "control-label text-right" )
-    .col-sm-2
-      = check_box_tag( :m_chm, 1, @preferences.selected_index?( "m_chm" ), class: "form-control" )
+      .row
+        .col-sm-5
+          = label_tag( :m_chy, "Yearly change", class: "control-label text-right" )
+        .col-sm-2
+          = check_box_tag( :m_chy, 1, @preferences.selected_index?( "m_chy" ), class: "form-control" )
 
-  .row
-    .col-sm-5
-      = label_tag( :m_chy, "Yearly change", class: "control-label text-right" )
-    .col-sm-2
-      = check_box_tag( :m_chy, 1, @preferences.selected_index?( "m_chy" ), class: "form-control" )
+      .row
+        .col-sm-5
+          = label_tag( :m_vol, "Volume of sales", class: "control-label text-right" )
+        .col-sm-2
+          = check_box_tag( :m_vol, 1, @preferences.selected_index?( "m_vol" ), class: "form-control" )
 
-  .row
-    .col-sm-5
-      = label_tag( :m_vol, "Volume of sales", class: "control-label text-right" )
-    .col-sm-2
-      = check_box_tag( :m_vol, 1, @preferences.selected_index?( "m_vol" ), class: "form-control" )
+    .col-md-6
+      .row
+        .col-sm-4
+          = label_tag( :m_ap, "Average price", class: "control-label text-right" )
+        .col-sm-2
+          = check_box_tag( :m_ap, 1, @preferences.selected_index?( "m_ap" ), class: "form-control" )
+
+        .col-sm-6
+          .property-types
+            %div
+              %strong
+                Only average prices for:
+              %br
+              %label.radio-inline
+                = check_box_tag( :f_pt, "d", @preferences.selected_index?( "f_pt", "d" ) )
+                Detached
+              %br
+              %label.radio-inline
+                = check_box_tag( :f_pt, "sd", @preferences.selected_index?( "f_pt", "sd" ) )
+                Semi-detached
+              %br
+              %label.radio-inline
+                = check_box_tag( :f_pt, "t", @preferences.selected_index?( "f_pt", "t" ) )
+                Terraced
+              %br
+              %label.radio-inline
+                = check_box_tag( :f_pt, "f", @preferences.selected_index?( "f_pt", "f" ) )
+                Flat or maisonette
