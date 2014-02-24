@@ -42,17 +42,17 @@
                 Only average prices for:
               %br
               %label.radio-inline
-                = check_box_tag( :f_pt, "d", @preferences.selected_index?( "f_pt", "d" ) )
+                = check_box_tag( :m_apd, "d", @preferences.selected_index?( "m_apd" ) )
                 Detached
               %br
               %label.radio-inline
-                = check_box_tag( :f_pt, "sd", @preferences.selected_index?( "f_pt", "sd" ) )
+                = check_box_tag( :m_apsd, "sd", @preferences.selected_index?( "m_apsd" ) )
                 Semi-detached
               %br
               %label.radio-inline
-                = check_box_tag( :f_pt, "t", @preferences.selected_index?( "f_pt", "t" ) )
+                = check_box_tag( :m_apt, "t", @preferences.selected_index?( "m_apt" ) )
                 Terraced
               %br
               %label.radio-inline
-                = check_box_tag( :f_pt, "f", @preferences.selected_index?( "f_pt", "f" ) )
+                = check_box_tag( :m_apf, "f", @preferences.selected_index?( "m_apf"  ) )
                 Flat or maisonette

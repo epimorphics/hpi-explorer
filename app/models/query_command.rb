@@ -53,10 +53,10 @@ class QueryCommand < DataService
 
     {m_hpi:  {aspect: "hpi:indicesSASM", label: "Index"},
      m_ap:   {aspect: "hpi:averagePricesSASM", label: "Average price"},
-     m_avd:  {aspect: "hpi:averagePricesDetachedSASM", label: "Average price (detached)"},
-     m_avsd: {aspect: "hpi:averagePricesSemiDetachedSASM", label: "Average price (semi-detached"},
-     m_avt:  {aspect: "hpi:averagePricesTerracedSASM", label: "Average price (terraced)"},
-     m_avf:  {aspect: "hpi:averagePricesFlatMaisonetteSASM", label: "Average price (flats)"},
+     m_apd:  {aspect: "hpi:averagePricesDetachedSASM", label: "Average price (detached)"},
+     m_apsd: {aspect: "hpi:averagePricesSemiDetachedSASM", label: "Average price (semi-detached"},
+     m_apt:  {aspect: "hpi:averagePricesTerracedSASM", label: "Average price (terraced)"},
+     m_apf:  {aspect: "hpi:averagePricesFlatMaisonetteSASM", label: "Average price (flats)"},
      m_chm:  {aspect: "hpi:monthlyChange", label: "Monthly change"},
      m_chy:  {aspect: "hpi:annualChange", label: "Yearly change"},
      m_vol:  {aspect: "hpi:salesVolume", label: "Sales volume"}
