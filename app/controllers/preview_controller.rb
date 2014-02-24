@@ -10,4 +10,11 @@ class PreviewController < ApplicationController
       render json: {header: preview_header, preview: results_preview}
     end
   end
+
+  # This action is performed when the user clicks a search result link in non-Javascript mode
+  def index
+    create
+    render action: :create
+  end
+
 end
