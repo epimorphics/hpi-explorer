@@ -52,14 +52,14 @@ class QueryCommand < DataService
     cols = [{aspect: "hpi:refPeriod", label: "Date"}]
 
     {m_hpi:  {aspect: "hpi:indicesSASM", label: "Index"},
-     m_ap:   {aspect: "hpi:averagePricesSASM", label: "Average price"},
+     m_chm:  {aspect: "hpi:monthlyChange", label: "Monthly change"},
+     m_chy:  {aspect: "hpi:annualChange", label: "Yearly change"},
+     m_vol:  {aspect: "hpi:salesVolume", label: "Sales volume"},
+     m_ap:   {aspect: "hpi:averagePricesSASM", label: "Average price (all)"},
      m_apd:  {aspect: "hpi:averagePricesDetachedSASM", label: "Average price (detached)"},
      m_apsd: {aspect: "hpi:averagePricesSemiDetachedSASM", label: "Average price (semi-detached"},
      m_apt:  {aspect: "hpi:averagePricesTerracedSASM", label: "Average price (terraced)"},
-     m_apf:  {aspect: "hpi:averagePricesFlatMaisonetteSASM", label: "Average price (flats)"},
-     m_chm:  {aspect: "hpi:monthlyChange", label: "Monthly change"},
-     m_chy:  {aspect: "hpi:annualChange", label: "Yearly change"},
-     m_vol:  {aspect: "hpi:salesVolume", label: "Sales volume"}
+     m_apf:  {aspect: "hpi:averagePricesFlatMaisonetteSASM", label: "Average price (flats)"}
     }.each do |key, index|
       cols << index if param(key)
     end
