@@ -39,6 +39,10 @@ class UserPreferences
     param( :loc )
   end
 
+  def selected_location_uri
+    param( :loc_uri )
+  end
+
   # Return true if the location has been specified
   def selected_location?
     !!selected_location_name

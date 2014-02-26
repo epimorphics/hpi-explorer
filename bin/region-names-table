@@ -1,0 +1,7 @@
+#!/bin/bash
+
+arq --data=/opt/dsapi/data/HPI-2014-01.ttl --results=JSON 'select distinct ?value ?label {?value <http://www.w3.org/2000/01/rdf-schema#label> ?label}' > results.json
+
+ruby region-names-table.rb > region-names.js
+
+

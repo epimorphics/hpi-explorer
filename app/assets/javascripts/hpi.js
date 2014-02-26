@@ -29,6 +29,9 @@ var Hpi = function() {
         source: HpiSearch.regionNames,
         select: function( e, ui ) {
           onAutocompleteSelect( searchId, e, ui );
+        },
+        focus: function (event, ui) {
+           event.preventDefault();
         }
       });
     } );
@@ -45,7 +48,9 @@ var Hpi = function() {
 
   /** User has selected one of the autocomplete options */
   var onAutocompleteSelect = function( searchId, e, ui ) {
-    _currentSelection[searchId] = ui.item.label;
+    e.preventDefault();
+    _currentSelection[searchId] = {loc_uri: ui.item.value,
+                                   loc: ui.item.label};
     drawPreview();
   };
 
@@ -61,7 +66,11 @@ var Hpi = function() {
 
   var drawPreview = function() {
     var locField = $("input[type=hidden][name=loc]")
+    var locUriField = $("input[type=hidden][name=loc_uri]")
+
     locField.val( locField.val() || _currentSelection.loc );
+    locUriField.val( locUriField.val() || _currentSelection.loc_uri );
+
     HpiPreview.updatePreview();
   };
 

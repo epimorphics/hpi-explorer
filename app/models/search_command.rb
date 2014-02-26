@@ -46,7 +46,7 @@ class SearchCommand < DataService
 
   def unique_locations( results )
     results.inject( Set.new ) do |memo, result|
-      memo << {"@id" => "na", "label" => result["hpi:refRegionName"]["@value"]}
+      memo << {"@id" => result["hpi:refRegion"]["@value"], "label" => result["hpi:refRegionName"]["@value"]}
     end .to_a
   end
 

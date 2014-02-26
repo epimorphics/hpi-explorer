@@ -1,576 +1,197 @@
 var HpiSearch = function() {
-  var regionNames =  [
-      {
-        "value": "Warrington", "label": "Warrington"
-      } ,
-      {
-        "value": "South Tyneside", "label": "South Tyneside"
-      } ,
-      {
-        "value": "Ealing", "label": "Ealing"
-      } ,
-      {
-        "value": "North East", "label": "North East"
-      } ,
-      {
-        "value": "Croydon", "label": "Croydon"
-      } ,
-      {
-        "value": "Wrexham", "label": "Wrexham"
-      } ,
-      {
-        "value": "Barnsley", "label": "Barnsley"
-      } ,
-      {
-        "value": "Milton Keynes", "label": "Milton Keynes"
-      } ,
-      {
-        "value": "Newcastle upon Tyne", "label": "Newcastle upon Tyne"
-      } ,
-      {
-        "value": "City of Bristol", "label": "City of Bristol"
-      } ,
-      {
-        "value": "Merton", "label": "Merton"
-      } ,
-      {
-        "value": "Thurrock", "label": "Thurrock"
-      } ,
-      {
-        "value": "Essex", "label": "Essex"
-      } ,
-      {
-        "value": "Rochdale", "label": "Rochdale"
-      } ,
-      {
-        "value": "Knowsley", "label": "Knowsley"
-      } ,
-      {
-        "value": "Greenwich", "label": "Greenwich"
-      } ,
-      {
-        "value": "City of Peterborough", "label": "City of Peterborough"
-      } ,
-      {
-        "value": "Bolton", "label": "Bolton"
-      } ,
-      {
-        "value": "City of Nottingham", "label": "City of Nottingham"
-      } ,
-      {
-        "value": "Sandwell", "label": "Sandwell"
-      } ,
-      {
-        "value": "Stockton-on-Tees", "label": "Stockton-on-Tees"
-      } ,
-      {
-        "value": "North West", "label": "North West"
-      } ,
-      {
-        "value": "Greater London", "label": "Greater London"
-      } ,
-      {
-        "value": "Wakefield", "label": "Wakefield"
-      } ,
-      {
-        "value": "Derbyshire", "label": "Derbyshire"
-      } ,
-      {
-        "value": "Blackburn with Darwen", "label": "Blackburn with Darwen"
-      } ,
-      {
-        "value": "Powys", "label": "Powys"
-      } ,
-      {
-        "value": "Hounslow", "label": "Hounslow"
-      } ,
-      {
-        "value": "West Sussex", "label": "West Sussex"
-      } ,
-      {
-        "value": "Northumberland", "label": "Northumberland"
-      } ,
-      {
-        "value": "Cumbria", "label": "Cumbria"
-      } ,
-      {
-        "value": "Worcestershire", "label": "Worcestershire"
-      } ,
-      {
-        "value": "Darlington", "label": "Darlington"
-      } ,
-      {
-        "value": "Devon", "label": "Devon"
-      } ,
-      {
-        "value": "City of Plymouth", "label": "City of Plymouth"
-      } ,
-      {
-        "value": "Gwynedd", "label": "Gwynedd"
-      } ,
-      {
-        "value": "Salford", "label": "Salford"
-      } ,
-      {
-        "value": "Hartlepool", "label": "Hartlepool"
-      } ,
-      {
-        "value": "Isle of Wight", "label": "Isle of Wight"
-      } ,
-      {
-        "value": "Richmond upon Thames", "label": "Richmond upon Thames"
-      } ,
-      {
-        "value": "Durham", "label": "Durham"
-      } ,
-      {
-        "value": "Cambridgeshire", "label": "Cambridgeshire"
-      } ,
-      {
-        "value": "Bromley", "label": "Bromley"
-      } ,
-      {
-        "value": "Coventry", "label": "Coventry"
-      } ,
-      {
-        "value": "South East", "label": "South East"
-      } ,
-      {
-        "value": "North Yorkshire", "label": "North Yorkshire"
-      } ,
-      {
-        "value": "North Lincolnshire", "label": "North Lincolnshire"
-      } ,
-      {
-        "value": "Herefordshire", "label": "Herefordshire"
-      } ,
-      {
-        "value": "Caerphilly", "label": "Caerphilly"
-      } ,
-      {
-        "value": "Lancashire", "label": "Lancashire"
-      } ,
-      {
-        "value": "Barnet", "label": "Barnet"
-      } ,
-      {
-        "value": "Gloucestershire", "label": "Gloucestershire"
-      } ,
-      {
-        "value": "Calderdale", "label": "Calderdale"
-      } ,
-      {
-        "value": "Flintshire", "label": "Flintshire"
-      } ,
-      {
-        "value": "Hammersmith and Fulham", "label": "Hammersmith and Fulham"
-      } ,
-      {
-        "value": "East Riding of Yorkshire", "label": "East Riding of Yorkshire"
-      } ,
-      {
-        "value": "Rhondda Cynon Taff", "label": "Rhondda Cynon Taff"
-      } ,
-      {
-        "value": "Walsall", "label": "Walsall"
-      } ,
-      {
-        "value": "Rotherham", "label": "Rotherham"
-      } ,
-      {
-        "value": "Bournemouth", "label": "Bournemouth"
-      } ,
-      {
-        "value": "Rutland", "label": "Rutland"
-      } ,
-      {
-        "value": "England and Wales", "label": "England and Wales"
-      } ,
-      {
-        "value": "Merthyr Tydfil", "label": "Merthyr Tydfil"
-      } ,
-      {
-        "value": "Kirklees", "label": "Kirklees"
-      } ,
-      {
-        "value": "Lambeth", "label": "Lambeth"
-      } ,
-      {
-        "value": "Tameside", "label": "Tameside"
-      } ,
-      {
-        "value": "Luton", "label": "Luton"
-      } ,
-      {
-        "value": "St Helens", "label": "St Helens"
-      } ,
-      {
-        "value": "Surrey", "label": "Surrey"
-      } ,
-      {
-        "value": "Torfaen", "label": "Torfaen"
-      } ,
-      {
-        "value": "Wirral", "label": "Wirral"
-      } ,
-      {
-        "value": "City of Kingston upon Hull", "label": "City of Kingston upon Hull"
-      } ,
-      {
-        "value": "Brent", "label": "Brent"
-      } ,
-      {
-        "value": "Halton", "label": "Halton"
-      } ,
-      {
-        "value": "Leeds", "label": "Leeds"
-      } ,
-      {
-        "value": "Wales", "label": "Wales"
-      } ,
-      {
-        "value": "Merseyside", "label": "Merseyside"
-      } ,
-      {
-        "value": "Havering", "label": "Havering"
-      } ,
-      {
-        "value": "Trafford", "label": "Trafford"
-      } ,
-      {
-        "value": "Sheffield", "label": "Sheffield"
-      } ,
-      {
-        "value": "Birmingham", "label": "Birmingham"
-      } ,
-      {
-        "value": "Shropshire", "label": "Shropshire"
-      } ,
-      {
-        "value": "Ceredigion", "label": "Ceredigion"
-      } ,
-      {
-        "value": "Sunderland", "label": "Sunderland"
-      } ,
-      {
-        "value": "Oldham", "label": "Oldham"
-      } ,
-      {
-        "value": "Yorks and Humber", "label": "Yorks and Humber"
-      } ,
-      {
-        "value": "City of Derby", "label": "City of Derby"
-      } ,
-      {
-        "value": "Tyne and Wear", "label": "Tyne and Wear"
-      } ,
-      {
-        "value": "Redcar and Cleveland", "label": "Redcar and Cleveland"
-      } ,
-      {
-        "value": "Wiltshire", "label": "Wiltshire"
-      } ,
-      {
-        "value": "Isle of Anglesey", "label": "Isle of Anglesey"
-      } ,
-      {
-        "value": "North East Lincolnshire", "label": "North East Lincolnshire"
-      } ,
-      {
-        "value": "Torbay", "label": "Torbay"
-      } ,
-      {
-        "value": "Kent", "label": "Kent"
-      } ,
-      {
-        "value": "Enfield", "label": "Enfield"
-      } ,
-      {
-        "value": "Swindon", "label": "Swindon"
-      } ,
-      {
-        "value": "Wigan", "label": "Wigan"
-      } ,
-      {
-        "value": "Leicester", "label": "Leicester"
-      } ,
-      {
-        "value": "Greater Manchester", "label": "Greater Manchester"
-      } ,
-      {
-        "value": "Lincolnshire", "label": "Lincolnshire"
-      } ,
-      {
-        "value": "South Gloucestershire", "label": "South Gloucestershire"
-      } ,
-      {
-        "value": "Leicestershire", "label": "Leicestershire"
-      } ,
-      {
-        "value": "Southend-on-Sea", "label": "Southend-on-Sea"
-      } ,
-      {
-        "value": "Lewisham", "label": "Lewisham"
-      } ,
-      {
-        "value": "Bury", "label": "Bury"
-      } ,
-      {
-        "value": "Waltham Forest", "label": "Waltham Forest"
-      } ,
-      {
-        "value": "Reading", "label": "Reading"
-      } ,
-      {
-        "value": "Cardiff", "label": "Cardiff"
-      } ,
-      {
-        "value": "Northamptonshire", "label": "Northamptonshire"
-      } ,
-      {
-        "value": "Tower Hamlets", "label": "Tower Hamlets"
-      } ,
-      {
-        "value": "Sefton", "label": "Sefton"
-      } ,
-      {
-        "value": "Suffolk", "label": "Suffolk"
-      } ,
-      {
-        "value": "Cornwall", "label": "Cornwall"
-      } ,
-      {
-        "value": "Conwy", "label": "Conwy"
-      } ,
-      {
-        "value": "Wolverhampton", "label": "Wolverhampton"
-      } ,
-      {
-        "value": "Kensington and Chelsea", "label": "Kensington and Chelsea"
-      } ,
-      {
-        "value": "Liverpool", "label": "Liverpool"
-      } ,
-      {
-        "value": "Hackney", "label": "Hackney"
-      } ,
-      {
-        "value": "City of Westminster", "label": "City of Westminster"
-      } ,
-      {
-        "value": "Bridgend", "label": "Bridgend"
-      } ,
-      {
-        "value": "The Vale of Glamorgan", "label": "The Vale of Glamorgan"
-      } ,
-      {
-        "value": "Camden", "label": "Camden"
-      } ,
-      {
-        "value": "East Sussex", "label": "East Sussex"
-      } ,
-      {
-        "value": "South West", "label": "South West"
-      } ,
-      {
-        "value": "West Yorkshire", "label": "West Yorkshire"
-      } ,
-      {
-        "value": "Southampton", "label": "Southampton"
-      } ,
-      {
-        "value": "Dudley", "label": "Dudley"
-      } ,
-      {
-        "value": "Kingston upon Thames", "label": "Kingston upon Thames"
-      } ,
-      {
-        "value": "Newham", "label": "Newham"
-      } ,
-      {
-        "value": "Poole", "label": "Poole"
-      } ,
-      {
-        "value": "North Tyneside", "label": "North Tyneside"
-      } ,
-      {
-        "value": "Newport", "label": "Newport"
-      } ,
-      {
-        "value": "Middlesbrough", "label": "Middlesbrough"
-      } ,
-      {
-        "value": "Bracknell Forest", "label": "Bracknell Forest"
-      } ,
-      {
-        "value": "Islington", "label": "Islington"
-      } ,
-      {
-        "value": "Southwark", "label": "Southwark"
-      } ,
-      {
-        "value": "Neath Port Talbot", "label": "Neath Port Talbot"
-      } ,
-      {
-        "value": "East", "label": "East"
-      } ,
-      {
-        "value": "Bradford", "label": "Bradford"
-      } ,
-      {
-        "value": "Monmouthshire", "label": "Monmouthshire"
-      } ,
-      {
-        "value": "Wokingham", "label": "Wokingham"
-      } ,
-      {
-        "value": "Cheshire West and Chester", "label": "Cheshire West and Chester"
-      } ,
-      {
-        "value": "North Somerset", "label": "North Somerset"
-      } ,
-      {
-        "value": "Brighton and Hove", "label": "Brighton and Hove"
-      } ,
-      {
-        "value": "Denbighshire", "label": "Denbighshire"
-      } ,
-      {
-        "value": "Swansea", "label": "Swansea"
-      } ,
-      {
-        "value": "Wrekin", "label": "Wrekin"
-      } ,
-      {
-        "value": "Central Bedfordshire", "label": "Central Bedfordshire"
-      } ,
-      {
-        "value": "West Midlands (region)", "label": "West Midlands (region)"
-      } ,
-      {
-        "value": "York", "label": "York"
-      } ,
-      {
-        "value": "Dorset", "label": "Dorset"
-      } ,
-      {
-        "value": "Windsor and Maidenhead", "label": "Windsor and Maidenhead"
-      } ,
-      {
-        "value": "Oxfordshire", "label": "Oxfordshire"
-      } ,
-      {
-        "value": "Stoke-on-Trent", "label": "Stoke-on-Trent"
-      } ,
-      {
-        "value": "Staffordshire", "label": "Staffordshire"
-      } ,
-      {
-        "value": "Pembrokeshire", "label": "Pembrokeshire"
-      } ,
-      {
-        "value": "Norfolk", "label": "Norfolk"
-      } ,
-      {
-        "value": "Buckinghamshire", "label": "Buckinghamshire"
-      } ,
-      {
-        "value": "South Yorkshire", "label": "South Yorkshire"
-      } ,
-      {
-        "value": "Cheshire East", "label": "Cheshire East"
-      } ,
-      {
-        "value": "West Berkshire", "label": "West Berkshire"
-      } ,
-      {
-        "value": "East Midlands", "label": "East Midlands"
-      } ,
-      {
-        "value": "London", "label": "London"
-      } ,
-      {
-        "value": "Solihull", "label": "Solihull"
-      } ,
-      {
-        "value": "Nottinghamshire", "label": "Nottinghamshire"
-      } ,
-      {
-        "value": "Bath and North East Somerset", "label": "Bath and North East Somerset"
-      } ,
-      {
-        "value": "Medway", "label": "Medway"
-      } ,
-      {
-        "value": "Wandsworth", "label": "Wandsworth"
-      } ,
-      {
-        "value": "Haringey", "label": "Haringey"
-      } ,
-      {
-        "value": "West Midlands", "label": "West Midlands"
-      } ,
-      {
-        "value": "Blackpool", "label": "Blackpool"
-      } ,
-      {
-        "value": "Carmarthenshire", "label": "Carmarthenshire"
-      } ,
-      {
-        "value": "Portsmouth", "label": "Portsmouth"
-      } ,
-      {
-        "value": "Hillingdon", "label": "Hillingdon"
-      } ,
-      {
-        "value": "Stockport", "label": "Stockport"
-      } ,
-      {
-        "value": "Harrow", "label": "Harrow"
-      } ,
-      {
-        "value": "Bedford", "label": "Bedford"
-      } ,
-      {
-        "value": "Hertfordshire", "label": "Hertfordshire"
-      } ,
-      {
-        "value": "Barking and Dagenham", "label": "Barking and Dagenham"
-      } ,
-      {
-        "value": "Doncaster", "label": "Doncaster"
-      } ,
-      {
-        "value": "Sutton", "label": "Sutton"
-      } ,
-      {
-        "value": "Manchester", "label": "Manchester"
-      } ,
-      {
-        "value": "Warwickshire", "label": "Warwickshire"
-      } ,
-      {
-        "value": "Hampshire", "label": "Hampshire"
-      } ,
-      {
-        "value": "Slough", "label": "Slough"
-      } ,
-      {
-        "value": "Bexley", "label": "Bexley"
-      } ,
-      {
-        "value": "Blaenau Gwent", "label": "Blaenau Gwent"
-      } ,
-      {
-        "value": "Somerset", "label": "Somerset"
-      } ,
-      {
-        "value": "Redbridge", "label": "Redbridge"
-      } ,
-      {
-        "value": "Gateshead", "label": "Gateshead"
-      }
-    ];
+var regionNames = [
+  {'value': 'http://landregistry.data.gov.uk/id/region/lancashire', 'label': 'Lancashire'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/west-midlands', 'label': 'West Midlands'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/central-bedfordshire', 'label': 'Central Bedfordshire'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/blackpool', 'label': 'Blackpool'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/brighton-and-hove', 'label': 'Brighton and Hove'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/wirral', 'label': 'Wirral'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/east', 'label': 'East'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/rotherham', 'label': 'Rotherham'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/trafford', 'label': 'Trafford'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/city-of-london', 'label': 'City of London'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/rhondda-cynon-taff', 'label': 'Rhondda Cynon Taff'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/the-vale-of-glamorgan', 'label': 'The Vale of Glamorgan'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/bury', 'label': 'Bury'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/stoke-on-trent', 'label': 'Stoke-on-Trent'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/newport', 'label': 'Newport'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/wrekin', 'label': 'Wrekin'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/merthyr-tydfil', 'label': 'Merthyr Tydfil'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/walsall', 'label': 'Walsall'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/hampshire', 'label': 'Hampshire'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/sefton', 'label': 'Sefton'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/bournemouth', 'label': 'Bournemouth'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/wrexham', 'label': 'Wrexham'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/norfolk', 'label': 'Norfolk'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/wolverhampton', 'label': 'Wolverhampton'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/barnet', 'label': 'Barnet'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/city-of-kingston-upon-hull', 'label': 'City of Kingston upon Hull'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/city-of-westminster', 'label': 'City of Westminster'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/leicester', 'label': 'Leicester'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/reading', 'label': 'Reading'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/city-of-nottingham', 'label': 'City of Nottingham'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/coventry', 'label': 'Coventry'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/wigan', 'label': 'Wigan'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/london', 'label': 'London'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/redcar-and-cleveland', 'label': 'Redcar and Cleveland'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/bedford', 'label': 'Bedford'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/portsmouth', 'label': 'Portsmouth'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/york', 'label': 'York'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/hammersmith-and-fulham', 'label': 'Hammersmith and Fulham'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/derbyshire', 'label': 'Derbyshire'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/suffolk', 'label': 'Suffolk'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/leeds', 'label': 'Leeds'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/camden', 'label': 'Camden'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/blaenau-gwent', 'label': 'Blaenau Gwent'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/knowsley', 'label': 'Knowsley'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/devon', 'label': 'Devon'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/cumbria', 'label': 'Cumbria'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/bridgend', 'label': 'Bridgend'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/south-east', 'label': 'South East'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/hartlepool', 'label': 'Hartlepool'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/sunderland', 'label': 'Sunderland'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/north-tyneside', 'label': 'North Tyneside'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/west-yorkshire', 'label': 'West Yorkshire'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/west-midlands-region', 'label': 'West Midlands Region'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/merseyside', 'label': 'Merseyside'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/hertfordshire', 'label': 'Hertfordshire'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/northumberland', 'label': 'Northumberland'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/croydon', 'label': 'Croydon'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/bradford', 'label': 'Bradford'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/caerphilly', 'label': 'Caerphilly'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/warrington', 'label': 'Warrington'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/tyne-and-wear', 'label': 'Tyne and Wear'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/worcestershire', 'label': 'Worcestershire'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/cardiff', 'label': 'Cardiff'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/west-berkshire', 'label': 'West Berkshire'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/newcastle-upon-tyne', 'label': 'Newcastle upon Tyne'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/cheshire-east', 'label': 'Cheshire East'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/kent', 'label': 'Kent'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/sandwell', 'label': 'Sandwell'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/south-west', 'label': 'South West'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/gateshead', 'label': 'Gateshead'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/doncaster', 'label': 'Doncaster'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/cheshire-west-and-chester', 'label': 'Cheshire West and Chester'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/milton-keynes', 'label': 'Milton Keynes'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/city-of-plymouth', 'label': 'City of Plymouth'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/north-east-lincolnshire', 'label': 'North East Lincolnshire'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/oxfordshire', 'label': 'Oxfordshire'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/stockport', 'label': 'Stockport'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/medway', 'label': 'Medway'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/essex', 'label': 'Essex'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/greater-london', 'label': 'Greater London'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/ceredigion', 'label': 'Ceredigion'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/south-gloucestershire', 'label': 'South Gloucestershire'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/solihull', 'label': 'Solihull'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/monmouthshire', 'label': 'Monmouthshire'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/south-yorkshire', 'label': 'South Yorkshire'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/kirklees', 'label': 'Kirklees'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/durham', 'label': 'Durham'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/ealing', 'label': 'Ealing'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/tower-hamlets', 'label': 'Tower Hamlets'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/poole', 'label': 'Poole'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/bexley', 'label': 'Bexley'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/southwark', 'label': 'Southwark'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/staffordshire', 'label': 'Staffordshire'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/hounslow', 'label': 'Hounslow'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/islington', 'label': 'Islington'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/cornwall', 'label': 'Cornwall'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/barnsley', 'label': 'Barnsley'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/north-yorkshire', 'label': 'North Yorkshire'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/neath-port-talbot', 'label': 'Neath Port Talbot'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/hillingdon', 'label': 'Hillingdon'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/nottinghamshire', 'label': 'Nottinghamshire'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/richmond-upon-thames', 'label': 'Richmond upon Thames'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/liverpool', 'label': 'Liverpool'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/wales', 'label': 'Wales'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/isle-of-wight', 'label': 'Isle of Wight'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/hackney', 'label': 'Hackney'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/torbay', 'label': 'Torbay'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/waltham-forest', 'label': 'Waltham Forest'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/rochdale', 'label': 'Rochdale'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/dorset', 'label': 'Dorset'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/slough', 'label': 'Slough'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/isle-of-anglesey', 'label': 'Isle of Anglesey'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/north-west', 'label': 'North West'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/southend-on-sea', 'label': 'Southend-on-Sea'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/northamptonshire', 'label': 'Northamptonshire'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/east-sussex', 'label': 'East Sussex'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/herefordshire', 'label': 'Herefordshire'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/wandsworth', 'label': 'Wandsworth'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/kingston-upon-thames', 'label': 'Kingston upon Thames'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/swansea', 'label': 'Swansea'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/north-lincolnshire', 'label': 'North Lincolnshire'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/swindon', 'label': 'Swindon'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/north-east', 'label': 'North East'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/birmingham', 'label': 'Birmingham'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/havering', 'label': 'Havering'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/city-of-derby', 'label': 'City of Derby'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/leicestershire', 'label': 'Leicestershire'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/luton', 'label': 'Luton'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/thurrock', 'label': 'Thurrock'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/west-sussex', 'label': 'West Sussex'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/merton', 'label': 'Merton'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/pembrokeshire', 'label': 'Pembrokeshire'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/city-of-peterborough', 'label': 'City of Peterborough'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/north-somerset', 'label': 'North Somerset'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/middlesbrough', 'label': 'Middlesbrough'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/somerset', 'label': 'Somerset'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/st-helens', 'label': 'St Helens'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/gloucestershire', 'label': 'Gloucestershire'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/barking-and-dagenham', 'label': 'Barking and Dagenham'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/shropshire', 'label': 'Shropshire'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/wokingham', 'label': 'Wokingham'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/calderdale', 'label': 'Calderdale'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/rutland', 'label': 'Rutland'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/tameside', 'label': 'Tameside'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/sheffield', 'label': 'Sheffield'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/buckinghamshire', 'label': 'Buckinghamshire'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/east-midlands', 'label': 'East Midlands'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/south-tyneside', 'label': 'South Tyneside'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/blackburn-with-darwen', 'label': 'Blackburn with Darwen'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/southampton', 'label': 'Southampton'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/newham', 'label': 'Newham'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/haringey', 'label': 'Haringey'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/warwickshire', 'label': 'Warwickshire'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/oldham', 'label': 'Oldham'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/carmarthenshire', 'label': 'Carmarthenshire'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/greater-manchester', 'label': 'Greater Manchester'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/bath-and-north-east-somerset', 'label': 'Bath and North East Somerset'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/surrey', 'label': 'Surrey'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/sutton', 'label': 'Sutton'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/conwy', 'label': 'Conwy'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/bromley', 'label': 'Bromley'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/powys', 'label': 'Powys'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/harrow', 'label': 'Harrow'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/redbridge', 'label': 'Redbridge'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/wakefield', 'label': 'Wakefield'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/city-of-bristol', 'label': 'City of Bristol'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/lewisham', 'label': 'Lewisham'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/lincolnshire', 'label': 'Lincolnshire'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/manchester', 'label': 'Manchester'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/bolton', 'label': 'Bolton'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/east-riding-of-yorkshire', 'label': 'East Riding of Yorkshire'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/flintshire', 'label': 'Flintshire'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/windsor-and-maidenhead', 'label': 'Windsor and Maidenhead'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/salford', 'label': 'Salford'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/lambeth', 'label': 'Lambeth'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/england-and-wales', 'label': 'England and Wales'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/yorks-and-humber', 'label': 'Yorks and Humber'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/wiltshire', 'label': 'Wiltshire'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/denbighshire', 'label': 'Denbighshire'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/enfield', 'label': 'Enfield'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/torfaen', 'label': 'Torfaen'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/stockton-on-tees', 'label': 'Stockton-on-Tees'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/bracknell-forest', 'label': 'Bracknell Forest'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/cambridgeshire', 'label': 'Cambridgeshire'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/greenwich', 'label': 'Greenwich'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/dudley', 'label': 'Dudley'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/kensington-and-chelsea', 'label': 'Kensington and Chelsea'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/gwynedd', 'label': 'Gwynedd'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/darlington', 'label': 'Darlington'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/brent', 'label': 'Brent'},
+  {'value': 'http://landregistry.data.gov.uk/id/region/halton', 'label': 'Halton'}
+]
 
     // module return value
     return {
