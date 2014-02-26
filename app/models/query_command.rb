@@ -1,4 +1,6 @@
 class QueryCommand < DataService
+  include ValueFormatter
+
   RESULTS_SAMPLE = 5
 
   attr_reader :results, :all_results, :columns
@@ -51,14 +53,14 @@ class QueryCommand < DataService
   def visible_columns
     cols = [{aspect: "hpi:refPeriod", label: "Date"}]
 
-    {m_hpi:  {aspect: "hpi:indicesSASM", label: "Index"},
-     m_chm:  {aspect: "hpi:monthlyChange", label: "Monthly change"},
-     m_chy:  {aspect: "hpi:annualChange", label: "Yearly change"},
-     m_vol:  {aspect: "hpi:salesVolume", label: "Sales volume"},
-     m_ap:   {aspect: "hpi:averagePricesSASM", label: "Average price (all)"},
-     m_apd:  {aspect: "hpi:averagePricesDetachedSASM", label: "Average price (detached)"},
-     m_apsd: {aspect: "hpi:averagePricesSemiDetachedSASM", label: "Average price (semi-detached"},
-     m_apt:  {aspect: "hpi:averagePricesTerracedSASM", label: "Average price (terraced)"},
+    {m_hpi:  {aspect: "hpi:indicesSASM",                     label: "Index"},
+     m_chm:  {aspect: "hpi:monthlyChange",                   label: "Monthly change"},
+     m_chy:  {aspect: "hpi:annualChange",                    label: "Yearly change"},
+     m_vol:  {aspect: "hpi:salesVolume",                     label: "Sales volume"},
+     m_ap:   {aspect: "hpi:averagePricesSASM",               label: "Average price (all)"},
+     m_apd:  {aspect: "hpi:averagePricesDetachedSASM",       label: "Average price (detached)"},
+     m_apsd: {aspect: "hpi:averagePricesSemiDetachedSASM",   label: "Average price (semi-detached"},
+     m_apt:  {aspect: "hpi:averagePricesTerracedSASM",       label: "Average price (terraced)"},
      m_apf:  {aspect: "hpi:averagePricesFlatMaisonetteSASM", label: "Average price (flats)"}
     }.each do |key, index|
       cols << index if param(key)
@@ -69,16 +71,8 @@ class QueryCommand < DataService
 
   def select_visible_results( all_results, columns )
     all_results.first( RESULTS_SAMPLE ).map do |result|
-      columns.map {|col| formatted_value( result, col )}
+      columns.map {|col| format_value( result, col )}
     end
   end
 
-  def formatted_value( result, col )
-    v = result[col[:aspect]]
-    if v && v.is_a?( Hash )
-      v["@value"] || v
-    else
-      v
-    end
-  end
 end
