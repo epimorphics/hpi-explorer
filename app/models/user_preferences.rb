@@ -1,5 +1,7 @@
 # A model object to encapsulate the search preferences we have elicited from the user
 class UserPreferences
+  include Rails.application.routes.url_helpers
+
   INDEX_DEFINITIONS = {
     m_hpi:  {aspect: "hpi:indicesSASM", label: "Index"},
     m_ap:   {aspect: "hpi:averagePricesSASM", label: "Average price"},
@@ -12,10 +14,15 @@ class UserPreferences
     m_vol:  {aspect: "hpi:salesVolume", label: "Sales volume"}
   }
 
+  WHITE_LIST = (INDEX_DEFINITIONS.keys +
+                %w(loc loc_uri controller action search1 search2)
+               ).map( &:to_s )
+
   attr_reader :params
 
   def initialize( params = {} )
     @params = indifferent_access( params )
+    sanitise!
   end
 
   # Return the name of the partial to use to layout a second search area
@@ -47,6 +54,11 @@ class UserPreferences
     ((pp = params[p].to_s) && pp.length > 0) ? pp : nil
   end
 
+  # Return the current preferences as arguments to the given controller path
+  def as_path( controller, action = :index )
+    url_for( {controller: controller, action: action, only_path: true}.merge( params ) )
+  end
+
   private
 
   def indifferent_access( h )
@@ -67,4 +79,15 @@ class UserPreferences
     params[:user_form]
   end
 
+  def whitelist_params
+    WHITE_LIST
+  end
+
+  def whitelisted?( param )
+    whitelist_params.include?( param.to_s )
+  end
+
+  def sanitise!
+    @params.keep_if {|k,v| whitelisted? k}
+  end
 end

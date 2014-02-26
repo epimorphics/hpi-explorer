@@ -1,4 +1,5 @@
 require 'test_helper'
+require 'pry'
 describe "UserPreferences" do
 
   it "should define a partial for the area comparison" do
@@ -24,5 +25,12 @@ describe "UserPreferences" do
   it "should report the selected indices" do
     up = UserPreferences.new( {"m_hpi" => "1"} )
     up.selected_indices.must_equal [{aspect: "hpi:indicesSASM", label: "Index"}]
+  end
+
+  it "should return a path corresponding to the current preferences" do
+    Rails.application.routes.draw {resources :foo}
+    UserPreferences.new( {"m_hpi" => "1"} ).as_path( :foo ).must_equal "/foo?m_hpi=1"
+    UserPreferences.new( {"m_hpi" => "1", "loc" => "foo"} ).as_path( :foo ).must_equal "/foo?loc=foo&m_hpi=1"
+    UserPreferences.new( {"m_hpi" => "1", "blacklist" => "foo"} ).as_path( :foo ).must_equal "/foo?m_hpi=1"
   end
 end
