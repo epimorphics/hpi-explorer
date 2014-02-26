@@ -1,7 +1,6 @@
 class PreviewController < ApplicationController
   def create
-    @preferences = UserPreferences.new( params )
-    @query_command = QueryCommand.new( @preferences )
+    @query_command = QueryCommand.new( preferences )
     @query_command.load_query_results()
 
     if request.xhr?

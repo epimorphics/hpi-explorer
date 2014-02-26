@@ -2,9 +2,7 @@ class SearchController < ApplicationController
   DEFAULT_PREVIEW_OPTIONS = {m_hpi: true}
 
   def create
-    @preferences = UserPreferences.new( params )
-
-    @search_cmd = SearchCommand.new( @preferences )
+    @search_cmd = SearchCommand.new( preferences )
     @search_cmd.find_unique_locations
   end
 

@@ -15,7 +15,10 @@ class UserPreferences
   }
 
   WHITE_LIST = (INDEX_DEFINITIONS.keys +
-                %w(loc loc_uri controller action search1 search2)
+                %w(loc loc_uri controller action search1 search2
+                   from_m from_y to_m to_y
+                   user_form
+                  )
                ).map( &:to_s )
 
   attr_reader :params
@@ -56,7 +59,7 @@ class UserPreferences
 
   # Return the current preferences as arguments to the given controller path
   def as_path( controller, action = :index )
-    url_for( {controller: controller, action: action, only_path: true}.merge( params ) )
+    url_for( params.merge( {controller: controller, action: action, only_path: true} ) )
   end
 
   private

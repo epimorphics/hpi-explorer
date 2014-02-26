@@ -8,6 +8,7 @@ HpiExplorer::Application.routes.draw do
   resources :hpi, only: [:index]
   resources :search, only: [:create]
   resources :preview, only: [:index,:create]
+  resources :view, only: [:index]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
