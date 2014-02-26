@@ -60,7 +60,8 @@ var Hpi = function() {
   };
 
   var drawPreview = function() {
-    $("input[type=hidden][name=loc]").val( _currentSelection.loc );
+    var locField = $("input[type=hidden][name=loc]")
+    locField.val( locField.val() || _currentSelection.loc );
     HpiPreview.updatePreview();
   };
 

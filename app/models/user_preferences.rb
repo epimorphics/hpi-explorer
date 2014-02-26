@@ -39,6 +39,11 @@ class UserPreferences
     param( :loc )
   end
 
+  # Return true if the location has been specified
+  def selected_location?
+    !!selected_location_name
+  end
+
   # Return true if the given index is currently selected
   def selected_index?( index_name, val = nil )
     selected = !!(@params[index_name] && (!val || @params[index_name] == val))

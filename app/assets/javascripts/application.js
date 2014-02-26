@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require jquery.ui.mouse
 //= require jquery.ui.autocomplete
 //= require jquery.ui.widget
