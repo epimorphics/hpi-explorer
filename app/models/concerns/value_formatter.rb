@@ -21,12 +21,12 @@ module ValueFormatter
     "<span class='text-right'>#{v}</span>"
   end
 
-  def format_currency_r( val, currency = "£" )
+  def format_currency_r( val, currency = nil )
     align_right( format_currency( val, currency ) ).html_safe
   end
 
-  def format_currency( val, currency = "£" )
-    number_to_currency( val.to_i, locale: "en-gb", unit: currency, precision: 0 )
+  def format_currency( val, currency = nil )
+    number_to_currency( val.to_i, locale: "en-gb", unit: currency || pound, precision: 0 )
   end
 
   def raw_value( result, col )
@@ -40,6 +40,10 @@ module ValueFormatter
 
   def aspect_of( col )
     col[:aspect]
+  end
+
+  def pound
+    "&pound;".html_safe
   end
 
 end
