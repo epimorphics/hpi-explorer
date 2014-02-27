@@ -69,16 +69,20 @@ class UserPreferences
   # Return the current preferences as arguments to the given controller path
   def as_path( controller, action = :index )
     # url_for( params.merge( {controller: controller, action: action, only_path: true} ) )
-    case controller
-    when :view
-      view_index_path( params )
-    when :preview
-      preview_index_path( params )
-    when :hpi
-      hpi_index_path( params )
-    else
-      raise "Do not know how to make path for #{controller}"
-    end
+    path =
+      case controller
+      when :view
+        view_index_path( params )
+      when :preview
+        preview_index_path( params )
+      when :hpi
+        hpi_index_path( params )
+      else
+        raise "Do not know how to make path for #{controller}"
+      end
+
+    # this shouldn't be necessay if ENV[RAILS_RELATIVE_ROOT] was working correctly
+    path.gsub( /^\//, "" )
   end
 
   private
