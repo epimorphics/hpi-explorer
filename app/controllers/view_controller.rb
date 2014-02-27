@@ -3,6 +3,6 @@
 class ViewController < ApplicationController
   def index
     @query_command = QueryCommand.new( preferences )
-    @query_command.load_query_results()
+    @query_command.load_query_results( limit: :all )
   end
 end

@@ -9,7 +9,7 @@ class QueryCommand < DataService
     super
   end
 
-  def load_query_results
+  def load_query_results( options = {} )
     hpi = dataset( :hpi )
     query = add_sort(
               add_date_range_constraint(
@@ -19,7 +19,8 @@ class QueryCommand < DataService
     Rails.logger.debug "About to ask DsAPI query: #{query.to_json}"
     @all_results = hpi.query( query )
     @columns = visible_columns
-    @results = select_visible_results( @all_results, @columns )
+    @results = select_visible_results( @all_results, @columns,
+                                       {limit: RESULTS_SAMPLE}.merge( options ) )
   end
 
   private
@@ -69,8 +70,9 @@ class QueryCommand < DataService
     cols
   end
 
-  def select_visible_results( all_results, columns )
-    all_results.first( RESULTS_SAMPLE ).map do |result|
+  def select_visible_results( all_results, columns, options )
+    r = ((n = options[:limit]) == :all) ? all_results : all_results.first( n )
+    r.map do |result|
       columns.map {|col| format_value( result, col )}
     end
   end
