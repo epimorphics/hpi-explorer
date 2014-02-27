@@ -1,12 +1,15 @@
 %h2.results-title
   Index data for: #{@preferences.selected_location_name}
 
-%p
-  %small
-    Part of:
-    %a{ href: "#todo"}
-      Todo link to parent region
-%p
-  %small
-    Contains:
-    %em links to areas this location contains, if any. Otherwise, will not appear
+/ %p
+/   %small
+/     Part of:
+/     %a{ href: "#todo"}
+/       Todo link to parent region
+/ %p
+/   %small
+/     Contains:
+/     %em links to areas this location contains, if any. Otherwise, will not appear
+
+%p.text-muted
+  Feature to be added: links to containing and contained regions where available.
