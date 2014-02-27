@@ -23,12 +23,12 @@ var Hpi = function() {
 
     // ensure we know which input field the user is entering text into
     $("form.search input").each( function( i, elem ) {
-      var searchId = ($(elem).attr( "name" ) == "search1") ? "loc" : "loc_compare";
+      var sId = searchId( elem );
 
       $(elem).autocomplete({
         source: HpiSearch.regionNames,
         select: function( e, ui ) {
-          onAutocompleteSelect( searchId, e, ui );
+          onAutocompleteSelect( sId, e, ui );
         },
         focus: function (event, ui) {
            event.preventDefault();
@@ -56,7 +56,7 @@ var Hpi = function() {
 
   /** User has started typing into an input field */
   var onSeachInput = function( e ) {
-    delete _currentSelection[$(e.currentTarget).attr( "name" )];
+    delete _currentSelection[searchId( e )];
   };
 
   /** User has clicked to change some of the preview settings */
@@ -68,10 +68,15 @@ var Hpi = function() {
     var locField = $("input[type=hidden][name=loc]")
     var locUriField = $("input[type=hidden][name=loc_uri]")
 
-    locField.val( locField.val() || _currentSelection.loc );
-    locUriField.val( locUriField.val() || _currentSelection.loc_uri );
+    locField.val( locField.val() || _currentSelection.search1.loc );
+    locUriField.val( locUriField.val() || _currentSelection.search1.loc_uri );
 
     HpiPreview.updatePreview();
+  };
+
+  /* Return loc or loc_compare as the identity of the search the user is conducting */
+  var searchId = function( elem ) {
+    return $(elem).attr( "name" );
   };
 
   return {

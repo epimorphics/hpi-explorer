@@ -5,10 +5,10 @@ class UserPreferences
   INDEX_DEFINITIONS = {
     m_hpi:  {aspect: "hpi:indicesSASM", label: "Index"},
     m_ap:   {aspect: "hpi:averagePricesSASM", label: "Average price"},
-    m_avd:  {aspect: "hpi:averagePricesSASM", label: "Average price (detached)"},
-    m_avsd: {aspect: "hpi:averagePricesSASM", label: "Average price (semi-detached"},
-    m_avt:  {aspect: "hpi:averagePricesSASM", label: "Average price (terraced)"},
-    m_avf:  {aspect: "hpi:averagePricesSASM", label: "Average price (flats)"},
+    m_apd:  {aspect: "hpi:averagePricesSASM", label: "Average price (detached)"},
+    m_apsd: {aspect: "hpi:averagePricesSASM", label: "Average price (semi-detached"},
+    m_apt:  {aspect: "hpi:averagePricesSASM", label: "Average price (terraced)"},
+    m_apf:  {aspect: "hpi:averagePricesSASM", label: "Average price (flats)"},
     m_chm:  {aspect: "hpi:monthlyChange", label: "Monthly change"},
     m_chy:  {aspect: "hpi:yearlyChange", label: "Yearly change"},
     m_vol:  {aspect: "hpi:salesVolume", label: "Sales volume"}
