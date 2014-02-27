@@ -14,5 +14,5 @@
     .col-md-12
       = hidden_field_tag( :loc, params["loc"] )
       = hidden_field_tag( :loc_uri, params["loc_uri"] )
-      = hidden_field_tag( :user_form, true )
+      = hidden_field_tag( source: :preview_form )
       = submit_tag( "Preview your results")

@@ -52,11 +52,18 @@ var Hpi = function() {
     _currentSelection[searchId] = {loc_uri: ui.item.value,
                                    loc: ui.item.label};
     drawPreview();
+    clearSearchMemory( searchId );
+    $(e.currentTarget).val( "" );
   };
 
   /** User has started typing into an input field */
   var onSeachInput = function( e ) {
-    delete _currentSelection[searchId( e )];
+    clearSearchMemory( searchId( e.currentTarget ) );
+  };
+
+  /** Clear the remembered selection */
+  var clearSearchMemory = function( searchId ) {
+    delete _currentSelection[searchId];
   };
 
   /** User has clicked to change some of the preview settings */
@@ -68,8 +75,10 @@ var Hpi = function() {
     var locField = $("input[type=hidden][name=loc]")
     var locUriField = $("input[type=hidden][name=loc_uri]")
 
-    locField.val( locField.val() || _currentSelection.search1.loc );
-    locUriField.val( locUriField.val() || _currentSelection.search1.loc_uri );
+    if (_currentSelection.search1) {
+      locField.val( _currentSelection.search1.loc );
+      locUriField.val( _currentSelection.search1.loc_uri );
+    }
 
     HpiPreview.updatePreview();
   };

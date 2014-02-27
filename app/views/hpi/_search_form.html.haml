@@ -7,4 +7,5 @@
       = render @preferences.area_comparison_partial, locals: {group: 2}
 
   .row
+    = hidden_field_tag( :source, :search_form )
     = render partial: @search_cmd.search_results_partial if @search_cmd

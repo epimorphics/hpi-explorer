@@ -17,7 +17,7 @@ class UserPreferences
   WHITE_LIST = (INDEX_DEFINITIONS.keys +
                 %w(loc loc_uri controller action search1 search2
                    from_m from_y to_m to_y
-                   user_form
+                   source
                   )
                ).map( &:to_s )
 
@@ -80,15 +80,19 @@ class UserPreferences
   # If the prefs are not explicitly set by the user via a form,
   # some measures have a default value
   def default_value?( index_name )
-    measures_on_by_default.include?( index_name ) && !input_provided_by_user
+    measures_on_by_default.include?( index_name ) && !source?( :preview_form )
   end
 
   def measures_on_by_default
     %w(m_hpi)
   end
 
-  def input_provided_by_user
-    params[:user_form]
+  def source
+    params[:source]
+  end
+
+  def source?( s )
+    source == s
   end
 
   def whitelist_params
