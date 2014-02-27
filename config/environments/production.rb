@@ -89,7 +89,7 @@ HpiExplorer::Application.configure do
   config.action_controller.relative_url_root = "/app/hpi"
   config.relative_url_root = "/app/hpi"
 
-  logger = ActiveSupport::BufferedLogger.new(Rails.root.join("log","production-investigation.log"))
+  logger = ActiveSupport::Logger.new(Rails.root.join("log","production-investigation.log"))
   logger.info( "!!!! config.relative_url_root = #{config.relative_url_root}")
   logger.info( "!!!! ENV['RAILS_RELATIVE_URL_ROOT'] = #{ENV['RAILS_RELATIVE_URL_ROOT']}")
 end
