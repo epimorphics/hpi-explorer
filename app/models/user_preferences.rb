@@ -82,7 +82,7 @@ class UserPreferences
       end
 
     # this shouldn't be necessay if ENV[RAILS_RELATIVE_ROOT] was working correctly
-    path.gsub( /^\//, "" )
+    path.gsub( /^/, "#{ENV['RAILS_RELATIVE_URL_ROOT']}" )
   end
 
   private
