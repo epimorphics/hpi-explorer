@@ -26,7 +26,7 @@ class QueryCommand < DataService
   private
 
   def add_location_constraint( query )
-    query.eq( "hpi:refRegionName", preferences.selected_location_name )
+    query.eq( "hpi:refRegion", {"@id" => preferences.selected_location_uri} )
   end
 
   def add_date_range_constraint( query )

@@ -10,6 +10,7 @@ class SearchCommand < DataService
   end
 
   def find_unique_locations
+    Rails.logger.info "About to ask search query |||#{@query && @query.to_json}|||"
     results = @query ? dataset( :hpi ).query( @query ) : []
     @locations = unique_locations( results )
   end
@@ -46,7 +47,10 @@ class SearchCommand < DataService
 
   def unique_locations( results )
     results.inject( Set.new ) do |memo, result|
-      memo << {"@id" => result["hpi:refRegion"]["@value"], "label" => result["hpi:refRegionName"]["@value"]}
+      uri = result["hpi:refRegion"]["@id"]
+      labels = result["hpi:refRegionName"]
+      label = labels.kind_of?( Array ) ? labels.first : labels
+      memo << {"@id" => uri, "label" => label["@value"]}
     end .to_a
   end
 

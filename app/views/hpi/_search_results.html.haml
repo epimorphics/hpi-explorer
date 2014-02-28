@@ -5,7 +5,7 @@
   %ul
     - @search_cmd.locations.each do |location|
       %li
-        - options = {controller: :preview, loc: location["label"], loc_uri: location["id"]}
+        - options = {controller: :preview, loc: location["label"], loc_uri: location["@id"]}
         - options.merge!( SearchController.default_preview_options )
         = link_to( location["label"], options )
 
