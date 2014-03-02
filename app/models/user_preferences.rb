@@ -18,6 +18,7 @@ class UserPreferences
                 %w(loc loc_uri controller action search1 search2
                    from_m from_y to_m to_y
                    source
+                   compare
                   )
                ).map( &:to_s )
 
@@ -31,7 +32,7 @@ class UserPreferences
   # Return the name of the partial to use to layout a second search area
   # for comparisons
   def area_comparison_partial
-    "hpi/add_second_area_selection"
+    compare_areas? ? "hpi/second_area_selection": "hpi/add_second_area_selection"
   end
 
   # Return the name of the currently selected location
@@ -67,22 +68,28 @@ class UserPreferences
   end
 
   # Return the current preferences as arguments to the given controller path
-  def as_path( controller, action = :index )
-    # url_for( params.merge( {controller: controller, action: action, only_path: true} ) )
+  def as_path( controller, options = {} )
+    path_params = params.merge( options )
+
     path =
       case controller
       when :view
-        view_index_path( params )
+        view_index_path( path_params )
       when :preview
-        preview_index_path( params )
+        preview_index_path( path_params )
       when :hpi
-        hpi_index_path( params )
+        hpi_index_path( path_params )
       else
         raise "Do not know how to make path for #{controller}"
       end
 
     # this shouldn't be necessay if ENV[RAILS_RELATIVE_ROOT] was working correctly
     path.gsub( /^/, "#{ENV['RAILS_RELATIVE_URL_ROOT']}" )
+  end
+
+  # Return true if the user has selected the option to compare two areas
+  def compare_areas?
+    @params.keys.include?( "compare" )
   end
 
   private
@@ -120,4 +127,5 @@ class UserPreferences
   def sanitise!
     @params.keep_if {|k,v| whitelisted? k}
   end
+
 end

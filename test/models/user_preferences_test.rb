@@ -18,7 +18,7 @@ describe "UserPreferences" do
     up.selected_index?( :m_hpi ).must_equal true
     up.selected_index?( "m_hpi" ).must_equal true
     up.selected_index?( "m_hpi", "1" ).must_equal true
-    up.selected_index?( "m_hpi", "2" ).must_equal false
+    up.selected_index?( "m_ap", "foo" ).must_equal false
     up.selected_index?( "m_vol" ).must_equal false
   end
 
@@ -28,9 +28,18 @@ describe "UserPreferences" do
   end
 
   it "should return a path corresponding to the current preferences" do
-    Rails.application.routes.draw {resources :foo}
-    UserPreferences.new( {"m_hpi" => "1"} ).as_path( :foo ).must_equal "/foo?m_hpi=1"
-    UserPreferences.new( {"m_hpi" => "1", "loc" => "foo"} ).as_path( :foo ).must_equal "/foo?loc=foo&m_hpi=1"
-    UserPreferences.new( {"m_hpi" => "1", "blacklist" => "foo"} ).as_path( :foo ).must_equal "/foo?m_hpi=1"
+    Rails.application.routes.draw {resources :hpi}
+    UserPreferences.new( {"m_hpi" => "1"} ).as_path( :hpi ).must_equal "/hpi?m_hpi=1"
+    UserPreferences.new( {"m_hpi" => "1", "loc" => "hpi"} ).as_path( :hpi ).must_equal "/hpi?loc=hpi&m_hpi=1"
+    UserPreferences.new( {"m_hpi" => "1", "blacklist" => "hpi"} ).as_path( :hpi ).must_equal "/hpi?m_hpi=1"
+  end
+
+  it "should report whether the user wants a comparison area" do
+    UserPreferences.new( ).compare_areas?.must_equal false
+    UserPreferences.new( "compare" => "1" ).compare_areas?.must_equal true
+  end
+
+  it "should allow the specification of additional path parameters" do
+    UserPreferences.new( {"m_hpi" => "1"} ).as_path( :hpi, {opt: "opt"} ).must_equal "/hpi?m_hpi=1&opt=opt"
   end
 end

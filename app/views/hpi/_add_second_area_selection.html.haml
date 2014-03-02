@@ -1,5 +1,6 @@
 %section.area-selection
   %h3.text-muted
     Add a second location for comparison
-  %p.text-muted
-    Feature TBC
+  %div
+    %a.btn{ href: @preferences.as_path( :hpi, {compare: 1})}
+      %i.fa.fa-plus-circle

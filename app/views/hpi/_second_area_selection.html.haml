@@ -1,0 +1,9 @@
+%section.area-selection
+  %h3
+    Compare with location
+  .col-sm-8
+    = hidden_field_tag( :compare, 1 )
+    = text_field_tag( :search2, "", class: "form-control" )
+  .col-sm-2
+    %button#action_search.btn{ type: "submit" }
+      %i.fa.fa-search
