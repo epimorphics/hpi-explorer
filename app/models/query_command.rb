@@ -61,15 +61,15 @@ class QueryCommand < DataService
   def visible_columns
     cols = [{aspect: "hpi:refPeriod", label: "Date", sType: "yearmonth"}]
 
-    {m_hpi:  {aspect: "hpi:indicesSASM",                     label: "Index",                        sType: "string"},
-     m_chm:  {aspect: "hpi:monthlyChange",                   label: "Monthly change",               sType: "number"},
-     m_chy:  {aspect: "hpi:annualChange",                    label: "Yearly change",                sType: "number"},
-     m_vol:  {aspect: "hpi:salesVolume",                     label: "Sales volume",                 sType: "number"},
-     m_ap:   {aspect: "hpi:averagePricesSASM",               label: "Average price (all)",          sType: "currency"},
-     m_apd:  {aspect: "hpi:averagePricesDetachedSASM",       label: "Average price (detached)",     sType: "currency"},
-     m_apsd: {aspect: "hpi:averagePricesSemiDetachedSASM",   label: "Average price (semi-detached", sType: "currency"},
-     m_apt:  {aspect: "hpi:averagePricesTerracedSASM",       label: "Average price (terraced)",     sType: "currency"},
-     m_apf:  {aspect: "hpi:averagePricesFlatMaisonetteSASM", label: "Average price (flats)",        sType: "currency"}
+    {m_hpi:  {aspect: "hpi:indicesSASM",                     label: "Index",                         sType: "string"},
+     m_chm:  {aspect: "hpi:monthlyChange",                   label: "Monthly change",                sType: "number"},
+     m_chy:  {aspect: "hpi:annualChange",                    label: "Yearly change",                 sType: "number"},
+     m_vol:  {aspect: "hpi:salesVolume",                     label: "Sales volume",                  sType: "number"},
+     m_ap:   {aspect: "hpi:averagePricesSASM",               label: "Average price (all)",           sType: "currency"},
+     m_apd:  {aspect: "hpi:averagePricesDetachedSASM",       label: "Average price (detached)",      sType: "currency"},
+     m_apsd: {aspect: "hpi:averagePricesSemiDetachedSASM",   label: "Average price (semi-detached)", sType: "currency"},
+     m_apt:  {aspect: "hpi:averagePricesTerracedSASM",       label: "Average price (terraced)",      sType: "currency"},
+     m_apf:  {aspect: "hpi:averagePricesFlatMaisonetteSASM", label: "Average price (flats)",         sType: "currency"}
     }.each do |key, index|
       cols << index if param(key)
     end
