@@ -23,6 +23,13 @@ class QueryCommand < DataService
                                        {limit: RESULTS_SAMPLE}.merge( options ) )
   end
 
+  # Return the types of the visible columns
+  def col_types
+    columns.each_with_index.map do |col, i|
+      "#{i > 0 ? ', ' : ''}{ 'sType': '#{col[:sType]}' }"
+    end .join( " " )
+  end
+
   private
 
   def add_location_constraint( query )
@@ -52,17 +59,17 @@ class QueryCommand < DataService
   end
 
   def visible_columns
-    cols = [{aspect: "hpi:refPeriod", label: "Date"}]
+    cols = [{aspect: "hpi:refPeriod", label: "Date", sType: "yearmonth"}]
 
-    {m_hpi:  {aspect: "hpi:indicesSASM",                     label: "Index"},
-     m_chm:  {aspect: "hpi:monthlyChange",                   label: "Monthly change"},
-     m_chy:  {aspect: "hpi:annualChange",                    label: "Yearly change"},
-     m_vol:  {aspect: "hpi:salesVolume",                     label: "Sales volume"},
-     m_ap:   {aspect: "hpi:averagePricesSASM",               label: "Average price (all)"},
-     m_apd:  {aspect: "hpi:averagePricesDetachedSASM",       label: "Average price (detached)"},
-     m_apsd: {aspect: "hpi:averagePricesSemiDetachedSASM",   label: "Average price (semi-detached"},
-     m_apt:  {aspect: "hpi:averagePricesTerracedSASM",       label: "Average price (terraced)"},
-     m_apf:  {aspect: "hpi:averagePricesFlatMaisonetteSASM", label: "Average price (flats)"}
+    {m_hpi:  {aspect: "hpi:indicesSASM",                     label: "Index",                        sType: "string"},
+     m_chm:  {aspect: "hpi:monthlyChange",                   label: "Monthly change",               sType: "number"},
+     m_chy:  {aspect: "hpi:annualChange",                    label: "Yearly change",                sType: "number"},
+     m_vol:  {aspect: "hpi:salesVolume",                     label: "Sales volume",                 sType: "number"},
+     m_ap:   {aspect: "hpi:averagePricesSASM",               label: "Average price (all)",          sType: "currency"},
+     m_apd:  {aspect: "hpi:averagePricesDetachedSASM",       label: "Average price (detached)",     sType: "currency"},
+     m_apsd: {aspect: "hpi:averagePricesSemiDetachedSASM",   label: "Average price (semi-detached", sType: "currency"},
+     m_apt:  {aspect: "hpi:averagePricesTerracedSASM",       label: "Average price (terraced)",     sType: "currency"},
+     m_apf:  {aspect: "hpi:averagePricesFlatMaisonetteSASM", label: "Average price (flats)",        sType: "currency"}
     }.each do |key, index|
       cols << index if param(key)
     end

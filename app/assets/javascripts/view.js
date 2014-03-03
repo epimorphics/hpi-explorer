@@ -7,7 +7,6 @@ var HpiView = function() {
   };
 
   var initComponents = function() {
-    $("#hpi-data table").dataTable();
   };
 
   return {
@@ -15,4 +14,3 @@ var HpiView = function() {
   }
 }();
 
-$( HpiView.init );
