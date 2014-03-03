@@ -6,7 +6,8 @@ module ValueFormatter
     "hpi:averagePricesDetachedSASM"       => ->(c, v){c.format_currency_r v},
     "hpi:averagePricesSemiDetachedSASM"   => ->(c, v){c.format_currency_r v},
     "hpi:averagePricesTerracedSASM"       => ->(c, v){c.format_currency_r v},
-    "hpi:averagePricesFlatMaisonetteSASM" => ->(c, v){c.format_currency_r v}
+    "hpi:averagePricesFlatMaisonetteSASM" => ->(c, v){c.format_currency_r v},
+    "hpi:refPeriod"                       => ->(c, v){c.format_month_year v}
   }
 
   def format_value( result, col )
@@ -27,6 +28,12 @@ module ValueFormatter
 
   def format_currency( val, currency = nil )
     number_to_currency( val.to_i, locale: "en-gb", unit: currency || pound, precision: 0 )
+  end
+
+  def format_month_year( val )
+    year, month = val.split( "-" ).map( &:to_i )
+    date = Date.new( year, month, 1 )
+    date.strftime( "%B %Y")
   end
 
   def raw_value( result, col )
