@@ -16,4 +16,5 @@
 //= require jquery.ui.autocomplete
 //= require jquery.ui.widget
 //= require js-routes
+//= require dataTables/jquery.dataTables
 //= require_tree .

@@ -70,8 +70,12 @@ $lr-yellow: #e5ea08;
     margin-top: 10px;
   }
 
-  h3 {
+  h2, h3 {
     font-family: geo_headline;
+  }
+
+  h2 {
+    margin-bottom: 1em;
   }
 }
 

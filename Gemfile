@@ -55,6 +55,7 @@ gem 'faraday', '~> 0.8.8'
 gem "faraday_middleware", "< 0.9.0"
 gem 'jquery-ui-rails'
 gem 'js-routes'
+gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
 
 group :test do
   gem 'minitest', '~> 4.7'

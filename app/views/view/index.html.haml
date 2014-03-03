@@ -7,15 +7,16 @@
         %a.btn.btn-primary{ href: "#{@preferences.as_path( :hpi )}"}
           Change search settings
 
-  %table.table
-    %thead
-      %tr
-        - @query_command.columns.each_with_index do |col, i|
-          %th{ class: (i > 0) ? "text-right" : "text-center" }
-            = col[:label]
-    %tbody
-      - @query_command.results.each do |result|
+  #hpi-data
+    %table.table
+      %thead
         %tr
-          - result.each_with_index do |value, i|
-            %td{ class: (i > 0) ? "text-right" : "text-center" }
-              = value
+          - @query_command.columns.each_with_index do |col, i|
+            %th{ class: (i > 0) ? "text-right" : "text-center" }
+              = col[:label]
+      %tbody
+        - @query_command.results.each do |result|
+          %tr
+            - result.each_with_index do |value, i|
+              %td{ class: (i > 0) ? "text-right" : "text-center" }
+                = value

@@ -8,6 +8,14 @@ GIT
       sass (>= 3.2.0)
 
 GIT
+  remote: git://github.com/rweng/jquery-datatables-rails.git
+  revision: 788a7b24caf8fe58a5493aa3f6a065879a9f752a
+  specs:
+    jquery-datatables-rails (1.12.2)
+      jquery-rails
+      sass-rails
+
+GIT
   remote: git@github.com:epimorphics/ds-api-ruby.git
   revision: ce447811dad5f8e7329fd65ff01ee4355e6e0436
   specs:
@@ -230,6 +238,7 @@ DEPENDENCIES
   govuk_frontend_toolkit!
   haml-rails
   jbuilder (~> 1.2)
+  jquery-datatables-rails!
   jquery-rails
   jquery-ui-rails
   js-routes
