@@ -1,5 +1,18 @@
 # A model object to encapsulate the search preferences we have elicited from the user
+#
+# The following parameters are expected
+# search_N - search term 1 or 2
+# loc_N - name of selected search item 1 or 2
+# loc_uri_N - URI of selected search item 1 or 2
+# compare - true or false for area comparison query
+# from_m, to_m - month part of date range
+# from_y, to_y - year part of date range
+# source - used to tag various user input forms
+# m_* - measures in the cube
 class UserPreferences
+  Struct.new( "SearchID", :sym, :n )
+  Struct.new( "SearchDisplayConfig", :partial, :locals )
+
   include Rails.application.routes.url_helpers
 
   INDEX_DEFINITIONS = {
@@ -15,10 +28,12 @@ class UserPreferences
   }
 
   WHITE_LIST = (INDEX_DEFINITIONS.keys +
-                %w(loc loc_uri controller action search1 search2
+                %w(controller action
+                   search_0 loc_0 loc_uri_0
+                   search_1 loc_1 loc_uri_1
+                   compare
                    from_m from_y to_m to_y
                    source
-                   compare
                   )
                ).map( &:to_s )
 
@@ -27,26 +42,36 @@ class UserPreferences
   def initialize( params = {} )
     @params = indifferent_access( params )
     sanitise!
+    prioritise!
   end
 
-  # Return the name of the partial to use to layout a second search area
-  # for comparisons
-  def area_comparison_partial
-    compare_areas? ? "hpi/second_area_selection": "hpi/add_second_area_selection"
+  # Return a search ID
+  def search_id( n )
+    Struct::SearchID.new( :"search_#{n}", n )
   end
 
-  # Return the name of the currently selected location
-  def selected_location_name
-    param( :loc )
+  # Return the name selected for the given search option
+  def selected_location_name( search_id )
+    param( :"loc_#{search_id.n}" )
   end
 
-  def selected_location_uri
-    param( :loc_uri )
+  def describe_selected_location
+    sn = (0..1).map {|i| selected_location_name( search_id( i ) )} .compact
+
+    case sn.length
+    when 1 then "Index data for #{sn[0]}"
+    when 2 then "Comparing #{sn[0]} and #{sn[1]}"
+    end
+  end
+
+  # Return the URI selected for the given search option
+  def selected_location_uri( search_id )
+    param( :"loc_uri_#{search_id.n}" )
   end
 
   # Return true if the location has been specified
-  def selected_location?
-    !!selected_location_name
+  def selected_location?( search_id )
+    !!selected_location_name( search_id )
   end
 
   # Return true if the given index is currently selected
@@ -62,17 +87,57 @@ class UserPreferences
     INDEX_DEFINITIONS.select {|key, index| param(key)} .values
   end
 
+  # Return true if the user has selected the option to compare two areas
+  def compare_areas?
+    @params.keys.include?( "compare" )
+  end
+
+  # Return the search term for the given id, or nil
+  def search_term( search_id )
+    param( search_id.sym )
+  end
+
+  # Return true if the user has entered a complete set of locations and we
+  # can begin query
+  def location_complete?
+    sl = (0..1).map {|sid| selected_location?( search_id( sid ) )}
+
+    compare_areas? ? (sl[0] && sl[1]) : sl[0]
+  end
+
+  # Return the necessary information to present the given search option
+  def search_display_config( search_id )
+    # no_locations? ? "hpi/no_results" : "hpi/search_results"
+    st = search_term_sym( search_id )
+    ct = compare_sym( search_id )
+    ot = other_term_selected( search_id )
+
+    key = :"#{st}_#{ct}_#{ot}"
+    begin
+      self.send( key, search_id )
+    rescue
+      binding.pry
+    end
+  end
+
   # Return the non-empty value of parameter p, or nil
   def param( p )
     ((pp = params[p].to_s) && pp.length > 0) ? pp : nil
   end
 
   # Return the current preferences as arguments to the given controller path
-  def as_path( controller, options = {} )
+  def as_path( controller, options = {}, delete = [] )
     path_params = params.merge( options )
+
+    delete.each do |key|
+      path_params.delete( key.to_sym )
+      path_params.delete( key.to_s )
+    end
 
     path =
       case controller
+      when :search
+        search_index_path( path_params )
       when :view
         view_index_path( path_params )
       when :preview
@@ -87,10 +152,11 @@ class UserPreferences
     path.gsub( /^/, "#{ENV['RAILS_RELATIVE_URL_ROOT']}" )
   end
 
-  # Return true if the user has selected the option to compare two areas
-  def compare_areas?
-    @params.keys.include?( "compare" )
+  # Return the given attribute, tagged with the given search id (e.g search_0)
+  def attribute_with_search_id( attrib, search_id )
+    :"#{attrib}_#{search_id.n}"
   end
+
 
   private
 
@@ -124,8 +190,89 @@ class UserPreferences
     whitelist_params.include?( param.to_s )
   end
 
+  # Remove any non-whitelisted parameters
   def sanitise!
     @params.keep_if {|k,v| whitelisted? k}
+  end
+
+  # There is a priority ordering among params. If there is a search term N, it is
+  # more important than loc N and loc_uri N
+  def prioritise!
+    (0..1).each do |i|
+      search_id = search_id( i )
+      if search_term( search_id )
+        %w(loc loc_uri).each do |dep_key|
+          @params.delete( attribute_with_search_id( dep_key, search_id ) )
+        end
+      end
+    end
+  end
+
+  # Returns :search or :no_search, depending on whether search term N is defined
+  def search_term_sym( search_id )
+    :"#{no( search_id.sym )}search"
+  end
+
+  # Returns :compare or :no_compare, depending on whether the compare option has been selected
+  def compare_sym( search_id )
+    :"#{no( :compare )}compare"
+  end
+
+  # Returns :other_term or :no_other_term, if :loc_uri_1 is specified if
+  # this search id 0, and vice-versa
+  def other_term_selected( search_id )
+    :"#{no( other_id( search_id, "loc_uri" ))}other_term"
+  end
+
+  def no( x )
+    params[x] ? "" : "no_"
+  end
+
+  def other_search_id( search_id )
+    i = [1,0][search_id.n]
+    {n: i, sym: other_id( search_id, "search" )}
+  end
+
+  def other_id( search_id, token )
+    i = [1,0][search_id.n]
+    :"#{token}_#{i}"
+  end
+
+  def no_search_no_compare_no_other_term( search_id )
+    partial = ["hpi/area_selection", "hpi/add_second_area_selection"][search_id.n]
+    Struct::SearchDisplayConfig.new( partial,
+                                     {title: "Select an area",
+                                      search_id: search_id} )
+  end
+
+  def no_search_compare_no_other_term( search_id )
+    title = ["Select an area", "Select a second area"][search_id.n]
+    Struct::SearchDisplayConfig.new( "hpi/area_selection",
+                                     {title: title,
+                                      search_id: search_id} )
+  end
+
+  def no_search_compare_other_term( search_id )
+    other_name = param( other_id( search_id, :loc ) )
+    Struct::SearchDisplayConfig.new( "hpi/area_selection",
+                                     {title: "Select an area to compare against '#{other_name}'",
+                                      search_id: search_id} )
+  end
+
+  def search_no_compare_no_other_term( search_id )
+    no_search_no_compare_no_other_term( search_id )
+  end
+
+  def search_compare_no_other_term( search_id )
+    no_search_compare_no_other_term( search_id )
+  end
+
+  def search_compare_other_term( search_id )
+    no_search_compare_other_term( search_id )
+  end
+
+  def no_search_no_compare_other_term( search_id )
+    no_search_no_compare_no_other_term( search_id )
   end
 
 end

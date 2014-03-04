@@ -1,11 +1,14 @@
 = form_tag( {controller: :search, action: :create}, class: "form-horizontal search", role: "form") do
   .row
     .col-md-6
-      = render partial: "hpi/area_selection", locals: {group: 1}
+      .row
+        .col-md-12
+          = render partial: @search_display_config_0.partial, locals: @search_display_config_0.locals
 
     .col-md-6
-      = render @preferences.area_comparison_partial, locals: {group: 2}
+      .row
+        .col-md-12
+          = render partial: @search_display_config_1.partial, locals: @search_display_config_1.locals
 
   .row
     = hidden_field_tag( :source, :search_form )
-    = render partial: @search_cmd.search_results_partial if @search_cmd

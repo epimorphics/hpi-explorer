@@ -1,7 +1,7 @@
 = form_tag( {controller: :preview, action: :create}, class: "form-horizontal preview", role: "form" ) do
   .row
     #results-header.col-md-12
-      = render partial: "hpi/selected_location" if @preferences.selected_location_name
+      = render partial: "hpi/selected_location" if @preferences.location_complete?
 
   .row
     .col-md-12

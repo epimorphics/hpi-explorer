@@ -1,6 +1,7 @@
 class HpiController < ApplicationController
   def index
-    if preferences.selected_location?
+    set_search_configuration
+    if preferences.location_complete?
       @query_command = QueryCommand.new( preferences )
       @query_command.load_query_results()
     end

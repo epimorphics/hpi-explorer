@@ -6,4 +6,12 @@ class ApplicationController < ActionController::Base
   def preferences
     @preferences ||= UserPreferences.new( params )
   end
+
+  def set_search_configuration
+    @search_id_0 = preferences.search_id( 0 )
+    @search_id_1 = preferences.search_id( 1 )
+
+    @search_display_config_0 = preferences.search_display_config( @search_id_0 )
+    @search_display_config_1 = preferences.search_display_config( @search_id_1 )
+  end
 end

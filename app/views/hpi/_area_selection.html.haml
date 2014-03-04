@@ -1,8 +1,13 @@
 %section.area-selection
   %h3
-    Find a location
+    = title
   .col-sm-8
-    = text_field_tag( :search1, "", class: "form-control" )
+    = text_field_tag( preferences.attribute_with_search_id( "search", search_id ), "", class: "form-control" )
   .col-sm-2
     %button#action_search.btn{ type: "submit" }
       %i.fa.fa-search
+
+  .col-sm-12
+    - search_command = @search_commands[search_id.sym] if @search_commands
+    = render( partial: "hpi/search_results", locals: {search_command: search_command} ) if search_command && search_command.locations?
+    = render_selected_search_term( search_id, preferences )

@@ -1,11 +1,13 @@
+#
 class SearchCommand < DataService
   DEFAULT_SEARCH_TERM = "England and Wales"
 
-  attr_reader :search_term, :locations, :query
+  attr_reader :search_term, :locations, :query, :search_id, :controller
 
-  def initialize( preferences )
+  def initialize( preferences, search_id )
     super( preferences )
-    @search_term = identify_search_term( preferences )
+    @search_id = search_id
+    @search_term = identify_search_term( preferences, search_id )
     @query = create_search_query( @search_term ) if @search_term
   end
 
@@ -15,7 +17,7 @@ class SearchCommand < DataService
     @locations = unique_locations( results )
   end
 
-  def unique_location?
+  def single_location?
     @locations.size == 1
   end
 
@@ -23,23 +25,36 @@ class SearchCommand < DataService
     @locations.size == 0
   end
 
-  alias :search_term? :search_term
-
-  def search_results_partial( search_id )
-    # no_locations? ? "hpi/no_results" : "hpi/search_results"
-    st = search_term_sym( search_id )
-    ct = compare_sym( search_id )
-    ot = other_term_selected( search_id )
-
-    "hpi/#{st}_#{ct}_#{ot}"
+  def locations?
+    !no_locations?
   end
 
+  alias :search_term? :search_term
+
+  # Only allow the user to progress to previewing results once all locations are specified
+  def controller
+    preferences.location_complete? ? :preview : :search
+  end
+
+  # Return a suitable title for the link to the loc result, based on the overall state
+  # of the search
+  def link_title( loc )
+    "todo full link title here #{loc}"
+  end
+
+  def location_complete?
+    preferences.location_complete?
+  end
+
+  def attribute_with_search_id( attrib )
+    preferences.attribute_with_search_id( attrib, search_id )
+  end
 
   private
 
 
-  def identify_search_term( preferences )
-    preferences.param( :search1 ) || preferences.param( :search2 ) || DEFAULT_SEARCH_TERM
+  def identify_search_term( preferences, search_id )
+    preferences.search_term( search_id )
   end
 
   def create_search_query( term )
@@ -53,6 +68,7 @@ class SearchCommand < DataService
       label = labels.kind_of?( Array ) ? labels.first : labels
       memo << {"@id" => uri, "label" => label["@value"]}
     end .to_a
+        .sort {|a,b| a["label"] <=> b["label"]}
   end
 
 end

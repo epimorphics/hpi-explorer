@@ -1,11 +1,10 @@
-%p
-  Locations that match '#{@preferences.param(:search1) || @preferences.param(:search2)}':
+.row
+  .col-md-12
+    %p
+      Locations that match '#{search_command.search_term}':
 
-#search-results
-  %ul
-    - @search_cmd.locations.each do |location|
-      %li
-        - options = {controller: :preview, loc: location["label"], loc_uri: location["@id"]}
-        - options.merge!( SearchController.default_preview_options )
-        = link_to( location["label"], options )
-
+  .search-results.col-md-12
+    %ul
+      - search_command.locations.each do |location|
+        %li
+          = present_search_result( search_command, location )

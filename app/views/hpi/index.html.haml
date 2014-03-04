@@ -3,4 +3,4 @@
 
 .row
   #results-preview
-    = render partial: "preview/preview" if @preferences.selected_location?
+    = render partial: "preview/preview" if @preferences.location_complete?

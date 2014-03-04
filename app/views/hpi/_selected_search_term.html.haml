@@ -1,0 +1,6 @@
+%p
+  You selected #{preferences.selected_location_name( search_id )}
+
+  = hidden_field_tag( preferences.attribute_with_search_id( :loc, search_id ), preferences.selected_location_name( search_id ) )
+  = hidden_field_tag( preferences.attribute_with_search_id( :loc_uri, search_id ), preferences.selected_location_uri( search_id ) )
+  = hidden_field_tag( :compare, true ) if preferences.compare_areas?

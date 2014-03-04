@@ -6,7 +6,7 @@ HpiExplorer::Application.routes.draw do
   root 'hpi#index'
 
   resources :hpi, only: [:index]
-  resources :search, only: [:create]
+  resources :search, only: [:create,:index]
   resources :preview, only: [:index,:create]
   resources :view, only: [:index]
 
