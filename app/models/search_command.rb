@@ -25,12 +25,13 @@ class SearchCommand < DataService
 
   alias :search_term? :search_term
 
-  def search_results_partial
-    if search_term?
-      no_locations? ? "hpi/no_results" : "hpi/search_results"
-    else
-      "hpi/no_search"
-    end
+  def search_results_partial( search_id )
+    # no_locations? ? "hpi/no_results" : "hpi/search_results"
+    st = search_term_sym( search_id )
+    ct = compare_sym( search_id )
+    ot = other_term_selected( search_id )
+
+    "hpi/#{st}_#{ct}_#{ot}"
   end
 
 
