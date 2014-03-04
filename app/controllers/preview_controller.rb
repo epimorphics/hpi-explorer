@@ -1,5 +1,6 @@
 class PreviewController < ApplicationController
   def create
+    set_search_configuration
     @query_command = QueryCommand.new( preferences )
     @query_command.load_query_results()
 

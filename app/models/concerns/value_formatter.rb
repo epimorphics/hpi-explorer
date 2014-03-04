@@ -10,8 +10,8 @@ module ValueFormatter
     "hpi:refPeriod"                       => ->(c, v){c.format_month_year v}
   }
 
-  def format_value( result, col )
-    v = raw_value( result, col )
+  def format_value( results, i, col )
+    v = raw_value( results, i, col )
     if f = FORMATTERS[aspect_of col]
       v = f.call( self, v )
     end
@@ -36,8 +36,10 @@ module ValueFormatter
     date.strftime( "%B %Y")
   end
 
-  def raw_value( result, col )
+  def raw_value( results, i, col )
+    result = results[query_id_of col][i]
     v = result[aspect_of col]
+
     if v && v.is_a?( Hash )
       v["@value"] || v
     else
@@ -47,6 +49,10 @@ module ValueFormatter
 
   def aspect_of( col )
     col[:aspect]
+  end
+
+  def query_id_of( col )
+    col[:query_id]
   end
 
   def pound
