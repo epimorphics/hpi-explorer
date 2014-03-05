@@ -13,6 +13,8 @@ class SearchController < ApplicationController
 
       @search_commands[search_id.sym] = search_cmd
     end
+
+    render partial: "hpi/search_form", layout: false if request.xhr?
   end
 
   def index

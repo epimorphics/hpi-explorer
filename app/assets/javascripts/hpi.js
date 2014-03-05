@@ -12,6 +12,7 @@ var Hpi = function() {
     $("form.search").on( "submit", onSearchSubmit );
     $("form.search").on( "keydown", "input", onSeachInput );
     $("form.preview").on( "click", "input", onChangePreviewSettings );
+    $("a.action-add-comparison").on( "click", onAddComparison );
   };
 
   /** Widget and control initialisation */
@@ -76,6 +77,10 @@ var Hpi = function() {
 
       resetPreviewFormElement( "loc_1", compareAreas() ? selectedLocationName( 1 ) : null );
       resetPreviewFormElement( "loc_uri_1", compareAreas() ? selectedLocationURI( 1 ) : null );
+
+      if (compareAreas()) {
+        resetPreviewFormElement( "compare", 1 );
+      }
 
       HpiPreview.updatePreview();
     }
@@ -164,8 +169,46 @@ var Hpi = function() {
     }
   };
 
+  /** User wants to show the comparison region */
+  var onAddComparison = function( e ) {
+    e.preventDefault();
+
+    var interactionState = currentInteractionState( "search",
+                                                    {compare: 1},
+                                                    ['search_0', 'search_1'] );
+    $.post( Routes.search_index_path(),
+            interactionState, null, "html" )
+      .done( onComparisonDone )
+      .fail( onComparisonFail );
+  };
+
+  var onComparisonDone = function( html ) {
+    $(".search-form-container").empty().append( html );
+    initControls();
+  };
+
+  var onComparisonFail = function( jqXhr, error ) {
+
+  };
+
+
+  /** Return the current interaction state as a hash */
+  var currentInteractionState = function( formClass, options, deletes ) {
+    var state = $(sprintf( "form.%s", formClass) ).serializeHash();
+    state = _.extend( state, options || {} );
+
+    _.each( (deletes || []), function( d ) {
+      delete state[d];
+    } );
+
+    return state;
+  };
+
+
+
   return {
-    init: init
+    init: init,
+    currentInteractionState: currentInteractionState
   }
 }();
 

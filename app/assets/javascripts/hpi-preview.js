@@ -8,17 +8,11 @@ var HpiPreview = function() {
 
   /** Update the preview, based on the current form */
   var updatePreview = function( options ) {
-    var interactionState = currentInteractionState( options );
+    var interactionState = Hpi.currentInteractionState( "preview", options );
     $.post( Routes.preview_index_path(),
             interactionState, null, "json" )
       .done( onPreviewDone )
       .fail( onPreviewFail );
-  };
-
-  /** Return the current interaction state as a hash */
-  var currentInteractionState = function( options ) {
-    var previewPreferences = $("form.preview").serializeHash();
-    return _.extend( previewPreferences, options || {} );
   };
 
   var onPreviewDone = function( json ) {
