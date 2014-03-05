@@ -31,6 +31,7 @@ module ValueFormatter
   end
 
   def format_month_year( val )
+    return val if val == no_value
     year, month = val.split( "-" ).map( &:to_i )
     date = Date.new( year, month, 1 )
     date.strftime( "%B %Y")
@@ -38,6 +39,8 @@ module ValueFormatter
 
   def raw_value( results, i, col )
     result = results[query_id_of col][i]
+    return no_value unless result
+
     v = result[aspect_of col]
 
     if v && v.is_a?( Hash )
@@ -59,4 +62,7 @@ module ValueFormatter
     "&pound;".html_safe
   end
 
+  def no_value
+    "no value"
+  end
 end

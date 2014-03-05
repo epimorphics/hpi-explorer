@@ -1,6 +1,6 @@
 #!/bin/bash
 
-arq --data=/opt/dsapi/data/HPI-2014-01.ttl --results=JSON 'select distinct ?value ?label {?value <http://www.w3.org/2000/01/rdf-schema#label> ?label}' > results.json
+arq --data=/opt/dsapi/data/HPI-2014-02.ttl --results=JSON 'select distinct ?value ?label {?obs a <http://purl.org/linked-data/cube#Observation> ; <http://landregistry.data.gov.uk/def/hpi/refRegion> ?value. ?value <http://www.w3.org/2000/01/rdf-schema#label> ?label}' > results.json
 
 ruby region-names-table.rb > region-names.js
 
