@@ -255,8 +255,9 @@ class UserPreferences
 
   def no_search_compare_other_term( search_id )
     other_name = param( other_id( search_id, :loc ) )
+    title = ["Select an area", "Select a second area"][search_id.n]
     Struct::SearchDisplayConfig.new( "hpi/area_selection",
-                                     {title: "Select an area to compare against '#{other_name}'",
+                                     {title: title,
                                       search_id: search_id} )
   end
 

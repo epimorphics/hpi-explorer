@@ -13,6 +13,7 @@ var Hpi = function() {
     $("form.search").on( "keydown", "input", onSeachInput );
     $("form.preview").on( "click", "input", onChangePreviewSettings );
     $("a.action-add-comparison").on( "click", onAddComparison );
+    $("form.search").on( "click", "a.action-remove-selection", onRemoveSelection );
   };
 
   /** Widget and control initialisation */
@@ -158,7 +159,10 @@ var Hpi = function() {
     var elem = $(sourceElem).parents(".area-selection")
                             .find(".selected-search-term")
                             .empty()
-                            .append( sprintf( "<p>Selected: %s</p>", locationName ) )
+                            .append( sprintf( "<p>Selected: %s " +
+                                              "<a href='#' class='action action-remove-selection btn'>" +
+                                              "<i class='fa fa-times-circle'></i></a></p>",
+                                              locationName ) )
                             .append( sprintf( "<input type='hidden' name='%s' value='%s' />",
                                      attributeWithSearchId( "loc", searchId ), locationName ) )
                             .append( sprintf( "<input type='hidden' name='%s' value='%s' />",
@@ -172,6 +176,7 @@ var Hpi = function() {
   /** User wants to show the comparison region */
   var onAddComparison = function( e ) {
     e.preventDefault();
+    clearPreview();
 
     var interactionState = currentInteractionState( "search",
                                                     {compare: 1},
@@ -204,7 +209,22 @@ var Hpi = function() {
     return state;
   };
 
+  /** Remove a selection */
+  var onRemoveSelection = function( e ) {
+    e.preventDefault();
+    var button = $(e.currentTarget);
+    var elem = button.parents(".area-selection").find(".selected-search-term");
+    var input = elem.find( "input" );
+    var searchId = input.attr("name");
 
+    elem.empty();
+    clearPreview();
+  }
+
+  var clearPreview = function() {
+    $("#results-preview").empty();
+    $("#results-header").empty();
+  };
 
   return {
     init: init,
