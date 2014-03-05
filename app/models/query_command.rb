@@ -90,7 +90,7 @@ class QueryCommand < DataService
   end
 
   def visible_columns
-    cols = [{aspect: "hpi:refPeriod", label: "Date", sType: "yearmonth", query_id: search_id_0.sym}]
+    cols = [{aspect: "hpi:refPeriod", label: "Date", sType: "monthyear", query_id: search_id_0.sym}]
 
     [search_id_0, search_id_1].each do |search_id|
       if @all_results[search_id.sym]

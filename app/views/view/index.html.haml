@@ -20,34 +20,6 @@
                 = value
 
   :javascript
-    jQuery.extend( jQuery.fn.dataTableExt.oSort, {
-        "currency-pre": function ( a ) {
-          a = (a==="-") ? 0 : a.replace( /[^\d\-\.]/g, "" );
-          return parseFloat( a );
-        },
-
-        "currency-asc": function ( a, b ) {
-          return a - b;
-        },
-
-        "currency-desc": function ( a, b ) {
-          return b - a;
-        },
-
-        "yearmonth-pre": function( a ) {
-          var ym = a.split("-");
-          return new Date( parseInt( ym[0] ), parseInt( ym[1] ) - 1, 1 );
-        },
-
-        "yearmonth-asc": function( a, b ) {
-          return (a === b) ? 0 : (a < b ? -1 : 1);
-        },
-
-        "yearmonth-desc": function( a, b ) {
-          return (a === b) ? 0 : (a < b ? 1 : -1);
-        }
-    } );
-
     $( function() {
       $("#hpi-data table").dataTable( {
         "aoColumns": [#{@query_command.col_types}]
