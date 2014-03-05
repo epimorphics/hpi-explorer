@@ -10,4 +10,5 @@
   .col-sm-12
     - search_command = @search_commands[search_id.sym] if @search_commands
     = render( partial: "hpi/search_results", locals: {search_command: search_command} ) if search_command && search_command.locations?
-    = render_selected_search_term( search_id, preferences )
+    .selected-search-term
+      = render_selected_search_term( search_id, preferences )
