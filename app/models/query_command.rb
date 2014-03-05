@@ -52,6 +52,11 @@ class QueryCommand < DataService
     end .join( " " )
   end
 
+  # Return a count of the visible data columns
+  def data_columns_count
+    ASPECTS.select {|k,v| param(k)} .length
+  end
+
   private
 
   def compare_areas?
