@@ -36,12 +36,6 @@ class SearchCommand < DataService
     preferences.location_complete? ? :preview : :search
   end
 
-  # Return a suitable title for the link to the loc result, based on the overall state
-  # of the search
-  def link_title( loc )
-    "todo full link title here #{loc}"
-  end
-
   def location_complete?
     preferences.location_complete?
   end

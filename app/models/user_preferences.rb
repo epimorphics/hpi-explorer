@@ -51,8 +51,9 @@ class UserPreferences
   end
 
   # Return the name selected for the given search option
-  def selected_location_name( search_id )
-    param( :"loc_#{search_id.n}" )
+  def selected_location_name( search_id, use_other = false )
+    sid = use_other ? other_search_id( search_id ) : search_id
+    param( :"loc_#{sid.n}" )
   end
 
   def describe_selected_location
@@ -65,13 +66,14 @@ class UserPreferences
   end
 
   # Return the URI selected for the given search option
-  def selected_location_uri( search_id )
-    param( :"loc_uri_#{search_id.n}" )
+  def selected_location_uri( search_id, use_other = false )
+    sid = use_other ? other_search_id( search_id ) : search_id
+    param( :"loc_uri_#{sid.n}" )
   end
 
   # Return true if the location has been specified
-  def selected_location?( search_id )
-    !!selected_location_name( search_id )
+  def selected_location?( search_id, use_other = false )
+    !!selected_location_name( search_id, use_other )
   end
 
   # Return true if the given index is currently selected
@@ -229,8 +231,7 @@ class UserPreferences
   end
 
   def other_search_id( search_id )
-    i = [1,0][search_id.n]
-    {n: i, sym: other_id( search_id, "search" )}
+    search_id( [1,0][search_id.n] )
   end
 
   def other_id( search_id, token )

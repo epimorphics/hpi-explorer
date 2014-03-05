@@ -9,7 +9,7 @@ module SearchHelper
 
     options.merge!( SearchController.default_preview_options ) if can_preview
 
-    link_to( search_command.link_title( location["label"] ),
+    link_to( location["label"],
              preferences.as_path( search_command.controller, options, [search_command.attribute_with_search_id( :search )] )
            )
   end
@@ -22,4 +22,14 @@ module SearchHelper
     end
   end
 
+  def unselect_location_button( preferences, search_id )
+    loc_attrib = preferences.attribute_with_search_id( "loc", search_id )
+    loc_uri_attrib = preferences.attribute_with_search_id( "loc_uri", search_id )
+    path = preferences.as_path( :search, {}, [loc_attrib, loc_uri_attrib])
+
+    link_to( "<i class='fa fa-times-circle'></i>".html_safe,
+             path,
+             {class: "btn btn-sm", alt: "Remove this location", title: "Remove"}
+           )
+  end
 end
