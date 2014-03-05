@@ -1,0 +1,10 @@
+#!/bin/bash
+sudo service fuseki stop
+sudo rm -rf /var/data/fuseki/ds/*
+sudo mkdir /var/data/fuseki/ds/{tdb,lucene}
+
+sudo /home/ian/dev/java/apache-jena/bin/tdbloader --loc=/var/data/fuseki/ds/tdb /opt/dsapi/data/*.ttl
+sudo java -cp /usr/share/fuseki/fuseki-server.jar jena.textindexer --desc=/etc/fuseki/conf.ttl
+sudo chown -R fuseki:fuseki /var/data/fuseki
+
+sudo service fuseki start
