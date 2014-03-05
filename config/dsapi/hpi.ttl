@@ -1,0 +1,42 @@
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix dct:   <http://purl.org/dc/terms/> .
+@prefix qb:    <http://purl.org/linked-data/cube#> .
+@prefix wfd: <http://location.data.gov.uk/def/am/wfd/> .
+@prefix hpi:  <http://landregistry.data.gov.uk/def/hpi/> .
+@prefix dsapi: <http://www.epimorphics.com/public/vocabulary/dsapi#> .
+@prefix admingeo: <http://data.ordnancesurvey.co.uk/ontology/admingeo/> .
+@prefix sr:    <http://data.ordnancesurvey.co.uk/ontology/spatialrelations/> .
+@prefix :  <http://landregistry.data.gov.uk/dsapi/hpi#> .
+
+    :hpi a dsapi:Dataset;
+        rdfs:label "House price index";
+        dct:description "A Data Cube of house price index data from Land Registry";
+    #    dsapi:qb_dataset <http://landregistry.data.gov.uk/data/hpi/dataset>;
+    #    dsapi:qb_dsd hpi:datasetDefinition;
+        dsapi:baseQuery """{
+         select ?item where {
+          ?item qb:dataSet <http://landregistry.data.gov.uk/data/hpi/dataset>
+         }
+        }""";
+        dsapi:aspect
+          [rdfs:label "period"                          ; dsapi:property hpi:refPeriod],
+          [rdfs:label "region"                          ; dsapi:property hpi:refRegion],
+          [rdfs:label "region name"                     ; dsapi:property hpi:refRegionName],
+          [rdfs:label "indices"                         ; dsapi:property hpi:indices],
+          [rdfs:label "indices SA"                      ; dsapi:property hpi:indicesSA],
+          [rdfs:label "average prices SA"               ; dsapi:property hpi:averagePricesSA;                 dsapi:optional true],
+          [rdfs:label "average prices SASM"             ; dsapi:property hpi:averagePricesSASM;               dsapi:optional true],
+          [rdfs:label "indices SASM"                    ; dsapi:property hpi:indicesSASM;                     dsapi:optional true],
+          [rdfs:label "monthly change"                  ; dsapi:property hpi:monthlyChange],
+          [rdfs:label "annual change"                   ; dsapi:property hpi:annualChange],
+          [rdfs:label "sales volume"                    ; dsapi:property hpi:salesVolume;                     dsapi:optional true],
+          [rdfs:label "average prices detached"         ; dsapi:property hpi:averagePricesDetachedSASM;       dsapi:optional true],
+          [rdfs:label "average prices semi-detached"    ; dsapi:property hpi:averagePricesSemiDetachedSASM;   dsapi:optional true],
+          [rdfs:label "average prices terraced"         ; dsapi:property hpi:averagePricesTerracedSASM;       dsapi:optional true],
+          [rdfs:label "average prices flat/maisonette"  ; dsapi:property hpi:averagePricesFlatMaisonetteSASM; dsapi:optional true]
+        .
+

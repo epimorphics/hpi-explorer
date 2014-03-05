@@ -43,6 +43,8 @@ module ValueFormatter
 
     v = result[aspect_of col]
 
+    v = v.first if v.is_a?( Array ) && v.length > 0
+
     if v && v.is_a?( Hash )
       v["@value"] || v
     else

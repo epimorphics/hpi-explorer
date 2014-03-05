@@ -1,0 +1,34 @@
+@prefix admingeo: <http://data.ordnancesurvey.co.uk/ontology/admingeo/> .
+@prefix sr:    <http://data.ordnancesurvey.co.uk/ontology/spatialrelations/> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix dct:   <http://purl.org/dc/terms/> .
+@prefix qb:    <http://purl.org/linked-data/cube#> .
+@prefix wb-classification: <http://environment.data.gov.uk/def/waterbody-classification/> .
+@prefix wfd: <http://location.data.gov.uk/def/am/wfd/> .
+@prefix dsapi: <http://www.epimorphics.com/public/vocabulary/dsapi#> .
+@prefix :  <http://landregistry.data.gov.uk/dsapi/hpi#> .
+
+:hpiLocations a dsapi:Dataset;
+  rdfs:label "HPI locations";
+  dct:description "Locations (regions, counties, boroughs, etc) defined in the HPI data";
+  dsapi:baseQuery """
+    {select distinct ?item where {
+      {?item rdf:type admingeo:EuropeanRegion} union
+      {?item rdf:type admingeo:District} union
+      {?item rdf:type admingeo:UnitaryAuthority} union
+      {?item rdf:type admingeo:Borough} union
+      {?item rdf:type admingeo:County} union
+      {?item rdf:type admingeo:MetropolitanDistrict}
+    }}
+  """;
+  dsapi:aspect
+    [rdfs:label "label"; dsapi:property rdfs:label],
+    [rdfs:label "within"; dsapi:property sr:within; dsapi:optional true],
+    [rdfs:label "contains"; dsapi:property sr:contains; dsapi:optional true; dsapi:multivalued true]
+  .
+
+
