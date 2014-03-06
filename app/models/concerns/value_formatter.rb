@@ -42,6 +42,7 @@ module ValueFormatter
     return no_value unless result
 
     v = result[aspect_of col]
+    return no_value if v == []
 
     v = v.first if v.is_a?( Array ) && v.length > 0
 
@@ -65,6 +66,6 @@ module ValueFormatter
   end
 
   def no_value
-    "no value"
+    nil
   end
 end
