@@ -18,7 +18,7 @@ var HpiPreview = function() {
   var onPreviewDone = function( json ) {
     $("#results-header").empty().html( json.header );
     $("#results-preview").empty().html( json.preview );
-    HpiChart.drawCharts( "table.preview", "chart", false );
+    HpiChart.drawCharts( "table.preview", "#chart", true );
   };
 
   var onPreviewFail = function( jqXhr, error ) {

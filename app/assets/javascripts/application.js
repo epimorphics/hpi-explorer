@@ -20,4 +20,5 @@
 //= require jqplot
 //= require jqplot/plugins/dateAxisRenderer
 //= require jqplot/plugins/barRenderer
+//= require bootstrap
 //= require_tree .

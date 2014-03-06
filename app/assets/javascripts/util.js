@@ -23,7 +23,7 @@ var Util = function() {
     var month = my[0];
     var year = my[1];
 
-    return new Date( parseInt( year ), parseMonth( month ), 1 );
+    return new Date( parseInt( year ), parseMonth( month ), 5 );
   };
 
   /** Return the month number, 0 .. 11, of a given month name */

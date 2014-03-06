@@ -11,18 +11,39 @@ var HpiChart = function() {
   /* Chart options indexed by aspect property */
   var ASPECT_OPTIONS = {
      "hpi:indicesSASM":                     {yaxis: "yaxis"},
-     "hpi:monthlyChange":                   {yaxis: "y2axis"},
-     "hpi:annualChange":                    {yaxis: "y2axis"},
+     "hpi:monthlyChange":                   {yaxis: "y2axis",
+                                             renderer: $.jqplot.BarRenderer,
+                                             rendererOptions: {
+                                               barWidth: 4,
+                                               barPadding: 10,
+                                               fillToZero: true
+                                             }},
+     "hpi:annualChange":                    {yaxis: "y2axis",
+                                             renderer: $.jqplot.BarRenderer,
+                                             rendererOptions: {
+                                               barWidth: 4,
+                                               barPadding: 10,
+                                               fillToZero: true
+                                             }},
      "hpi:salesVolume":                     {yaxis: "y4axis",
                                              renderer: $.jqplot.BarRenderer,
                                              rendererOptions: {
-                                              barWidth: 10
+                                               barWidth: 4,
+                                               barPadding: 10
                                              }},
      "hpi:averagePricesSASM":               {yaxis: "y3axis"},
      "hpi:averagePricesDetachedSASM":       {yaxis: "y3axis"},
      "hpi:averagePricesSemiDetachedSASM":   {yaxis: "y3axis"},
      "hpi:averagePricesTerracedSASM":       {yaxis: "y3axis"},
      "hpi:averagePricesFlatMaisonetteSASM": {yaxis: "y3axis"}
+  };
+
+  /** Labels for different groups of charts */
+  var CHART_TYPE_LABELS = {
+    yaxis: "House price indices",
+    y2axis: "Relative change",
+    y3axis: "Average prices",
+    y4axis: "Sales volume"
   };
 
   /** Module initialisation */
@@ -83,12 +104,81 @@ var HpiChart = function() {
 
   /** Draw the charts for the current data series */
   var drawCharts = function( tableSelector, chartSelector, separate ) {
+    if (separate) {
+      drawMultipleCharts( tableSelector, chartSelector );
+    }
+    else {
+      drawSingleChart( tableSelector, chartSelector );
+    }
+  };
+
+  var drawSingleChart = function( tableSelector, chartSelector ) {
     var chartData = chartDataSeries( tableSelector );
     var keys = chartData._keys.slice( 1 );
     var series = _.map( keys, function( key ){return chartData[key.name]} );
     var options = chartOptions( keys );
 
     $.jqplot( chartSelector, series, options );
+  };
+
+  var drawMultipleCharts = function( tableSelector, chartSelector ) {
+    var chartData = chartDataSeries( tableSelector );
+    var chartSets = partitionChartsByType( chartData );
+    var chartKinds = _.keys( chartSets ).sort();
+    var elem = $(chartSelector);
+
+    elem.empty();
+    var nav = $("<ul id='charts-nav' class='nav nav-pills'></ul>").appendTo( elem );
+    var charts = $( "<div class='tab-content'></div>" ).appendTo( elem );
+
+    _.each( chartKinds, function( chartKind, i ) {
+      var active = (i === 0) ? 'active' : '';
+
+      nav.append( sprintf( "<li class='%s'><a data-toggle='tab' href='#%s'>%s</a></li>",
+                           active, chartKind, CHART_TYPE_LABELS[chartKind] ) );
+      $( sprintf( "<div id='%s' class='%s tab-pane'><div id='%s-chart' class='chart view'></div></div>",
+                  chartKind, active, chartKind ) ).appendTo( charts );
+    } );
+
+    _.each( chartSets, function( keys, kind ) {
+      var series = _.map( keys, function( key ) {return chartData[key.name];} );
+      var options = chartOptions( keys );
+      var ref = "a[href=#" + kind + "]";
+
+      if ($(ref).parent().is(".active")) {
+        // this tab currently visible
+        $.jqplot( kind + "-chart", series, options );
+      }
+      else {
+        $(ref).on( "shown.bs.tab", function( e ) {
+          if (!$(e.currentTarget).data('charted')) {
+            $.jqplot( kind + "-chart", series, options );
+            $(e.currentTarget).data( 'charted', true );
+          }
+        } );
+      }
+    } );
+  };
+
+  /** Partition the selected graphs according to the type of data being displayed,
+   * which we determine from the y-axis type */
+  var partitionChartsByType = function( chartData ) {
+    var partition = {};
+
+    _.each( chartData._keys.slice( 1 ), function( seriesKey ) {
+      var kind = dataKind( seriesKey );
+      if (!partition[kind]) {
+        partition[kind] = [];
+      }
+      partition[kind].push( seriesKey );
+    } );
+
+    return partition;
+  };
+
+  /** Return the type of data in the given series, determined by y-axis */
+  var dataKind = function( seriesKey ) {
+    return ASPECT_OPTIONS[seriesKey.aspect].yaxis;
   };
 
   var chartOptions = function( keys, options ) {
@@ -103,7 +193,8 @@ var HpiChart = function() {
           renderer:$.jqplot.DateAxisRenderer,
           tickOptions: {formatString: "%b %Y"},
           autoformat: true,
-          numberTicks: option( options, "numberXAxisTicks", 5)
+          numberTicks: option( options, "numberXAxisTicks", 5),
+          max: new Date()
         },
         // main y-axis is the house price index
         yaxis: {
@@ -113,11 +204,8 @@ var HpiChart = function() {
         },
         // axis y2 is for relative change
         y2axis: {
-          min: -10,
-          max: 10,
-          numberTicks: 5,
-          autoformat: true,
-          label: "relative change"
+          autoscale: true,
+          label: "change %"
         },
         // axis y3 is currency
         y3axis: {
@@ -137,7 +225,8 @@ var HpiChart = function() {
         location: "se"
       },
       seriesDefaults: {
-        shadow: false
+        shadow: false,
+        markerOptions: { size: 3, style:"x" }
       },
       grid: {
         shadow: false
