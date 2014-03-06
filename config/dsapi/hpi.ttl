@@ -15,13 +15,9 @@
     :hpi a dsapi:Dataset;
         rdfs:label "House price index";
         dct:description "A Data Cube of house price index data from Land Registry";
-    #    dsapi:qb_dataset <http://landregistry.data.gov.uk/data/hpi/dataset>;
+        dsapi:qb_dataset <http://landregistry.data.gov.uk/data/hpi/dataset>;
     #    dsapi:qb_dsd hpi:datasetDefinition;
-        dsapi:baseQuery """{
-         select ?item where {
-          ?item qb:dataSet <http://landregistry.data.gov.uk/data/hpi/dataset>
-         }
-        }""";
+        #dsapi:baseQuery "?item qb:dataSet <http://landregistry.data.gov.uk/data/hpi/dataset>";
         dsapi:aspect
           [rdfs:label "period"                          ; dsapi:property hpi:refPeriod],
           [rdfs:label "region"                          ; dsapi:property hpi:refRegion],

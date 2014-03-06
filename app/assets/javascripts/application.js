@@ -17,4 +17,7 @@
 //= require jquery.ui.widget
 //= require js-routes
 //= require dataTables/jquery.dataTables
+//= require jqplot
+//= require jqplot/plugins/dateAxisRenderer
+//= require jqplot/plugins/barRenderer
 //= require_tree .

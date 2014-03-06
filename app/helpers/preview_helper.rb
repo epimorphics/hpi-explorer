@@ -42,7 +42,11 @@ module PreviewHelper
     elems << content_tag( :tr ) do
       query_command.columns.each_with_index do |col, i|
         concat(
-          content_tag( :th, class: (i > 0) ? "text-right" : "text-center" ) do
+          content_tag( :th, class: (i > 0) ? "text-right" : "text-center",
+                       "data-location" => col[:location],
+                       "data-type" => col[:sType],
+                       "data-aspect" => col[:aspect]
+                     ) do
             col[:label]
           end
         )

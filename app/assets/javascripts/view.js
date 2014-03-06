@@ -17,8 +17,7 @@ var HpiView = function() {
 // jQuery initialisation
 jQuery.extend( jQuery.fn.dataTableExt.oSort, {
     "currency-pre": function ( a ) {
-      a = (a==="-") ? 0 : a.replace( /[^\d\-\.]/g, "" );
-      return parseFloat( a );
+      return Util.parseCurrency( a );
     },
 
     "currency-asc": function ( a, b ) {
@@ -43,14 +42,7 @@ jQuery.extend( jQuery.fn.dataTableExt.oSort, {
     },
 
     "monthyear-pre": function( a ) {
-      var my = a.split(" ");
-      var month = my[0];
-      var year = my[1];
-
-      var m = {January: 0, February: 1, March: 2, April: 3, May: 4, June: 5,
-               July: 6, August: 7, September: 8, October: 9, November: 10, December: 11}[month];
-
-      return new Date( parseInt( year ), m, 1 );
+      return Util.parseMonthYear( a );
     },
 
     "monthyear-asc": function( a, b ) {

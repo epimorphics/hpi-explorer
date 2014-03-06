@@ -10,21 +10,14 @@
 @prefix wb-classification: <http://environment.data.gov.uk/def/waterbody-classification/> .
 @prefix wfd: <http://location.data.gov.uk/def/am/wfd/> .
 @prefix dsapi: <http://www.epimorphics.com/public/vocabulary/dsapi#> .
+@prefix def-hpi: <http://landregistry.data.gov.uk/def/hpi/> .
+
 @prefix :  <http://landregistry.data.gov.uk/dsapi/hpi#> .
 
 :hpiLocations a dsapi:Dataset;
   rdfs:label "HPI locations";
   dct:description "Locations (regions, counties, boroughs, etc) defined in the HPI data";
-  dsapi:baseQuery """
-    {select distinct ?item where {
-      {?item rdf:type admingeo:EuropeanRegion} union
-      {?item rdf:type admingeo:District} union
-      {?item rdf:type admingeo:UnitaryAuthority} union
-      {?item rdf:type admingeo:Borough} union
-      {?item rdf:type admingeo:County} union
-      {?item rdf:type admingeo:MetropolitanDistrict}
-    }}
-  """;
+  dsapi:baseQuery "?item rdf:type def-hpi:Region";
   dsapi:aspect
     [rdfs:label "label"; dsapi:property rdfs:label],
     [rdfs:label "within"; dsapi:property sr:within; dsapi:optional true],

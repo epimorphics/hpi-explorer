@@ -3,7 +3,8 @@ class QueryCommand < DataService
 
   RESULTS_SAMPLE = 5
 
-  ASPECTS = {m_hpi:  {aspect: "hpi:indicesSASM",                     label: "Index",                         sType: "string"},
+  ASPECTS = {
+     m_hpi:  {aspect: "hpi:indicesSASM",                     label: "Index",                         sType: "numeric"},
      m_chm:  {aspect: "hpi:monthlyChange",                   label: "Monthly change",                sType: "numeric"},
      m_chy:  {aspect: "hpi:annualChange",                    label: "Yearly change",                 sType: "numeric"},
      m_vol:  {aspect: "hpi:salesVolume",                     label: "Sales volume",                  sType: "numeric"},
