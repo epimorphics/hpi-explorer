@@ -37,9 +37,14 @@ var HpiChart = function() {
 
     table.find( "th[data-location]" ).each( function( i, cell ) {
       var th = $(cell);
+      var indexName = $.trim( th.text() );
+      var location = th.data( "location" );
+
+      var sKey = sprintf( "%s %s", location, indexName );
+
       var key = {
-        location: th.data( "location" ),
-        name: $.trim( th.text() ),
+        location: location,
+        name: sKey,
         type: th.data( "type" ),
         aspect: th.data( "aspect" )
       };
@@ -88,7 +93,7 @@ var HpiChart = function() {
 
   var chartOptions = function( keys, options ) {
     var seriesOptions = _.map( keys, function( key ) {
-      return _.extend( {label: sprintf( "%s %s", key.location, key.name )},
+      return _.extend( {label: key.name},
                        ASPECT_OPTIONS[key.aspect] )
     } );
 
@@ -130,6 +135,12 @@ var HpiChart = function() {
       legend: {
         show: true,
         location: "se"
+      },
+      seriesDefaults: {
+        shadow: false
+      },
+      grid: {
+        shadow: false
       },
       series: seriesOptions
     };
