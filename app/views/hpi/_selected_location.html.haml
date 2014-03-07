@@ -1,15 +1,5 @@
 %h2.results-title
   #{@preferences.describe_selected_location}
 
-/ %p
-/   %small
-/     Part of:
-/     %a{ href: "#todo"}
-/       Todo link to parent region
-/ %p
-/   %small
-/     Contains:
-/     %em links to areas this location contains, if any. Otherwise, will not appear
-
-%p.text-muted
-  Feature to be added: links to containing and contained regions where available.
+.related-locations
+  = list_related_locations( @preferences )
