@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/alphagov/govuk_frontend_toolkit_gem.git
-  revision: 225fbdf3f1736b2cf2bde39dcffd2cd899fd9262
+  revision: 7b6d9a07ff36aa8dafed7b30c1f5299c52a34506
   submodules: true
   specs:
     govuk_frontend_toolkit (0.43.2)
@@ -17,7 +17,7 @@ GIT
 
 GIT
   remote: git@github.com:epimorphics/ds-api-ruby.git
-  revision: ce447811dad5f8e7329fd65ff01ee4355e6e0436
+  revision: 91c4f3bfae844921fc964f046500151b374819c1
   specs:
     data_services_api (0.0.1)
       faraday_middleware (< 0.9.0)
@@ -142,7 +142,7 @@ GEM
       minispec-metadata (~> 2.0.0)
       minitest (>= 4.7.5)
       vcr (~> 2.8.0)
-    multi_json (1.8.4)
+    multi_json (1.9.0)
     multipart-post (1.2.0)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
