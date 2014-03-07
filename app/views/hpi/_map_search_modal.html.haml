@@ -1,0 +1,19 @@
+#map-modal.modal
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{ type: "button", data: {dismiss: "modal"}, aria: {hidden: "true"}}
+          &times;
+        %h4.modal-title
+          Select a location
+      .modal-body
+        %p
+          above the map
+        #map
+        %p
+          below the map
+      .modal-footer
+        %button.btn.btn-default{ type:"button", data: {dismiss: "modal"}}
+          cancel
+        %button.btn.btn-primary{ type:"button"}
+          use the selected location

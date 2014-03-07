@@ -6,6 +6,7 @@
   .col-sm-2
     %button#action_search.btn{ type: "submit" }
       %i.fa.fa-search
+    %span.js.map-button{ data: {search_id: search_id.n}}
 
   .col-sm-12
     - search_command = @search_commands[search_id.sym] if @search_commands

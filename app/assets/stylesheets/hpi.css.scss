@@ -77,5 +77,14 @@ $lr-yellow: #e5ea08;
   h2 {
     margin-bottom: 1em;
   }
+
+  #map {
+    width: 300px;
+    height: 300px;
+  }
 }
 
+
+.leaflet-tile-container img {
+-webkit-backface-visibility: hidden;
+}

@@ -118,6 +118,7 @@ GEM
       sprockets-rails
     json (1.8.1)
     json_expressions (0.8.2)
+    leaflet-rails (0.7.2)
     libv8 (3.16.14.3)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -246,6 +247,7 @@ DEPENDENCIES
   jquery-ui-rails
   js-routes
   json_expressions (~> 0.8)
+  leaflet-rails
   minitest (~> 4.7)
   minitest-capybara (~> 0.4)
   minitest-rg (~> 1.1)

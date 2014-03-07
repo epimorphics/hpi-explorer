@@ -21,4 +21,5 @@
 //= require jqplot/plugins/dateAxisRenderer
 //= require jqplot/plugins/barRenderer
 //= require bootstrap
+//= require leaflet
 //= require_tree .

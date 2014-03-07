@@ -57,6 +57,7 @@ gem 'jquery-ui-rails'
 gem 'js-routes'
 gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
 gem 'jqplot-rails'
+gem 'leaflet-rails'
 
 group :test do
   gem 'minitest', '~> 4.7'

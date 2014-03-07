@@ -14,6 +14,7 @@ var Hpi = function() {
     $("form.preview").on( "click", "input", onChangePreviewSettings );
     $("a.action-add-comparison").on( "click", onAddComparison );
     $("form.search").on( "click", "a.action-remove-selection", onRemoveSelection );
+    $("form.search").on( "click", "button.action-show-map", onShowMap );
   };
 
   /** Widget and control initialisation */
@@ -36,6 +37,10 @@ var Hpi = function() {
       });
     } );
 
+    // add show map buttons
+    $(".js.map-button").each( function( i, elem ) {
+      showMapButton( elem );
+    } );
   };
 
   /** User has submitted a search on the search form */
@@ -225,6 +230,25 @@ var Hpi = function() {
     $("#results-preview").empty();
     $("#results-header").empty();
   };
+
+  /** Ensure a show-map button is present for the element */
+  var showMapButton = function( elem ) {
+    if ($(elem).find( "button" ).length === 0) {
+      var alt = 'find a location on the map';
+      $(elem).append( sprintf( "<button class='action action-show-map btn btn-primary' alt='%s' title='%s' >" +
+                               "<i class='fa fa-bullseye'></i></button>",
+                               alt, alt ) );
+    }
+  };
+
+  /** User has clicked to show the map */
+  var onShowMap = function( e ) {
+    e.preventDefault();
+    var button = $(e.currentTarget);
+    var searchId = button.parents( "span[data-search-id]" ).data( "search-id" );
+
+    HpiMapSearch.showDialogue( searchId );
+  }
 
   return {
     init: init,

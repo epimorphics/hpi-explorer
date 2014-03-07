@@ -4,3 +4,5 @@
 .row
   #results-preview
     = render partial: "preview/preview" if @preferences.location_complete?
+
+= render partial: 'hpi/map_search_modal'
