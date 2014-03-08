@@ -4,19 +4,22 @@ qb="http://purl.org/linked-data/cube"
 hpi="http://landregistry.data.gov.uk/def/hpi"
 rdfs="http://www.w3.org/2000/01/rdf-schema"
 sr="http://data.ordnancesurvey.co.uk/ontology/spatialrelations"
-query="select ?value ?label ?child ?parent {
+owl="http://www.w3.org/2002/07/owl"
+
+query="select ?value ?label ?child ?parent ?same {
   ?obs a <$qb#Observation> ;
     <$hpi/refRegion> ?value.
   ?value <$rdfs#label> ?label.
   optional {?value <$sr/contains> ?child.}
   optional {?value <$sr/within> ?parent.}
+  optional {?value <$owl#sameAs> ?same}
 }"
 
 echo "Running sparql query"
-arq --data=/opt/dsapi/data/HPI-2014-02.ttl --results=JSON "$query" > results.json
+time arq --data=/opt/dsapi/data/HPI-2014-02.ttl --results=JSON "$query" > results.json
 
 echo "Generating JavaScript"
-ruby region-names-table.rb > ../app/assets/javascripts/hpi-locations.js
+time ruby region-names-table.rb > ../app/assets/javascripts/hpi-locations.js
 
 echo "done"
 
