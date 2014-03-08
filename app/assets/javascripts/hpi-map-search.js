@@ -23,8 +23,7 @@ var HpiMapSearch = function() {
        } );
     }
     else {
-      unHighlightFeature( _selectedFeature );
-      _selectedFeature = null;
+      resetSelection()
     }
   };
 
@@ -117,6 +116,18 @@ var HpiMapSearch = function() {
     var name = feature.feature.properties.NAME;
     var uri = HpiLocations.regionNameIndex[name];
     return HpiLocations.locations[uri];
+  };
+
+  var resetSelection = function() {
+    var f = _selectedFeature;
+    _selectedFeature = null;
+    renderFeatureName( "" );
+    clearSelectionDetails();
+    unHighlightFeature( f );
+  };
+
+  var clearSelectionDetails = function() {
+    $(".selected-region-details").empty();
   };
 
   return {
