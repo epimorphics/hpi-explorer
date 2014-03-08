@@ -18,7 +18,7 @@ var HpiMapSearch = function() {
 
           // workaround for painting bug in Chrome
           if (L.Browser.chrome) {
-            $("button.btn-default").focus();
+            $("button.close").focus();
           }
        } );
     }
@@ -78,7 +78,9 @@ var HpiMapSearch = function() {
     _selectedFeature = e.target;
 
     unHighlightFeature( oldSelectedFeature );
-    highlightFeature( e.target, '#e5ea08' );
+    highlightFeature( _selectedFeature, '#e5ea08' );
+
+    renderFeature( _selectedFeature );
   };
 
   var onEachFeature = function( feature, layer ) {
@@ -93,6 +95,21 @@ var HpiMapSearch = function() {
     _currentSearchId = searchId;
     $("#map-modal").modal('show');
     _.defer( init );
+  };
+
+  var renderFeature = function( feature ) {
+    var location = featureLocation( feature );
+    renderFeatureName( location.label );
+  };
+
+  var renderFeatureName = function( featureName ) {
+    $("#map h3.selected-region").text( featureName );
+  };
+
+  var featureLocation = function( feature ) {
+    var gssCode = feature.feature.properties.CODE;
+    var uri = HpiLocations.gssIndex[gssCode];
+    return HpiLocations.locations[uri];
   };
 
   return {
