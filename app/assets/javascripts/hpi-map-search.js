@@ -11,10 +11,15 @@ var HpiMapSearch = function() {
 
       $.getJSON( "european_region_region-s-100.0.json" )
        .done( function( json ) {
-         _geojson = L.geoJson( json,
+          _geojson = L.geoJson( json,
                                 {style: featureStyle,
                                  onEachFeature: onEachFeature}
-                             ).addTo( _map );
+                              ).addTo( _map );
+
+          // workaround for painting bug in Chrome
+          if (L.Browser.chrome) {
+            $("button.btn-default").focus();
+          }
        } );
     }
     else {
@@ -51,7 +56,7 @@ var HpiMapSearch = function() {
     if (feature) {
       _geojson.resetStyle( feature );
     }
-    if (_selectedFeature && _selectedFeature != feature) {
+    if (_selectedFeature) {
       highlightFeature( _selectedFeature, '#e5ea08' )
     }
   };
@@ -69,8 +74,10 @@ var HpiMapSearch = function() {
   };
 
   var onSelectFeature = function( e ) {
-    unHighlightFeature( _selectedFeature );
+    var oldSelectedFeature = _selectedFeature;
     _selectedFeature = e.target;
+
+    unHighlightFeature( oldSelectedFeature );
     highlightFeature( e.target, '#e5ea08' );
   };
 
