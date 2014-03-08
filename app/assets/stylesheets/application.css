@@ -10,7 +10,7 @@
  *
  *= require_self
  *= require bootstrap
- *= require lr-fonts
+ *= require lr-assets
  *= require_tree .
  *= require font-awesome
  *= require jquery.ui.autocomplete

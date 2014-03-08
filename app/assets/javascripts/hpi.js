@@ -235,8 +235,8 @@ var Hpi = function() {
   var showMapButton = function( elem ) {
     if ($(elem).find( "button" ).length === 0) {
       var alt = 'find a location on the map';
-      $(elem).append( sprintf( "<button class='action action-show-map btn btn-primary' alt='%s' title='%s' >" +
-                               "<i class='fa fa-bullseye'></i></button>",
+      $(elem).append( sprintf( "<button class='action action-show-map btn btn-default map-button' alt='%s' title='%s' >" +
+                               "</button>",
                                alt, alt ) );
     }
   };
