@@ -42,5 +42,19 @@ puts "var HpiLocations = function() {"
 puts "var locationNames = #{location_names.to_json};"
 puts "var locations = #{locations.to_json};"
 puts "var gssIndex = #{gss_index.to_json};"
-puts "return {locationNames: locationNames, locations: locations, gssIndex: gssIndex};"
+puts <<END
+var regionNameIndex = {
+  "Wales Euro Region":                      "http://landregistry.data.gov.uk/id/region/wales",
+  "South West Euro Region":                 "http://landregistry.data.gov.uk/id/region/south-west",
+  "South East Euro Region":                 "http://landregistry.data.gov.uk/id/region/south-east",
+  "London Euro Region":                     "http://landregistry.data.gov.uk/id/region/greater-london",
+  "Eastern Euro Region":                    "http://landregistry.data.gov.uk/id/region/east-anglia",
+  "East Midlands Euro Region":              "http://landregistry.data.gov.uk/id/region/east-midlands",
+  "West Midlands Euro Region":              "http://landregistry.data.gov.uk/id/region/west-midlands",
+  "North West Euro Region":                 "http://landregistry.data.gov.uk/id/region/north-west",
+  "Yorkshire and the Humber Euro Region":   "http://landregistry.data.gov.uk/id/region/yorks-and-humber",
+  "North East Euro Region":                 "http://landregistry.data.gov.uk/id/region/north-east"
+};
+END
+puts "return {locationNames: locationNames, locations: locations, gssIndex: gssIndex, regionNameIndex: regionNameIndex };"
 puts "}();"

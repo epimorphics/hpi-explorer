@@ -99,16 +99,23 @@ var HpiMapSearch = function() {
 
   var renderFeature = function( feature ) {
     var location = featureLocation( feature );
-    renderFeatureName( location.label );
+
+    if (location) {
+      renderFeatureName( location.label );
+    }
+    else {
+      renderFeatureName( "Location not recognised (this is likely a bug)")
+    }
   };
 
   var renderFeatureName = function( featureName ) {
-    $("#map h3.selected-region").text( featureName );
+    $("#map-modal h3.selected-region").text( featureName );
   };
 
   var featureLocation = function( feature ) {
     var gssCode = feature.feature.properties.CODE;
-    var uri = HpiLocations.gssIndex[gssCode];
+    var name = feature.feature.properties.NAME;
+    var uri = HpiLocations.regionNameIndex[name];
     return HpiLocations.locations[uri];
   };
 
