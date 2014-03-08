@@ -58,10 +58,8 @@ var Hpi = function() {
     var locationName = ui.item.label;
     var locationURI = ui.item.value;
 
-    showSelectedLocation( e.target, searchId, locationName, locationURI );
-
-    drawPreview();
     $(e.currentTarget).val( "" );
+    selectLocation( locationName, locationURI, searchId, e.currentTarget );
   };
 
   /** User has started typing into an input field */
@@ -72,6 +70,13 @@ var Hpi = function() {
 
   /** User has clicked to change some of the preview settings */
   var onChangePreviewSettings = function( e ) {
+    drawPreview();
+  };
+
+  /** Show that a location has been selected by the user */
+  var selectLocation = function( locationName, locationURI, sId, targetElem ) {
+    var searchId = asSearchId( sId );
+    showSelectedLocation( targetElem, searchId, locationName, locationURI );
     drawPreview();
   };
 
@@ -247,12 +252,13 @@ var Hpi = function() {
     var button = $(e.currentTarget);
     var searchId = button.parents( "span[data-search-id]" ).data( "search-id" );
 
-    HpiMapSearch.showDialogue( searchId );
+    HpiMapSearch.showDialogue( searchId, e.currentTarget );
   }
 
   return {
     init: init,
-    currentInteractionState: currentInteractionState
+    currentInteractionState: currentInteractionState,
+    selectLocation: selectLocation
   }
 }();
 

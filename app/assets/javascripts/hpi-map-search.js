@@ -4,6 +4,7 @@ var HpiMapSearch = function() {
   var _geojson;
   var _map;
   var _currentSearchId;
+  var _targetElem;
 
   var init = function() {
     if (!_map) {
@@ -21,6 +22,8 @@ var HpiMapSearch = function() {
             $("button.close").focus();
           }
        } );
+
+       $("#map-modal").on( "click", "a.choose-location", onChooseLocation );
     }
     else {
       resetSelection()
@@ -90,8 +93,10 @@ var HpiMapSearch = function() {
     });
   }
 
-  var showDialogue = function( searchId ) {
+  var showDialogue = function( searchId, targetElem ) {
     _currentSearchId = searchId;
+    _targetElem = targetElem;
+
     $("#map-modal").modal('show');
     _.defer( init );
   };
@@ -161,6 +166,16 @@ var HpiMapSearch = function() {
     $(".selection-reset").empty();
   };
 
+  var onChooseLocation = function( e ) {
+    e.preventDefault();
+    var elem = $(e.currentTarget);
+    var uri = elem.data( "uri" );
+    var name = $.trim( elem.text() );
+
+    $("#map-modal").modal( "hide" );
+
+    Hpi.selectLocation( name, uri, _currentSearchId, _targetElem );
+  }
   return {
     init: init,
     showDialogue: showDialogue

@@ -17,6 +17,7 @@ sresults["results"]["bindings"].each do |result|
     end
 
     location = locations[v]
+    location[:uri] = v
     location[:label] = l["value"]
     location[:parent] = p["value"] if p
     location[:children] << c["value"] if c
