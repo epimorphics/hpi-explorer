@@ -97,18 +97,50 @@ var HpiMapSearch = function() {
   };
 
   var renderFeature = function( feature ) {
+    clearSelectionDetails();
+
     var location = featureLocation( feature );
 
     if (location) {
-      renderFeatureName( location.label );
+      renderCountry( location );
+      renderRegion( location );
+      renderCounties( location );
     }
     else {
-      renderFeatureName( "Location not recognised (this is likely a bug)")
+      $("#map-modal .selected-region-options").html( "Location not recognised (this is likely a bug)")
     }
   };
 
-  var renderFeatureName = function( featureName ) {
-    $("#map-modal h3.selected-region").text( featureName );
+  var renderRegion = function( location ) {
+    $("#map-modal .selected-region").text( "Region" );
+    renderSelectionButton( location, ".selected-region-options" )
+  };
+
+  var renderCountry = function( location ) {
+    if (location.parent) {
+      var country = HpiLocations.locations[location.parent];
+      $("#map-modal .selected-country").text( "Country" );
+      renderSelectionButton( country, ".selected-country-options" )
+    }
+  };
+
+  var renderCounties = function( location ) {
+    if (location.children) {
+        $("#map-modal .selected-counties").text( "contains" );
+        var prefix = "";
+
+      _.each( location.children, function( uri, i ) {
+        var county = HpiLocations.locations[uri];
+        renderSelectionButton( county, ".selected-counties-options", prefix )
+        prefix = ", "
+      } );
+    }
+  };
+
+  var renderSelectionButton = function( location, selector, prefix ) {
+    var html = sprintf( "%s<a class='action button-default choose-location' data-uri='%s'>%s</a>",
+                         prefix || "", location.uri, location.label );
+    $("#map-modal " + selector ).append( html );
   };
 
   var featureLocation = function( feature ) {
@@ -121,13 +153,12 @@ var HpiMapSearch = function() {
   var resetSelection = function() {
     var f = _selectedFeature;
     _selectedFeature = null;
-    renderFeatureName( "" );
-    clearSelectionDetails();
     unHighlightFeature( f );
+    clearSelectionDetails();
   };
 
   var clearSelectionDetails = function() {
-    $(".selected-region-details").empty();
+    $(".selection-reset").empty();
   };
 
   return {

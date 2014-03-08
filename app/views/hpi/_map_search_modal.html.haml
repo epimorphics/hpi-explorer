@@ -7,7 +7,24 @@
         %h2.modal-title
           Select a location
       .modal-body
-        #map
-        #map-selection
-          %h3.selected-region
-          .selected-region-details
+        .row
+          .col-md-7
+            #map
+          .col-md-5
+            #map-selection
+              .row
+                .col-sm-12
+                  %span.selected-country.selection-reset
+                .col-sm-12
+                  %span.selected-country-options.selection-reset
+              .row
+                .col-sm-12
+                  %span.selected-region.selection-reset
+                .col-sm-12
+                  %span.selected-region-options.selection-reset
+              .row
+                .col-sm-12
+                  %span.selected-counties.selection-reset
+                .col-sm-12
+                  %span.selected-counties-options.selection-reset
+
