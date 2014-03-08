@@ -10,7 +10,7 @@ var HpiMapSearch = function() {
     if (!_map) {
       _map = L.map( 'map' ).setView( [53.0072, -2], 6 );
 
-      $.getJSON( "european_region_region-s-100.0.json" )
+      $.getJSON( Routes.root_path() + "european_region_region-s-100.0.json" )
        .done( function( json ) {
           _geojson = L.geoJson( json,
                                 {style: featureStyle,
