@@ -1,7 +1,22 @@
 #!/bin/bash
 
-arq --data=/opt/dsapi/data/HPI-2014-02.ttl --results=JSON 'select distinct ?value ?label {?obs a <http://purl.org/linked-data/cube#Observation> ; <http://landregistry.data.gov.uk/def/hpi/refRegion> ?value. ?value <http://www.w3.org/2000/01/rdf-schema#label> ?label}' > results.json
+qb="http://purl.org/linked-data/cube"
+hpi="http://landregistry.data.gov.uk/def/hpi"
+rdfs="http://www.w3.org/2000/01/rdf-schema"
+sr="http://data.ordnancesurvey.co.uk/ontology/spatialrelations"
+query="select ?value ?label ?child ?parent {
+  ?obs a <$qb#Observation> ;
+    <$hpi/refRegion> ?value.
+  ?value <$rdfs#label> ?label.
+  optional {?value <$sr/contains> ?child.}
+  optional {?value <$sr/within> ?parent.}
+}"
 
-ruby region-names-table.rb > region-names.js
+echo "Running sparql query"
+arq --data=/opt/dsapi/data/HPI-2014-02.ttl --results=JSON "$query" > results.json
 
+echo "Generating JavaScript"
+ruby region-names-table.rb > ../app/assets/javascripts/hpi-locations.js
+
+echo "done"
 

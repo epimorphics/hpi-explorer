@@ -27,7 +27,7 @@ var Hpi = function() {
       var sId = searchIdFromElement( elem );
 
       $(elem).autocomplete({
-        source: HpiSearch.regionNames,
+        source: HpiLocations.locationNames,
         select: function( e, ui ) {
           onAutocompleteSelect( sId, e, ui );
         },
