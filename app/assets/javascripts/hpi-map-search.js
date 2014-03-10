@@ -118,34 +118,40 @@ var HpiMapSearch = function() {
 
   var renderRegion = function( location ) {
     $("#map-modal .selected-region").text( "Region" );
-    renderSelectionButton( location, ".selected-region-options" )
+    renderSelectionButton( location, $("#map-modal .selected-region-options") );
   };
 
   var renderCountry = function( location ) {
     if (location.parent) {
       var country = HpiLocations.locations[location.parent];
-      $("#map-modal .selected-country").text( "Country" );
-      renderSelectionButton( country, ".selected-country-options" )
+      $("#map-modal .selected-within").text( "is within" );
+      renderSelectionButton( country, $("#map-modal .selected-within-options") );
     }
   };
 
   var renderCounties = function( location ) {
     if (location.children) {
-        $("#map-modal .selected-counties").text( "contains" );
-        var prefix = "";
+      var elem = $("#map-modal " + ".selected-counties-options" );
+      $("#map-modal .selected-counties").text( "contains" );
+      var prefix = "";
 
       _.each( location.children, function( uri, i ) {
         var county = HpiLocations.locations[uri];
-        renderSelectionButton( county, ".selected-counties-options", prefix )
+        renderSelectionButton( county, elem, prefix )
         prefix = ", "
       } );
     }
   };
 
-  var renderSelectionButton = function( location, selector, prefix ) {
-    var html = sprintf( "%s<a class='action button-default choose-location' data-uri='%s'>%s</a>",
-                         prefix || "", location.uri, location.label );
-    $("#map-modal " + selector ).append( html );
+  var renderSelectionButton = function( location, elem, prefix ) {
+    if (!location) {
+      console.log("Warning: undefined location (this is a bug)" );
+    }
+    else {
+      var html = sprintf( "%s<a class='action button-default choose-location' data-uri='%s'>%s</a>",
+                           prefix || "", location.uri, location.label );
+      elem.append( html );
+    }
   };
 
   var featureLocation = function( feature ) {
