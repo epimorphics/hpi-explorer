@@ -59,7 +59,7 @@ var Hpi = function() {
     var locationURI = ui.item.value;
 
     $(e.currentTarget).val( "" );
-    selectLocation( locationName, locationURI, searchId, e.currentTarget );
+    selectLocation( locationName, locationURI, searchId, e.target );
   };
 
   /** User has started typing into an input field */
