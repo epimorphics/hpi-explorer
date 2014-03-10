@@ -49,7 +49,7 @@ var regionNameIndex = {
   "South West Euro Region":                 "http://landregistry.data.gov.uk/id/region/south-west",
   "South East Euro Region":                 "http://landregistry.data.gov.uk/id/region/south-east",
   "London Euro Region":                     "http://landregistry.data.gov.uk/id/region/greater-london",
-  "Eastern Euro Region":                    "http://landregistry.data.gov.uk/id/region/east-anglia",
+  "Eastern Euro Region":                    "http://landregistry.data.gov.uk/id/region/east",
   "East Midlands Euro Region":              "http://landregistry.data.gov.uk/id/region/east-midlands",
   "West Midlands Euro Region":              "http://landregistry.data.gov.uk/id/region/west-midlands-region",
   "North West Euro Region":                 "http://landregistry.data.gov.uk/id/region/north-west",
