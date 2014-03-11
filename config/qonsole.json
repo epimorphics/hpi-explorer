@@ -1,6 +1,6 @@
 {
   "endpoints": {
-    "default": "http://environment.data.gov.uk/sparql/bwq/query",
+    "default": "http://environment.data.gov.uk/sparql/bwq/query"
   },
   "prefixes": {
     "bw":       "http://environment.data.gov.uk/def/bathing-water/",
