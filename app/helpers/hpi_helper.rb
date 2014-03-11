@@ -14,7 +14,9 @@ module HpiHelper
       lc = Location.new( uri )
 
       within = render_place_link( lc.within, preferences, search_id ) if lc.within
-      contains = lc.contains.map {|place| render_place_link( place, preferences, search_id )}
+      contains = lc.contains
+                   .sort {|place0, place1| place0["label"] <=> place1["label"]}
+                   .map {|place| render_place_link( place, preferences, search_id )}
       name = preferences.selected_location_name( search_id )
 
       if within && contains.length > 0
