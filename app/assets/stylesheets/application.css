@@ -17,6 +17,7 @@
  *= require dataTables/jquery.dataTables
  *= require jqplot
  *= require leaflet
+ *= require qonsole_rails/qonsole
  *= require hpi
  */
 

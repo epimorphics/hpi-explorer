@@ -23,6 +23,15 @@ GIT
       faraday_middleware (< 0.9.0)
       json (~> 1.8.0)
 
+PATH
+  remote: /home/ian/workspace/qonsole-rails
+  specs:
+    qonsole-rails (0.0.1)
+      fontawesome-rails
+      haml
+      rails (~> 4.0.2)
+      respond-rails (~> 1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -94,6 +103,9 @@ GEM
       faraday (>= 0.7.4, < 0.9)
     font-awesome-rails (4.0.3.1)
       railties (>= 3.2, < 5.0)
+    fontawesome-rails (4.0.3.0)
+      actionpack (>= 3.1)
+      railties (>= 3.1)
     haml (4.0.5)
       tilt
     haml-rails (0.5.3)
@@ -177,6 +189,8 @@ GEM
     rdoc (4.1.1)
       json (~> 1.4)
     ref (1.0.5)
+    respond-rails (1.0.1)
+      railties (>= 3.1.0)
     safe_yaml (1.0.1)
     sass (3.2.14)
     sass-rails (4.0.1)
@@ -254,6 +268,7 @@ DEPENDENCIES
   minitest-spec-rails (~> 4.7)
   minitest-vcr
   pry
+  qonsole-rails!
   quiet_assets
   rails (= 4.0.2)
   sass-rails (~> 4.0.0)

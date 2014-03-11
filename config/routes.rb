@@ -10,6 +10,8 @@ HpiExplorer::Application.routes.draw do
   resources :preview, only: [:index,:create]
   resources :view, only: [:index]
 
+  mount QonsoleRails::Engine, at: "/qonsole"
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

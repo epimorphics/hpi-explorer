@@ -10,6 +10,7 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require underscore
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.mouse
@@ -22,4 +23,5 @@
 //= require jqplot/plugins/barRenderer
 //= require bootstrap
 //= require leaflet
+//= require qonsole_rails/application
 //= require_tree .
