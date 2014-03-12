@@ -23,8 +23,9 @@ GIT
       faraday_middleware (< 0.9.0)
       json (~> 1.8.0)
 
-PATH
-  remote: /home/ian/workspace/qonsole-rails
+GIT
+  remote: git@github.com:epimorphics/qonsole-rails.git
+  revision: f2d74e474bb42da8f53a34a076f32809379404c2
   specs:
     qonsole-rails (0.0.1)
       fontawesome-rails

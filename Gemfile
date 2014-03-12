@@ -59,7 +59,8 @@ gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-ra
 gem 'jqplot-rails'
 gem 'leaflet-rails'
 
-gem 'qonsole-rails', path: '/home/ian/workspace/qonsole-rails'
+#gem 'qonsole-rails', path: '/home/ian/workspace/qonsole-rails'
+gem 'qonsole-rails', git: 'git@github.com:epimorphics/qonsole-rails.git'
 
 group :test do
   gem 'minitest', '~> 4.7'
