@@ -24,19 +24,23 @@
               Menu
             %nav#proposition-menu
               - relative_root = Rails.application.config.relative_url_root
+              - ppd_active = request.original_url =~ /ppd/ ? :active : nil
+              - qonsole_active = request.original_url =~ /qonsole/ ? :active : nil
+              - hpi_active = (ppd_active || qonsole_active) ? nil : "active"
+
               %a#proposition-name{ href: "http://landregistry.data.gov.uk" }
                 Land Registry Linked Open Data
                 %a.beta-tag{ href: ""}
                   beta
               %ul#proposition-links
                 %li
-                  %a{ href: "#{relative_root}hpi", class: (request.original_url =~ /hpi/ ? :active : "") }
+                  %a{ href: "#{relative_root}/hpi", class: hpi_active }
                     House Price Index
                 %li
-                  %a{ href: "todo" }
+                  %a{ href: "todo", class: ppd_active }
                     Price Paid Data
                 %li
-                  %a{ href: "#{relative_root}qonsole", class: (request.original_url =~ /qonsole/ ? :active : "") }
+                  %a{ href: "#{relative_root}/qonsole", class: qonsole_active }
                     SPARQL query
   .lr-top-bar
   .container{ role: "main"}
