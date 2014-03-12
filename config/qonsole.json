@@ -1,25 +1,23 @@
 {
   "endpoints": {
-    "default": "http://environment.data.gov.uk/sparql/bwq/query"
+    "default": "http://landregistry.data.gov.uk/landregistry/query"
   },
   "prefixes": {
-    "bw":       "http://environment.data.gov.uk/def/bathing-water/",
-    "bwq":      "http://environment.data.gov.uk/def/bathing-water-quality/",
-    "ef-sp":    "http://location.data.gov.uk/def/ef/SamplingPoint/",
-    "interval": "http://reference.data.gov.uk/def/intervals/",
-    "stats":    "http://statistics.data.gov.uk/def/administrative-geography/",
-    "sr":       "http://data.ordnancesurvey.co.uk/ontology/spatialrelations/",
     "rdf":      "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs":     "http://www.w3.org/2000/01/rdf-schema#",
     "owl":      "http://www.w3.org/2002/07/owl#",
-    "xsd":      "http://www.w3.org/2001/XMLSchema#"
+    "xsd":      "http://www.w3.org/2001/XMLSchema#",
+    "sr":       "http://data.ordnancesurvey.co.uk/ontology/spatialrelations/",
+    "lrhpi":    "http://landregistry.data.gov.uk/def/hpi/",
+    "skos":     "http://www.w3.org/2004/02/skos/core#",
+    "lrcommon": "http://landregistry.data.gov.uk/def/common/"
   },
   "queries": [
-    { "name": "Properties of a named bathing water",
-      "query": "select ?predicate ?object\nwhere {\n ?bw rdfs:label \"Spittal\"@en ;\n  ?predicate ?object\n}"
+    { "name": "house price indices for Plymouth",
+      "query": "# Returns the House Price Index from the default graph for particular Local Authority / Region\n\nSELECT DISTINCT ?region ?yearmonth ?indexr ?avgprice ?monthly ?annual ?volume\nWHERE\n{ \n  <http://landregistry.data.gov.uk/data/hpi/region/City-of-Plymouth/month/2013-02>\n    lrhpi:refRegionName ?region ;\n    lrhpi:indicesSASM ?indexSASM ;\n    lrhpi:refPeriod ?yearmonth ;\n    lrhpi:averagePricesSASM ?avgprice ;\n    lrhpi:monthlyChange ?monthly ;\n    lrhpi:annualChange ?annual.\n\n  OPTIONAL {\n    <http://landregistry.data.gov.uk/data/hpi/region/City-of-Plymouth/month/2013-02> \n      lrhpi:salesVolume ?volume . \n  }\n\n  BIND (ROUND(xsd:decimal(?indexSASM) * 100)/100 AS ?indexr)\n}"
     },
-    { "name": "all OWL classes",
-      "query": "select ?class ?label ?description\nwhere {\n  ?class a owl:Class.\n  optional { ?class rdfs:label ?label}\n  optional { ?class rdfs:comment ?description}\n}"
+    { "name": "transactions in a postcode",
+      "query": "# Returns the Price Paid data from the default graph for each transaction record having\n# an address with the given postcode.\n# The postcode to query is set in the line - ?address_instance common:postcode \"PL6 8RU\"^^xsd:string .\n\n\nSELECT ?paon ?saon ?street ?town ?county ?postcode ?amount ?date\nWHERE\n{\n  ?transx lrppi:pricePaid ?amount ;\n          lrppi:transactionDate ?date ;\n          lrppi:propertyAddress ?addr.\n  \n  ?addr lrcommon:postcode \"PL6 8RU\"^^xsd:string.\n  ?addr lrcommon:postcode ?postcode.\n  \n  OPTIONAL {?addr lrcommon:county ?county}\n  OPTIONAL {?addr lrcommon:paon ?paon}\n  OPTIONAL {?addr lrcommon:saon ?saon}\n  OPTIONAL {?addr lrcommon:street ?street}\n  OPTIONAL {?addr lrcommon:town ?town}\n\n}\nORDER BY ?amount"
     }
   ]
 }
