@@ -33,7 +33,6 @@ class Location < DataService
   end
 
   def label_for( uri, lang = "en" )
-    # binding.pry if uri =~ /torbay/i
     l = labels( uri ).find {|l| l.kind_of?(Hash) ? l["@language"] == lang : true}
     return l unless l.kind_of?( Hash )
     l["@value"]

@@ -35,6 +35,7 @@ class UserPreferences
                    from_m from_y to_m to_y
                    source
                    format
+                   explain
                   )
                ).map( &:to_s )
 

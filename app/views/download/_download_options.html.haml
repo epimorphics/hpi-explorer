@@ -37,5 +37,5 @@
           edit the query to further refine your results.
 
         %p
-          %a.btn.btn-lg.btn-default{ href: @preferences.as_path( :download )}
+          %a.btn.btn-lg.btn-default{ href: @preferences.as_path( :download, {explain: true} )}
             view SPARQL query
