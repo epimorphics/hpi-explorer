@@ -2,6 +2,11 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.0.2'
 
+# locking due to version problems
+gem 'sass', '3.2.14'
+gem 'slop', '3.4.7'
+gem 'sprockets', '2.11.0'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -74,3 +79,6 @@ group :test do
   gem 'webmock'
 end
 
+group :development do
+  gem 'unicorn'
+end
