@@ -1,0 +1,4 @@
+<% @query_command.columns.each_with_index do |col,i| %><%= (i > 0) ? "," : "" %><%= "\"#{col[:label]}\"".html_safe %> <% end %>
+<% @query_command.results.each do |result| %>
+<% result.each_with_index do |v,i| %><%= (i > 0) ? "," : "" %><%= (v.is_a? Numeric) ? v : "\"#{v}\"".html_safe %> <% end %>
+<% end %>

@@ -1,12 +1,12 @@
 %section.col-md-12
   %h2
-    Results preview
+    Previewing: #{@preferences.describe_selected_location}
 
     .pull-right
       .small
         %a.btn.btn-primary{ href: "#{@preferences.as_path( :view )}"}
           Show full results
-        %a.btn.btn-primary{ href: "#"}
+        %a.btn.btn-primary{ href: "#{@preferences.as_path( :download )}"}
           Download data
 
   #chart.preview

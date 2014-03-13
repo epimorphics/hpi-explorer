@@ -1,18 +1,22 @@
 module ValueFormatter
   include ActionView::Helpers::NumberHelper
 
+  DOWNLOAD_FORMATTERS = {
+    "hpi:refPeriod"                       => ->(c, v){c.format_month_year v},
+    "hpi:refRegion"                       => ->(c, v){c.format_uri v}
+  }
+
   FORMATTERS = {
     "hpi:averagePricesSASM"               => ->(c, v){c.format_currency_r v},
     "hpi:averagePricesDetachedSASM"       => ->(c, v){c.format_currency_r v},
     "hpi:averagePricesSemiDetachedSASM"   => ->(c, v){c.format_currency_r v},
     "hpi:averagePricesTerracedSASM"       => ->(c, v){c.format_currency_r v},
-    "hpi:averagePricesFlatMaisonetteSASM" => ->(c, v){c.format_currency_r v},
-    "hpi:refPeriod"                       => ->(c, v){c.format_month_year v}
-  }
+    "hpi:averagePricesFlatMaisonetteSASM" => ->(c, v){c.format_currency_r v}
+  }.merge( DOWNLOAD_FORMATTERS )
 
-  def format_value( results, i, col )
+  def format_value( results, i, col, formatters = FORMATTERS )
     v = raw_value( results, i, col )
-    if f = FORMATTERS[aspect_of col]
+    if f = formatters[aspect_of col]
       v = f.call( self, v )
     end
     v
@@ -35,6 +39,10 @@ module ValueFormatter
     year, month = val.split( "-" ).map( &:to_i )
     date = Date.new( year, month, 1 )
     date.strftime( "%B %Y")
+  end
+
+  def format_uri( val )
+    val["@id"]
   end
 
   def raw_value( results, i, col )

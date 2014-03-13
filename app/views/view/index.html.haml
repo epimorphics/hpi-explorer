@@ -1,11 +1,7 @@
 %section.col-md-12
   %h2
     #{@preferences.describe_selected_location}
-
-    .pull-right
-      .small
-        %a.btn.btn-primary{ href: "#{@preferences.as_path( :hpi )}"}
-          Change search settings
+    = render partial: "hpi/change_search_settings"
 
   #charts.view
 

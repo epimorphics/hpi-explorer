@@ -34,6 +34,7 @@ class UserPreferences
                    compare
                    from_m from_y to_m to_y
                    source
+                   format
                   )
                ).map( &:to_s )
 
@@ -56,12 +57,12 @@ class UserPreferences
     param( :"loc_#{sid.n}" )
   end
 
-  def describe_selected_location
+  def describe_selected_location( framing=["Index data for", "Comparing"] )
     sn = (0..1).map {|i| selected_location_name( search_id( i ) )} .compact
 
     case sn.length
-    when 1 then "Index data for #{sn[0]}"
-    when 2 then "Comparing #{sn[0]} and #{sn[1]}"
+    when 1 then "#{framing[0]} #{sn[0]}"
+    when 2 then "#{framing[1]} #{sn[0]} and #{sn[1]}"
     end
   end
 
@@ -146,6 +147,8 @@ class UserPreferences
         preview_index_path( path_params )
       when :hpi
         hpi_index_path( path_params )
+      when :download
+        download_index_path( path_params )
       else
         raise "Do not know how to make path for #{controller}"
       end
