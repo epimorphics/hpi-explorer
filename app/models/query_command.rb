@@ -1,5 +1,6 @@
 class QueryCommand < DataService
   include ValueFormatter
+  include DsapiTurtleFormatter
 
   RESULTS_SAMPLE = 5
 
