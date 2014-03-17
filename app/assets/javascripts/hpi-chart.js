@@ -128,7 +128,7 @@ var HpiChart = function() {
     var elem = $(chartSelector);
 
     elem.empty();
-    var nav = $("<ul id='charts-nav' class='nav nav-pills'></ul>").appendTo( elem );
+    var nav = $("<ul id='charts-nav' class='nav nav-tabs'></ul>").appendTo( elem );
     var charts = $( "<div class='tab-content'></div>" ).appendTo( elem );
 
     _.each( chartKinds, function( chartKind, i ) {

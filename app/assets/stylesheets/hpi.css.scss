@@ -9,6 +9,7 @@
 $lr-dark-green: #5A8006;
 $lr-mid-green: #ACCD40;
 $lr-yellow: #e5ea08;
+$lr-bright-green: #74bd46;
 
 /* styles */
 
@@ -25,7 +26,11 @@ $lr-yellow: #e5ea08;
   }
 
   #global-header .header-proposition #proposition-links li a {
-    color: $lr-dark-green;
+    color: $lr-mid-green;
+  }
+
+  #global-header .header-proposition #proposition-links li a.active {
+    color: $lr-bright-green;
   }
 
   #global-header .header-proposition #proposition-name {
@@ -89,6 +94,19 @@ $lr-yellow: #e5ea08;
 
   .related-locations {
     margin-bottom: 1em;
+  }
+
+
+  // buttons
+  a.btn.btn-primary, a.btn.btn-primary:hover, a.btn.btn-primary:visited {
+    background-color: $lr-dark-green;
+    color: white;
+    font-family: nta, Arial, sans-serif;
+    border: 1px solid darken( $lr-dark-green, 5% );
+  }
+
+  a.action, a.action:hover, a.action:visited {
+    color: $lr-dark-green;
   }
 }
 

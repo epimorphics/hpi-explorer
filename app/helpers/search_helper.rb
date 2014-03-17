@@ -29,7 +29,7 @@ module SearchHelper
 
     link_to( "<i class='fa fa-times-circle'></i>".html_safe,
              path,
-             {class: "btn btn-sm", alt: "Remove this location", title: "Remove"}
+             {class: "btn btn-sm action action-remove-location", alt: "Remove this location", title: "Remove"}
            )
   end
 end
