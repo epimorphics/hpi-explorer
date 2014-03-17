@@ -1,7 +1,7 @@
 var HpiDates = function() {
   "use strict";
 
-  var _min = new Date( 1997, 0, 1 );
+  var _min = new Date( 1995, 0, 1 );
   var _max = new Date();
   var _initialised = false;
   var _start_at;
