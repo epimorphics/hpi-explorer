@@ -5,6 +5,7 @@ var Hpi = function() {
   var init = function() {
     initControls();
     bindEvents();
+    drawPreview();
   };
 
   /** Event handling */
