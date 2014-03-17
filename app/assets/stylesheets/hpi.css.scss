@@ -30,7 +30,7 @@ $lr-bright-green: #74bd46;
   }
 
   #global-header .header-proposition #proposition-links li a.active {
-    color: $lr-bright-green;
+    color: $lr-dark-green;
   }
 
   #global-header .header-proposition #proposition-name {
@@ -40,6 +40,17 @@ $lr-bright-green: #74bd46;
 
   #global-header .header-proposition a.menu {
     color: $lr-dark-green;
+  }
+
+  :focus, a:focus, input:focus {
+    outline: 1px dotted $lr-bright-green;
+    background-color: inherit;
+  }
+
+  .form-control:focus {
+    border: 0;
+    box-shadow: none;
+    -webkit-box-shadow: none;
   }
 
   .lr-top-bar {
