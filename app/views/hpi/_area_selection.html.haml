@@ -2,7 +2,7 @@
   %h3
     = title
     - if search_id.n > 0
-      %a.btn.btn-sm.action-remove-comparison{ title: "Remove comparison", href: @preferences.as_path( :hpi, {}, [:compare, :loc_1, :loc_uri_1] )}
+      %a.btn.btn-sm.action.action-remove-comparison{ title: "Remove comparison", href: @preferences.as_path( :hpi, {}, [:compare, :loc_1, :loc_uri_1] )}
         %i.fa.fa-times-circle
   .col-sm-8
     = text_field_tag( preferences.attribute_with_search_id( "search", search_id ), "", class: "form-control" )
