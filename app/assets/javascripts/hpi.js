@@ -14,6 +14,7 @@ var Hpi = function() {
     $("a.action-add-comparison").on( "click", onAddComparison );
     $("form.search").on( "click", "a.action-remove-selection", onRemoveSelection );
     $(".container").on( "click", "a.action-show-map", onShowMap );
+    $("form.preview").on( "change", ".dates-filter select", function() {HpiPreview.updatePreview();} )
   };
 
   /** Widget and control initialisation */

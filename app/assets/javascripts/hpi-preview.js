@@ -22,7 +22,7 @@ var HpiPreview = function() {
   };
 
   var onPreviewFail = function( jqXhr, error ) {
-
+    console.log( "Preview failed: " + error )
   };
 
   return {

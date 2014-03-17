@@ -1,7 +1,6 @@
 = form_tag( {controller: :preview, action: :create}, class: "form-horizontal preview", role: "form" ) do
   .row
-    .col-md-12
-      = render partial: "hpi/filter_selection"
+    = render partial: "hpi/filter_selection"
 
   .row
     = render partial: "hpi/measure_selection"

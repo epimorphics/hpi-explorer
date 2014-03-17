@@ -7,7 +7,13 @@ class ApplicationController < ActionController::Base
     @preferences ||= UserPreferences.new( params )
   end
 
+  def time_period
+    @time_period ||= TimePeriod.new( preferences )
+  end
+
   def set_search_configuration
+    time_period
+
     @search_id_0 = preferences.search_id( 0 )
     @search_id_1 = preferences.search_id( 1 )
 

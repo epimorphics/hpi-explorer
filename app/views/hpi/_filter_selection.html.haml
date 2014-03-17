@@ -1,31 +1,20 @@
-%section.filter-selection
-  %h3
-    Select dates
-  - months = %w(January February March April May June July August September October November December).zip( 1..12 )
-  - year = Time.now.year
-  - current_year = year.to_s
-  - previous_year = (year - 1).to_s
-  - current_month = Time.now.month
-  - years = (1995 .. year).map( &:to_s )
+.dates-filter.col-md-6
+  .row
+    .col-md-12
+      %section
+        %h3 Using dates
+        .inline From:
+        = select_tag( :from_m, options_for_select( @time_period.months, @time_period.from_month ) )
+        = select_tag( :from_y, options_for_select( @time_period.years, @time_period.from_year ) )
+        .inline.date-to to:
+        = select_tag( :to_m, options_for_select( @time_period.months, @time_period.to_month ) )
+        = select_tag( :to_y, options_for_select( @time_period.years, @time_period.to_year ) )
 
-  .row.no-js
-    .col-sm-3
-      %label
-        From
-    .col-sm-9
-      = select_tag( :from_m, options_for_select( months, current_month ) )
-      = select_tag( :from_y, options_for_select( years, previous_year ) )
-
-  .row.no-js
-    .col-sm-3
-      %label
-        To
-    .col-sm-9
-      = select_tag( :to_m, options_for_select( months, current_month ) )
-      = select_tag( :to_y, options_for_select( years, current_year ) )
-
-  #date-slider
+.dates-filter.col-md-6
+  .row
+    .col-md-12
+      %section
 
 
-  :javascript
-    $( function() {HpiDates.setDateRange( new Date( #{previous_year}, #{current_month} - 1, 1 ), new Date( #{current_year}, #{current_month} - 1, 1 ) ) } );
+/ :javascript
+/   $( function() {HpiDates.setDateRange( new Date( #{previous_year}, #{current_month} - 1, 1 ), new Date( #{current_year}, #{current_month} - 1, 1 ) ) } );
