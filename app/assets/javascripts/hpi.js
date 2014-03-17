@@ -10,11 +10,10 @@ var Hpi = function() {
   /** Event handling */
   var bindEvents = function() {
     $("form.search").on( "submit", onSearchSubmit );
-    $("form.search").on( "keydown", "input", onSeachInput );
     $("form.preview").on( "click", "input", onChangePreviewSettings );
     $("a.action-add-comparison").on( "click", onAddComparison );
     $("form.search").on( "click", "a.action-remove-selection", onRemoveSelection );
-    $(".container").on( "click", "button.action-show-map", onShowMap );
+    $(".container").on( "click", "a.action-show-map", onShowMap );
   };
 
   /** Widget and control initialisation */
@@ -28,6 +27,7 @@ var Hpi = function() {
 
       $(elem).autocomplete({
         source: HpiLocations.locationNames,
+        autoFocus: true,
         select: function( e, ui ) {
           onAutocompleteSelect( sId, e, ui );
         },
@@ -46,9 +46,6 @@ var Hpi = function() {
   /** User has submitted a search on the search form */
   var onSearchSubmit = function( e ) {
     if (e) {e.preventDefault();}
-    // if (_.keys(_currentSelection).length > 0) {
-    //   drawPreview();
-    // }
   };
 
   /** User has selected one of the autocomplete options */
@@ -60,12 +57,6 @@ var Hpi = function() {
 
     $("input#" + searchId.sym).val( "" );
     selectLocation( locationName, locationURI, searchId, e.target );
-  };
-
-  /** User has started typing into an input field */
-  var onSeachInput = function( e ) {
-    // var searchId = searchIdFromElement( e.currentTarget );
-    // forgetSelectedLocation( searchId );
   };
 
   /** User has clicked to change some of the preview settings */
@@ -240,8 +231,8 @@ var Hpi = function() {
   var showMapButton = function( elem ) {
     if ($(elem).find( "button" ).length === 0) {
       var alt = 'find a location on the map';
-      $(elem).append( sprintf( "<button class='action action-show-map btn btn-default map-button' alt='%s' title='%s' >" +
-                               "</button>",
+      $(elem).append( sprintf( "<a class='action action-show-map btn-default btn map-button' alt='%s' title='%s' >" +
+                               "</a>",
                                alt, alt ) );
     }
   };
