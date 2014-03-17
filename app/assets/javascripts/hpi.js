@@ -14,7 +14,8 @@ var Hpi = function() {
     $("a.action-add-comparison").on( "click", onAddComparison );
     $("form.search").on( "click", "a.action-remove-selection", onRemoveSelection );
     $(".container").on( "click", "a.action-show-map", onShowMap );
-    $("form.preview").on( "change", ".dates-filter select", function() {HpiPreview.updatePreview();} )
+    $("form.preview").on( "change", ".dates-filter select", function() {HpiPreview.updatePreview();} );
+    $("form.preview").on( "click", "a.action-set-dates", onChangeDates );
   };
 
   /** Widget and control initialisation */
@@ -245,7 +246,18 @@ var Hpi = function() {
     var searchId = button.parents( "span[data-search-id]" ).data( "search-id" );
 
     HpiMapSearch.showDialogue( searchId, e.currentTarget );
-  }
+  };
+
+  /** User has selected an option to pick an alternative date range */
+  var onChangeDates = function( e ) {
+    e.preventDefault();
+    var a = $(e.currentTarget);
+    $("select#from_m").val( a.data( "from-m" ));
+    $("select#from_y").val( a.data( "from-y" ));
+    $("select#to_m").val( a.data( "to-m" ));
+    $("select#to_y").val( a.data( "to-y" )).change();
+
+  };
 
   return {
     init: init,

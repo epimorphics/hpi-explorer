@@ -14,7 +14,13 @@
   .row
     .col-md-12
       %section
+        %h3.text-muted
+          Shortcuts to common dates
+        %p
+          %a.btn.btn.btn-sm.btn-default.action-set-dates{ href: @time_period.last_twelve_months_path( :hpi ), data: @time_period.last_twelve_months}
+            previous 12 months
+          %a.btn.btn.btn-sm.btn-default.action-set-dates{ href: @time_period.year_to_date_path( :hpi), data: @time_period.year_to_date}
+            year to date
+          %a.btn.btn.btn-sm.btn-default.action-set-dates{ href: @time_period.last_calendar_year_path( :hpi), data: @time_period.last_calendar_year}
+            last calendar year
 
-
-/ :javascript
-/   $( function() {HpiDates.setDateRange( new Date( #{previous_year}, #{current_month} - 1, 1 ), new Date( #{current_year}, #{current_month} - 1, 1 ) ) } );
