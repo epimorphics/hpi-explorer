@@ -1,7 +1,7 @@
 # Model of the time period selected by the user, with suitable defaults
 class TimePeriod
   attr_reader :preferences, :lang, :year_now, :month_now
-  attr_reader :from_year, :to_year, :from_month, :to_month
+  attr_reader :from_y, :to_y, :from_m, :to_m
 
   FIRST_YEAR = 1995
 
@@ -16,11 +16,11 @@ class TimePeriod
     @year_now = Time.now.year
     @month_now = Time.now.month
 
-    @from_year = preferences.param( :from_y ) || (year_now - 1)
-    @to_year = preferences.param( :to_y ) || year_now
+    @from_y = preferences.param( :from_y ) || (year_now - 1)
+    @to_y = preferences.param( :to_y ) || year_now
 
-    @from_month = preferences.param( :from_m ) || month_now
-    @to_month = preferences.param( :to_m ) || month_now
+    @from_m = preferences.param( :from_m ) || month_now
+    @to_m = preferences.param( :to_m ) || month_now
   end
 
   def months
@@ -57,6 +57,16 @@ class TimePeriod
   def last_calendar_year_path( controller, options = {}, delete = [] )
     as_path( controller, options, delete, last_calendar_year )
   end
+
+  def date_value( key_y, key_m )
+    m = self.send( key_m )
+    y = self.send( key_y )
+
+    {"@value" => format('%04d-%02d', y, m ),
+     "@type" => "http://www.w3.org/2001/XMLSchema#gYearMonth"}
+  end
+
+
 
   private
 

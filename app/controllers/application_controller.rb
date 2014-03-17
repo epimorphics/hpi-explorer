@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   end
 
   def time_period
-    @time_period ||= TimePeriod.new( preferences )
+    preferences.time_period
   end
 
   def set_search_configuration

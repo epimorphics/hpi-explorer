@@ -163,6 +163,10 @@ class UserPreferences
     :"#{attrib}_#{search_id.n}"
   end
 
+  # Return the time period model
+  def time_period
+    @time_period ||= TimePeriod.new( self )
+  end
 
   private
 

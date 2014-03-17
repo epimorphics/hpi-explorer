@@ -83,16 +83,11 @@ class QueryCommand < DataService
   end
 
   def date_from
-    date_value( :from_y, :from_m )
+    preferences.time_period.date_value( :from_y, :from_m )
   end
 
   def date_to
-    date_value( :to_y, :to_m )
-  end
-
-  def date_value( key_y, key_m )
-    {"@value" => format('%04d-%02d', param(key_y), param(key_m) ),
-     "@type" => "http://www.w3.org/2001/XMLSchema#gYearMonth"}
+    preferences.time_period.date_value( :to_y, :to_m )
   end
 
   def add_sort( query )

@@ -9,12 +9,15 @@ var Hpi = function() {
 
   /** Event handling */
   var bindEvents = function() {
-    $("form.search").on( "submit", onSearchSubmit );
-    $("form.preview").on( "click", "input", onChangePreviewSettings );
-    $("a.action-add-comparison").on( "click", onAddComparison );
-    $("form.search").on( "click", "a.action-remove-selection", onRemoveSelection );
+    $(".container").on( "click", "a.action-add-comparison", onAddComparison );
     $(".container").on( "click", "a.action-show-map", onShowMap );
-    $("form.preview").on( "change", ".dates-filter select", function() {HpiPreview.updatePreview();} );
+    $(".container").on( "click", "a.action-remove-comparison", onRemoveComparison );
+    $(".container").on( "click", "a.action-remove-selection", onRemoveSelection );
+
+    $("form.search").on( "submit", onSearchSubmit );
+
+    $("form.preview").on( "click", "input", onChangePreviewSettings );
+    $("form.preview").on( "change", ".dates-filter select", drawPreview );
     $("form.preview").on( "click", "a.action-set-dates", onChangeDates );
   };
 
@@ -193,10 +196,26 @@ var Hpi = function() {
   var onComparisonDone = function( html ) {
     $(".search-form-container").empty().append( html );
     initControls();
+    drawPreview();
   };
 
   var onComparisonFail = function( jqXhr, error ) {
+    console.log( "Comparison failure: " + error );
+  };
 
+  /** User wants to remove the comparison of two areas option */
+  var onRemoveComparison = function( e ) {
+    e.preventDefault();
+    clearPreview();
+    resetPreviewFormElement( "compare", null );
+
+    var interactionState = currentInteractionState( "search",
+                                                    {},
+                                                    ['compare', 'search_1', 'loc_1', 'loc_uri_1'] );
+    $.post( Routes.search_index_path(),
+            interactionState, null, "html" )
+      .done( onComparisonDone )
+      .fail( onComparisonFail );
   };
 
 

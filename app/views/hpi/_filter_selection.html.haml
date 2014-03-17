@@ -1,14 +1,15 @@
+- time_period = @preferences.time_period
 .dates-filter.col-md-6
   .row
     .col-md-12
       %section
         %h3 Using dates
         .inline From:
-        = select_tag( :from_m, options_for_select( @time_period.months, @time_period.from_month ) )
-        = select_tag( :from_y, options_for_select( @time_period.years, @time_period.from_year ) )
+        = select_tag( :from_m, options_for_select( time_period.months, time_period.from_m ) )
+        = select_tag( :from_y, options_for_select( time_period.years, time_period.from_y ) )
         .inline.date-to to:
-        = select_tag( :to_m, options_for_select( @time_period.months, @time_period.to_month ) )
-        = select_tag( :to_y, options_for_select( @time_period.years, @time_period.to_year ) )
+        = select_tag( :to_m, options_for_select( time_period.months, time_period.to_m ) )
+        = select_tag( :to_y, options_for_select( time_period.years, time_period.to_y ) )
 
 .dates-filter.col-md-6
   .row
@@ -17,10 +18,10 @@
         %h3.text-muted
           Shortcuts to common dates
         %p
-          %a.btn.btn.btn-sm.btn-default.action-set-dates{ href: @time_period.last_twelve_months_path( :hpi ), data: @time_period.last_twelve_months}
+          %a.btn.btn.btn-sm.btn-default.action-set-dates{ href: time_period.last_twelve_months_path( :hpi ), data: time_period.last_twelve_months}
             previous 12 months
-          %a.btn.btn.btn-sm.btn-default.action-set-dates{ href: @time_period.year_to_date_path( :hpi), data: @time_period.year_to_date}
+          %a.btn.btn.btn-sm.btn-default.action-set-dates{ href: time_period.year_to_date_path( :hpi), data: time_period.year_to_date}
             year to date
-          %a.btn.btn.btn-sm.btn-default.action-set-dates{ href: @time_period.last_calendar_year_path( :hpi), data: @time_period.last_calendar_year}
+          %a.btn.btn.btn-sm.btn-default.action-set-dates{ href: time_period.last_calendar_year_path( :hpi), data: time_period.last_calendar_year}
             last calendar year
 
