@@ -30,29 +30,31 @@
 
     .col-md-6
       .row
-        .col-sm-4
-          = label_tag( :m_ap, "Average price", class: "control-label text-right" )
+        .col-sm-8
+          = label_tag( :m_ap, "Average price (all property types)", class: "control-label text-right" )
         .col-sm-2
           = check_box_tag( :m_ap, 1, @preferences.selected_index?( "m_ap" ), class: "form-control" )
 
-        .col-sm-6
-          .property-types
-            %div
-              %strong
-                Only average prices for:
-              %br
-              %label.radio-inline
-                = check_box_tag( :m_apd, "d", @preferences.selected_index?( "m_apd" ) )
-                Detached
-              %br
-              %label.radio-inline
-                = check_box_tag( :m_apsd, "sd", @preferences.selected_index?( "m_apsd" ) )
-                Semi-detached
-              %br
-              %label.radio-inline
-                = check_box_tag( :m_apt, "t", @preferences.selected_index?( "m_apt" ) )
-                Terraced
-              %br
-              %label.radio-inline
-                = check_box_tag( :m_apf, "f", @preferences.selected_index?( "m_apf"  ) )
-                Flat or maisonette
+      .row
+        .col-sm-8
+          = label_tag( :m_apd, "Average price (detached)", class: "control-label text-right" )
+        .col-sm-2
+          = check_box_tag( :m_apd, "d", @preferences.selected_index?( "m_apd" ), class: "form-control"  )
+
+      .row
+        .col-sm-8
+          = label_tag( :m_apsd, "Average price (semi-detached)", class: "control-label text-right" )
+        .col-sm-2
+          = check_box_tag( :m_apsd, "d", @preferences.selected_index?( "m_apsd" ), class: "form-control"  )
+
+      .row
+        .col-sm-8
+          = label_tag( :m_apt, "Average price (terraced)", class: "control-label text-right" )
+        .col-sm-2
+          = check_box_tag( :m_apt, "t", @preferences.selected_index?( "m_apt" ), class: "form-control"  )
+
+      .row
+        .col-sm-8
+          = label_tag( :m_apf, "Average price (flat or maisonette)", class: "control-label text-right" )
+        .col-sm-2
+          = check_box_tag( :m_apf, "f", @preferences.selected_index?( "m_apf" ), class: "form-control"  )
