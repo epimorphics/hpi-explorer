@@ -1,5 +1,14 @@
-%h2.results-title
-  #{@preferences.describe_selected_location}
+%h2
+  #{@preferences.describe_selected_location( ["Previewing index data for:", "Previewing comparison of: "])}
+  .pull-right
+    .small
+      %a.btn.btn-primary{ href: "#{@preferences.as_path( :view )}"}
+        Show full results
+      %a.btn.btn-primary{ href: "#{@preferences.as_path( :download )}"}
+        Download data
 
-.related-locations
+%p.text-muted.small
+  Previewing most recent 5 of #{@query_command.size_all} selected months
+
+.related-locations.small.text-muted
   = list_related_locations( @preferences )

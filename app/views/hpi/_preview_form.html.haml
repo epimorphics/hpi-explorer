@@ -6,10 +6,6 @@
     = render partial: "hpi/measure_selection"
 
   .row
-    #results-header.col-md-12
-      = render partial: "hpi/selected_location" if @preferences.location_complete?
-
-  .row
     .col-md-12
       = render_hidden_fields( @preferences )
       = submit_tag( "Preview your results")

@@ -67,6 +67,16 @@ class QueryCommand < DataService
     aspects( options ).select {|k,v| param(k)} .length
   end
 
+  # Return the number of selected rows of data
+  def size
+    @results.size
+  end
+
+  # Return the number of all rows of data
+  def size_all
+    @all_results[search_id_0.sym].size
+  end
+
   private
 
   def compare_areas?

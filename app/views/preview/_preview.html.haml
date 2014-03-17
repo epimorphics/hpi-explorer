@@ -1,22 +1,17 @@
-%section.col-md-12
-  %h2
-    Previewing: #{@preferences.describe_selected_location}
+.col-md-12
+  %section
 
-    .pull-right
-      .small
-        %a.btn.btn-primary{ href: "#{@preferences.as_path( :view )}"}
-          Show full results
-        %a.btn.btn-primary{ href: "#{@preferences.as_path( :download )}"}
-          Download data
+    #results-header.col-md-12
+      = render partial: "hpi/selected_location" if @preferences.location_complete?
 
-  #chart.preview
+    #chart.preview
 
-  %table.table.preview
-    %thead
-      = indices_table_header( @query_command )
-    %tbody
-      - @query_command.results.each do |result|
-        %tr
-          - result.each_with_index do |value, i|
-            %td{ class: (i > 0) ? "text-right" : "text-center" }
-              = value
+    %table.table.preview
+      %thead
+        = indices_table_header( @query_command )
+      %tbody
+        - @query_command.results.each do |result|
+          %tr
+            - result.each_with_index do |value, i|
+              %td{ class: (i > 0) ? "text-right" : "text-center" }
+                = value
