@@ -58,7 +58,7 @@ var Hpi = function() {
     var locationName = ui.item.label;
     var locationURI = ui.item.value;
 
-    $(e.currentTarget).val( "" );
+    $("input#" + searchId.sym).val( "" );
     selectLocation( locationName, locationURI, searchId, e.target );
   };
 
