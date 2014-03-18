@@ -34,6 +34,7 @@ var Hpi = function() {
       $(elem).autocomplete({
         source: HpiLocations.locationNames,
         autoFocus: true,
+        minLength: 3,
         select: function( e, ui ) {
           onAutocompleteSelect( sId, e, ui );
         },
