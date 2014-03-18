@@ -17,10 +17,10 @@ class QueryCommand < DataService
     }
 
   DOWNLOAD_ASPECTS = {
-    always:    {aspect: "@id",               label: "record URI", sType: "string"},
-    loc_0:     {aspect: "hpi:refRegionName", label: "name", sType: "string", search_id: :search_0},
+    always:    {aspect: "@id",               label: "Record URI", sType: "string"},
+    loc_0:     {aspect: "hpi:refRegionName", label: "Name", sType: "string", search_id: :search_0},
     loc_uri_0: {aspect: "hpi:refRegion",     label: "URI",  sType: "string", search_id: :search_0},
-    loc_1:     {aspect: "hpi:refRegionName", label: "name", sType: "string", search_id: :search_1},
+    loc_1:     {aspect: "hpi:refRegionName", label: "Name", sType: "string", search_id: :search_1},
     loc_uri_1: {aspect: "hpi:refRegion",     label: "URI",  sType: "string", search_id: :search_1}
   }.merge( ASPECTS )
 
@@ -115,7 +115,7 @@ class QueryCommand < DataService
             location_name = preferences.selected_location_name( search_id )
             aspect_options = {query_id: search_id.sym, location: location_name}
 
-            aspect_options[:label] = "Location #{search_id.n} #{index[:label]}" if for_download?( options )
+            aspect_options[:label] = download_label( search_id, index ) if for_download?( options )
 
             cols << index.merge( aspect_options )
           end
@@ -149,5 +149,17 @@ class QueryCommand < DataService
   def include_aspect?( aspect_key, index, search_id )
     return true if aspect_key == :always
     param( aspect_key ) && (!index[:search_id] || index[:search_id] == search_id[:sym])
+  end
+
+  def download_label( search_id, index )
+    begin
+    if compare_areas?
+      "#{["First", "Second"][search_id.n]} location #{index[:label]}"
+    else
+      index[:label]
+    end
+  rescue
+    binding.pry
+  end
   end
 end
