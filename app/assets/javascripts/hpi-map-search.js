@@ -132,7 +132,7 @@ var HpiMapSearch = function() {
   var renderCounties = function( location ) {
     if (location.children) {
       var elem = $("#map-modal " + ".selected-counties-options" );
-      $("#map-modal .selected-counties").text( "contains" );
+      $("#map-modal .selected-counties").text( "and contains" );
       var prefix = "";
 
       _.each( location.children, function( uri, i ) {
