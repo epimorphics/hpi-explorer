@@ -62,7 +62,6 @@ var Hpi = function() {
     var locationName = ui.item.label;
     var locationURI = ui.item.value;
 
-    $("input#" + searchId.sym).val( "" );
     selectLocation( locationName, locationURI, searchId, e.target );
   };
 
@@ -164,20 +163,27 @@ var Hpi = function() {
 
   /** User has selected a location */
   var showSelectedLocation = function( sourceElem, searchId, locationName, locationURI ) {
-    var elem = $(sourceElem).parents(".area-selection")
-                            .find(".selected-search-term")
-                            .empty()
-                            .append( sprintf( "<p>Selected: %s " +
-                                              "<a href='#' class='action action-remove-selection btn'>" +
-                                              "<i class='fa fa-times-circle'></i></a></p>",
-                                              locationName ) )
-                            .append( sprintf( "<input type='hidden' name='%s' value='%s' />",
-                                     attributeWithSearchId( "loc", searchId ), locationName ) )
-                            .append( sprintf( "<input type='hidden' name='%s' value='%s' />",
-                                     attributeWithSearchId( "loc_uri", searchId ), locationURI ) );
+    var inputElem = $("input#" + searchId.sym);
+    var elem = $(sourceElem).parents(".area-selection");
+
+    inputElem.val( locationName );
+
+    elem.find(".selected-search-term")
+        .empty()
+        .append( sprintf( "<input type='hidden' name='%s' value='%s' />",
+                 attributeWithSearchId( "loc", searchId ), locationName ) )
+        .append( sprintf( "<input type='hidden' name='%s' value='%s' />",
+                 attributeWithSearchId( "loc_uri", searchId ), locationURI ) );
+
+    elem.find( "span.clear-selection")
+        .empty()
+        .html( sprintf( "<a href='#' class='action action-remove-selection btn' data-search-id='%s'>" +
+                        "<i class='fa fa-times-circle'></i></a>",
+                        searchId.n ) )
 
     if (compareAreas()) {
-      elem.append( "<input type='hidden' name='compare' value='1' />" );
+      elem.find(".selected-search-term")
+          .append( "<input type='hidden' name='compare' value='1' />" );
     }
   };
 

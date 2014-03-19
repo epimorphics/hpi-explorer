@@ -5,9 +5,11 @@
     - if is_comparison_area
       %a.btn.btn-sm.action.action-remove-comparison{ title: "Remove comparison", href: @preferences.as_path( :hpi, {}, [:compare, :loc_1, :loc_uri_1] )}
         %i.fa.fa-times-circle
-  .col-sm-8
-    = text_field_tag( preferences.attribute_with_search_id( "search", search_id ), "", class: "form-control" )
-  .col-sm-2
+  .col-sm-9
+    .form-group
+      = text_field_tag( preferences.attribute_with_search_id( "search", search_id ), "", class: "form-control" )
+      %span.form-control-feedback.js.clear-selection{ data: {search_id: search_id.n}}
+  .col-sm-3
     %button#action_search.btn{ type: "submit" }
       %i.fa.fa-search
     %span.js.map-button{ data: {search_id: search_id.n}}
@@ -17,6 +19,8 @@
     = render( partial: "hpi/search_results", locals: {search_command: search_command} ) if search_command && search_command.locations?
     .selected-search-term
       = render_selected_search_term( search_id, preferences )
+
   - unless is_comparison_area
-    %p.col-sm-12.help-block.small.text-muted
-      Enter a region, county or local authority by name, or from the map
+    .row
+      %p.col-sm-12.help-block.small.text-muted
+        Enter a region, county or local authority by name, or from the map
