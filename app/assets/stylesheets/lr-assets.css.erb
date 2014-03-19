@@ -1,7 +1,12 @@
-/* fonts */
 @font-face {
-  font-family: geo_headline;
-  src: url(<%= asset_path 'geoheadline-webfont.woff' %>);
+  font-family: 'GeoHeadlineRegular';
+  src: url(<%= asset_path 'geoheadline-webfont.eot' %>);
+  src: url(<%= asset_path 'geoheadline-webfont.eot#iefix' %>) format('embedded-opentype'),
+       url(<%= asset_path 'geoheadline-webfont.woff' %>) format('woff'),
+       url(<%= asset_path 'geoheadline-webfont.ttf' %>) format('truetype'),
+       url(<%= asset_path 'geoheadline-webfont.svg#GeoHeadlineRegular' %>) format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
 .map-button {

@@ -1,0 +1,12 @@
+# Design notes
+
+## Colour schemes
+
+Currently in use LR colours and corresponding SASS variables:
+
+* logo lighter green #a6d71c `$lr-logo-green-light`
+* logo darker green #66c430 `$lr-logo-green-dark`
+* logo yellow #e5ea08 `$lr-logo-yellow`
+* title #5a8006 `$lr-green-dark`
+* Squiz h1 #71933B
+* 
