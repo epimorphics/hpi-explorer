@@ -1,7 +1,8 @@
+- is_comparison_area = search_id.n > 0
 %section.area-selection
   %h3
     = title
-    - if search_id.n > 0
+    - if is_comparison_area
       %a.btn.btn-sm.action.action-remove-comparison{ title: "Remove comparison", href: @preferences.as_path( :hpi, {}, [:compare, :loc_1, :loc_uri_1] )}
         %i.fa.fa-times-circle
   .col-sm-8
@@ -16,3 +17,6 @@
     = render( partial: "hpi/search_results", locals: {search_command: search_command} ) if search_command && search_command.locations?
     .selected-search-term
       = render_selected_search_term( search_id, preferences )
+  - unless is_comparison_area
+    %p.col-sm-12.help-block.small.text-muted
+      Enter a region, county or local authority by name, or from the map
