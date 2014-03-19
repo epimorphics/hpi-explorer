@@ -104,24 +104,6 @@ var HpiChart = function() {
 
   /** Draw the charts for the current data series */
   var drawCharts = function( tableSelector, chartSelector, separate ) {
-    if (separate) {
-      drawMultipleCharts( tableSelector, chartSelector );
-    }
-    else {
-      drawSingleChart( tableSelector, chartSelector );
-    }
-  };
-
-  var drawSingleChart = function( tableSelector, chartSelector ) {
-    var chartData = chartDataSeries( tableSelector );
-    var keys = chartData._keys.slice( 1 );
-    var series = _.map( keys, function( key ){return chartData[key.name]} );
-    var options = chartOptions( keys );
-
-    $.jqplot( chartSelector, series, options );
-  };
-
-  var drawMultipleCharts = function( tableSelector, chartSelector ) {
     var chartData = chartDataSeries( tableSelector );
     var chartSets = partitionChartsByType( chartData );
     var chartKinds = _.keys( chartSets ).sort();
