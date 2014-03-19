@@ -21,6 +21,8 @@
 //= require jqplot
 //= require jqplot/plugins/dateAxisRenderer
 //= require jqplot/plugins/barRenderer
+//= require jqplot/plugins/canvasTextRenderer
+//= require jqplot/plugins/canvasAxisLabelRenderer
 //= require bootstrap
 //= require leaflet
 //= require qonsole_rails/application

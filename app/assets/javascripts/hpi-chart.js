@@ -10,40 +10,128 @@ var HpiChart = function() {
 
   /* Chart options indexed by aspect property */
   var ASPECT_OPTIONS = {
-     "hpi:indicesSASM":                     {yaxis: "yaxis"},
-     "hpi:monthlyChange":                   {yaxis: "y2axis",
-                                             renderer: $.jqplot.BarRenderer,
+     "hpi:indicesSASM":                     {axes: {
+                                               yaxis: {
+                                                 label: "index",
+                                                 autoformat: true,
+                                                 min: 50,
+                                                 labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+                                                 angle: -90
+                                               }
+                                             },
+                                             partition: "index"
+                                            },
+     "hpi:monthlyChange":                   {renderer: $.jqplot.BarRenderer,
+                                             axes: {
+                                               yaxis: {
+                                                 label: "change %",
+                                                 labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+                                                 angle: -90
+                                               }
+                                             },
                                              rendererOptions: {
                                                barWidth: 4,
                                                barPadding: 10,
                                                fillToZero: true
-                                             }},
-     "hpi:annualChange":                    {yaxis: "y2axis",
+                                             },
+                                             partition: "change"
+                                            },
+     "hpi:annualChange":                    {renderer: $.jqplot.BarRenderer,
+                                             axes: {
+                                               yaxis: {
+                                                 label: "change %",
+                                                 labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+                                                 angle: -90
+                                               }
+                                             },
                                              renderer: $.jqplot.BarRenderer,
                                              rendererOptions: {
                                                barWidth: 4,
                                                barPadding: 10,
-                                               fillToZero: true
-                                             }},
-     "hpi:salesVolume":                     {yaxis: "y4axis",
+                                               fillToZero: true,
+                                                 labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+                                             },
+                                             partition: "change"
+                                            },
+     "hpi:salesVolume":                     {axes: {
+                                              yaxis: {
+                                                min: 0,
+                                                autoformat: true,
+                                                label: "no. of sales",
+                                                labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+                                                angle: -90
+                                              }
+                                             },
                                              renderer: $.jqplot.BarRenderer,
                                              rendererOptions: {
                                                barWidth: 4,
                                                barPadding: 10
-                                             }},
-     "hpi:averagePricesSASM":               {yaxis: "y3axis"},
-     "hpi:averagePricesDetachedSASM":       {yaxis: "y3axis"},
-     "hpi:averagePricesSemiDetachedSASM":   {yaxis: "y3axis"},
-     "hpi:averagePricesTerracedSASM":       {yaxis: "y3axis"},
-     "hpi:averagePricesFlatMaisonetteSASM": {yaxis: "y3axis"}
+                                             },
+                                             partition: "volume"
+                                            },
+     "hpi:averagePricesSASM":               {axes: {
+                                               yaxis: {
+                                                 min: 0,
+                                                 autoformat: true,
+                                                 label: "avg. price (GBP)",
+                                                 labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+                                                 angle: -90,
+                                               }
+                                             },
+                                             partition: "average-price"
+                                            },
+     "hpi:averagePricesDetachedSASM":       {axes: {
+                                               yaxis: {
+                                                 min: 0,
+                                                 autoformat: true,
+                                                 label: "avg. price (GBP)",
+                                                 labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+                                                 angle: -90
+                                               }
+                                             },
+                                             partition: "average-price"
+                                            },
+     "hpi:averagePricesSemiDetachedSASM":   {axes: {
+                                               yaxis: {
+                                                 min: 0,
+                                                 autoformat: true,
+                                                 label: "avg. price (GBP)",
+                                                 labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+                                                 angle: -90
+                                               }
+                                             },
+                                             partition: "average-price"
+                                            },
+     "hpi:averagePricesTerracedSASM":       {axes: {
+                                               yaxis: {
+                                                 min: 0,
+                                                 autoformat: true,
+                                                 label: "avg. price (GBP)",
+                                                 labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+                                                 angle: -90
+                                               }
+                                             },
+                                             partition: "average-price"
+                                            },
+     "hpi:averagePricesFlatMaisonetteSASM": {axes: {
+                                               yaxis: {
+                                                 min: 0,
+                                                 autoformat: true,
+                                                 label: "avg. price (GBP)",
+                                                 labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+                                                 angle: -90
+                                               }
+                                             },
+                                             partition: "average-price"
+                                            }
   };
 
   /** Labels for different groups of charts */
   var CHART_TYPE_LABELS = {
-    yaxis: "House price indices",
-    y2axis: "Relative change",
-    y3axis: "Average prices",
-    y4axis: "Sales volume"
+    index: "House price indices",
+    change: "Relative change",
+    "average-price": "Average prices",
+    volume: "Sales volume"
   };
 
   /** Module initialisation */
@@ -160,7 +248,7 @@ var HpiChart = function() {
 
   /** Return the type of data in the given series, determined by y-axis */
   var dataKind = function( seriesKey ) {
-    return ASPECT_OPTIONS[seriesKey.aspect].yaxis;
+    return ASPECT_OPTIONS[seriesKey.aspect].partition;
   };
 
   var chartOptions = function( keys, options ) {
@@ -178,29 +266,7 @@ var HpiChart = function() {
           numberTicks: option( options, "numberXAxisTicks", 5),
           max: new Date()
         },
-        // main y-axis is the house price index
-        yaxis: {
-          min: 100,
-          label: "index",
-          autoformat: true
-        },
-        // axis y2 is for relative change
-        y2axis: {
-          autoscale: true,
-          label: "change %"
-        },
-        // axis y3 is currency
-        y3axis: {
-          min: 0,
-          autoformat: true,
-          label: "price (&pound;)"
-        },
-        // axis y4 is volume
-        y4axis: {
-          min: 0,
-          autoformat: true,
-          label: "no. of sales"
-        }
+        yaxis: seriesOptions[0].axes.yaxis
       },
       legend: {
         show: true,
