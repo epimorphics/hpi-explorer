@@ -127,7 +127,8 @@ class QueryCommand < DataService
   end
 
   def select_visible_results( all_results, columns, options )
-    limit = ((n = options[:limit]) == :all) ? all_results[search_id_0.sym].length : n
+    result_count = all_results[search_id_0.sym].length
+    limit = ((n = options[:limit]) == :all) ? result_count : [result_count, n].min
     vr = []
     formatters = for_download?( options ) ? DOWNLOAD_FORMATTERS : FORMATTERS
 
