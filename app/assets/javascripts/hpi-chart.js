@@ -134,6 +134,11 @@ var HpiChart = function() {
     volume: "Sales volume"
   };
 
+  /** List of the chart types we want to display, in display order */
+  var CHART_TYPES = [
+    "index", "change", "volume", "average-price"
+  ];
+
   /** Module initialisation */
   var init = function() {
 
@@ -194,7 +199,7 @@ var HpiChart = function() {
   var drawCharts = function( tableSelector, chartSelector, separate ) {
     var chartData = chartDataSeries( tableSelector );
     var chartSets = partitionChartsByType( chartData );
-    var chartKinds = _.keys( chartSets ).sort();
+    var chartKinds = _.filter( CHART_TYPES, function( c ) {return _.has( chartSets, c );} );
     var elem = $(chartSelector);
 
     elem.empty();
