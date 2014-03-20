@@ -11,13 +11,16 @@
  *= require_self
  *= require bootstrap
  *= require lr-assets
- *= require_tree .
  *= require font-awesome
  *= require jquery.ui.autocomplete
  *= require dataTables/jquery.dataTables
  *= require jqplot
  *= require leaflet
  *= require qonsole_rails/application
+
+ *= require gov.uk/colours
+ *= require_tree .
  *= require hpi
+
  */
 
