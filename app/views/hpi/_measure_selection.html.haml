@@ -1,60 +1,61 @@
 .measure-selection.col-md-12
-  .row
-    %h3.col-sm-12
-      Show these indices:
-  .row
-    .col-md-6
-      .row
-        .col-sm-5
-          = label_tag( :m_hpi, "House price indices", class: "control-label text-right" )
-        .col-sm-2
-          = check_box_tag( :m_hpi, 1, @preferences.selected_index?( "m_hpi" ), class: "form-control" )
+  %section
+    .row
+      %h3.col-sm-12
+        Show these indices:
+    .row
+      .col-md-6
+        .row
+          .col-sm-5
+            = label_tag( :m_hpi, "House price indices", class: "control-label text-right" )
+          .col-sm-2
+            = check_box_tag( :m_hpi, 1, @preferences.selected_index?( "m_hpi" ), class: "form-control" )
 
-      .row
-        .col-sm-5
-          = label_tag( :m_chm, "Monthly change", class: "control-label text-right" )
-        .col-sm-2
-          = check_box_tag( :m_chm, 1, @preferences.selected_index?( "m_chm" ), class: "form-control" )
+        .row
+          .col-sm-5
+            = label_tag( :m_chm, "Monthly change", class: "control-label text-right" )
+          .col-sm-2
+            = check_box_tag( :m_chm, 1, @preferences.selected_index?( "m_chm" ), class: "form-control" )
 
-      .row
-        .col-sm-5
-          = label_tag( :m_chy, "Yearly change", class: "control-label text-right" )
-        .col-sm-2
-          = check_box_tag( :m_chy, 1, @preferences.selected_index?( "m_chy" ), class: "form-control" )
+        .row
+          .col-sm-5
+            = label_tag( :m_chy, "Yearly change", class: "control-label text-right" )
+          .col-sm-2
+            = check_box_tag( :m_chy, 1, @preferences.selected_index?( "m_chy" ), class: "form-control" )
 
-      .row
-        .col-sm-5
-          = label_tag( :m_vol, "Volume of sales", class: "control-label text-right" )
-        .col-sm-2
-          = check_box_tag( :m_vol, 1, @preferences.selected_index?( "m_vol" ), class: "form-control" )
+        .row
+          .col-sm-5
+            = label_tag( :m_vol, "Volume of sales", class: "control-label text-right" )
+          .col-sm-2
+            = check_box_tag( :m_vol, 1, @preferences.selected_index?( "m_vol" ), class: "form-control" )
 
-    .col-md-6
-      .row
-        .col-sm-8
-          = label_tag( :m_ap, "Average price &ndash; all property types".html_safe, class: "control-label text-right" )
-        .col-sm-2
-          = check_box_tag( :m_ap, 1, @preferences.selected_index?( "m_ap" ), class: "form-control" )
+      .col-md-6
+        .row
+          .col-sm-8
+            = label_tag( :m_ap, "Average price &ndash; all property types".html_safe, class: "control-label text-right" )
+          .col-sm-2
+            = check_box_tag( :m_ap, 1, @preferences.selected_index?( "m_ap" ), class: "form-control" )
 
-      .row
-        .col-sm-8
-          = label_tag( :m_apd, "Average price &ndash; detached".html_safe, class: "control-label text-right" )
-        .col-sm-2
-          = check_box_tag( :m_apd, "d", @preferences.selected_index?( "m_apd" ), class: "form-control"  )
+        .row
+          .col-sm-8
+            = label_tag( :m_apd, "Average price &ndash; detached".html_safe, class: "control-label text-right" )
+          .col-sm-2
+            = check_box_tag( :m_apd, "d", @preferences.selected_index?( "m_apd" ), class: "form-control"  )
 
-      .row
-        .col-sm-8
-          = label_tag( :m_apsd, "Average price &ndash; semi-detached".html_safe, class: "control-label text-right" )
-        .col-sm-2
-          = check_box_tag( :m_apsd, "d", @preferences.selected_index?( "m_apsd" ), class: "form-control"  )
+        .row
+          .col-sm-8
+            = label_tag( :m_apsd, "Average price &ndash; semi-detached".html_safe, class: "control-label text-right" )
+          .col-sm-2
+            = check_box_tag( :m_apsd, "d", @preferences.selected_index?( "m_apsd" ), class: "form-control"  )
 
-      .row
-        .col-sm-8
-          = label_tag( :m_apt, "Average price &ndash; terraced".html_safe, class: "control-label text-right" )
-        .col-sm-2
-          = check_box_tag( :m_apt, "t", @preferences.selected_index?( "m_apt" ), class: "form-control"  )
+        .row
+          .col-sm-8
+            = label_tag( :m_apt, "Average price &ndash; terraced".html_safe, class: "control-label text-right" )
+          .col-sm-2
+            = check_box_tag( :m_apt, "t", @preferences.selected_index?( "m_apt" ), class: "form-control"  )
 
-      .row
-        .col-sm-8
-          = label_tag( :m_apf, "Average price &ndash; flat or maisonette".html_safe, class: "control-label text-right" )
-        .col-sm-2
-          = check_box_tag( :m_apf, "f", @preferences.selected_index?( "m_apf" ), class: "form-control"  )
+        .row
+          .col-sm-8
+            = label_tag( :m_apf, "Average price &ndash; flat or maisonette".html_safe, class: "control-label text-right" )
+          .col-sm-2
+            = check_box_tag( :m_apf, "f", @preferences.selected_index?( "m_apf" ), class: "form-control"  )
