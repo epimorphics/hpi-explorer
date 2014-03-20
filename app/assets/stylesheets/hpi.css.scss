@@ -104,6 +104,9 @@ $lr-top-line: $lr-green-nav;
     margin-bottom: 1em;
   }
 
+  form.search .form-group {
+    margin-bottom: 3px;
+  }
 
   // buttons
   a.btn.btn-primary, a.btn.btn-primary:hover, a.btn.btn-primary:visited {
