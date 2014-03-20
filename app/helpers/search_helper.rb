@@ -14,14 +14,6 @@ module SearchHelper
            )
   end
 
-  def render_selected_search_term( search_id, preferences )
-    if preferences.selected_location?( search_id )
-      render( partial: "hpi/selected_search_term",
-              locals: {search_id: search_id,
-                       preferences: preferences} )
-    end
-  end
-
   def unselect_location_button( preferences, search_id )
     loc_attrib = preferences.attribute_with_search_id( "loc", search_id )
     loc_uri_attrib = preferences.attribute_with_search_id( "loc_uri", search_id )

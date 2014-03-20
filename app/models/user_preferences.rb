@@ -210,7 +210,7 @@ class UserPreferences
   def prioritise!
     (0..1).each do |i|
       search_id = search_id( i )
-      if search_term( search_id )
+      if (st = search_term( search_id )) && (st != selected_location_name( search_id ))
         %w(loc loc_uri).each do |dep_key|
           @params.delete( attribute_with_search_id( dep_key, search_id ) )
         end

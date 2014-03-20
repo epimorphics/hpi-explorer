@@ -1,4 +1,6 @@
 - is_comparison_area = search_id.n > 0
+- selected_search_term = @preferences.selected_location_name( search_id )
+
 %section.area-selection
   %h3
     = title
@@ -7,8 +9,11 @@
         %i.fa.fa-times-circle
   .col-sm-9
     .form-group
-      = text_field_tag( preferences.attribute_with_search_id( "search", search_id ), "", class: "form-control" )
-      %span.form-control-feedback.js.clear-selection{ data: {search_id: search_id.n}}
+      = text_field_tag( preferences.attribute_with_search_id( "search", search_id ), selected_search_term, class: "form-control" )
+      %span.form-control-feedback.js.clear-selection
+        %a.action.action-remove-selection.btn{ href: '#', data: {"search-id" => search_id.n}, class: (selected_search_term ? "" : "hidden")}
+          %i.fa.fa-times-circle
+
   .col-sm-3
     %button#action_search.btn{ type: "submit" }
       %i.fa.fa-search
@@ -17,8 +22,7 @@
   .col-sm-12
     - search_command = @search_commands[search_id.sym] if @search_commands
     = render( partial: "hpi/search_results", locals: {search_command: search_command} ) if search_command && search_command.locations?
-    .selected-search-term
-      = render_selected_search_term( search_id, preferences )
+    = render partial: "hpi/selected_search_term", locals: {search_id: search_id}
 
   - unless is_comparison_area
     .row

@@ -175,11 +175,8 @@ var Hpi = function() {
         .append( sprintf( "<input type='hidden' name='%s' value='%s' />",
                  attributeWithSearchId( "loc_uri", searchId ), locationURI ) );
 
-    elem.find( "span.clear-selection")
-        .empty()
-        .html( sprintf( "<a href='#' class='action action-remove-selection btn' data-search-id='%s'>" +
-                        "<i class='fa fa-times-circle'></i></a>",
-                        searchId.n ) )
+    elem.find( "a.action-remove-selection")
+        .removeClass( "hidden" )
 
     if (compareAreas()) {
       elem.find(".selected-search-term")
@@ -246,7 +243,7 @@ var Hpi = function() {
     var elem = button.parents(".area-selection");
     elem.find(".selected-search-term").empty();
     elem.find( "input" ).val( "" );
-    elem.find( ".action-remove-selection" ).remove();
+    elem.find( "a.action-remove-selection" ).addClass( "hidden" );
     clearPreview();
   }
 

@@ -3,18 +3,21 @@ class SearchController < ApplicationController
 
   def create
     set_search_configuration
-    @search_commands = Hash.new
 
-    (0..1).each do |i|
-      search_id = preferences.search_id( i )
+    if request.xhr?
+      render partial: "hpi/search_form", layout: false
+    else
+      @search_commands = Hash.new
 
-      search_cmd = SearchCommand.new( preferences, search_id )
-      search_cmd.find_unique_locations
+      (0..1).each do |i|
+        search_id = preferences.search_id( i )
 
-      @search_commands[search_id.sym] = search_cmd
+        search_cmd = SearchCommand.new( preferences, search_id )
+        search_cmd.find_unique_locations
+
+        @search_commands[search_id.sym] = search_cmd
+      end
     end
-
-    render partial: "hpi/search_form", layout: false if request.xhr?
   end
 
   def index
