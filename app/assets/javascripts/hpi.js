@@ -243,11 +243,10 @@ var Hpi = function() {
   var onRemoveSelection = function( e ) {
     e.preventDefault();
     var button = $(e.currentTarget);
-    var elem = button.parents(".area-selection").find(".selected-search-term");
-    var input = elem.find( "input" );
-    var searchId = input.attr("name");
-
-    elem.empty();
+    var elem = button.parents(".area-selection");
+    elem.find(".selected-search-term").empty();
+    elem.find( "input" ).val( "" );
+    elem.find( ".action-remove-selection" ).remove();
     clearPreview();
   }
 
