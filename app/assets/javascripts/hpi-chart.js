@@ -235,6 +235,29 @@ var HpiChart = function() {
     } );
   };
 
+  /** Draw printable charts for the current data series */
+  var drawChartsNoTabs = function( tableSelector, chartSelector ) {
+    var chartData = chartDataSeries( tableSelector );
+    var chartSets = partitionChartsByType( chartData );
+    var chartKinds = _.filter( CHART_TYPES, function( c ) {return _.has( chartSets, c );} );
+    var elem = $(chartSelector);
+
+    elem.empty();
+    var charts = $("<ul id='charts-nav' class='list-unstyled'></ul>").appendTo( elem );
+
+    _.each( chartKinds, function( chartKind, i ) {
+      charts.append( sprintf( "<li class=''><h3>%s</h3><div id='%s-chart'></div></li>",
+                           CHART_TYPE_LABELS[chartKind], chartKind ) );
+    } );
+
+    _.each( chartSets, function( keys, kind ) {
+      var series = _.map( keys, function( key ) {return chartData[key.name];} );
+      var options = chartOptions( keys );
+
+      $.jqplot( kind + "-chart", series, options );
+    } );
+  };
+
   /** Partition the selected graphs according to the type of data being displayed,
    * which we determine from the y-axis type */
   var partitionChartsByType = function( chartData ) {
@@ -297,6 +320,7 @@ var HpiChart = function() {
   return {
     chartDataSeries: chartDataSeries,
     drawCharts: drawCharts,
+    drawChartsNoTabs: drawChartsNoTabs,
     init: init
   };
 }();

@@ -6,6 +6,8 @@
         Show full results
       %a.btn.btn-primary{ href: "#{@preferences.as_path( :download )}"}
         Download data
+      %a.btn.btn-default{ href: "#{@preferences.as_path( :print )}", target: "_", alt: "Printable view", title: "Printable view"}
+        %i.fa.fa-print
 
 %p.text-muted.small
   Previewing most recent 5 of #{@query_command.size_all} selected months

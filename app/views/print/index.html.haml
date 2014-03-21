@@ -1,0 +1,47 @@
+!!! html
+%html
+  %head
+    %title Land Registry house price indices
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+
+  %body.government.website.lr.hpi
+    :javascript
+      document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
+
+    %header#global-header.with-proposition{ role: "banner" }
+      .header-wrapper
+        .header-global
+          .header-logo
+            = image_tag "lr_logo_221_80.png"
+        .header-proposition
+
+  .lr-top-bar
+  .container.print-view{ role: "main"}
+    .row
+
+      .col-md-12
+        %h2
+          #{@preferences.describe_selected_location}
+
+        #charts.view
+
+        #hpi-data
+          %table.table
+            %thead
+              = indices_table_header( @query_command )
+
+            %tbody
+              - @query_command.results.each do |result|
+                %tr
+                  - result.each_with_index do |value, i|
+                    %td{ class: (i > 0) ? "text-right" : "text-center" }
+                      = value
+
+        :javascript
+          $( function() {
+            HpiChart.drawChartsNoTabs( "#hpi-data table", "#charts", true );
+          } );
+    %footer#footer
+      &copy; Crown Copyright #{Time.now.year}

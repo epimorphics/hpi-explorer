@@ -5,3 +5,6 @@
     - unless defined? no_download
       %a.btn.btn-primary{ href: "#{@preferences.as_path( :download )}"}
         Download data
+    - unless defined? no_print
+      %a.btn.btn-default{ href: "#{@preferences.as_path( :print )}", alt: "Printable view", title: "Printable view"}
+        %i.fa.fa-print

@@ -150,6 +150,8 @@ class UserPreferences
         hpi_index_path( path_params )
       when :download
         download_index_path( path_params )
+      when :print
+        print_index_path( path_params )
       else
         raise "Do not know how to make path for #{controller}"
       end
