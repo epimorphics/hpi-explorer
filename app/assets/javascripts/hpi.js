@@ -20,6 +20,8 @@ var Hpi = function() {
     $("form.preview").on( "click", "input", onChangePreviewSettings );
     $("form.preview").on( "change", ".dates-filter select", drawPreview );
     $("form.preview").on( "click", "a.action-set-dates", onChangeDates );
+
+    $(".action-bookmark").on( "click", onBookmark );
   };
 
   /** Widget and control initialisation */
@@ -48,6 +50,8 @@ var Hpi = function() {
     $(".js.map-button").each( function( i, elem ) {
       showMapButton( elem );
     } );
+
+    $(".js.action-bookmark").removeClass("hidden");
   };
 
   /** User has submitted a search on the search form */
@@ -281,6 +285,34 @@ var Hpi = function() {
     $("select#to_y").val( a.data( "to-y" )).change();
 
   };
+
+  /** User wants to save the current location as a bookmark */
+  var onBookmark = function( e ) {
+    e.preventDefault();
+
+    var baseURL = "";
+
+    if ($("form.preview").length) {
+      var query = currentInteractionState( "preview", {}, ["utf8", "authenticity_token"] );
+      var queryString = _.keys(query)
+                         .reduce( function(a,k) {
+                            a.push(k+'='+encodeURIComponent(query[k]));
+                            return a
+                          },[])
+                         .join('&');
+      baseURL = sprintf( "%s?%s", window.location.href.replace( /\?[^\?]*/, "" ), queryString );
+    }
+    else {
+      baseURL = window.location.href;
+    }
+
+    $("#bookmark-modal").modal( 'show' );
+    _.defer( function() {
+      $(".bookmark-url").val( baseURL ).select();
+    } );
+  };
+
+  var currentPreviewFormState
 
   return {
     init: init,
