@@ -1,6 +1,7 @@
 {
   "endpoints": {
-    "default": "http://landregistry.data.gov.uk/landregistry/query"
+    "default": "http://landregistry.data.gov.uk/landregistry/query",
+    "dev-hpi": "http://lr-app-dev.epimorphics.com/landregistry/query"
   },
   "prefixes": {
     "rdf":      "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
@@ -9,15 +10,16 @@
     "xsd":      "http://www.w3.org/2001/XMLSchema#",
     "sr":       "http://data.ordnancesurvey.co.uk/ontology/spatialrelations/",
     "lrhpi":    "http://landregistry.data.gov.uk/def/hpi/",
+    "lrppi":    "http://landregistry.data.gov.uk/def/ppi/",
     "skos":     "http://www.w3.org/2004/02/skos/core#",
     "lrcommon": "http://landregistry.data.gov.uk/def/common/"
   },
   "queries": [
     { "name": "house price indices for Plymouth",
-      "query": "# Returns the House Price Index from the default graph for particular Local Authority / Region\n\nSELECT DISTINCT ?region ?yearmonth ?indexr ?avgprice ?monthly ?annual ?volume\nWHERE\n{ \n  <http://landregistry.data.gov.uk/data/hpi/region/City-of-Plymouth/month/2013-02>\n    lrhpi:refRegionName ?region ;\n    lrhpi:indicesSASM ?indexSASM ;\n    lrhpi:refPeriod ?yearmonth ;\n    lrhpi:averagePricesSASM ?avgprice ;\n    lrhpi:monthlyChange ?monthly ;\n    lrhpi:annualChange ?annual.\n\n  OPTIONAL {\n    <http://landregistry.data.gov.uk/data/hpi/region/City-of-Plymouth/month/2013-02> \n      lrhpi:salesVolume ?volume . \n  }\n\n  BIND (ROUND(xsd:decimal(?indexSASM) * 100)/100 AS ?indexr)\n}"
+      "query": "# Returns the house price indices for a particular local authority\r\rSELECT DISTINCT ?regionName ?yearmonth ?indexr ?avgprice ?monthly ?annual ?volume\rWHERE\r{\r  <http://landregistry.data.gov.uk/data/hpi/region/city-of-plymouth/month/2014-01>\r    lrhpi:refRegion ?region ;\r  lrhpi:indicesSASM ?indexSASM ;\r  lrhpi:refPeriod ?yearmonth ;\r  lrhpi:averagePricesSASM ?avgprice ;\r  lrhpi:monthlyChange ?monthly ;\r  lrhpi:annualChange ?annual.\r\r  ?region rdfs:label ?regionName.\r\r  OPTIONAL {\r    <http://landregistry.data.gov.uk/data/hpi/region/city-of-plymouth/month/2014-01>\r      lrhpi:salesVolume ?volume .\r  }\r\r  BIND (ROUND(xsd:decimal(?indexSASM) * 100)/100 AS ?indexr)\r}"
     },
     { "name": "transactions in a postcode",
-      "query": "# Returns the Price Paid data from the default graph for each transaction record having\n# an address with the given postcode.\n# The postcode to query is set in the line - ?address_instance common:postcode \"PL6 8RU\"^^xsd:string .\n\n\nSELECT ?paon ?saon ?street ?town ?county ?postcode ?amount ?date\nWHERE\n{\n  ?transx lrppi:pricePaid ?amount ;\n          lrppi:transactionDate ?date ;\n          lrppi:propertyAddress ?addr.\n  \n  ?addr lrcommon:postcode \"PL6 8RU\"^^xsd:string.\n  ?addr lrcommon:postcode ?postcode.\n  \n  OPTIONAL {?addr lrcommon:county ?county}\n  OPTIONAL {?addr lrcommon:paon ?paon}\n  OPTIONAL {?addr lrcommon:saon ?saon}\n  OPTIONAL {?addr lrcommon:street ?street}\n  OPTIONAL {?addr lrcommon:town ?town}\n\n}\nORDER BY ?amount"
+      "query": "# Returns the Price Paid data from the default graph for each transaction record having\r# an address with the given postcode.\r# The postcode to query is set in the line - ?address_instance common:postcode \"PL6 8RU\"^^xsd:string .\r\r\rSELECT ?paon ?saon ?street ?town ?county ?postcode ?amount ?date\rWHERE\r{\r  ?transx lrppi:pricePaid ?amount ;\r          lrppi:transactionDate ?date ;\r          lrppi:propertyAddress ?addr.\r  \r  ?addr lrcommon:postcode \"PL6 8RU\"^^xsd:string.\r  ?addr lrcommon:postcode ?postcode.\r  \r  OPTIONAL {?addr lrcommon:county ?county}\n  OPTIONAL {?addr lrcommon:paon ?paon}\n  OPTIONAL {?addr lrcommon:saon ?saon}\n  OPTIONAL {?addr lrcommon:street ?street}\n  OPTIONAL {?addr lrcommon:town ?town}\n\n}\nORDER BY ?amount"
     }
   ]
 }
