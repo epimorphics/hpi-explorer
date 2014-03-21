@@ -19,6 +19,9 @@ $lr-link: $lr-headline;
 $lr-link-quiet: $lr-logo-green-light;
 $lr-focus: $lr-logo-green-dark;
 $lr-top-line: $lr-green-nav;
+$lr-footer-grey: #f0f5f0;
+$lr-footer-link: lighten( $lr-separator, 10 );
+
 
 /* styles */
 
@@ -133,6 +136,35 @@ $lr-top-line: $lr-green-nav;
 
   #footer {
     margin-top: 40px;
+    background-color: #818181;
+    border-top: 8px solid $lr-separator;
+    font-size: 11pt;
+
+    h2 {
+      img {
+        max-height: 18px;
+        margin-right: 15px;
+      }
+
+      a {
+        line-height: normal;
+        padding: 0;
+        margin: 0;
+        font-size: 15pt;
+      }
+
+      line-height: normal;
+      font-size: 15pt;
+    }
+
+    a {
+      color: $lr-footer-link;
+    }
+
+    .ogl p {
+      color: #303030;
+      font-size: 11pt;
+    }
   }
 }
 

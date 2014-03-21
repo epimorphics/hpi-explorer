@@ -18,7 +18,6 @@
  *= require leaflet
  *= require qonsole_rails/application
 
- *= require gov.uk/colours
  *= require_tree .
  *= require hpi
 
