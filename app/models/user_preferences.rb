@@ -91,6 +91,11 @@ class UserPreferences
     INDEX_DEFINITIONS.select {|key, index| param(key)} .values
   end
 
+  # Return the number of currently selected indices
+  def num_selected_indices
+    selected_indices.size
+  end
+
   # Return true if the user has selected the option to compare two areas
   def compare_areas?
     @params.keys.include?( "compare" )
