@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Land Registry - search the house price index</title>
+    <link rel="stylesheet" href="stylesheets/landing.css" type="application/css" />
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  </head>
+  <body class='government website lr hpi'>
+    <script>
+      document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
+    </script>
+    <header class='container with-proposition' id='global-header'>
+      <div class="row">
+        <div class='header-wrapper'>
+          <div class='header-global pull-left'>
+            <div class='header-logo'>
+              <a class='content'>
+                <img src="images/lr_logo_221_80.png"
+              </a>
+            </div>
+          </div>
+          <div class='header-proposition'>
+            <div class='content'>
+              <nav id='proposition-menu'>
+                <a id='proposition-name'>
+                  Land Registry Linked Open Data
+                  <a class='beta-tag'>
+                    beta
+                  </a>
+                </a>
+                <ul id='proposition-links' class='list-inline'>
+                  <li>
+                    <a>
+                      House Price Index
+                    </a>
+                  </li>
+                  <li>
+                    <a>
+                      Price Paid Data
+                    </a>
+                  </li>
+                  <li>
+                    <a>
+                      SPARQL query
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+      </div>
+      </div>
+    </header>
+  </body>
+  <div class='lr-top-bar'></div>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-md-12'>
+        <h1>Linked open data from Land Registry</h1>
+        <p>This site provides access to
+          <a href="http://en.wikipedia.org/wiki/Linked_data">linked open data</a>
+           collected and published by Land Registry
+           on property prices in England and Wales.
+        </p>
+        <h2>
+          <a href="/app/hpi">Search the House Price Index</a>
+        </h2>
+        <p>
+          Use this search to find average price, sales volumes and property type
+          for a specified location over a defined period of time.
+        </p>
+        <p>
+           Our House Price Index compares average house price today to what it was in January 1995,
+           with the index set then at 100. It includes figures as national, regional, county
+           and Local Authority level. For more information visit About the House Price Index.
+        </p>
+
+        <h2>
+          <a href="/app/ppd">Price Paid Data Reports</a>
+        </h2>
+        <p>
+          Use this search to build bespoke extracts of our detailed price paid data
+          based on location, tenure, price paid, property type over a defined period of time.
+        </p>
+        <p>
+          Our price paid data tracks the residential property sales in England and Wales that
+          are lodged with us for registration. The dataset is one of the most reliable sources
+          of house price information and consists of more than 18.5 million definitive records
+          dating back to January 1995. For more information on this dataset and what it
+          includes/excludes visit <a href="todo">Price Paid Data FAQs</a>.
+        </p>
+
+        <h2>
+          <a href="/sparql">SPARQL query</a>
+        </h2>
+        <p>
+          If you would rather try out your own SPARQL queries against our linked data publications,
+          please use this option. (Could perhaps do with some assistance on how to word this one)!
+        </p>
+      </div>
+    </div>
+  </div>
+</html>

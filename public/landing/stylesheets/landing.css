@@ -1,0 +1,251 @@
+@-ms-viewport {
+  width: device-width; }
+@-o-viewport {
+  width: device-width; }
+
+@font-face {
+  font-family: GDS-Logo;
+  src: local("HelveticaNeue"), local("Helvetica Neue"), local("Arial"), local("Helvetica"); }
+
+@font-face {
+  font-family: 'GeoHeadlineRegular';
+  src: url(../fonts/geoheadline-webfont.eot);
+  src: url(../fonts/geoheadline-webfont.eot#iefix) format('embedded-opentype'),
+       url(../fonts/geoheadline-webfont.woff) format('woff'),
+       url(../fonts/geoheadline-webfont.ttf) format('truetype'),
+       url(../fonts/geoheadline-webfont.svg#GeoHeadlineRegular) format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@-ms-viewport {
+  width: device-width; }
+@-o-viewport {
+  width: device-width; }
+/* Cross-browser shims
+
+  Ways of normalising properties across browsers.
+ */
+@-ms-viewport {
+  width: device-width; }
+@-o-viewport {
+  width: device-width; }
+/* Usage:
+   @include inline-block
+
+   or
+
+   @include inline-block("250px")
+
+   which gives a min-height to the inline-block elements.
+*/
+/* Contain floats usage:
+
+   .this-has-floated-children {
+     @extend %contain-floats;
+   }
+
+*/
+/* CSS 3 Mixins
+
+  Add them as you need them. This should let us manage vendor prefixes in one place.
+ */
+@-ms-viewport {
+  width: device-width; }
+@-o-viewport {
+  width: device-width; }
+/*
+
+Mixin and defaults for making buttons on GOV.UK services.
+
+For guidance, see: https://www.gov.uk/service-manual/design-and-content/resources/buttons.html
+
+Example usage:
+
+.button{
+  @include button;
+}
+.button-secondary{
+  @include button($grey-3);
+}
+.button-warning{
+  @include button($red);
+}
+
+*/
+@font-face {
+  font-family: GDS-Logo;
+  src: local("HelveticaNeue"), local("Helvetica Neue"), local("Arial"), local("Helvetica"); }
+@-ms-viewport {
+  width: device-width; }
+@-o-viewport {
+  width: device-width; }
+/* Cross-browser shims
+
+  Ways of normalising properties across browsers.
+ */
+@-ms-viewport {
+  width: device-width; }
+@-o-viewport {
+  width: device-width; }
+/* Usage:
+   @include inline-block
+
+   or
+
+   @include inline-block("250px")
+
+   which gives a min-height to the inline-block elements.
+*/
+/* Contain floats usage:
+
+   .this-has-floated-children {
+     @extend %contain-floats;
+   }
+
+*/
+/* variables */
+/* styles */
+.beta-banner {
+  padding: 8px 0;
+  background-color: #f47738; }
+  .beta-banner p {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 15px;
+    color: #0b0c0c;
+    font-family: "nta", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.25;
+    font-weight: 300;
+    text-transform: none; }
+    @media (max-width: 640px) {
+      .beta-banner p {
+        font-size: 14px;
+        line-height: 1.14286; } }
+  .beta-banner a, .beta-banner a:link, .beta-banner a:visited, .beta-banner a:active {
+    color: #0b0c0c; }
+  .beta-banner a:hover {
+    color: #0b0c0c; }
+
+.beta-tag {
+  display: -moz-inline-stack;
+  display: inline-block;
+  background-color: #f47738;
+  color: #fff;
+  font-family: "nta", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.25;
+  font-weight: 300;
+  text-transform: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  margin: 3px 10px 0 5px;
+  padding: 2px 5px 0; }
+  @media (max-width: 640px) {
+    .beta-tag {
+      font-size: 14px;
+      line-height: 1.14286; } }
+
+.lr #global-header {
+  background-color: white; }
+.lr #global-header .header-proposition #proposition-links li a {
+  color: #a6d71c; }
+.lr #global-header .header-proposition #proposition-links li a.active {
+  color: #5a8006; }
+.lr #global-header .header-proposition #proposition-name {
+  color: #5a8006;
+  font-family: GeoHeadlineRegular; }
+.lr #global-header .header-proposition a.menu {
+  color: #5a8006; }
+.lr :focus, .lr a:focus, .lr input:focus {
+  outline: 1px solid #66c430;
+  background-color: inherit; }
+.lr .form-control:focus {
+  border: 0;
+  box-shadow: none;
+  -webkit-box-shadow: none; }
+.lr .lr-top-bar {
+  width: 100%;
+  height: 3px;
+  background-color: #accd40;
+  margin: 5px 0; }
+.lr .container {
+  max-width: 960px; }
+.lr section {
+  border-top: 10px solid #accd40;
+  margin-top: 10px;
+  margin-bottom: 10px; }
+.lr #date-slider {
+  margin-top: 10px; }
+.lr h1,   .lr h2, .lr h3 {
+  font-family: GeoHeadlineRegular; }
+.lr #map {
+  width: 300px;
+  height: 350px; }
+.lr .inline {
+  display: inline-block; }
+.lr .date-to {
+  margin-left: 1em; }
+.lr .related-locations {
+  margin-bottom: 1em; }
+.lr form.search .form-group {
+  margin-bottom: 3px; }
+.lr a.btn.btn-primary, .lr a.btn.btn-primary:hover, .lr a.btn.btn-primary:visited {
+  background-color: #5a8006;
+  color: white;
+  font-family: nta, Arial, sans-serif;
+  border: 1px solid #496805; }
+.lr a.action, .lr a.action:hover, .lr a.action:visited {
+  color: #5a8006; }
+.lr .clear-selection a.btn {
+  position: absolute;
+  right: 5px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  cursor: pointer;
+  font-size: 16pt;
+  padding: 3px 6px; }
+.lr #footer {
+  margin-top: 40px;
+  background-color: #818181;
+  border-top: 8px solid #accd40;
+  font-size: 11pt; }
+  .lr #footer h2 {
+    line-height: normal;
+    font-size: 15pt; }
+    .lr #footer h2 img {
+      max-height: 18px;
+      margin-right: 15px; }
+    .lr #footer h2 a {
+      line-height: normal;
+      padding: 0;
+      margin: 0;
+      font-size: 15pt; }
+  .lr #footer a {
+    color: #bed868; }
+  .lr #footer .ogl p {
+    color: #303030;
+    font-size: 11pt; }
+
+#proposition-name {
+  font-family: GeoHeadlineRegular, Arial, sans-serif;
+  color: #5a8006;
+  font-size: 25px;
+  line-height: 1.25;
+  font-weight: bold;
+}
+
+#proposition-menu {
+  margin-left: 20em;
+}
+
+.header-wrapper {
+  padding: 0.5em 15px;
+}
+
+.leaflet-tile-container img {
+  -webkit-backface-visibility: hidden; }
