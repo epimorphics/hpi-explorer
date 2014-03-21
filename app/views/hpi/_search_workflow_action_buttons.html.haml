@@ -1,6 +1,6 @@
 .pull-right
   .small
-    %a.btn.btn-default{ href: "#{@preferences.as_path( :hpi )}"}
+    %a.btn.btn-primary{ href: "#{@preferences.as_path( :hpi )}"}
       Change search settings
     - unless defined? no_download
       %a.btn.btn-primary{ href: "#{@preferences.as_path( :download )}"}
