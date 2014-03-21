@@ -25,7 +25,7 @@ GIT
 
 GIT
   remote: git@github.com:epimorphics/qonsole-rails.git
-  revision: ff4f3ed621329bd41e8ac7101660f1574f51f19a
+  revision: 20a58bef85855c37008a423ef32a8f98d273fe5e
   specs:
     qonsole-rails (0.0.1)
       fontawesome-rails
@@ -62,7 +62,7 @@ GEM
       tzinfo (~> 0.3.37)
     addressable (2.3.5)
     arel (4.0.2)
-    atomic (1.1.15)
+    atomic (1.1.16)
     bootstrap-sass (3.1.1.0)
       sass (~> 3.2)
     builder (3.1.4)
@@ -157,7 +157,7 @@ GEM
       minispec-metadata (~> 2.0.0)
       minitest (>= 4.7.5)
       vcr (~> 2.8.0)
-    multi_json (1.9.0)
+    multi_json (1.9.2)
     multipart-post (1.2.0)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
@@ -223,7 +223,7 @@ GEM
       libv8 (~> 3.16.14.0)
       ref
     thor (0.18.1)
-    thread_safe (0.2.0)
+    thread_safe (0.3.1)
       atomic (>= 1.1.7, < 2)
     tilt (1.4.1)
     tins (1.0.0)
