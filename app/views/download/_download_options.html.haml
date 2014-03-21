@@ -1,12 +1,13 @@
 - if params[:format]
-  Huzzah!
+  A format has been specified, but the default view has been selected. This suggests
+  a bug, or that the format requested is not one that is currently supported.
 - else
   .download
     .row
       .col-md-12
         %h2
           = @preferences.describe_selected_location( ["Download selected data for:", "Download comparison data for:"] )
-          = render partial: "hpi/change_search_settings"
+          = render partial: "hpi/search_workflow_action_buttons", locals: {no_download: true}
 
     .row
       .col-md-4
