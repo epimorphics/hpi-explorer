@@ -290,9 +290,9 @@ var HpiChart = function() {
         xaxis:{
           renderer:$.jqplot.DateAxisRenderer,
           tickOptions: {formatString: "%b %Y"},
-          autoformat: true,
+          // autoformat: true,
           numberTicks: option( options, "numberXAxisTicks", 5),
-          max: new Date()
+          max: selectedMaxDate()
         },
         yaxis: seriesOptions[0].axes.yaxis
       },
@@ -314,6 +314,14 @@ var HpiChart = function() {
   /** Return an option value, or a default */
   var option = function( options, key, def ) {
     return (options && options[key]) ? options[key] : def;
+  };
+
+  /** Return the user's selected maximum date, as a Date object */
+  var selectedMaxDate = function() {
+    var params = Util.urlQueryParams();
+    var toM = $("select#to_m").val() || params["to_m"];
+    var toY = $("select#to_y").val() || params["to_y"];
+    return new Date( toY, toM );
   };
 
   // module exports

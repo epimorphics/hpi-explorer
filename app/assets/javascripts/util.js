@@ -17,13 +17,13 @@ var Util = function() {
                 December: 11, Dec: 11
                };
 
-  /** Parse a month year pair as a Date, assuming the first day of the month */
+  /** Parse a month year pair as a Date */
   var parseMonthYear = function( v ) {
     var my = v.split(" ");
     var month = my[0];
     var year = my[1];
 
-    return new Date( parseInt( year ), parseMonth( month ), 5 );
+    return new Date( parseInt( year ), parseMonth( month ) );
   };
 
   /** Return the month number, 0 .. 11, of a given month name */
@@ -37,10 +37,25 @@ var Util = function() {
     return parseFloat( v );
   };
 
+  /** Return a hash containing the URL query parameters */
+  var urlQueryParams = function( s ) {
+    var qs = s || window.location.search;
+    qs = qs.split("+").join(" ");
+
+    var params = {}, tokens, re = /[?&]?([^=]+)=([^&]*)/g;
+
+    while (tokens = re.exec(qs)) {
+      params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2]);
+    }
+
+    return params;
+  }
+
   return {
     parseCurrency: parseCurrency,
     parseFloat: parseFloat,
     parseMonth: parseMonth,
-    parseMonthYear: parseMonthYear
+    parseMonthYear: parseMonthYear,
+    urlQueryParams: urlQueryParams
   }
 }();

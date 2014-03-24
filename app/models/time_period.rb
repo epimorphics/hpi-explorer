@@ -1,4 +1,5 @@
 # Model of the time period selected by the user, with suitable defaults
+# NB: month stored internally in JavaScript format (zero indexed)
 class TimePeriod
   attr_reader :preferences, :lang, :year_now, :month_now
   attr_reader :from_y, :to_y, :from_m, :to_m
@@ -6,7 +7,7 @@ class TimePeriod
   FIRST_YEAR = 1995
 
   MONTHS = {
-    en: %w(January February March April May June July August September October November December).zip( 1..12 )
+    en: %w(January February March April May June July August September October November December).zip( 0..11 )
   }
 
   def initialize( preferences, lang = :en )
@@ -14,7 +15,7 @@ class TimePeriod
     @lang = lang
 
     @year_now = Time.now.year
-    @month_now = Time.now.month
+    @month_now = Time.now.month - 1 # -1 because Javascript months start at 0, not 1
 
     @from_y = preferences.param( :from_y ) || (year_now - 1)
     @to_y = preferences.param( :to_y ) || year_now
@@ -62,7 +63,7 @@ class TimePeriod
     m = self.send( key_m )
     y = self.send( key_y )
 
-    {"@value" => format('%04d-%02d', y, m ),
+    {"@value" => format('%04d-%02d', y, m.to_i + 1 ),
      "@type" => "http://www.w3.org/2001/XMLSchema#gYearMonth"}
   end
 

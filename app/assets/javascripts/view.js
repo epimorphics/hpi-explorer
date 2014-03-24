@@ -30,7 +30,7 @@ jQuery.extend( jQuery.fn.dataTableExt.oSort, {
 
     "yearmonth-pre": function( a ) {
       var ym = a.split("-");
-      return new Date( parseInt( ym[0] ), parseInt( ym[1] ) - 1, 1 );
+      return new Date( parseInt( ym[0] ), parseInt( ym[1] ) - 1 );
     },
 
     "yearmonth-asc": function( a, b ) {
