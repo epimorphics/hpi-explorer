@@ -6,13 +6,13 @@ class Location < DataService
   def initialize( location_uri )
     super
     @id = location_uri
-    puts "@id #{@id}"
+    Rails.logger.info "@id #{@id}"
     @hpi = dataset( :hpi )
-    puts "@hpi #{@hpi}"
+    Rails.logger.info "@hpi #{@hpi}"
     @json = @hpi.describe( location_uri )
-    puts "@json #{@json}"
+    Rails.logger.info "@json #{@json}"
     @labels = {location_uri => @json["label"]}
-    puts "@labels #{@labels}"
+    Rails.logger.info "@labels #{@labels}"
   end
 
   def within
