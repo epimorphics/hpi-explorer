@@ -38,13 +38,13 @@ class TimePeriod
   end
 
   def year_to_date
-    {from_m: 1, from_y: year_now,
+    {from_m: 0, from_y: year_now,
      to_m: month_now, to_y: year_now}
   end
 
   def last_calendar_year
-    {from_m: 1, from_y: year_now - 1,
-     to_m: 12, to_y: year_now - 1}
+    {from_m: 0, from_y: year_now - 1,
+     to_m: 11, to_y: year_now - 1}
   end
 
   def last_twelve_months_path( controller, options = {}, delete = [] )
