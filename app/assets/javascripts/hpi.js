@@ -198,17 +198,18 @@ var Hpi = function() {
                                                     ['search_0', 'search_1'] );
     $.post( Routes.search_index_path(),
             interactionState, null, "html" )
-      .done( onComparisonDone )
-      .fail( onComparisonFail );
+      .done( onAddComparisonDone )
+      .fail( onAddComparisonFail );
   };
 
-  var onComparisonDone = function( html ) {
+  var onAddComparisonDone = function( html ) {
     $(".search-form-container").empty().append( html );
     initControls();
     drawPreview();
+    _.defer( function() {$("input#search_1").focus();} );
   };
 
-  var onComparisonFail = function( jqXhr, error ) {
+  var onAddComparisonFail = function( jqXhr, error ) {
     console.log( "Comparison failure: " + error );
   };
 
