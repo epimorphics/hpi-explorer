@@ -18,6 +18,7 @@
   rdfs:label "HPI locations";
   dct:description "Locations (regions, counties, boroughs, etc) defined in the HPI data";
   dsapi:baseQuery "?item rdf:type def-hpi:Region";
+  dsapi:source "source2";
   dsapi:aspect
     [rdfs:label "label"; dsapi:property rdfs:label],
     [rdfs:label "within"; dsapi:property sr:within; dsapi:optional true],
