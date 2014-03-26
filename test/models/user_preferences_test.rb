@@ -1,5 +1,5 @@
 require 'test_helper'
-require 'pry'
+
 describe "UserPreferences" do
 
   it "should define a partial for the area comparison" do
