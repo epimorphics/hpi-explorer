@@ -1,6 +1,9 @@
 var Hpi = function() {
   "use strict";
 
+  /** Module variables */
+  var _spinner;
+
   /** Module initialisation */
   var init = function() {
     initControls();
@@ -10,6 +13,7 @@ var Hpi = function() {
 
   /** Event handling */
   var bindEvents = function() {
+    $(".container").on( "click", ".action-disabled", onDisabledAction );
     $(".container").on( "click", "a.action-add-comparison", onAddComparison );
     $(".container").on( "click", "a.action-show-map", onShowMap );
     $(".container").on( "click", "a.action-remove-comparison", onRemoveComparison );
@@ -22,6 +26,9 @@ var Hpi = function() {
     $("form.preview").on( "click", "a.action-set-dates", onChangeDates );
 
     $(".action-bookmark").on( "click", onBookmark );
+
+    $(document).on( "ajaxSend", onAjaxSend )
+               .on( "ajaxComplete", onAjaxComplete );
   };
 
   /** Widget and control initialisation */
@@ -52,10 +59,20 @@ var Hpi = function() {
     } );
 
     $(".js.action-bookmark").removeClass("hidden");
+
+    // ajax spinner
+    _spinner = new Spinner( {
+      color:'#ACCD40',
+      lines: 12,
+      radius: 50,
+      length: 30,
+      width: 10
+    } );
   };
 
   /** User has submitted a search on the search form */
   var onSearchSubmit = function( e ) {
+    if (checkDisabledAction(e)) {return false;}
     if (e) {e.preventDefault();}
   };
 
@@ -71,6 +88,7 @@ var Hpi = function() {
 
   /** User has clicked to change some of the preview settings */
   var onChangePreviewSettings = function( e ) {
+    if (checkDisabledAction(e)) {return false;}
     drawPreview();
   };
 
@@ -190,6 +208,7 @@ var Hpi = function() {
 
   /** User wants to show the comparison region */
   var onAddComparison = function( e ) {
+    if (checkDisabledAction(e)) {return false;}
     e.preventDefault();
     clearPreview();
 
@@ -215,6 +234,7 @@ var Hpi = function() {
 
   /** User wants to remove the comparison of two areas option */
   var onRemoveComparison = function( e ) {
+    if (checkDisabledAction(e)) {return false;}
     e.preventDefault();
     clearPreview();
     resetPreviewFormElement( "compare", null );
@@ -243,6 +263,7 @@ var Hpi = function() {
 
   /** Remove a selection */
   var onRemoveSelection = function( e ) {
+    if (checkDisabledAction(e)) {return false;}
     e.preventDefault();
     var button = $(e.currentTarget);
     var elem = button.parents(".area-selection");
@@ -269,6 +290,7 @@ var Hpi = function() {
 
   /** User has clicked to show the map */
   var onShowMap = function( e ) {
+    if (checkDisabledAction(e)) {return false;}
     e.preventDefault();
     var button = $(e.currentTarget);
     var searchId = button.parents( "span[data-search-id]" ).data( "search-id" );
@@ -278,6 +300,7 @@ var Hpi = function() {
 
   /** User has selected an option to pick an alternative date range */
   var onChangeDates = function( e ) {
+    if (checkDisabledAction(e)) {return false;}
     e.preventDefault();
     var a = $(e.currentTarget);
     $("select#from_m").val( a.data( "from-m" ));
@@ -289,6 +312,7 @@ var Hpi = function() {
 
   /** User wants to save the current location as a bookmark */
   var onBookmark = function( e ) {
+    if (checkDisabledAction(e)) {return false;}
     e.preventDefault();
 
     var baseURL = "";
@@ -313,7 +337,28 @@ var Hpi = function() {
     } );
   };
 
-  var currentPreviewFormState
+  /* Ajax event handling */
+  var onAjaxSend = function( e ) {
+    $("a.btn").addClass( "action-disabled" );
+    _spinner.spin( $(".container")[0] );
+  };
+
+  var onAjaxComplete = function( e ) {
+    $("a.btn").removeClass( "action-disabled" );
+    _spinner.stop();
+  };
+
+  var checkDisabledAction = function( e ) {
+    if ($(e.currentTarget).is(".action-disabled")) {
+      e.preventDefault();
+      return true;
+    }
+    return false;
+  };
+
+  var onDisabledAction = function( e ) {
+    if (checkDisabledAction(e)) {return false;}
+  }
 
   return {
     init: init,
