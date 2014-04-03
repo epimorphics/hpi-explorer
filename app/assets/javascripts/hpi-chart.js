@@ -217,7 +217,7 @@ var HpiChart = function() {
 
     _.each( chartSets, function( keys, kind ) {
       var series = _.map( keys, function( key ) {return chartData[key.name];} );
-      var options = chartOptions( keys );
+      var options = chartOptions( keys, {}, series );
       var ref = "a[href=#" + kind + "]";
 
       if ($(ref).parent().is(".active")) {
@@ -252,7 +252,7 @@ var HpiChart = function() {
 
     _.each( chartSets, function( keys, kind ) {
       var series = _.map( keys, function( key ) {return chartData[key.name];} );
-      var options = chartOptions( keys );
+      var options = chartOptions( keys, {}, series );
 
       $.jqplot( kind + "-chart", series, options );
     } );
@@ -279,20 +279,24 @@ var HpiChart = function() {
     return ASPECT_OPTIONS[seriesKey.aspect].partition;
   };
 
-  var chartOptions = function( keys, options ) {
+  /** Return the formatting options for laying out the chart */
+  var chartOptions = function( keys, options, series ) {
     var seriesOptions = _.map( keys, function( key ) {
       return _.extend( {label: key.name},
                        ASPECT_OPTIONS[key.aspect] )
     } );
 
+    var tickInterval = selectTickInterval( series );
+    var axisLabelFormat = tickInterval.match( /year/ ) ? "%Y" : "%b %Y";
+
     return {
       axes:{
         xaxis:{
           renderer:$.jqplot.DateAxisRenderer,
-          tickOptions: {formatString: "%b %Y"},
-          // autoformat: true,
-          numberTicks: option( options, "numberXAxisTicks", 5),
-          max: selectedMaxDate()
+          tickOptions: {formatString: axisLabelFormat},
+          tickInterval: selectTickInterval( series ),
+          max: selectedMaxDate(),
+          min: seriesMinDate( series )
         },
         yaxis: seriesOptions[0].axes.yaxis
       },
@@ -321,7 +325,34 @@ var HpiChart = function() {
     var params = Util.urlQueryParams();
     var toM = $("select#to_m").val() || params["to_m"];
     var toY = $("select#to_y").val() || params["to_y"];
-    return new Date( toY, toM );
+    return new Date( parseInt( toY ), parseInt( toM ), 1, 23, 59 );
+  };
+
+  /** Return the minimum date in the series */
+  var seriesMinDate = function( series ) {
+    return _.last( series[0] )[0];
+  };
+
+  /** Return the maximum date in the series */
+  var seriesMaxDate = function( series ) {
+    return _.first( series[0] )[0];
+  };
+
+  /** Return a suitable tick interval for this series */
+  var selectTickInterval = function( series ) {
+    var minDate = seriesMinDate( series );
+    var maxDate = seriesMaxDate( series );
+    var delta = ((maxDate.getFullYear() - minDate.getFullYear()) * 12) - minDate.getMonth() + maxDate.getMonth() + 1;
+
+    if (delta <= 12) {
+      return '1 month'
+    }
+    else if (delta <= 36) {
+      return '3 months'
+    }
+    else {
+      return '1 year';
+    }
   };
 
   // module exports
