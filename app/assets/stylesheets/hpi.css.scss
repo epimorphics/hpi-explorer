@@ -151,9 +151,13 @@ $lr-footer-link: lighten( $lr-separator, 10 );
   }
 
 
-  .action-remove-comparison {
+  a.action.action-remove-comparison {
     padding: 0 4px;
     margin-top: -2px;
+    color: $lr-logo-grey;
+  }
+  a.action.action-remove-comparison:hover, a.action.action-remove-comparison:focus {
+    color: $lr-headline;
   }
 
   button.close {
