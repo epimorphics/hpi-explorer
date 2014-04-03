@@ -175,6 +175,11 @@ class UserPreferences
     @time_period ||= TimePeriod.new( self )
   end
 
+  # Return true if the start date is later than the end date
+  def negative_date_range?
+    time_period.negative?
+  end
+
   private
 
   def indifferent_access( h )

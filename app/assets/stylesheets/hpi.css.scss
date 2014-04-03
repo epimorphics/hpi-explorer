@@ -111,6 +111,16 @@ $lr-footer-link: lighten( $lr-separator, 10 );
     margin-bottom: 3px;
   }
 
+  .user-warning {
+    min-height: 8em;
+    text-align: center;
+    padding-top: 3em;
+    background-color: lighten( $lr-yellow, 20% );
+    color: black;
+    border: 1px solid #202020;
+    margin-top: 1em;
+  }
+
   // buttons
   a.btn.btn-primary, a.btn.btn-primary:hover, a.btn.btn-primary:visited {
     background-color: $lr-headline;

@@ -9,6 +9,8 @@ var HpiPreview = function() {
   /** Update the preview, based on the current form */
   var updatePreview = function( options ) {
     var interactionState = Hpi.currentInteractionState( "preview", options );
+    clearPreview();
+
     $.post( Routes.preview_index_path(),
             interactionState, null, "json" )
       .done( onPreviewDone )
@@ -16,13 +18,19 @@ var HpiPreview = function() {
   };
 
   var onPreviewDone = function( json ) {
-    $("#results-header").empty().html( json.header );
-    $("#results-preview").empty().html( json.preview );
+    clearPreview();
+    $("#results-header").html( json.header );
+    $("#results-preview").html( json.preview );
     HpiChart.drawCharts( "table.preview", "#chart", true );
   };
 
   var onPreviewFail = function( jqXhr, error ) {
     console.log( "Preview failed: " + error )
+  };
+
+  var clearPreview = function() {
+    $("#results-header").empty();
+    $("#results-preview").empty();
   };
 
   return {

@@ -67,7 +67,9 @@ class TimePeriod
      "@type" => "http://www.w3.org/2001/XMLSchema#gYearMonth"}
   end
 
-
+  def negative?
+    (from_y.to_i > to_y.to_i) || (from_y == to_y && from_m.to_i > to_m.to_i)
+  end
 
   private
 

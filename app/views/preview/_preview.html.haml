@@ -1,23 +1,27 @@
 .col-md-12
   %section
 
-    #results-header.col-md-12
-      = render partial: "hpi/selected_location" if @preferences.location_complete?
-
-    - if @preferences.num_selected_indices == 0
-      %p.text-warning
-        %i.fa.fa-exclamation-circle
-        Please choose one or more of the indices above to see data for your
-        selected location(s).
+    - if @query_command.illegal_state
+      %p.user-warning
+        = @query_command.illegal_state
     - else
-      #chart.preview
+      #results-header.col-md-12
+        = render partial: "hpi/selected_location" if @preferences.location_complete?
 
-      %table.table.preview
-        %thead
-          = indices_table_header( @query_command )
-        %tbody
-          - @query_command.results.each do |result|
-            %tr
-              - result.each_with_index do |value, i|
-                %td{ class: (i > 0) ? "text-right" : "text-center" }
-                  = value
+      - if @preferences.num_selected_indices == 0
+        %p.text-warning
+          %i.fa.fa-exclamation-circle
+          Please choose one or more of the indices above to see data for your
+          selected location(s).
+      - else
+        #chart.preview
+
+        %table.table.preview
+          %thead
+            = indices_table_header( @query_command )
+          %tbody
+            - @query_command.results.each do |result|
+              %tr
+                - result.each_with_index do |value, i|
+                  %td{ class: (i > 0) ? "text-right" : "text-center" }
+                    = value

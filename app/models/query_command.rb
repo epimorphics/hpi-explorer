@@ -26,6 +26,7 @@ class QueryCommand < DataService
 
   attr_reader :results, :all_results, :columns
   attr_reader :search_id_0, :search_id_1
+  attr_reader :illegal_state
 
   def initialize( preferences )
     super
@@ -36,23 +37,25 @@ class QueryCommand < DataService
   end
 
   def load_query_results( options = {} )
-    hpi = dataset( :hpi )
-    non_loc_query = add_sort(
-                      add_date_range_constraint(
-                        base_query ) )
+    unless check_illegal_state
+      hpi = dataset( :hpi )
+      non_loc_query = add_sort(
+                        add_date_range_constraint(
+                          base_query ) )
 
-    query_0 = add_location_constraint( non_loc_query, search_id_0 )
-    query_1 = add_location_constraint( non_loc_query, search_id_1 ) if compare_areas?
+      query_0 = add_location_constraint( non_loc_query, search_id_0 )
+      query_1 = add_location_constraint( non_loc_query, search_id_1 ) if compare_areas?
 
-    Rails.logger.debug "About to ask DsAPI query_0: #{query_0.to_json}"
-    Rails.logger.debug "About to ask DsAPI query_1: #{query_1.to_json}" if query_1
+      Rails.logger.debug "About to ask DsAPI query_0: #{query_0.to_json}"
+      Rails.logger.debug "About to ask DsAPI query_1: #{query_1.to_json}" if query_1
 
-    @all_results[search_id_0.sym] = hpi.query( query_0 )
-    @all_results[search_id_1.sym] = hpi.query( query_1 ) if query_1
+      @all_results[search_id_0.sym] = hpi.query( query_0 )
+      @all_results[search_id_1.sym] = hpi.query( query_1 ) if query_1
 
-    @columns = visible_columns( options )
-    @results = select_visible_results( @all_results, @columns,
-                                       {limit: RESULTS_SAMPLE}.merge( options ) )
+      @columns = visible_columns( options )
+      @results = select_visible_results( @all_results, @columns,
+                                         {limit: RESULTS_SAMPLE}.merge( options ) )
+    end
   end
 
   # Return the types of the visible columns
@@ -74,6 +77,7 @@ class QueryCommand < DataService
 
   # Return the number of all rows of data
   def size_all
+    return 0 if illegal_state
     @all_results[search_id_0.sym].size
   end
 
@@ -153,14 +157,18 @@ class QueryCommand < DataService
   end
 
   def download_label( search_id, index )
-    begin
     if compare_areas?
       "#{["First", "Second"][search_id.n]} location #{index[:label]}"
     else
       index[:label]
     end
-  rescue
-    binding.pry
   end
+
+  def check_illegal_state
+    if preferences.negative_date_range?
+      @illegal_state = "You have picked a start date which is later than the end date. Please adjust your date selections."
+    end
+
+    @illegal_state
   end
 end
