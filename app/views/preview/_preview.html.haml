@@ -2,7 +2,9 @@
   %section
 
     - if @query_command.illegal_state
-      %p.user-warning
+      %p
+      %p.text-warning
+        %i.fa.fa-exclamation-circle
         = @query_command.illegal_state
     - else
       #results-header.col-md-12
