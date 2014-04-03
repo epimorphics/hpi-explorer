@@ -55,6 +55,8 @@ class QueryCommand < DataService
       @columns = visible_columns( options )
       @results = select_visible_results( @all_results, @columns,
                                          {limit: RESULTS_SAMPLE}.merge( options ) )
+
+      check_no_results( @all_results[search_id_0.sym])
     end
   end
 
@@ -170,5 +172,9 @@ class QueryCommand < DataService
     end
 
     @illegal_state
+  end
+
+  def check_no_results( results )
+    @illegal_state = "Sorry, your query returned no results." unless results.size > 0
   end
 end
