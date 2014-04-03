@@ -246,8 +246,8 @@ var Hpi = function() {
                                                     ['compare', 'search_1', 'loc_1', 'loc_uri_1'] );
     $.post( Routes.search_index_path(),
             interactionState, null, "html" )
-      .done( onComparisonDone )
-      .fail( onComparisonFail );
+      .done( onAddComparisonDone )
+      .fail( onAddComparisonFail );
   };
 
 
