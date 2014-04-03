@@ -61,13 +61,15 @@ var Hpi = function() {
     $(".js.action-bookmark").removeClass("hidden");
 
     // ajax spinner
-    _spinner = new Spinner( {
-      color:'#ACCD40',
-      lines: 12,
-      radius: 50,
-      length: 30,
-      width: 10
-    } );
+    if (!_spinner) {
+      _spinner = new Spinner( {
+        color:'#ACCD40',
+        lines: 12,
+        radius: 50,
+        length: 30,
+        width: 10
+      } );
+    }
   };
 
   /** User has submitted a search on the search form */
