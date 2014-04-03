@@ -9,6 +9,7 @@ var HpiMapSearch = function() {
   var init = function() {
     if (!_map) {
       _map = L.map( 'map' ).setView( [53.0072, -2], 6 );
+      _map.attributionControl.setPrefix( "Contains Ordnance Survey data &copy; Crown copyright 2014" );
 
       $.getJSON( Routes.root_path() + "european_region_region-s-100.0.json" )
        .done( function( json ) {
