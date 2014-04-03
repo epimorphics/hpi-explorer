@@ -133,15 +133,31 @@ $lr-footer-link: lighten( $lr-separator, 10 );
     color: $lr-headline;
   }
 
-  .clear-selection a.btn {
-    position: absolute;
-    right: 5px;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    cursor: pointer;
-    font-size: 16pt;
-    padding: 3px 6px;
+  .clear-selection {
+    a.btn {
+      position: absolute;
+      right: 5px;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      cursor: pointer;
+      font-size: 16pt;
+      padding: 1px 6px;
+      color: $lr-logo-grey;
+    }
+    a.btn:hover, a.btn:focus {
+      color: $lr-headline;
+    }
+  }
+
+
+  .action-remove-comparison {
+    padding: 0 4px;
+    margin-top: -2px;
+  }
+
+  button.close {
+    font-size: 32px;
   }
 
   #footer {
