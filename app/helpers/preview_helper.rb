@@ -24,40 +24,51 @@ module PreviewHelper
   # case of a comparison table
   def indices_table_header( query_command )
     preferences = query_command.preferences
-    elems = []
-
-    # location headings
     if preferences.compare_areas?
       colspan = query_command.data_columns_count
       label_0 = preferences.selected_location_name( preferences.search_id( 0 ) )
       label_1 = preferences.selected_location_name( preferences.search_id( 1 ) )
-
-      elems << content_tag( :colgroup, nil, span: 1, class: "column-date" )
-      elems << content_tag( :colgroup, nil, span: colspan, class: "column-location column-location-1" )
-      elems << content_tag( :colgroup, nil, span: colspan, class: "column-location column-location-2" )
-
-      elems << content_tag( :tr ) do
-          content_tag( :th ) +
-          content_tag( :th, label_0, colspan: colspan, class: "text-center" ) +
-          content_tag( :th, label_1, colspan: colspan, class: "text-center" )
-        end
     end
 
-    # column headings
-    elems << content_tag( :tr ) do
-      query_command.columns.each_with_index do |col, i|
-        concat(
-          content_tag( :th, class: (i > 0) ? "text-right" : "text-center",
-                       "data-location" => col[:location],
-                       "data-type" => col[:sType],
-                       "data-aspect" => col[:aspect]
-                     ) do
-            col[:label]
-          end
-        )
+    capture do
+      if preferences.compare_areas?
+        concat content_tag( :colgroup, "", span: 1, class: "column-date" )
+        concat content_tag( :colgroup, "", span: colspan, class: "column-location column-location-1" )
+        concat content_tag( :colgroup, "", span: colspan, class: "column-location column-location-2" )
       end
-    end
 
-    elems.join("\n").html_safe
+      concat(
+        content_tag( :thead ) do
+
+          # location headings
+          if preferences.compare_areas?
+            concat(
+              content_tag( :tr ) do
+                content_tag( :th ) +
+                content_tag( :th, label_0, colspan: colspan, class: "text-center" ) +
+                content_tag( :th, label_1, colspan: colspan, class: "text-center" )
+              end
+            )
+          end
+
+          # column headings
+          concat(
+            content_tag( :tr ) do
+              query_command.columns.each_with_index do |col, i|
+                concat(
+                  content_tag( :th, class: (i > 0) ? "text-right" : "text-center",
+                               "data-location" => col[:location],
+                               "data-type" => col[:sType],
+                               "data-aspect" => col[:aspect]
+                             ) do
+                    col[:label]
+                  end
+                )
+              end
+            end
+          )
+        end
+      )
+    end #/capture
   end
 end

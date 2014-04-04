@@ -19,8 +19,7 @@
         #chart.preview
 
         %table.table.preview
-          %thead
-            = indices_table_header( @query_command )
+          = indices_table_header( @query_command )
           %tbody
             - @query_command.results.each do |result|
               %tr
