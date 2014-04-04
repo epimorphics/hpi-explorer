@@ -1,11 +1,13 @@
-%section.col-md-12
+.col-md-12
   %h2
     #{@preferences.describe_selected_location}
     = render partial: "hpi/search_workflow_action_buttons"
 
   #charts.view
 
+%section.col-md-12
   #hpi-data
+    .additional-controls.pull-right
     %table.table
       = indices_table_header( @query_command )
 
@@ -20,13 +22,14 @@
     $( function() {
       HpiChart.drawCharts( "#hpi-data table", "#charts", true );
 
-      // workaround jQuery DataTables bug
-      // $("#hpi-data table colgroup").remove();
-
       $("#hpi-data table").dataTable( {
         "aoColumns": [#{@query_command.col_types}],
         "aaSorting": [[ 0, "desc" ]],
         "bFilter": false
       } );
 
+      _.defer( function() {
+        $(".dataTables_info").appendTo( $(".additional-controls" ) );
+        $(".dataTables_paginate").appendTo( $(".additional-controls" ) );
+      } );
     } );
