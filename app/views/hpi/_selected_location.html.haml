@@ -2,12 +2,16 @@
   #{@preferences.describe_selected_location( ["Previewing index data for:", "Previewing comparison of: "])}
   .pull-right
     .small
-      %a.btn.btn-primary{ href: "#{@preferences.as_path( :view )}"}
+      %a.btn.btn-primary.action.action-show-full-results{ href: "#{@preferences.as_path( :view )}"}
+        %i.fa.fa-expand
         Show full results
-      %a.btn.btn-primary{ href: "#{@preferences.as_path( :download )}"}
+      %a.btn.btn-primary.action.action-download{ href: "#{@preferences.as_path( :download )}"}
+        %i.fa.fa-download
         Download data
-      %a.btn.btn-default{ href: "#{@preferences.as_path( :print )}", target: "_", alt: "Printable view", title: "Printable view"}
+      %a.btn.btn-default.action.action-print{ href: "#{@preferences.as_path( :print )}", target: "_", alt: "printable view", title: "printable view"}
         %i.fa.fa-print
+      %a.btn.btn-default.action.action-print{ href: "#{url_for( controller: :hpi, action: :index )}", alt: "clear form", title: "clear form"}
+        %i.fa.fa-trash-o
 
 %p.text-muted.small
   Previewing most recent 5 of #{@query_command.size_all} selected months
