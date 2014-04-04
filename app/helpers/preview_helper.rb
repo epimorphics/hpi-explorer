@@ -26,10 +26,15 @@ module PreviewHelper
     preferences = query_command.preferences
     elems = []
 
+    # location headings
     if preferences.compare_areas?
       colspan = query_command.data_columns_count
       label_0 = preferences.selected_location_name( preferences.search_id( 0 ) )
       label_1 = preferences.selected_location_name( preferences.search_id( 1 ) )
+
+      elems << content_tag( :colgroup, nil, span: 1, class: "column-date" )
+      elems << content_tag( :colgroup, nil, span: colspan, class: "column-location column-location-1" )
+      elems << content_tag( :colgroup, nil, span: colspan, class: "column-location column-location-2" )
 
       elems << content_tag( :tr ) do
           content_tag( :th ) +
