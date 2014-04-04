@@ -65,9 +65,9 @@ var Hpi = function() {
       _spinner = new Spinner( {
         color:'#ACCD40',
         lines: 12,
-        radius: 50,
-        length: 30,
-        width: 10
+        radius: 20,
+        length: 10,
+        width: 4
       } );
     }
   };
@@ -217,8 +217,13 @@ var Hpi = function() {
     var interactionState = currentInteractionState( "search",
                                                     {compare: 1},
                                                     ['search_0', 'search_1'] );
-    $.post( Routes.search_index_path(),
-            interactionState, null, "html" )
+    $.ajax({
+            type: "POST",
+            url: Routes.search_index_path(),
+            data: interactionState,
+            dataType: "html",
+            global: false
+           })
       .done( onAddComparisonDone )
       .fail( onAddComparisonFail );
   };
@@ -244,8 +249,13 @@ var Hpi = function() {
     var interactionState = currentInteractionState( "search",
                                                     {},
                                                     ['compare', 'search_1', 'loc_1', 'loc_uri_1'] );
-    $.post( Routes.search_index_path(),
-            interactionState, null, "html" )
+    $.ajax({
+            type: "POST",
+            url: Routes.search_index_path(),
+            data: interactionState,
+            dataType: "html",
+            global: false
+           })
       .done( onAddComparisonDone )
       .fail( onAddComparisonFail );
   };
