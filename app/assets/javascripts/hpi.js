@@ -9,6 +9,7 @@ var Hpi = function() {
     initControls();
     bindEvents();
     drawPreview();
+    setInitialFocus();
   };
 
   /** Event handling */
@@ -371,6 +372,11 @@ var Hpi = function() {
   var onDisabledAction = function( e ) {
     if (checkDisabledAction(e)) {return false;}
   }
+
+  /** Set the initial focus when the page loads */
+  var setInitialFocus = function() {
+    $("#search_0").focus();
+  };
 
   return {
     init: init,
