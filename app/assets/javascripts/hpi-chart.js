@@ -188,6 +188,12 @@ var HpiChart = function() {
       } );
     } );
 
+    $.each( series._keys, function( i, key ) {
+      if (i > 0) {
+        series[key.name] = _.sortBy( series[key.name], function( v ) {return v[0];} );
+      }
+    } );
+
     return series;
   };
 
@@ -222,6 +228,7 @@ var HpiChart = function() {
 
       if ($(ref).parent().is(".active")) {
         // this tab currently visible
+        $.jqplot.config.catchErrors = true;
         $.jqplot( kind + "-chart", series, options );
       }
       else {
@@ -293,10 +300,9 @@ var HpiChart = function() {
       axes:{
         xaxis:{
           renderer:$.jqplot.DateAxisRenderer,
+          rendererOptions: {tickInset: 0.25},
           tickOptions: {formatString: axisLabelFormat},
-          tickInterval: selectTickInterval( series ),
-          max: selectedMaxDate(),
-          min: seriesMinDate( series )
+          tickInterval: tickInterval
         },
         yaxis: seriesOptions[0].axes.yaxis
       },
@@ -330,12 +336,22 @@ var HpiChart = function() {
 
   /** Return the minimum date in the series */
   var seriesMinDate = function( series ) {
-    return _.last( series[0] )[0];
+    return _.first( series[0] )[0];
   };
 
   /** Return the maximum date in the series */
   var seriesMaxDate = function( series ) {
-    return _.first( series[0] )[0];
+    return _.last( series[0] )[0];
+  };
+
+  /** Return an upper-bound on the x-axis */
+  var xAxisUpperBound = function( series ) {
+    return selectedMaxDate();
+  };
+
+  /** Return an upper-bound on the x-axis */
+  var xAxisLowerBound = function( series ) {
+    return seriesMinDate( series );
   };
 
   /** Return a suitable tick interval for this series */

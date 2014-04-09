@@ -49,9 +49,15 @@ var Util = function() {
     }
 
     return params;
-  }
+  };
+
+  /** Add or remove a certain number of days to a date */
+  var advanceDateByDays = function( date, nDays ) {
+    return new Date( date.getTime() + nDays * 1000 * 60 * 60 * 24 );
+  };
 
   return {
+    advanceDateByDays: advanceDateByDays,
     parseCurrency: parseCurrency,
     parseFloat: parseFloat,
     parseMonth: parseMonth,

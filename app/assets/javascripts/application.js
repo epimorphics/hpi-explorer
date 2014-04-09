@@ -18,12 +18,18 @@
 //= require jquery.ui.widget
 //= require js-routes
 //= require dataTables/jquery.dataTables
-//= require jqplot
-//= require jqplot/plugins/dateAxisRenderer
-//= require jqplot/plugins/barRenderer
-//= require jqplot/plugins/canvasTextRenderer
-//= require jqplot/plugins/canvasAxisLabelRenderer
 //= require bootstrap
 //= require leaflet
 //= require qonsole_rails/application
+//= require jquery.jqplot
+//= require jqplot-plugins/jqplot.canvasAxisLabelRenderer
+//= require jqplot-plugins/jqplot.canvasAxisTickRenderer
+//= require jqplot-plugins/jqplot.canvasOverlay
+//= require jqplot-plugins/jqplot.canvasTextRenderer
+//= require jqplot-plugins/jqplot.categoryAxisRenderer
+//= require jqplot-plugins/jqplot.dateAxisRenderer
+//= require jqplot-plugins/jqplot.enhancedLegendRenderer
+//= require jqplot-plugins/jqplot.json2
+//= require jqplot-plugins/jqplot.barRenderer
+
 //= require_tree .
