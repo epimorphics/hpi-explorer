@@ -37,6 +37,8 @@ locations.each do |uri, properties|
   gss_index[properties[:gss]] = uri if properties[:gss]
 end
 
+location_names.sort! {|l0,l1| l0[:label] <=> l1[:label]}
+
 puts "var HpiLocations = function() {"
 puts "var locationNames = #{location_names.to_json};"
 puts "var locations = #{locations.to_json};"

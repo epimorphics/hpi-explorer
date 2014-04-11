@@ -16,7 +16,7 @@ query="select ?value ?label ?child ?parent ?same {
 }"
 
 echo "Running sparql query"
-time arq --data=/opt/dsapi/data/HPI-2014-03.ttl --results=JSON "$query" > results.json
+time arq --data=`ls /opt/dsapi/data/HPI-2014-*.ttl` --results=JSON "$query" > results.json
 
 echo "Generating JavaScript"
 time ruby region-names-table.rb > ../app/assets/javascripts/hpi-locations.js
