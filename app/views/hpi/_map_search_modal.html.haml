@@ -13,18 +13,22 @@
           .col-md-5
             #map-selection
               .row
+                %h3 Country
                 .col-sm-12
-                  %span.selected-region.selection-reset
-                .col-sm-12
-                  %span.selected-region-options.selection-reset
-              .row
-                .col-sm-12
-                  %span.selected-within.selection-reset
-                .col-sm-12
-                  %span.selected-within-options.selection-reset
-              .row
-                .col-sm-12
-                  %span.selected-counties.selection-reset
-                .col-sm-12
-                  %span.selected-counties-options.selection-reset
+                  %span.selected-country.selection-reset
+                    %a.action.button-default.choose-location{ data: {uri: "http://landregistry.data.gov.uk/id/region/england-and-wales"}}
+                      England and Wales
+                .show-region
+                  %h3 Region
+                  .col-sm-12
+                    %span.selected-region.selection-reset
+                      Select from the map
+                .show-counties.hidden
+                  %h3 Counties and authorities
+                  .col-sm-12
+                    %span.selected-counties.selection-reset
+                .show-boroughs.hidden
+                  %h3 Boroughs
+                  .col-sm-12
+                    %span.selected-boroughs.selection-reset
 

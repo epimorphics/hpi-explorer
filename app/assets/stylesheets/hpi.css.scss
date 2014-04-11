@@ -95,6 +95,13 @@ $lr-footer-link: lighten( $lr-separator, 10 );
     height: 350px;
   }
 
+  #map-selection {
+    font-size: 90%;
+    h3 {
+      margin-top: 3px;
+    }
+  }
+
   .inline {
     display: inline-block;
   }
@@ -121,6 +128,10 @@ $lr-footer-link: lighten( $lr-separator, 10 );
     margin-top: 1em;
   }
 
+  a {
+    cursor: pointer;
+  }
+
   // buttons
   a.btn.btn-primary, a.btn.btn-primary:hover, a.btn.btn-primary:visited {
     background-color: $lr-headline;
@@ -140,7 +151,6 @@ $lr-footer-link: lighten( $lr-separator, 10 );
       top: 0;
       bottom: 0;
       margin: auto;
-      cursor: pointer;
       font-size: 16pt;
       padding: 1px 6px;
       color: $lr-logo-grey;

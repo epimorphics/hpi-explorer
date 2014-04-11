@@ -117,30 +117,57 @@ var HpiMapSearch = function() {
     }
   };
 
-  var renderRegion = function( location ) {
-    $("#map-modal .selected-region").text( "Region" );
-    renderSelectionButton( location, $("#map-modal .selected-region-options") );
+  var renderCountry = function( location ) {
+    if (isWales( location )) {
+      // the data has Wales as a region; this does not amuse the Welsh
+      renderSelectionButton( location, $("#map-modal .selected-country") );
+      $(".show-region").addClass( "hidden" );
+    }
+    else {
+      if (location.parent) {
+        var country = HpiLocations.locations[location.parent];
+        renderSelectionButton( country, $("#map-modal .selected-country") );
+      }
+    }
   };
 
-  var renderCountry = function( location ) {
-    if (location.parent) {
-      var country = HpiLocations.locations[location.parent];
-      $("#map-modal .selected-within").text( "is within" );
-      renderSelectionButton( country, $("#map-modal .selected-within-options") );
-    }
+  var renderRegion = function( location ) {
+    renderSelectionButton( location, $("#map-modal .selected-region") );
   };
 
   var renderCounties = function( location ) {
     if (location.children) {
-      var elem = $("#map-modal " + ".selected-counties-options" );
-      $("#map-modal .selected-counties").text( "and contains" );
+      var elem = $("#map-modal " + ".selected-counties" );
       var prefix = "";
+      var boroughPrefix = "";
 
       _.each( location.children, function( uri, i ) {
         var county = HpiLocations.locations[uri];
-        renderSelectionButton( county, elem, prefix )
+        renderSelectionButton( county, elem, prefix );
+
+        boroughPrefix = renderBoroughs( county, boroughPrefix );
         prefix = ", "
       } );
+    }
+  };
+
+  var renderBoroughs = function( location, boroughPrefix ) {
+    var prefix = "";
+    if (location.children && location.children.length > 0) {
+      var elem = $("#map-modal " + ".selected-boroughs" );
+      $(".show-boroughs").removeClass("hidden");
+
+      elem.append( sprintf( "%s<span class='borough-parent'>%s: </span>", boroughPrefix, location.label ))
+      _.each( location.children, function( uri, i ) {
+        var borough = HpiLocations.locations[uri];
+        renderSelectionButton( borough, elem, prefix );
+        prefix = ", "
+      } );
+
+      return "<br />"
+    }
+    else {
+      return boroughPrefix;
     }
   };
 
@@ -167,10 +194,16 @@ var HpiMapSearch = function() {
     _selectedFeature = null;
     unHighlightFeature( f );
     clearSelectionDetails();
+    $(".show-counties").addClass("hidden");
+    $(".selected-region").append( "Select a region from the map" );
+    $(".selected-country").html( "<a class='action button-default choose-location' data-uri='http://landregistry.data.gov.uk/id/region/england-and-wales'>England and Wales</a>" );
   };
 
   var clearSelectionDetails = function() {
     $(".selection-reset").empty();
+    $(".show-region").removeClass("hidden");
+    $(".show-counties").removeClass("hidden");
+    $(".show-boroughs").addClass("hidden");
   };
 
   var onChooseLocation = function( e ) {
@@ -183,6 +216,12 @@ var HpiMapSearch = function() {
 
     Hpi.selectLocation( name, uri, _currentSearchId, _targetElem );
   }
+
+  var isWales = function( location ) {
+    return location.uri === "http://landregistry.data.gov.uk/id/region/wales";
+  }
+
+
   return {
     init: init,
     showDialogue: showDialogue
