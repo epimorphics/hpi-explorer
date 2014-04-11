@@ -1,127 +1,139 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Land Registry - search the house price index</title>
-    <link rel="stylesheet" href="stylesheets/landing.css" type="application/css" />
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <title>
+      Land Registry - search the house price index
+    </title>
+    <link rel="stylesheet" href="stylesheets/landing.css" type="application/css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" type="text/css">
   </head>
   <body class='government website lr hpi'>
-    <script>
-      document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
+    <script type="text/javascript">
+document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
     </script>
     <header class='container with-proposition' id='global-header'>
       <div class="row">
         <div class='header-wrapper'>
           <div class='header-global pull-left'>
             <div class='header-logo'>
-              <a class='content'>
-                <img src="images/lr_logo_221_80.png"
-              </a>
+              <a class='content'><img src="images/lr_logo_221_80.png"></a>
             </div>
           </div>
           <div class='header-proposition'>
             <div class='content'>
               <nav id='proposition-menu'>
-                <a id='proposition-name'>
-                  Land Registry Linked Open Data
-                  <div class='beta-tag'>
-                    beta
-                  </div>
-                </a>
+                <a id='proposition-name'>Land Registry Linked Open Data</a>
+                <div class='beta-tag'>
+                  beta
+                </div>
                 <ul id='proposition-links' class='list-inline'>
                   <li>
-                    <a>
-                      House Price Index
-                    </a>
+                    <a href="/app/hpi">House Price Index</a>
                   </li>
                   <li>
-                    <a>
-                      Price Paid Data
-                    </a>
+                    <a href="/app/ppd">Price Paid Data</a>
                   </li>
                   <li>
-                    <a>
-                      SPARQL query
-                    </a>
+                    <a href="/app/hpi/qonsole">SPARQL query</a>
                   </li>
                 </ul>
               </nav>
             </div>
           </div>
-      </div>
+        </div>
       </div>
     </header>
-  </body>
-  <div class='lr-top-bar'></div>
-  <div class='container'>
-    <div class='row'>
-      <div class='col-md-12'>
-        <h1>Linked open data from Land Registry</h1>
-        <p>
-          As part of our commitment to the Government’s priorities of economic growth
-          and data transparency Land Registry publishes the following public datasets
-          in linked data format:
-        </p>
-        <ul>
-          <li><a href="http://www.landregistry.gov.uk/public/information/public-data/transaction-data">Transaction data</a>
-          &ndash; available from December 2011. To access see <a href="http://landregistry.data.gov.uk/def/trans">data definitions</a></li>
-          <li><a href="http://www.landregistry.gov.uk/public/information/public-data/price-paid-data">Price paid data</a>
-          &ndash; available from January 1995 and updated in full each month. To access see <a href="http://landregistry.data.gov.uk/def/ppi">data definitions</a></li>
-          <li><a href="http://www.landregistry.gov.uk/public/information/public-data/hpi-background">House Price Index background data</a>
-          &ndash; available from January 1995 and updated in full each month. To access see <a href="http://landregistry.data.gov.uk/def/hpi">data definitions</a></li>
-        </ul>
-
-        <h2>SPARQL query</h2>
-        <p>If you would like to try out your own SPARQL queries against our linked data publications,
-          please use this option <a href="/app/hpi/qonsole">SPARQL form</a>.</p>
-
-        <h2>Search the House Price Index</h2>
-        <p>
-          Use this search to find average price, sales volumes and property
-          type for a specified location over a defined period of time.
-          Our House Price Index compares average house price today to what it was
-          in January 1995, with the index set then at 100. It includes figures as national,
-          regional, county and Local Authority level. For more information visit
-          <a href="http://www.landregistry.gov.uk/public/house-prices-and-sales/about-hpi">About the House Price Index</a>.
-        </p>
-
-        <h2>Price Paid Data Report Builder</h2>
-        <p>
-          Use this search to build bespoke extracts of our detailed price paid data
-          based on location, tenure, price paid, property type over a defined period of time.
-        </p>
-
-        <p>
-          Our price paid data tracks the residential property sales in England and Wales
-          that are lodged with us for registration. The dataset is one of the most
-          reliable sources of house price information and consists of more than 18.5
-          million definitive records dating back to January 1995.
-          For more information
-          on this dataset and what it does and doesn't include, see the
-          <a href="http://www.landregistry.gov.uk/market-trend-data/public-data/price-paid-faq">Price Paid Data FAQs</a>.
-        <p>
-
-        <p>
-          This report is based on data collected at the time a property transaction was
-          registered with us and will not necessarily be up to date with the most recent information.
-          You can <a href="http://www.landregistry.gov.uk/public/information/public-data/faqs#m4">read
-          more about the accuracy of the data</a>.
-        </p>
-
-        <h2>Who to contact</h2>
-        <p>
-          If you are unable to access the data please <a href="http://www.landregistry.gov.uk/contact-us/form">fill
-          in our contact form</a>.
-        </p>
-        <p>
-          For general transaction data enquiries email <a href="mailto:DRO@landregistry.gsi.gov.uk">DRO@landregistry.gsi.gov.uk</a>
-        </p>
-        <p>
-          For general price paid data enquiries contact <a href="commercial.services@landregistry.gsi.gov.uk">commercial.services@landregistry.gsi.gov.uk</a>.
-        </p>
-
-
+    <div class='lr-top-bar'></div>
+    <div class='container'>
+      <div class='row'>
+        <div class='col-md-12'>
+          <h1>
+            Linked open data from Land Registry
+          </h1>
+          <p>
+            As part of our commitment to the Government&rsquo;s priorities of economic growth and data transparency Land Registry publishes the following public datasets in linked data format:
+          </p>
+          <ul>
+            <li>
+              <a href="http://www.landregistry.gov.uk/public/information/public-data/transaction-data">Transaction data</a> – available from December 2011. To access see <a href="http://landregistry.data.gov.uk/def/trans">data definitions</a>
+            </li>
+            <li>
+              <a href="http://www.landregistry.gov.uk/public/information/public-data/price-paid-data">Price paid data</a> – available from January 1995 and updated in full each month. To access see <a href="http://landregistry.data.gov.uk/def/ppi">data definitions</a>
+            </li>
+            <li>
+              <a href="http://www.landregistry.gov.uk/public/information/public-data/hpi-background">House Price Index background data</a> – available from January 1995 and updated in full each month. To access see <a href="http://landregistry.data.gov.uk/def/hpi">data definitions</a>
+            </li>
+          </ul>
+          <h2>
+            <a href="/app/hpi/qonsole">SPARQL query</a>
+          </h2>
+          <p>
+            If you would like to try out your own SPARQL queries against our linked data publications, please use this option <a href="/app/hpi/qonsole">SPARQL form</a>.
+          </p>
+          <h2>
+            <a href="/app/hpi">Search the House Price Index</a>
+          </h2>
+          <p>
+            Use this search to find average price, sales volumes and property type for a specified location over a defined period of time. Our House Price Index compares average house price today to what it was in January 1995, with the index set then at 100. It includes figures as national, regional, county and Local Authority level. For more information visit <a href="http://www.landregistry.gov.uk/public/house-prices-and-sales/about-hpi">About the House Price Index</a>.
+          </p>
+          <h2>
+            <a href="/app/ppd">Price Paid Data Report Builder</a>
+          </h2>
+          <p>
+            Use this search to build bespoke extracts of our detailed price paid data based on location, tenure, price paid, property type over a defined period of time.
+          </p>
+          <p>
+            Our price paid data tracks the residential property sales in England and Wales that are lodged with us for registration. The dataset is one of the most reliable sources of house price information and consists of more than 18.5 million definitive records dating back to January 1995. For more information on this dataset and what it does and doesn't include, see the <a href="http://www.landregistry.gov.uk/market-trend-data/public-data/price-paid-faq">Price Paid Data FAQs</a>.
+          </p>
+          <p>
+            This report is based on data collected at the time a property transaction was registered with us and will not necessarily be up to date with the most recent information. You can <a href="http://www.landregistry.gov.uk/public/information/public-data/faqs#m4">read more about the accuracy of the data</a>.
+          </p>
+          <h2>
+            Who to contact
+          </h2>
+          <p>
+            If you are unable to access the data please <a href="http://www.landregistry.gov.uk/contact-us/form">fill in our contact form</a>.
+          </p>
+          <p>
+            For general transaction data enquiries email <a href="mailto:DRO@landregistry.gsi.gov.uk">DRO@landregistry.gsi.gov.uk</a>
+          </p>
+          <p>
+            For general price paid data enquiries contact <a href="commercial.services@landregistry.gsi.gov.uk">commercial.services@landregistry.gsi.gov.uk</a>.
+          </p>
+        </div><!--/.col-md-12-->
+      </div>
+      <div class="row">
+        <footer id="footer" role="contentinfo">
+          <div class="container">
+            <h2 class="hidden">
+              Support links
+            </h2>
+            <ul class="list-inline">
+              <li>
+                <a href="http://www.nationalarchives.gov.uk/information-management/our-services/crown-copyright.htm">© Crown copyright 2014</a>
+              </li>
+              <li>
+                <a href="http://www.landregistry.gov.uk/public/information/privacy">Privacy and Cookies</a>
+              </li>
+              <li>
+                <a href="http://www.landregistry.gov.uk/public/information">Terms and Conditions</a>
+              </li>
+              <li>
+                <a href="http://www.landregistry.gov.uk/professional/market-trend-data/public-data">Land Registry Public Data</a>
+              </li>
+            </ul>
+            <div class="ogl">
+              <h2 class="pull-left">
+                <a href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/2"><img alt="OGL" src="https://assets.digital.cabinet-office.gov.uk/static/open-government-licence_2x-d273d7eca3045d3b710a863d9bfc0b33.png"></a>
+              </h2>
+              <p>
+                All content is available under the <a href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/2">Open Government Licence v2.0</a> except where otherwise stated
+              </p>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </footer>
       </div>
     </div>
-  </div>
+  </body>
 </html>
