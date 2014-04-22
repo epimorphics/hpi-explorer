@@ -6,7 +6,7 @@
     = title
     - if is_comparison_area
       %a.btn.btn-sm.action.action-remove-comparison{ title: "Remove comparison", href: @preferences.as_path( :hpi, {}, [:compare, :loc_1, :loc_uri_1] )}
-        %i.fa.fa-times-circle.fa-2x
+        %i.fa.fa-minus-circle.fa-2x
   .col-sm-9
     .form-group
       = text_field_tag( preferences.attribute_with_search_id( "search", search_id ), selected_search_term, class: "form-control" )
@@ -28,3 +28,9 @@
     .row
       %p.col-sm-12.help-block.small.text-muted
         Enter a region, county or local authority by name, or from the map
+  - else
+    .row
+      %p.col-sm-12.help-block.small.text-muted
+        Enter a second area to compare against. Click the
+        %i.fa.fa-minus-circle
+        button to remove.
