@@ -11,8 +11,12 @@
       %a.btn.btn-default.action.action-print{ href: "#{@preferences.as_path( :print )}", target: "_", alt: "printable view", title: "printable view"}
         %i.fa.fa-print
 
-%p.text-muted.small
-  Previewing most recent 5 of #{@query_command.size_all} selected months
+%p.small
+  - count = [5, @query_command.size_all].min
+  Showing a preview of the <strong>most recent #{count} of #{@query_command.size_all}</strong> selected months
+  %br
+  %span.text-muted
+    &ndash; select <em>show full results</em> to see more.
 
-.related-locations.small.text-muted
+.related-locations.small
   = list_related_locations( @preferences )
