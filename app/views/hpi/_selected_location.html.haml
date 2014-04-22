@@ -10,8 +10,6 @@
         Download data
       %a.btn.btn-default.action.action-print{ href: "#{@preferences.as_path( :print )}", target: "_", alt: "printable view", title: "printable view"}
         %i.fa.fa-print
-      %a.btn.btn-default.action.action-print{ href: "#{url_for( controller: :hpi, action: :index )}", alt: "clear form", title: "clear form"}
-        %i.fa.fa-trash-o
 
 %p.text-muted.small
   Previewing most recent 5 of #{@query_command.size_all} selected months

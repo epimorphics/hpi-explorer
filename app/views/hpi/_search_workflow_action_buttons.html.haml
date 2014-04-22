@@ -2,11 +2,16 @@
   .small
     %a.btn.btn-primary{ href: "#{@preferences.as_path( :hpi )}"}
       %i.fa.fa-edit
-      Change search settings
+      change search
     - unless defined? no_download
       %a.btn.btn-primary{ href: "#{@preferences.as_path( :download )}"}
         %i.fa.fa-download
-        Download data
+        download data
+    - unless defined? no_share
+      %a.btn.btn-default.action.action-bookmark{ href: "#", alt: "Bookmark the current view", title: "Bookmark the current view" }
+        %i.fa.fa-share-square-o
+        share this page
+
     - unless defined? no_print
       %a.btn.btn-default{ href: "#{@preferences.as_path( :print )}", alt: "Printable view", title: "Printable view"}
         %i.fa.fa-print

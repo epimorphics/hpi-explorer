@@ -1,4 +1,14 @@
 .search-form-container
+  .row.js
+    .col-md-12
+      .pull-right
+        %a.btn.btn-default.action.action-print{ href: "#{url_for( controller: :hpi, action: :index )}", alt: "clear form", title: "clear form"}
+          %i.fa.fa-refresh
+          reset the form
+        %a.btn.btn-default.action.action-bookmark{ href: "#", alt: "Bookmark the current view", title: "Bookmark the current view" }
+          %i.fa.fa-share-square-o
+          share this page
+
   = form_tag( {controller: :search, action: :create}, class: "form-horizontal search", role: "form") do
     .row
       .col-md-6
