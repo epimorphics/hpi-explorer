@@ -7,7 +7,7 @@
         %i.fa.fa-exclamation-circle
         = @query_command.illegal_state
     - else
-      #results-header.col-md-12
+      #results-header
         = render partial: "hpi/selected_location" if @preferences.location_complete?
 
       - if @preferences.num_selected_indices == 0
