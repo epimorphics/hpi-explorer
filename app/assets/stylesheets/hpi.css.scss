@@ -21,7 +21,7 @@ $lr-focus: $lr-logo-green-dark;
 $lr-top-line: $lr-green-nav;
 $lr-footer-grey: #f0f5f0;
 $lr-footer-link: lighten( $lr-separator, 10 );
-
+$lr-green-nav-darkened: darken( $lr-green-nav, 20% );
 
 /* styles */
 
@@ -176,6 +176,26 @@ $lr-footer-link: lighten( $lr-separator, 10 );
 
   button.close {
     font-size: 32px;
+  }
+
+  // tabs
+  ul.nav-tabs {
+    border-bottom: 1px solid $lr-green-nav;
+
+    li a {
+      background-color: #eee;
+      color: #444;
+      border: 1px solid #aaa;
+      border-bottom: 1px solid $lr-green-nav;
+    }
+
+    li.active a {
+      border-top: 1px solid $lr-green-nav-darkened;
+      border-left: 1px solid $lr-green-nav-darkened;
+      border-right: 1px solid $lr-green-nav-darkened;
+      background-color: $lr-green-nav;
+      color: black;
+    }
   }
 
   #footer {
