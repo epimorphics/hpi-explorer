@@ -153,8 +153,8 @@ class UserPreferences
         preview_index_path( path_params )
       when :hpi
         hpi_index_path( path_params )
-      when :download
-        download_index_path( path_params )
+      when :hpi_data
+        hpi_data_path( path_params )
       when :print
         print_index_path( path_params )
       else

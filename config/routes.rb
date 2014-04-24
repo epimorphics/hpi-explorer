@@ -9,7 +9,7 @@ HpiExplorer::Application.routes.draw do
   resources :search, only: [:create,:index]
   resources :preview, only: [:index,:create]
   resources :view, only: [:index]
-  resources :download, only: [:index, :create]
+  resource :hpi_data, only: [:show, :create]
   resources :print, only: [:index]
 
   mount QonsoleRails::Engine, at: "/qonsole"

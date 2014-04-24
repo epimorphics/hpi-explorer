@@ -1,5 +1,5 @@
-class DownloadController < ApplicationController
-  def index
+class HpiDataController < ApplicationController
+  def show
     if is_explanation?
       explanation = ExplainCommand.new( preferences).load_explanation
       redirect_to qonsole_rails.root_path( query: explanation[:sparql] )
