@@ -1,17 +1,20 @@
 .pull-right
-  .small
-    %a.btn.btn-primary{ href: "#{@preferences.as_path( :hpi )}"}
-      %i.fa.fa-edit
-      change search
-    - unless defined? no_download
-      %a.btn.btn-primary{ href: "#{@preferences.as_path( :hpi_data )}"}
-        %i.fa.fa-download
-        download data
-    - unless defined? no_share
-      %a.btn.btn-default.action.action-bookmark{ href: "#", alt: "Bookmark the current view", title: "Bookmark the current view" }
-        %i.fa.fa-share-square-o
-        share this page
+  %a.btn.btn-primary{ href: "#{@preferences.as_path( :hpi )}"}
+    %i.fa.fa-edit
+    change search
+  -unless defined? no_results
+    %a.btn.btn-primary{ href: "#{@preferences.as_path( :view )}"}
+      %i.fa.fa-mail-reply
+      back to results
+  - unless defined? no_download
+    %a.btn.btn-primary{ href: "#{@preferences.as_path( :hpi_data )}"}
+      %i.fa.fa-download
+      download data
+  - unless defined? no_share
+    %a.btn.btn-default.action.action-bookmark{ href: "#", alt: "Bookmark the current view", title: "Bookmark the current view" }
+      %i.fa.fa-share-square-o
+      share this page
 
-    - unless defined? no_print
-      %a.btn.btn-default{ href: "#{@preferences.as_path( :print )}", alt: "Printable view", title: "Printable view"}
-        %i.fa.fa-print
+  - unless defined? no_print
+    %a.btn.btn-default{ href: "#{@preferences.as_path( :print )}", alt: "Printable view", title: "Printable view"}
+      %i.fa.fa-print
