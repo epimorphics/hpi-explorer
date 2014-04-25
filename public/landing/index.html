@@ -49,46 +49,126 @@ document.body.className = ((document.body.className) ? document.body.className +
       <div class='row'>
         <div class='col-md-12'>
           <h1>
-            Linked open data from Land Registry
+            Open Data
           </h1>
           <p>
-            As part of our commitment to the Government&rsquo;s priorities of economic growth and data transparency Land Registry publishes the following public datasets in linked data format:
+            As part of our commitment to the Government&rsquo;s priorities of economic growth and data transparency Land Registry publishes the following public datasets:
           </p>
           <ul>
             <li>
-              <a href="http://www.landregistry.gov.uk/public/information/public-data/transaction-data">Transaction data</a> &ndash; available from December 2011. To access see <a href="http://landregistry.data.gov.uk/def/trans">data definitions</a>
+              <a href="http://www.landregistry.gov.uk/public/information/public-data/hpi-background">House Price Index background data</a> &ndash; available from January 1995 and updated in full each month.
             </li>
             <li>
-              <a href="http://www.landregistry.gov.uk/public/information/public-data/price-paid-data">Price paid data</a> &ndash; available from January 1995 and updated in full each month. To access see <a href="http://landregistry.data.gov.uk/def/ppi">data definitions</a>
+              <a href="http://www.landregistry.gov.uk/public/information/public-data/price-paid-data">Price paid data</a> &ndash; available from January 1995 and updated in full each month.
             </li>
             <li>
-              <a href="http://www.landregistry.gov.uk/public/information/public-data/hpi-background">House Price Index background data</a> &ndash; available from January 1995 and updated in full each month. To access see <a href="http://landregistry.data.gov.uk/def/hpi">data definitions</a>
+              <a href="http://www.landregistry.gov.uk/public/information/public-data/transaction-data">Transaction data</a> &ndash; available from December 2011.
             </li>
           </ul>
-          <h2>
-            <a href="/app/hpi/qonsole">SPARQL query</a>
-          </h2>
           <p>
-            If you would like to try out your own SPARQL queries against our linked data publications, please use this option <a href="/app/hpi/qonsole">SPARQL form</a>.
+            The above datasets are provided in
+            <a href="http://en.wikipedia.org/wiki/Comma-separated_values">comma-separated value (csv)</a>
+            and
+            <a href="http://en.wikipedia.org/wiki/Linked_data">linked data</a> formats, with Price Paid Data also
+            available as a text file. These datasets can be downloaded in full by accessing our
+            <a href="http://www.landregistry.gov.uk/professional/market-trend-data/public-data">Public Data</a>.
+            For more information on our linked data, please see <a href="#linked-data">below</a>.
           </p>
+          <p><strong>
+            For our Price Paid and House Price Index customers that do not require the full dataset but are
+            interested in running bespoke reports we have developed the following options:
+          </strong></p>
+
           <h2>
             <a href="/app/hpi">Search the House Price Index</a>
           </h2>
           <p>
-            Use this search to find average price, sales volumes and property type for a specified location over a defined period of time. Our House Price Index compares average house price today to what it was in January 1995, with the index set then at 100. It includes figures as national, regional, county and Local Authority level. For more information visit <a href="http://www.landregistry.gov.uk/public/house-prices-and-sales/about-hpi">About the House Price Index</a>.
+            Use this search to find average price, sales volumes and property type for a
+            specified location over a defined period of time. Our House Price Index
+            compares average house price today to what it was in January 1995, with
+            the index set then at 100. It includes figures at national, regional, county
+            and Local Authority level. For more information visit
+            <a href="http://www.landregistry.gov.uk/public/house-prices-and-sales/about-hpi">About the House Price Index</a>.
           </p>
+
           <h2>
             <a href="/app/ppd">Price Paid Data Report Builder</a>
           </h2>
           <p>
-            Use this search to build bespoke extracts of our detailed price paid data based on location, tenure, price paid, property type over a defined period of time.
+            Use this search to build bespoke reports using our detailed price
+            paid data. Reports can be based on location, tenure, price paid or
+            property type over a defined period of time.
           </p>
           <p>
-            Our price paid data tracks the residential property sales in England and Wales that are lodged with us for registration. The dataset is one of the most reliable sources of house price information and consists of more than 18.5 million definitive records dating back to January 1995. For more information on this dataset and what it does and doesn't include, see the <a href="http://www.landregistry.gov.uk/market-trend-data/public-data/price-paid-faq">Price Paid Data FAQs</a>.
+            Our price paid data tracks the residential property sales in
+            England and Wales that are lodged with us for registration.
+            The dataset is one of the most reliable sources of house
+            price information and consists of more than 18.5 million
+            definitive records dating back to January 1995. For more
+            information on this dataset and what it does and doesn't
+            include, see the
+            <a href="http://www.landregistry.gov.uk/market-trend-data/public-data/price-paid-faq">Price Paid Data FAQs</a>.
           </p>
           <p>
-            This report is based on data collected at the time a property transaction was registered with us and will not necessarily be up to date with the most recent information. You can <a href="http://www.landregistry.gov.uk/public/information/public-data/faqs#m4">read more about the accuracy of the data</a>.
+            We strive to ensure that our public data is as accurate as
+            possible but cannot guarantee that it is free from errors.
+            Reports are based on data collected at the time a property
+            transaction was registered with us and will not necessarily
+            be up to date with the most recent information.
+            See <a href="http://www.landregistry.gov.uk/public/information/public-data/faqs#m4">
+            this FAQ entry</a>
+            for more information about the accuracy of our data.
           </p>
+
+          <h2 id="linked-data">Linked Data</h2>
+          <p>
+            We also publish HPI and PPD data in linked data format.
+          </p>
+          <p>
+            If you would like to try out your own SPARQL queries against our
+            linked data publications, please use
+            <a href="/app/hpi/qonsole">this SPARQL form</a>.
+            We have included some example queries with the form, and you can generate
+            the output as a table, in plain text, as a JSON file or in XML.
+          </p>
+          <p>
+            If you want to see the SPARQL query that is used to generate the reports in the
+            HPI and PPD reporting tools described above, you can do this by selecting the
+            <code>view SPARQL query</code> actions from the <code>download data</code>
+            view in each search tool.
+            You can even amend and re-run the SPARQL query as required.
+          </p>
+          <p>
+            The linked data datasets are:
+          </p>
+          <dl class="dl-horizontal">
+            <dt>
+              <a href="/data/hpi">House Price Index</a>
+            </dt>
+            <dd>A 5&starf; linked dataset with links to
+              <a href="http://www.ons.gov.uk/">ONS</a> and
+              <a href="http://data.ordnancesurvey.co.uk/">Ordnance Survey</a>
+              to describe the regions reported on within the HPI data.
+              See the <a href="/def/hpi">data definitions for this dataset</a>.
+              <br />
+              NB: Links to other sources of open data are provided under the Open
+              Government Licence (ONS) and Open Data Licence (OS). Land Registry
+              is not responsible for the content or reliability of any linked websites.
+            </dd>
+            <dt>
+              <a href="/data/ppi">Price Paid Data</a>
+            </dt>
+            <dd>A 4&starf; linked dataset containing over
+              400 million triples.
+              See the <a href="/def/ppi">data definitions for this dataset</a>.
+            </dd>
+            <dt>
+              <a href="/data/trans/applications">Transaction Data</a>
+            </dt>
+            <dd>A 4&starf; linked dataset.
+              See the <a href="/def/trans">data definitions for this dataset</a>.
+            </dd>
+          </dl>
           <h2>
             Who to contact
           </h2>
