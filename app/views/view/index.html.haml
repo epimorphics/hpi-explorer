@@ -1,9 +1,8 @@
-.col-md-12
-  = render partial: "hpi/search_workflow_action_buttons", locals: {no_results: true}
-  %h2
-    #{@preferences.describe_selected_location}
+= render partial: "hpi/search_workflow_action_buttons", locals: {no_results: true}
+%h2
+  #{@preferences.describe_selected_location}
 
-  #charts.view
+#charts.view
 
 %section.col-md-12
   #hpi-data
