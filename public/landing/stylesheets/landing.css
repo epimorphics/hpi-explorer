@@ -249,3 +249,7 @@ Example usage:
 
 .leaflet-tile-container img {
   -webkit-backface-visibility: hidden; }
+
+.ogl h2 {
+  margin-top: 0;
+}
