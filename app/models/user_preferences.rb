@@ -186,10 +186,12 @@ class UserPreferences
     h.is_a?( HashWithIndifferentAccess) ? h : HashWithIndifferentAccess.new( h )
   end
 
-  # If the prefs are not explicitly set by the user via a form,
-  # some measures have a default value
+  # If the prefs are not explicitly set by the user via a form, and no explicit
+  # selections have yet been made, some measures have a default value
   def default_value?( index_name )
-    measures_on_by_default.include?( index_name ) && !source?( :preview_form )
+    selected_indices.empty? &&
+    !source?( :preview_form ) &&
+    measures_on_by_default.include?( index_name )
   end
 
   def measures_on_by_default
