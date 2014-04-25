@@ -12,3 +12,5 @@ production_servers = %w(
 )
 
 role :web, production_servers
+role :app, production_servers
+
