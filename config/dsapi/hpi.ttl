@@ -15,7 +15,7 @@
 :hpi a dsapi:Dataset;
     rdfs:label "House price index";
     dct:description "A Data Cube of house price index data from Land Registry";
-    dsapi:qb_dataset <http://landregistry.data.gov.uk/data/hpi/dataset>;
+#    dsapi:qb_dataset <http://landregistry.data.gov.uk/data/hpi/dataset>;
     dsapi:source "source2";
     dsapi:aspect
       [rdfs:label "period"                          ; dsapi:property hpi:refPeriod],
