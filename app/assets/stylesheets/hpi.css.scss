@@ -206,10 +206,11 @@ $lr-green-nav-darkened: darken( $lr-green-nav, 20% );
   }
 
   .social-media {
-    div {
+    > div {
       display: inline-block;
       vertical-align: top !important;
       height: 20px;
+      min-width: 30px;
     }
     .twitter {
       padding-top: 5px;
