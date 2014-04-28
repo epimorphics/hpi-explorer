@@ -52,7 +52,8 @@ class SearchCommand < DataService
   end
 
   def create_search_query( term )
-    base_query.search( term.split.map {|t| "+#{t}*"} .join( ' ' ) )
+    lucene_pattern = "( #{term.split.map {|t| "+#{t}*"} .join( ' ' )} )"
+    base_query.search_property( "hpi:refRegionName", lucene_pattern )
   end
 
   def unique_locations( results )
@@ -60,7 +61,7 @@ class SearchCommand < DataService
       uri = result["hpi:refRegion"]["@id"]
       labels = result["hpi:refRegionName"]
       label = labels.kind_of?( Array ) ? labels.first : labels
-      memo << {"@id" => uri, "label" => label["@value"]}
+      memo << {"@id" => uri, "label" => label}
     end .to_a
         .sort {|a,b| a["label"] <=> b["label"]}
   end
