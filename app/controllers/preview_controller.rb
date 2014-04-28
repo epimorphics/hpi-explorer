@@ -2,7 +2,7 @@ class PreviewController < ApplicationController
   def create
     set_search_configuration
     @query_command = QueryCommand.new( preferences )
-    @query_command.load_query_results()
+    @query_command.load_query_results() if preferences.location_complete?
 
     if request.xhr?
       preview_header = render_to_string( partial: "hpi/selected_location", layout: false )
