@@ -26,7 +26,8 @@ var Hpi = function() {
     $("form.preview").on( "change", ".dates-filter select", drawPreview );
     $("form.preview").on( "click", "a.action-set-dates", onChangeDates );
 
-    $(".action-bookmark").on( "click", onBookmark );
+    $(".container").on( "click", ".action-bookmark", onBookmark );
+    $(".container").on( "click", ".action-help" , onHelp );
 
     $(document).on( "ajaxSend", onAjaxSend )
                .on( "ajaxComplete", onAjaxComplete );
@@ -59,7 +60,7 @@ var Hpi = function() {
       showMapButton( elem );
     } );
 
-    $(".js.action-bookmark").removeClass("hidden");
+    $(".js.hidden").removeClass("hidden");
 
     // ajax spinner
     if (!_spinner) {
@@ -352,6 +353,12 @@ var Hpi = function() {
 
       $(".bookmark-url").val( baseURL ).select();
     } );
+  };
+
+  /** User wants to see the help page */
+  var onHelp = function( e ) {
+    e.preventDefault();
+    $("#help-modal").modal("show");
   };
 
   /* Ajax event handling */

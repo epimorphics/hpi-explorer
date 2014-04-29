@@ -8,6 +8,9 @@
         %a.js.hidden.btn.btn-default.action.action-bookmark{ href: "#", alt: "Bookmark the current view", title: "Bookmark the current view" }
           %i.fa.fa-share-square-o
           share this page
+        %a.js.hidden.btn.btn-default.action.action-help{ href: "#", alt: "Help and tips", title: "Help and tips" }
+          %i.fa.fa-question-circle
+          help
 
   = form_tag( {controller: :search, action: :create}, class: "form-horizontal search", role: "form") do
     .row

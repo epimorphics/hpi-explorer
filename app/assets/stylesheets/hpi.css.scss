@@ -185,6 +185,15 @@ $lr-green-nav-darkened: darken( $lr-green-nav, 20% );
     font-size: 32px;
   }
 
+  #help-modal {
+    dt {
+      width: 60px;
+    }
+    dd {
+      margin-left: 80px;
+    }
+  }
+
   // tabs
   ul.nav-tabs {
     border-bottom: 1px solid $lr-green-nav;
