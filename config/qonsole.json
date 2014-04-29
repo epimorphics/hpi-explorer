@@ -1,6 +1,6 @@
 {
   "endpoints": {
-    "default": "http://lr-lb-preprod.epimorphics.com/landregistry/query"
+    "default": "http://landregistry.data.gov.uk/landregistry/query"
   },
   "prefixes": {
     "rdf":      "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
