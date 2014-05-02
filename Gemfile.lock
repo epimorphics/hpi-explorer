@@ -25,13 +25,12 @@ GIT
 
 GIT
   remote: git@github.com:epimorphics/qonsole-rails.git
-  revision: b451a267d9b584228eec03e5a97c155676e0f1e0
+  revision: e0c78edae1c9fd2e6bb7f15aa859c30638f51345
   specs:
     qonsole-rails (0.0.1)
       fontawesome-rails
       haml
       rails (~> 4.0.2)
-      respond-rails (~> 1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -154,7 +153,7 @@ GEM
       minispec-metadata (~> 2.0.0)
       minitest (>= 4.7.5)
       vcr (~> 2.8.0)
-    multi_json (1.9.2)
+    multi_json (1.9.3)
     multipart-post (1.2.0)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
@@ -189,8 +188,6 @@ GEM
     rdoc (4.1.1)
       json (~> 1.4)
     ref (1.0.5)
-    respond-rails (1.0.1)
-      railties (>= 3.1.0)
     safe_yaml (1.0.2)
     sass (3.2.14)
     sass-rails (4.0.3)
