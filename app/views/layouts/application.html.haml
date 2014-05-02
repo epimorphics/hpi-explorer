@@ -15,8 +15,8 @@
       %link{ rel: "canonical", href: "http://#{request.host_with_port}#{@preferences.as_path( :view )}"}
 
     /[if lt IE 9]
-      %link{ src: "assets/html5shiv.js", type: "application/javascript"}
-      %link{ src: "assets/respond.min.js", type: "application/javascript"}
+      %script{ src: "assets/html5shiv.js", type: "application/javascript"}
+      %script{ src: "assets/respond.min.js", type: "application/javascript"}
   %body.government.website.lr.hpi
     :javascript
       document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
