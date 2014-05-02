@@ -14,9 +14,9 @@
     - if @preferences
       %link{ rel: "canonical", href: "http://#{request.host_with_port}#{@preferences.as_path( :view )}"}
 
-    /[if IE]
-      = javascript_include_tag "html5shiv.js"
-      = javascript_include_tag "respond.min.js"
+    /[if lt IE 9]
+      = javascript_include_tag "assets/html5shiv.js"
+      = javascript_include_tag "assets/respond.min.js"
   %body.government.website.lr.hpi
     :javascript
       document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
