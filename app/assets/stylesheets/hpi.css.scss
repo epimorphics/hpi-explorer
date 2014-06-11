@@ -56,7 +56,10 @@ $lr-green-nav-darkened: darken( $lr-green-nav, 20% );
 
   :focus, a:focus, input:focus {
     outline: 1px solid $lr-focus;
-    background-color: inherit;
+  }
+
+  .btn-success:focus {
+    color: #333;
   }
 
   .form-control:focus {
