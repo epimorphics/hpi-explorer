@@ -47,6 +47,8 @@ module DsapiTurtleFormatter
         "\"#{v["@value"]}\"^^#{format_ttl_value( v["@type"] )}"
       elsif v["@value"] &&
         "\"#{v["@value"]}\""
+      elsif v.is_a? String
+        "\"#{v}\""
       else
         "default #{v.to_s}"
       end
