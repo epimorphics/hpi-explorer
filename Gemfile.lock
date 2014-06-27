@@ -185,6 +185,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.13.0)
     rake (10.3.1)
+    rb-readline (0.5.1)
     rdoc (4.1.1)
       json (~> 1.4)
     ref (1.0.5)
@@ -271,6 +272,7 @@ DEPENDENCIES
   qonsole-rails!
   quiet_assets
   rails (= 4.0.2)
+  rb-readline
   sass (= 3.2.14)
   sass-rails (~> 4.0.0)
   sdoc

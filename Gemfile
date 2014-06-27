@@ -52,6 +52,7 @@ gem 'capistrano-bundler', group: :development
 # gem 'debugger', group: [:development, :test]
 gem 'pry', group: :development
 gem 'quiet_assets', :group => :development
+gem 'rb-readline', :group => :development
 
 gem 'govuk_frontend_toolkit', github: "alphagov/govuk_frontend_toolkit_gem", :submodules => true
 gem 'data_services_api', git: "git@github.com:epimorphics/ds-api-ruby.git"
