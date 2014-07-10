@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>
+      Land Registry &ndash; price paid open data
+    </title>
+    <link rel="stylesheet" href="stylesheets/landing.css" type="text/css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" type="text/css">
+    <link href="images/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+    <meta name="Description" content="Linked Open Data resources from the Land Registry"/>
+    <meta name="Monitoring" content="Confirming site availability." />
+  </head>
+  <body class='government website lr hpi'>
+    <script type="text/javascript">
+document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
+    </script>
+    <header class='container with-proposition' id='global-header'>
+      <div class="row">
+        <div class='header-wrapper'>
+          <div class='header-global pull-left'>
+            <div class='header-logo'>
+              <a href="http://landregistry.gov.uk" class='content'><img src="images/lr_logo_221_80.png" alt="Land Registry logo"></a>
+            </div>
+          </div>
+          <div class='header-proposition'>
+            <div class='content'>
+              <nav id='proposition-menu'>
+                <a id='proposition-name'>Land Registry Linked Open Data</a>
+                <div class='beta-tag'>
+                  beta
+                </div>
+                <ul id='proposition-links' class='list-inline'>
+                  <li>
+                    <a href="/app/hpi">House Price Index</a>
+                  </li>
+                  <li>
+                    <a href="/app/ppd">Price Paid Data</a>
+                  </li>
+                  <li>
+                    <a href="/app/hpi/qonsole">SPARQL query</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class='lr-top-bar'></div>
+    <div class="container">
+      <h2>Price Paid Linked Data</h2>
+
+      <h3>What does the Price Paid Dataset consist of?</h3>
+      <p>
+        Land Registry publish Price Paid Data for England and Wales on a monthly basis. New transactions are added to the existing price paid dataset which, in March 2014 contained over 18.5 million transactions. Price paid data is captured for single residential properties that were sold for full market value and lodged with LR for registration since 1995. Each transaction generates a number of triples resulting in a store that holds in excess of 400 million data items. Data held does not indicate the current value of any individual property, it is the price paid at the time of sale. Data is compiled from the price paid information supplied to Land Registry when a single residential property is sold for full market value.
+      </p>
+      <h3>Privacy</h3>
+      <p>
+        In accordance with our rules price paid information has been entered as part of the register since 1 April 2000, the decision to do this was approved by the Lord Chancellor after public consultation and debate. He concluded that the inclusion, and consequent availability, of this information was in the public interest. Privacy impact assessments for the release of this data are available through the Land Registry website. From the privacy impact assessment;
+      </p>
+      <blockquote>
+        “HPPD {Historical Price Paid Data} comprises information dating back to 1995, and we considered whether a significant impact was caused by the fact that the  register of title (which includes the price paid) was not open to public inspection prior to 2000. We concluded that the impact was minimal as the public are able to request copies of transfers under the Land Registration statutory regime and invariably these contain the price paid for the property.”
+      </blockquote>
+
+      <h3>Which transactions are not included?</h3>
+      <p>
+        There are a number of reasons that transactions are excluded from the dataset;
+      </p>
+      <ul>
+        <li>sale to a corporate body, company or business</li>
+        <li>sale of part or a share of a property</li>
+        <li>sale of a property at a discount, including right to buy properties</li>
+        <li>sale of repossessed properties</li>
+        <li>sale subject to an existing mortgage</li>
+        <li>transfers following divorce or by way of gift or exchange</li>
+        <li>transfers under Compulsory Purchase Order or by Court Order</li>
+        <li>transfer of more than one property as part of a portfolio</li>
+        <li>leases for 7 years or less.</li>
+      </ul>
+
+      <h3>
+        How is the Price Paid Dataset published?
+      </h3>
+      <p>
+        The price paid dataset is available in several forms from the Land Registry;
+      </p>
+      <ul>
+        <li>Interactively, using the
+          <a href="http://landregistry.data.gov.uk/app/ppd">Price Paid Data Report Builder</a>. This tool also includes options to download the data in CSV or Turtle and to generate downloadable files from SPARQL queries in JSON, XML, plain text or as a table.</li>
+        <li>For download in CSV or TXT files from the
+          <a href="http://www.landregistry.gov.uk/market-trend-data/public-data/price-paid-data">Land Registry website</a>.
+        </li>
+      </ul>
+      <p>
+        The price paid data set is also available in full as a 4* linked dataset which is free to use under the terms of the OGL.
+      </p>
+
+
+      <h2>Linked Data Overview</h2>
+      <p>
+        Each residential property transaction lodged with Land Registry, subject to the exclusions above, will generate an entry in the Price Paid Dataset. In each calendar month Land Registry extract new and amended transactions from the Price Paid Dataset, convert them into linked data form and apply them to the linked data store. This process runs alongside the normal publication of Price Paid Data which is released on the 20th working day of each month.
+      </p>
+      <p>
+        At the highest level each transaction record contains data that describes the property and data that describes the transaction. Within the Price Paid Dataset any individual property can have multiple transactions, each property is described with one set of triples based on the address information passed to Land Registry, each transaction has its own set of triples including links to the appropriate address triples.
+      </p>
+
+      <h3>Vocabularies</h3>
+      <p>
+        The publication of the Price Paid Dataset as
+        <a href="http://linkeddata.org/">linked data</a>
+         requires the creation of reusable
+         <a href="http://www.w3.org/TR/rdf-schema/">RDFS</a> or
+         <a href="http://www.w3.org/TR/owl2-overview/">OWL</a>
+          vocabularies and two Land Registry vocabularies;
+      </p>
+      <dl>
+        <dt>
+          LR PPI    <a href="http://landregistry.data.gov.uk/def/ppi">http://landregistry.data.gov.uk/def/ppi</a>
+        </dt>
+        <dd>
+          The Land Registry PPI vocabulary is used to describe the Price Paid Dataset produced each month. Historical note: initially this dataset was known as Price Paid Information (PPI) but confusion with other common uses of the acronym lead to a rename after the initial release of the dataset and publication of the vocabulary. The vocabulary contains terms that are used by Land Registry to describe things that are used within the price paid dataset.
+        </dd>
+        <dt>
+          LR Common <a href="http://landregistry.data.gov.uk/def/common">http://landregistry.data.gov.uk/def/common</a>
+        </dt>
+        <dd>
+          The Land Registry common vocabulary was created alongside the ppi vocabulary and contains terms that we may use in otherwiser linked data releases in the future that may not relate specifically to price paid data. Currently the vocabulary contains terms used to describe and address, at the time this vocabulary was created we could find no vocabulary that we could use to accurately describe the address information that we publish.
+        </dd>
+      </dl>
+
+      <h3>Transactions</h3>
+      <p>
+        Each transaction record will contain the following data items:
+      </p>
+      <ul>
+        <li>A transaction identifier</li>
+        <li>The property address</li>
+        <li>The price paid</li>
+        <li>The date of the transaction</li>
+        <li>Information about the property</li>
+      </ul>
+      <p>
+        The conversion process used takes these items and generates a number of ‘triples’ that are uploaded to a triple store that’s made available using a cloud based triple store. Descriptions of linked data formats are widely described in various web resources and are not covered here, Land Registry generate .ru files each month and these are described below.
+      </p>
+      <p>
+        To describe a transaction we have the following information:
+      </p>
+      <p>
+        A transaction record ID which contains
+      </p>
+      <table class="table table-bordered table-condensed">
+        <tr>
+          <td>
+            A transaction
+          </td>
+          <td>
+            <code>/def/ppi/hasTransaction</code>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            A property address
+          </td>
+          <td>
+            <code>/def/ppi/propertyAddress</code>
+          </td>
+        </tr>
+      </table>
+
+      <p>
+        The predicate <code>hasTransaction</code> has a range of <code>Transaction</code>, each transaction is a concatenation of a transaction ID and a transaction record. The transaction record contains the following data items:
+      </p>
+      <table class="table table-bordered table-condensed">
+        <tr>
+          <td>
+            The property type
+          </td>
+          <td>
+            <a href="http://landregistry.data.gov.uk/def/ppi/propertyType"><code>ppi:propertyType</code></a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            The estate
+          </td>
+          <td>
+            <a href="http://landregistry.data.gov.uk/def/ppi/estateType"><code>type ppi:estateType</code></a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Transaction date
+          </td>
+          <td>
+            <a href="http://landregistry.data.gov.uk/def/ppi/transactionDate"><code>ppi:transactionDate</code></a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            The price paid
+          </td>
+          <td>
+            <a href="http://landregistry.data.gov.uk/def/ppi/pricePaid"><code>ppi:pricePaid</code></a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            A new build indicator
+          </td>
+          <td>
+            <a href="http://landregistry.data.gov.uk/def/ppi/newBuild"><code>ppi:newBuild</code></a>
+          </td>
+        </tr>
+      </table>
+
+      <p>
+        The predicate <code>propertyAddress</code> has a range of <code>Address</code>. The property address can contain the following data items:
+      </p>
+      <table class="table table-bordered table-condensed">
+        <tr>
+          <td>
+            Primary address (PAON)
+          </td>
+          <td>
+            <code>common:Paon</code>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Secondary address (SAON)
+          </td>
+          <td>
+            <code>common:Saon</code>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Street
+          </td>
+          <td>
+            <code>common:Street</code>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Locality
+          </td>
+          <td>
+            <code>common:Locality</code>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Town
+          </td>
+          <td>
+            <code>common:Town</code>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            District
+          </td>
+          <td>
+            <code>common:District</code>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            County
+          </td>
+          <td>
+            <code>common:County</code>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            County
+          </td>
+          <td>
+            <code>common:County</code>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Postcode
+          </td>
+          <td>
+            <code>common:Postcode</code>
+          </td>
+        </tr>
+      </table>
+
+      <p>
+        Because of the age of some data within the triple store these items are all optional, logically every address should have at least a PAON and Postcode but there are instances within the store where this information was missing or captured incorrectly. In time we hope to address this issue.
+      </p>
+
+      <h2>Data Model</h2>
+
+      <figure>
+        <img src="images/ppd-figure-1.png" alt="price paid data model" />
+        <figcaption>Figure 1 &ndash; PPD data model</figcaption>
+      </figure>
+
+
+      <h3>Example</h3>
+      <p>
+        In December 2013 Land Registry received a transaction for
+      </p>
+      <pre>Flat 22
+Orchard Building 25 Pear Tree Street
+London
+Islington
+Greater London
+EC1V 3AP</pre>
+      <p>
+        The property details supplied stated that this was a flat subject to a lease, the property was a new build and it sold for £860,000 on 31st October 2013. After transformation and upload to the Land Registry triplestore this property transaction can be found here
+      </p>
+      <pre><a href="http://landregistry.data.gov.uk/data/ppi/transaction/5FC45A71-8E90-46A0-9CBB-0017294BBAFA/2014-01-00021">http://landregistry.data.gov.uk/data/ppi/transaction/5FC45A71-8E90-46A0-9CBB-0017294BBAFA/2014-01-00021</a></pre>
+
+      <p>
+        This information is held as follows
+      </p>
+      <table class="table table-bordered table-condensed">
+        <tr>
+          <td class="definition-label">The property type</td>
+          <td><a href="http://landregistry.data.gov.uk/def/ppi/propertyType"><code>ppi:propertyType</code></a></td>
+          <td><a href="http://landregistry.data.gov.uk/def/common/flat-maisonette"><code>common:flat-maisonette</code></a></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="definition-label">The estate type</td>
+          <td><a href="http://landregistry.data.gov.uk/def/ppi/estateType"><code>ppi:estateType</code></a></td>
+          <td><a href="http://landregistry.data.gov.uk/def/common/leasehold"><code>common:leasehold</code></a></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="definition-label">The transaction date</td>
+          <td><a href="http://landregistry.data.gov.uk/def/ppi/transactionDate"><code>ppi:transactionDate</code></a></td>
+          <td>2013-10-31</td>
+          <td><a href="http://www.w3.org/2001/XMLSchema#date"><code>xs:date</code></a></td>
+        </tr>
+        <tr>
+          <td class="definition-label">The price paid</td>
+          <td><a href="http://landregistry.data.gov.uk/def/ppi/pricePaid"><code>ppi:pricePaid</code></a></td>
+          <td>860000</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="definition-label">A new build indicator</td>
+          <td><a href="http://landregistry.data.gov.uk/def/ppi/newBuild"><code>ppi:newBuild</code></a></td>
+          <td>true</td>
+          <td><a href="http://www.w3.org/2001/XMLSchema#boolean"><code>xs:boolean</code></a></td>
+        </tr>
+      </table>
+
+      <p>
+        We also add:
+      </p>
+      <table class="table table-bordered table-condensed">
+        <tr>
+          <td class="definition-label">The transaction ID</td>
+          <td><a href="http://landregistry.data.gov.uk/def/ppi/transactionId"><code>ppi:transactionId</code></a></td>
+          <td>5FC45A71-8E90-46A0-9CBB-0017294BBAFA</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="definition-label">The publication date</td>
+          <td><a href="http://landregistry.data.gov.uk/def/ppi/publishDate"><code>ppi:publishDate</code></a></td>
+          <td>2014-01-23</td>
+          <td><a href="http://www.w3.org/2001/XMLSchema#date"><code>xs:date</code></a></td>
+        </tr>
+        <tr>
+          <td class="definition-label">A record status</td>
+          <td><a href="http://landregistry.data.gov.uk/def/ppi/recordStatus"><code>ppi:recordStatus</code></a></td>
+          <td><code>ppi:add</code></td>
+          <td></td>
+        </tr>
+      </table>
+
+      <p>
+        The record status was part of the first release of price paid data and has since been made obsolete but remains in the store so that queries that included it will still run. All transactions will have a record status of ‘add’.
+      </p>
+
+      <p>
+        The triples generated for this transaction are:
+      </p>
+      <pre>&lt;http://landregistry.data.gov.uk/data/ppi/transaction/5FC45A71-8E90-46A0-9CBB-0017294BBAFA/2014-01-00021&gt;
+  a       ppi:TransactionRecord ;
+  ppi:estateType common:leasehold ;
+  ppi:hasTransaction <http://landregistry.data.gov.uk/data/ppi/transaction/5FC45A71-8E90-46A0-9CBB-0017294BBAFA> ;
+  ppi:newBuild &quot;true&quot;^^xs:boolean ;
+  ppi:pricePaid 860000 ;
+  ppi:propertyAddress <http://landregistry.data.gov.uk/data/ppi/address/8143663fb6492e899caae7ba3be160e7478b9792> ;
+  ppi:propertyType common:flat-maisonette ;
+  ppi:publishDate &quot;2014-01-23&quot;^^xs:date ;
+  ppi:recordStatus ppi:add ;
+  ppi:transactionDate &quot;2013-10-31&quot;^^xs:date ;
+  ppi:transactionId &quot;5FC45A71-8E90-46A0-9CBB-0017294BBAFA&quot;^^ppi:TransactionIdDatatype .</pre>
+
+      <p>
+        For the property address we have:
+      </p>
+      <table class="table table-bordered table-condensed">
+        <tr>
+          <td class="definition-label">
+            Primary address (PAON)
+          </td>
+          <td>
+            <a href="http://landregistry.data.gov.uk/def/common/paon"><code>common:paon</code></a>
+          </td>
+          <td>
+            ORCHARD BUILDING, 25
+          </td>
+          <td>
+            <code>
+            xs:string
+            </code>
+          </td>
+        </tr>
+        <tr>
+          <td class="definition-label">
+            Secondary address SAON
+          </td>
+          <td>
+            <a href="http://landregistry.data.gov.uk/def/common/saon"><code>common:saon</code></a>
+          </td>
+          <td>
+            FLAT 22
+          </td>
+          <td>
+            <code>
+            xs:string
+            </code>
+          </td>
+        </tr>
+        <tr>
+          <td class="definition-label">
+            Street
+          </td>
+          <td>
+            <a href="http://landregistry.data.gov.uk/def/common/street"><code>common:street</code></a>
+          </td>
+          <td>
+            PEAR TREE STREET
+          </td>
+          <td>
+            <code>
+            xs:string
+            </code>
+          </td>
+        </tr>
+        <tr>
+          <td class="definition-label">
+            Locality
+          </td>
+          <td>
+            <a href="http://landregistry.data.gov.uk/def/common/locality"><code>common:locality</code></a>
+          </td>
+          <td>
+          </td>
+          <td>
+            <code>
+            xs:string
+            </code>
+          </td>
+        </tr>
+        <tr>
+          <td class="definition-label">
+            Town
+          </td>
+          <td>
+            <a href="http://landregistry.data.gov.uk/def/common/town"><code>common:town</code></a>
+          </td>
+          <td>
+            LONDON
+          </td>
+          <td>
+            <code>
+            xs:string
+            </code>
+          </td>
+        </tr>
+        <tr>
+          <td class="definition-label">
+            District
+          </td>
+          <td>
+            <a href="http://landregistry.data.gov.uk/def/common/district"><code>common:district</code></a>
+          </td>
+          <td>
+            ISLINGTON
+          </td>
+          <td>
+            <code>
+            xs:string
+            </code>
+          </td>
+        </tr>
+        <tr>
+          <td class="definition-label">
+            County
+          </td>
+          <td>
+            <a href="http://landregistry.data.gov.uk/def/common/county"><code>common:county</code></a>
+          </td>
+          <td>
+            GREATER LONDON
+          </td>
+          <td>
+            <code>
+            xs:string
+            </code>
+          </td>
+        </tr>
+         <tr>
+          <td class="definition-label">
+            Postcode
+          </td>
+          <td>
+            <a href="http://landregistry.data.gov.uk/def/common/postcode"><code>common:postcode</code></a>
+          </td>
+          <td>
+            EC1V 3AP
+          </td>
+          <td>
+            <code>
+            xs:string
+            </code>
+          </td>
+        </tr>
+      </table>
+
+      <p>
+        We also add:
+      </p>
+
+      <table class="table table-bordered table-condensed">
+        <tr>
+          <td class="definition-label">
+            The property address ID
+          </td>
+          <td>
+            <a href="http://landregistry.data.gov.uk/def/ppi/propertyAddress"><code>ppi:propertyAddress</code></a>
+          </td>
+          <td>
+            <a href="http://landregistry.data.gov.uk/data/ppi/address/8143663fb6492e899caae7ba3be160e7478b9792"><code>8143663fb6492e899caae7ba3be160e7478b9792</code></a>
+          </td>
+          <td>
+            <code>
+            </code>
+          </td>
+        </tr>
+        <tr>
+          <td class="definition-label">
+            The type of address
+          </td>
+          <td>
+            <a href="http://landregistry.data.gov.uk/def/common/BS7666Address"><code>common:BS7666Address</code></a>
+          </td>
+          <td>
+          </td>
+          <td>
+            <code>
+            </code>
+          </td>
+        </tr>
+      </table>
+
+      <p>
+        And the triples for this property address are:
+      </p>
+      <pre>&lt;http://landregistry.data.gov.uk/data/ppi/address/8143663fb6492e899caae7ba3be160e7478b9792&gt;
+  a       common:BS7666Address ;
+  common:county &quot;GREATER LONDON&quot;^^xs:string ;
+  common:district &quot;ISLINGTON&quot;^^xs:string ;
+  common:paon &quot;ORCHARD BUILDING, 25&quot;^^xs:string ;
+  common:postcode &quot;EC1V 3AP&quot;^^xs:string ;
+  common:saon &quot;FLAT 22&quot;^^xs:string ;
+  common:street &quot;PEAR TREE STREET&quot;^^xs:string ;
+  common:town &quot;LONDON&quot;^^xs:string .</pre>
+
+      <p>
+        Note that no triple is generated for missing items, in this case the locality.
+      </p>
+
+
+      <h2>How to query the dataset</h2>
+      <p>
+        There are several ways to query the Price Paid Dataset;
+      </p>
+
+      <h3>The Price Paid Data Report Builder</h3>
+      <p>
+        The report builder is the easiest way to query the Price Paid dataset, it allows the easy creation of queries using a form and results can be downloaded in various forms. The report builder can also be used to generate SPARQL queries that can be amended and re-run as required.
+      </p>
+
+      <h3>SPARQL</h3>
+      <p>
+        Alongside the report builder we have created a SPARQL query page that can be found here http://landregistry.data.gov.uk/app/hpi/qonsole  This is prefilled with an example query against the Land Registry House Price Index dataset and there is another example query available using the ‘transactions in a postcode’ button at the top of the screen. Any valid SPARQL query can be run but please be aware that the sheer size of the dataset means that queries which return a lot of data are likely to time out.
+      </p>
+      <p>
+        Included at the end of this document is an example of a SPQARL command using FILTER to restrict the results returned.
+      </p>
+
+      <h3>Via the API</h3>
+      <p>
+        It is possible to query the Price Paid Dataset directly through the API, this largely removes the need to know how to use SPARQL as long as the structure of the data is known.  Using the example transaction above we know that there is a street called ‘Pear Tree Street’ and that street is part of the address within the PPI data structure. With that information we can enter this URL into a web browser
+      </p>
+
+      <pre><a href="http://landregistry.data.gov.uk/data/ppi/address?&amp;street=PEAR%20TREE%20STREET">http://landregistry.data.gov.uk/data/ppi/address?&amp;street=PEAR%20TREE%20STREET</a></pre>
+
+      <p>
+        Note that this can be used to return all transactions for any street of that name that are held in the Price Paid dataset but because there is a limit set on the API page for the number of items returned any download in another format, for example csv, will be limited to the same number of results as displayed.
+      </p>
+      <p>
+        Similarly other address items can be queried, in this example with a postcode for a different Pear Tree Street.
+      </p>
+      <pre><a href="http://landregistry.data.gov.uk/data/ppi/address?postcode=DE23%208PL">http://landregistry.data.gov.uk/data/ppi/address?postcode=DE23%208PL</a></pre>
+      <p>
+        And items can be combined, in this example using street and county:
+      </p>
+      <pre><a href="http://landregistry.data.gov.uk/data/ppi/address?&amp;street=PEAR%20TREE%20STREET&amp;county=DERBYSHIRE">http://landregistry.data.gov.uk/data/ppi/address?&amp;street=PEAR%20TREE%20STREET&amp;county=DERBYSHIRE</a></pre>
+
+      <p>
+        It is possible to return the number of rows that satisfy the query by using the count function
+      </p>
+      <pre><a href="http://landregistry.data.gov.uk/data/ppi/address?&amp;street=PEAR%20TREE%20STREET&amp;county=DERBYSHIRE&amp;_count=yes">http://landregistry.data.gov.uk/data/ppi/address?&amp;street=PEAR%20TREE%20STREET&amp;county=DERBYSHIRE&amp;_count=yes</a></pre>
+
+      <p>
+        Which reveals that there are 9 entries that satisfy that query. A query for the county of Derbyshire reveals that there are 177,264 transactions (both queries correct as of June 2014). Note that for some queries the count function has been disabled due to the size of the dataset, this is particularly relevant for queries at the transaction-record level, for example this query will return new build properties in Derbyshire adding the count function will result in a warning message.:
+      </p>
+      <pre><a href="http://landregistry.data.gov.uk/data/ppi/transaction-record?&amp;propertyAddress.county=DERBYSHIRE&amp;newBuild=false">http://landregistry.data.gov.uk/data/ppi/transaction-record?&amp;propertyAddress.county=DERBYSHIRE&amp;newBuild=false</a></pre>
+
+
+      <h3>Example SPARQL query using ‘filter’</h3>
+      <p>
+        This is an example of a custom SPARQL query that we used.
+        The customer request was to use a SPARQL query to find property where part of the PAON was Alveston within postcode CV37 7AE.  This can be easily done using the Price Paid report Builder but using SPARQL can be more flexible when dealing with multiple PAONs.
+      </p>
+      <p>
+        The Land Registry Price Paid Report builder http://landregistry.data.gov.uk/app/ppd can be used to generate a base SPARQL query for the postcode which looks like this:
+      </p>
+
+<pre>prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt;
+prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
+prefix sr: &lt;http://data.ordnancesurvey.co.uk/ontology/spatialrelations/&gt;
+prefix lrhpi: &lt;http://landregistry.data.gov.uk/def/hpi/&gt;
+prefix lrppi: &lt;http://landregistry.data.gov.uk/def/ppi/&gt;
+prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt;
+prefix lrcommon: &lt;http://landregistry.data.gov.uk/def/common/&gt;
+
+PREFIX  ppd:  &lt;http://landregistry.data.gov.uk/def/ppi/&gt;
+PREFIX  lrcommon: &lt;http://landregistry.data.gov.uk/def/common/&gt;
+
+SELECT  ?item ?ppd_hasTransaction ?ppd_pricePaid ?ppd_propertyAddress ?ppd_publishDate ?ppd_transactionDate ?ppd_transactionId ?ppd_estateType ?ppd_newBuild ?ppd_propertyAddressCounty ?ppd_propertyAddressDistrict ?ppd_propertyAddressLocality ?ppd_propertyAddressPaon ?ppd_propertyAddressPostcode ?ppd_propertyAddressSaon ?ppd_propertyAddressStreet ?ppd_propertyAddressTown ?ppd_propertyType
+WHERE
+  { ?ppd_propertyAddress &lt;http://jena.apache.org/text#query&gt; _:b0 .
+    _:b0 &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#first&gt; lrcommon:postcode .
+    _:b0 &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#rest&gt; _:b1 .
+    _:b1 &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#first&gt; &quot;( cv37 AND 7ae )&quot; .
+    _:b1 &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#rest&gt; _:b2 .
+    _:b2 &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#first&gt; 200000 .
+    _:b2 &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#rest&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#nil&gt; .
+    ?item ppd:hasTransaction ?ppd_hasTransaction .
+    ?item ppd:pricePaid ?ppd_pricePaid .
+    ?item ppd:propertyAddress ?ppd_propertyAddress .
+    ?item ppd:publishDate ?ppd_publishDate .
+    ?item ppd:transactionDate ?ppd_transactionDate .
+    ?item ppd:transactionId ?ppd_transactionId
+    OPTIONAL
+      { ?item ppd:estateType ?ppd_estateType }
+    OPTIONAL
+      { ?item ppd:newBuild ?ppd_newBuild }
+    OPTIONAL
+      { ?item ppd:propertyAddress/lrcommon:county ?ppd_propertyAddressCounty }
+    OPTIONAL
+      { ?item ppd:propertyAddress/lrcommon:district ?ppd_propertyAddressDistrict }
+    OPTIONAL
+      { ?item ppd:propertyAddress/lrcommon:locality ?ppd_propertyAddressLocality }
+    OPTIONAL
+      { ?item ppd:propertyAddress/lrcommon:paon ?ppd_propertyAddressPaon }
+    OPTIONAL
+      { ?item ppd:propertyAddress/lrcommon:postcode ?ppd_propertyAddressPostcode }
+    OPTIONAL
+      { ?item ppd:propertyAddress/lrcommon:saon ?ppd_propertyAddressSaon }
+    OPTIONAL
+      { ?item ppd:propertyAddress/lrcommon:street ?ppd_propertyAddressStreet }
+    OPTIONAL
+      { ?item ppd:propertyAddress/lrcommon:town ?ppd_propertyAddressTown }
+    OPTIONAL
+      { ?item ppd:propertyType ?ppd_propertyType }
+  }
+LIMIT   100</pre>
+      <p>
+        The part of this query that is of most interest is the WHERE clause in the SELECT command, shown in bold in the example. This can be modified in several ways to achieve the required result, here is one example, by amending the last line before the OPTIONAL keyword and adding two lines a property name or partial name can be added to the SELECT.
+      </p>
+      <p>
+        Amend the following line, adding a period at the end separated from the last character by a space:
+      </p>
+
+<pre>?item ppd:transactionId ?ppd_transactionId .</pre>
+
+      <p>Add these two lines to follow:</p>
+
+<pre>?item ppd:propertyAddress/lrcommon:paon ?ppd_propertyAddressPaon
+ FILTER regex(?ppd_propertyAddressPaon,'alve','i')</pre>
+
+      <p>
+        These lines identify PAON as part of the select and that the result should be filtered to find the string ‘alve’ anywhere within the PAON, the third argument specifies that the string is not case sensitive.
+      </p>
+      <p>
+        This gives a WHERE clause that looks like this and, when run, will return a single property transaction for Alveston Cottage
+      </p>
+
+<pre>WHERE
+  { ?ppd_propertyAddress <http://jena.apache.org/text#query> _:b0 .
+    _:b0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> lrcommon:postcode .
+    _:b0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b1 .
+    _:b1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> &quot;( cv37 AND 7ae )&quot; .
+    _:b1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b2 .
+    _:b2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> 200000 .
+    _:b2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+    ?item ppd:hasTransaction ?ppd_hasTransaction .
+    ?item ppd:pricePaid ?ppd_pricePaid .
+    ?item ppd:propertyAddress ?ppd_propertyAddress .
+    ?item ppd:publishDate ?ppd_publishDate .
+    ?item ppd:transactionDate ?ppd_transactionDate .
+    ?item ppd:transactionId ?ppd_transactionId .
+              ?item ppd:propertyAddress/lrcommon:paon ?ppd_propertyAddressPaon
+            FILTER regex(?ppd_propertyAddressPaon,'alve','i')</pre>
+
+      <p>
+        More than one string can be searched for using <code>||</code> to separate each argument, to return PAONs that contain the string ‘alve’ or the number 5 (stored as a string not numeric):
+      </p>
+
+<pre>?item ppd:propertyAddress/lrcommon:paon ?ppd_propertyAddressPaon
+FILTER (regex(?ppd_propertyAddressPaon,'alve','i') ||
+             regex(?ppd_propertyAddressPaon,'5','i'))</pre>
+
+      <p>
+        This will return 2 rows, Alveston Cottage and 5A Tiddington Road
+      </p>
+
+    </div> <!-- /.container -->
+    <footer id="footer" role="contentinfo">
+      <div class="container">
+        <h2 class="hidden">
+          Support links
+        </h2>
+        <ul class="list-inline">
+          <li>
+            <a href="http://www.nationalarchives.gov.uk/information-management/our-services/crown-copyright.htm">&copy; Crown copyright 2014</a>
+          </li>
+          <li>
+            <a href="http://www.landregistry.gov.uk/public/information/privacy">Privacy and Cookies</a>
+          </li>
+          <li>
+            <a href="http://www.landregistry.gov.uk/public/information">Terms and Conditions</a>
+          </li>
+          <li>
+            <a href="http://www.landregistry.gov.uk/professional/market-trend-data/public-data">Land Registry Public Data</a>
+          </li>
+        </ul>
+        <div class="ogl">
+          <h2 class="pull-left">
+            <a href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/2"><img alt="OGL" src="https://assets.digital.cabinet-office.gov.uk/static/open-government-licence_2x-d273d7eca3045d3b710a863d9bfc0b33.png" /></a>
+          </h2>
+          <p>
+            All content is available under the <a href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/2">Open Government Licence v2.0</a> except where otherwise stated
+          </p>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </footer>
+    <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-21165003-6']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+
+  </body>
+</html>

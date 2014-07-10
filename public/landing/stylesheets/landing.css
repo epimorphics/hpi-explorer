@@ -253,3 +253,16 @@ Example usage:
 .ogl h2 {
   margin-top: 0;
 }
+
+td.definition-label {
+  min-width: 20em;
+}
+
+figure img {
+  margin-top: 25px;
+}
+
+figcaption {
+  text-align: center;
+  font-weight: bold;
+}
