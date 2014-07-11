@@ -591,7 +591,7 @@ EC1V 3AP</pre>
         There are several ways to query the Price Paid Dataset;
       </p>
 
-      <h3>The Price Paid Data Report Builder</h3>
+      <h3>The <a href="http://landregistry.data.gov.uk/app/ppd">Price Paid Data Report Builder</a></h3>
       <p>
         The report builder is the easiest way to query the Price Paid dataset, it allows the easy creation of queries using a form and results can be downloaded in various forms. The report builder can also be used to generate SPARQL queries that can be amended and re-run as required.
       </p>
@@ -601,7 +601,12 @@ EC1V 3AP</pre>
         Alongside the report builder we have created a SPARQL query page that can be found here http://landregistry.data.gov.uk/app/hpi/qonsole  This is prefilled with an example query against the Land Registry House Price Index dataset and there is another example query available using the ‘transactions in a postcode’ button at the top of the screen. Any valid SPARQL query can be run but please be aware that the sheer size of the dataset means that queries which return a lot of data are likely to time out.
       </p>
       <p>
-        Included at the end of this document is an example of a SPQARL command using FILTER to restrict the results returned.
+        We also have made a
+        <a href="http://semanticweb.org/wiki/SPARQL_endpoint">SPARQL endpoint</a> available:
+        <code>http://landregistry.data.gov.uk/landregistry/query</code> which can be used to query against.
+      </p>
+      <p>
+        Included at the end of this document is an example of a SPARQL query using FILTER to restrict the results returned.
       </p>
 
       <h3>Via the API</h3>
