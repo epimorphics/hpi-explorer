@@ -11,6 +11,9 @@
         %a.js.hidden.btn.btn-default.action.action-help{ href: "#", alt: "Help and tips", title: "Help and tips" }
           %i.fa.fa-question-circle
           help
+        %a.js.hidden.btn.btn-default{ href: "http://www.youtube.com/watch?v=YLXgPjkHmGU", target: "_", alt: "Video tutorial", title: "Video tutorial" }
+          %i.fa.fa-youtube
+          tutorial
 
   = form_tag( {controller: :search, action: :create}, class: "form-horizontal search", role: "form") do
     .row

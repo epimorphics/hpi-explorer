@@ -5,7 +5,8 @@
   .download
     .row
       .col-md-12
-        = render partial: "hpi/search_workflow_action_buttons", locals: {no_download: true, no_print: true}
+        .clearfix
+          = render partial: "hpi/search_workflow_action_buttons", locals: {no_download: true, no_print: true}
         %h2
           = @preferences.describe_selected_location( ["Download selected data for:", "Download comparison data for:"] )
 
