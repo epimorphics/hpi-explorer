@@ -9,10 +9,9 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require bootstrap
  *= require lr-assets
  *= require font-awesome
- *= require jquery.ui.autocomplete
+ *= require jquery-ui/autocomplete
  *= require dataTables/jquery.dataTables
  *= require leaflet
  *= require qonsole_rails/application
@@ -22,3 +21,6 @@
 
  */
 
+// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+@import "bootstrap-sprockets";
+@import "bootstrap";

@@ -1,67 +1,45 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.2'
+gem 'rails', '4.1.8'
+gem 'turbolinks'
+gem 'jbuilder', '~> 1.2'
+gem 'data_services_api', git: "git@github.com:epimorphics/ds-api-ruby.git"
+gem 'faraday', '~> 0.8.8'
+gem "faraday_middleware", "< 0.9.0"
+gem 'js-routes'
+gem 'leaflet-rails'
+gem 'haml-rails'
+
+#gem 'qonsole-rails', path: '/home/ian/workspace/qonsole-rails'
+gem 'qonsole-rails', git: 'git@github.com:epimorphics/qonsole-rails.git'
+
+gem 'font-awesome-rails'
+gem 'bootstrap-sass'
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
+gem 'therubyracer', platforms: :ruby
+gem 'govuk_frontend_toolkit', github: "alphagov/govuk_frontend_toolkit_gem", :submodules => true
+
+gem 'uglifier', '>= 1.3.0'
+gem 'sass-rails', '~> 4.0.0'
 
 # locking due to version problems
 gem 'sass', '3.2.14'
 gem 'slop', '3.4.7'
 gem 'sprockets', '2.11.0'
 
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
-
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
-
-# Use CoffeeScript for .js.coffee assets and views
-# gem 'coffee-rails', '~> 4.0.0'
-
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-gem 'therubyracer', platforms: :ruby
-
-# Use jquery as the JavaScript library
-gem 'jquery-rails'
-
-gem 'haml-rails'
-# gem 'less-rails'
-gem 'bootstrap-sass'
-
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
-
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.2'
-
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
 
-# Use debugger
-# gem 'debugger', group: [:development, :test]
-gem 'pry', group: :development
-gem 'quiet_assets', :group => :development
-gem 'rb-readline', :group => :development
-
-gem 'govuk_frontend_toolkit', github: "alphagov/govuk_frontend_toolkit_gem", :submodules => true
-gem 'data_services_api', git: "git@github.com:epimorphics/ds-api-ruby.git"
-gem 'font-awesome-rails'
-gem 'faraday', '~> 0.8.8'
-gem "faraday_middleware", "< 0.9.0"
-gem 'jquery-ui-rails'
-gem 'js-routes'
-gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
-gem 'leaflet-rails'
-
-#gem 'qonsole-rails', path: '/home/ian/workspace/qonsole-rails'
-gem 'qonsole-rails', git: 'git@github.com:epimorphics/qonsole-rails.git'
-
 group :test do
-  gem 'minitest', '~> 4.7'
-  gem 'minitest-rg', '~> 1.1'
   gem 'capybara-webkit', '~> 1.1'
-  gem 'minitest-capybara', '~> 0.4'
-  gem 'minitest-spec-rails', '~> 4.7'
+  gem 'minitest-capybara'
+  gem 'capybara_minitest_spec'
+  gem 'minitest-spec-rails', '~> 5.1'
+  gem 'minitest-rails'
   gem 'json_expressions', "~> 0.8"
   gem 'vcr'
   gem 'minitest-vcr'
@@ -70,4 +48,11 @@ end
 
 group :development do
   gem 'unicorn'
+  gem 'quiet_assets'
 end
+
+group :test, :development do
+  gem 'rb-readline'
+  gem 'pry'
+end
+
