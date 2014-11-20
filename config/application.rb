@@ -29,5 +29,8 @@ module HpiExplorer
     # config.i18n.default_locale = :de
 
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
+
+    # middleware to catch and log bad request errors
+    config.middleware.insert_before ActionDispatch::ParamsParser, "CatchRequestErrors"
   end
 end
