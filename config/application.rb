@@ -31,6 +31,7 @@ module HpiExplorer
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
 
     # middleware to catch and log bad request errors
+    puts config.middleware.inspect
     config.middleware.insert_before ActionDispatch::ParamsParser, "CatchRequestErrors"
   end
 end
