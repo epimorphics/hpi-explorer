@@ -39,6 +39,8 @@ class UserPreferences
                   )
                ).map( &:to_s )
 
+  IGNORED_PARAMS = ["action", "controller","format"]
+
   attr_reader :params
 
   def initialize( params = {} )
@@ -178,6 +180,10 @@ class UserPreferences
   # Return true if the start date is later than the end date
   def negative_date_range?
     time_period.negative?
+  end
+
+  def empty?
+    (params.keys - IGNORED_PARAMS).empty?
   end
 
   private

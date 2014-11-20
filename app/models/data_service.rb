@@ -25,4 +25,9 @@ class DataService
   def param( p )
     @preferences.param( p )
   end
+
+  # Return true if no preferences were passed
+  def empty_preferences?
+    preferences.empty?
+  end
 end
