@@ -14,6 +14,8 @@ HpiExplorer::Application.routes.draw do
 
   mount QonsoleRails::Engine, at: "/qonsole"
 
+  get '*unmatched_route', to: 'application#render_404'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
