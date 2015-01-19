@@ -31,7 +31,7 @@ module ValueFormatter
   end
 
   def format_currency( val, currency = nil )
-    number_to_currency( val.to_i, locale: "en-gb", unit: currency || pound, precision: 0 )
+    number_to_currency( val.to_i, locale: "en-GB", unit: currency || pound, precision: 0 )
   end
 
   def format_month_year( val )
