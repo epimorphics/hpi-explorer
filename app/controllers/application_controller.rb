@@ -29,6 +29,9 @@ class ApplicationController < ActionController::Base
   def render_exception( e )
     if e.instance_of? ArgumentError
       render_error( 400 )
+    elsif e.instance_of? ActionController::InvalidAuthenticityToken
+      Rails.logger.warn "Invalid authenticity token #{e}"
+      render_error( 403 )
     else
       Rails.logger.warn "No explicit error page for exception #{e} - #{e.class.name}"
       render_error( 500 )
