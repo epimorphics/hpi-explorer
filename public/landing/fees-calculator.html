@@ -14,109 +14,110 @@
 </head>
 <body>
 <div id="content" class="centralizer">
-    <div id="content_sub">
+<div id="content_sub">
 <a id="top"></a>
 <!-- Central Content -->
       <div id="c-content">
       <a href="https://gov.uk/land-registry"><img src="images/lr_logo_221_80.png" alt="Land Registry logo" title="Land Registry"></img></a>
 <div id="content_div_56321">
 <h1>Fee calculator&nbsp;</h1>
-<p></p><div id="fc_app" style="display: block;">
-	<fieldset id="fc_app_fieldset">
-		<legend>Choose an application type to view the corresponding fee:</legend>
-		<select id="fc_appnSel"><option value="0">Choose an application type</option><option value="40">Adverse possession - person entitled to be notified of application</option><option value="38">Adverse possession - register person in possession of a registered estate</option><option value="31">Agreed/Unilateral Notice</option><option value="51">Alteration of the register</option><option value="206">Appropriation of a registered estate</option><option value="207">Assent - registered land</option><option value="205">Assent - trigger for first registration</option><option value="201">Caution against first registration</option><option value="202">Cautions register - alteration</option><option value="6">Changing a property description or current registered owner's details</option><option value="8">Charge (registered) - discharging</option><option value="9">Charge (registered) transfer of</option><option value="74">Charge - application to note agreed maximum amount of security</option><option value="77">Charge - application to note obligation to make further advances</option><option value="7">Charge - registration of (registered land)</option><option value="73">Charge - trigger for first registration</option><option value="10">Close or partly close a registered leasehold title (NOT on surrender)</option><option value="72">Day list information application</option><option value="13">Death of a joint proprietor - entering on the register</option><option value="14">Death or bankruptcy - transfer by operation of law</option><option value="129">Determination of a boundary</option><option value="15">Estate layout plan or any draft document with or without plan - Approval of</option><option value="16">Exchange - registered land</option><option value="79">Exchange - trigger for first registration</option><option value="26">Exempt information document - to designate a document</option><option value="18">First Registration - freehold</option><option value="19">First Registration - leasehold (by original grantee)</option><option value="20">First Registration - leasehold (by successor in title)</option><option value="21">First Registration - rentcharge</option><option value="24">Grant of a new lease where the reversionary title is registered</option><option value="81">Historical edition(s) of the register, copy(ies) of</option><option value="25">Index Map Search</option><option value="27">Index of Proprietors' Names search (where permitted)</option><option value="107">Inspections</option><option value="29">Large scale applications</option><option value="1">New or additional beneficiary of a unilateral notice</option><option value="30">Noted unregistered Lease - cancellation of - for each registered title affected</option><option value="34">Notice of deposit or intended deposit of a land or charge certificate - withdrawal of</option><option value="33">Notice or renewal of a caution or notice pursuant to Family Law Act 1996 - registering</option><option value="32">Notice, caution, inhibition, restriction or note - cancelling the registration of</option><option value="108">Official Copies</option><option value="35">Official search lodged by non-electronic means</option><option value="2">Official search of the index of relating franchises and manors</option><option value="36">Order by the registrar (other than an order under s.41(2), Land Registration Act 2002)</option><option value="103">Outline application to secure priority for a dealing with registered land</option><option value="5">Rentcharge (registered) - to close or partly close a rentcharge title other than on surrender</option><option value="39">Rentcharge (unregistered - determination of) - cancelling notice of - for EACH title affected</option><option value="17">Restriction - not contained in Schedule 4, Land Registration Rules, 2003</option><option value="22">Restriction - registrar to make an order - under s.41(2), Land Registration Act 2002</option><option value="11">Restriction - standard form, contained in Schedule 4, Land Registration Rules, 2003</option><option value="37">Restriction in form A Schedule 4, Land Registration Rules, 2003 e.g. Joint proprietorship restriction</option><option value="52">Return of a document under r.204, Land Registration Rules 2003</option><option value="44">Surrender - NOT for value of a REGISTERED lease</option><option value="43">Surrender - for value of a REGISTERED lease</option><option value="45">Surrender of lease coupled with grant of new lease of premises to same tenant</option><option value="46">Transfer of matrimonial or civil partnership home (registered estate) pursuant to a court order</option><option value="47">Transfer of part for value</option><option value="48">Transfer of registered land - NOT for value</option><option value="49">Transfer of whole for value</option><option value="23">Upgrade from one class of registered title to another</option><option value="50">Vesting order or declaration to which s.27(5), Land Registration Act 2002 applies</option></select>
-		<button id="fc_selectBtn" onclick="fc_select()">Select</button>
-	</fieldset>
-	<div id="fc_capturePanel" style="display: none;">
-		<p>You have chosen:</p>
-		<p id="fc_chosen_appdesc"></p>
-		<div id="fc_furtherDetailsPanel" style="display: none;">
-			<div id="fc_valuePanel" style="display: none;">
-				<p>Enter the transaction value to the nearest £ (eg 49750).</p>
-				<p id="fc_valueTxt_error">Sorry only blank or numerical values are accepted.</p>
-				<label for="fc_valueTxt">Transaction value (£):</label>
-				<input type="text" maxlength="10" name="value" id="fc_valueTxt" value="" onkeypress="return isNumericKey(event);">
-				<p>The fee will be assessed on this value even if no transaction takes place. If you are unsure how to assess the transaction value, please consult the relevant section of the <a target="_blank" href="https://www.gov.uk/government/collections/fees-land-registry-guides">Fee Order</a> <img class="new_window" alt="Link opens in a new window (external website)" src="images/new_window_icon.png" width="13" height="13">.</p>
-				<p>Where VAT is payable, scale fees must be paid on the VAT, inclusive consideration or rent.</p>
-			</div>
-			<div id="fc_rentPanel" style="display: none;">
-				<strong>AND/OR</strong>
-				<br>
-				<p>Enter the rent payable</p>
-				<p id="fc_rentTxt_error">Sorry only blank or numerical values are accepted.</p>
-				<label for="fc_rentTxt">Rent payable (£):</label>
-				<input type="text" maxlength="10" name="rent" id="fc_rentTxt" value="" onkeypress="return isNumericKey(event);">
-				<p>Rent payable is the largest amount of annual rent the lease reserves within the first five years of its term, quantified at the time of application.</p>
-				<br>
-			</div>
-			<fieldset id="fc_voluntaryPanel" style="display: none;">
-				<legend>Is this a Voluntary Application?</legend>
-				<input type="radio" name="fc_voluntryRadio" value="FALSE" checked="">
-				<label for="voluntryRadioNo">No</label>
-				<input type="radio" name="fc_voluntryRadio" value="TRUE">
-				<label for="voluntryRadioYes">Yes</label>
-			</fieldset>
-			<br>
-			<button id="fc_calculateBtn" onclick="fc_calculate()">Check fee</button>
-			<button id="fc_resetBtn_last" onclick="fc_reset()">Start again</button>
-		</div>
-	</div>
-	<div id="fc_feePanel" style="display: none;">
-		<table class="fc_resultsTable">
-			<tbody><tr>
-				<td class="fc_main">Application type</td>
-				<td><p id="fc_appdesc"></p></td>
-			</tr><tr id="fc_appnScaleRow">
-				<td class="fc_main">Applicable fee scale</td>
-				<td><p id="fc_appnScale"></p></td>
-			</tr>
-			<tr id="fc_appnValueRow">
-				<td class="fc_main">Stated value</td>
-				<td>
-					<p id="fc_appnValue"></p>
-					<p id="fc_appnValueRentDetailsInfo">This value is based on the transaction value and/or the rent payable. </p>
-					<p id="fc_appnValueWarn">You entered either £0 or an invalid transaction value so £0 has been assumed. To enter a new value click ‘Start again’ below.</p>
-					<p id="fc_appnRentWarn">You entered either £0 or an invalid rent payable so £0 has been assumed. To enter a new value click ‘Start again’ below.</p>
-					<p id="fc_appnValueRentWarn">You entered either £0 or an invalid transaction value and rent payable so £0 for both has been assumed. To enter a new value click ‘Start again’ below.</p>
-				</td>
-			</tr>
-			<tr>
-				<td class="fc_main">Standard Fee</td>
-				<td>
-					<p id="fc_appnFee"></p>
-					<p id="fc_voluntrySel"><i>(This figure includes a voluntary application reduction.)</i></p>
-				</td>
-			</tr>
-			<tr id="fc_appnElectronicRow" style="display: none;">
-				<td class="fc_main">Electronic Fee</td>
-				<td>
-					<p id="fc_appnFeeElectronic"></p>
-				</td>
-			</tr>
-		</tbody></table>
-		<div id="fc_notes">
-		<h3>Notes</h3>
-		<p id="fc_appnNotes"></p>
-		</div>
-		<p>Find out about <a href="https://www.gov.uk/government/publications/information-service-fees">how to pay Land Registry fees.</a></p>
-		<p id="fc_appnElectronicMsg" style="display: none;">Please note reduced fees for electronic applications only apply to Dealings of Whole.</p>
-		<br>
-		<button id="fc_resetBtn" onclick="fc_reset()">Start again</button>
-	</div>
+
+<div id="fc_app">
+  <fieldset id="fc_app_fieldset">
+    <legend>Choose an application type to view the corresponding fee:</legend>
+    <select id="fc_appnSel"></select>
+    <button id="fc_selectBtn" onclick="fc_select()">Select</button>
+  </fieldset>
+  <div id="fc_capturePanel">
+    <p>You have chosen:</p>
+    <p id="fc_chosen_appdesc"></p>
+    <div id="fc_furtherDetailsPanel">
+      <div id="fc_valuePanel">
+        <p>Enter the transaction value to the nearest £ (eg 49750).</p>
+        <p id="fc_valueTxt_error">Sorry only blank or numerical values are accepted.</p>
+        <label for="fc_valueTxt">Transaction value (£):</label>
+        <input type="text" maxlength="10" name="value" id="fc_valueTxt" value="" onkeypress="return isNumericKey(event);"/>
+        <p>The fee will be assessed on this value even if no transaction takes place. If you are unsure how to assess the transaction value, please consult the relevant section of the <a target='_blank' href="http://www.landregistry.gov.uk/professional/fees">Fee Order</a> <img class='new_window' alt='Link opens in a new window (external website)' src='./new_window.gif' width='13' height='13'>.</p>
+        <p>Where VAT is payable, scale fees must be paid on the VAT, inclusive consideration or rent.</p>
+      </div>
+      <div id="fc_rentPanel">
+        <strong>AND/OR</strong>
+        <br/>
+        <p>Enter the rent payable</p>
+        <p id="fc_rentTxt_error">Sorry only blank or numerical values are accepted.</p>
+        <label for="fc_rentTxt">Rent payable (£):</label>
+        <input type="text" maxlength="10" name="rent" id="fc_rentTxt" value="" onkeypress="return isNumericKey(event);"/>
+        <p>Rent payable is the largest amount of annual rent the lease reserves within the first five years of its term, quantified at the time of application.</p>
+        <br/>
+      </div>
+      <fieldset id="fc_voluntaryPanel">
+        <legend>Is this a Voluntary Application?</legend>
+        <input type="radio" name="fc_voluntryRadio" value="FALSE" checked />
+        <label for="voluntryRadioNo">No</label>
+        <input type="radio" name="fc_voluntryRadio" value="TRUE" />
+        <label for="voluntryRadioYes">Yes</label>
+      </fieldset>
+      <br/>
+      <button id="fc_calculateBtn" onclick="fc_calculate()">Check fee</button>
+      <button id="fc_resetBtn_last" onclick="fc_reset()">Start again</button>
+    </div>
+  </div>
+  <div id="fc_feePanel">
+    <table class="fc_resultsTable">
+      <tr>
+        <td class="fc_main">Application type</td>
+        <td><p id="fc_appdesc"></p></td>
+      <tr id="fc_appnScaleRow">
+        <td class="fc_main">Applicable fee scale</td>
+        <td><p id="fc_appnScale"></p></td>
+      </tr>
+      <tr id="fc_appnValueRow">
+        <td class="fc_main">Stated value</td>
+        <td>
+          <p id="fc_appnValue"></p>
+          <p id="fc_appnValueRentDetailsInfo">This value is based on the transaction value and/or the rent payable. </p>
+          <p id="fc_appnValueWarn">You entered either £0 or an invalid transaction value so £0 has been assumed. To enter a new value click ‘Start again’ below.</p>
+          <p id="fc_appnRentWarn">You entered either £0 or an invalid rent payable so £0 has been assumed. To enter a new value click ‘Start again’ below.</p>
+          <p id="fc_appnValueRentWarn">You entered either £0 or an invalid transaction value and rent payable so £0 for both has been assumed. To enter a new value click ‘Start again’ below.</p>
+        </td>
+      </tr>
+      <tr>
+        <td class="fc_main">Standard Fee</td>
+        <td>
+          <p id="fc_appnFee"></p>
+          <p id="fc_voluntrySel"><i>(This figure includes a voluntary application reduction.)</i></p>
+        </td>
+      </tr>
+      <tr id="fc_appnElectronicRow">
+        <td class="fc_main">Electronic Fee</td>
+        <td>
+          <p id="fc_appnFeeElectronic"></p>
+        </td>
+      </tr>
+    </table>
+    <div  id="fc_notes">
+    <h3>Notes</h3>
+    <p id="fc_appnNotes"></p>
+    </div>
+    <p>Find out about <a href="http://www.landregistry.gov.uk/professional/fees/how-to-pay-fees">how to pay Land Registry fees.</a></p>
+    <p id="fc_appnElectronicMsg">Please note reduced fees for electronic applications only apply to Dealings of Whole.</p>
+    <p id="fc_appnElectronicPartMsg">This application can be submitted electronically, however please note reduced fees for electronic applications only apply to applications affecting the whole of a registered title.</p>
+    <br/>
+    <button id="fc_resetBtn" onclick="fc_reset()">Start again</button>
+  </div>
 </div>
 <div id="fc_white_out">
 </div>
 <noscript>
-	&lt;p&gt;
-	Your browser does not support JavaScript or JavaScript is turned off.
-	&lt;br/&gt;
-	To take advatage of the 'Fee calculator' functionality you will need a browser that supports JavaSacript and/or have JavaScript turned on.
-	&lt;br/&gt;
-	Please visit our &lt;a href="https://www.gov.uk/government/publications/information-service-fees"&gt;Information Services fees&lt;/a&gt; page.&lt;img class='new_window' alt='Link opens in a new window (external website)' src='images/new_window_icon.png' width='13' height='13'&gt;
-	&lt;/p&gt;
-</noscript> <p></p>
-</div>
-</div>
+  <p>
+  Your browser does not support JavaScript or JavaScript is turned off.
+  <br/>
+  To take advatage of the 'Fee calculator' functionality you will need a browser that supports JavaSacript and/or have JavaScript turned on.
+  <br/>
+  Please visit our <a target='_blank' href="http://www.landregistry.gov.uk/professional/fees/">Information Services fees</a> page.<img alt='Link opens in a new window (external website)' src='./new_window.gif' width='13' height='13'>
+  </p>
+</noscript>
+</div> <!--/#content_div_56321-->
 </div>
 </div>
 <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
@@ -124,5 +125,6 @@ Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.p
    ga('create', 'UA-21165003-6', 'auto');
    ga('send', 'pageview');
 </script>
+</div><!--/.centralizer-->
 </body>
 </html>

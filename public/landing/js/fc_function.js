@@ -3,11 +3,11 @@ $(function() {
 	$('#fc_app').show();
 	// Setup page
 	setup();
-})
+});
 
 function fc_select(){
 	$.each(data.applications, function(i, application) {
-		if(0 == $('#fc_appnSel :selected').val()){
+		if(0 === $('#fc_appnSel :selected').val()){
 			// First element in the dropdown has been selected, setup the form again
 			setup();
 			return false;
@@ -20,9 +20,16 @@ function fc_select(){
 				$('#fc_rentPanel').hide();
 				$('#fc_voluntaryPanel').hide();
 				$('#fc_feePanel').hide();
-				if(application.eFee != null){
+				if(application.eFee !== null){
 					$("#fc_appnElectronicRow").show();
-					$("#fc_appnElectronicMsg").show();
+					if (application.ePartMsg !== null) {
+						$("#fc_appnElectronicPartMsg").show();
+					} else {
+						$("#fc_appnElectronicMsg").show();
+					}
+				}else {
+					$("#fc_appnElectronicPartMsg").hide();
+					$("#fc_appnElectronicMsg").hide();
 				}
 				$("#fc_chosen_appdesc").text(application.appdesc);
 				$('#fc_capturePanel').show();
@@ -35,9 +42,16 @@ function fc_select(){
 				$('#fc_app_fieldset').hide();
 				$('#fc_furtherDetailsPanel').hide();
 				$('#fc_feePanel').hide();
-				if(application.eFee != null){
+				if(application.eFee !== null){
 					$("#fc_appnElectronicRow").show();
-					$("#fc_appnElectronicMsg").show();
+					if (application.ePartMsg !== null) {
+						$("#fc_appnElectronicPartMsg").show();
+					} else {
+						$("#fc_appnElectronicMsg").show();
+					}
+				}else {
+					$("#fc_appnElectronicPartMsg").hide();
+					$("#fc_appnElectronicMsg").hide();
 				}
 				$('#fc_voluntaryPanel').hide();
 				$("#fc_chosen_appdesc").text(application.appdesc);
@@ -53,10 +67,22 @@ function fc_select(){
 				$('#fc_valuePanel').hide();
 				$('#fc_rentPanel').hide();
 				$('#fc_voluntaryPanel').hide();
-				if(application.eFee != null){
+				if(application.eFee !== null){
 					$("#fc_appnElectronicRow").show();
-					$("#fc_appnElectronicMsg").show();
+					if (application.ePartMsg !== null) {
+						$("#fc_appnElectronicPartMsg").show();
+					} else {
+						if(application.appcode == 'NA') {
+							$("#fc_appnElectronicMsg").hide();
+						}else{
+							$("#fc_appnElectronicMsg").show();
+						}
+					}
+				}else {
+					$("#fc_appnElectronicPartMsg").hide();
+					$("#fc_appnElectronicMsg").hide();
 				}
+
 				displayInfo(application,'N',0,0,0);
 			}
 			return false;
@@ -80,12 +106,12 @@ function displayInfo(application,voluntrySel, scale, value,rent){
 	$("#fc_appnRentWarn").hide();
 	$("#fc_appnValue").hide();
 	$("#fc_appnValue").hide();
-	if (value == ""){
+	if (value === ""){
 		value = 0;
 	}else{
 		value = parseInt(value,10);
 	}
-	if (rent == ""){
+	if (rent === ""){
 		rent = 0;
 	}else{
 		rent = parseInt(rent,10);
@@ -107,12 +133,12 @@ function displayInfo(application,voluntrySel, scale, value,rent){
 		$("#fc_appnValue").show();
 		$("#fc_appnValue").text("N/A");
 		$("#fc_appnFee").html(application.fee);
-		if(application.eFee != null){
+		if(application.eFee !== null){
 			$("#fc_appnFeeElectronic").html(application.eFee);
 		}
 	}else{
 		if (application.value == 'V'){
-			if (total == 0){
+			if (total === 0){
 				$("#fc_appnValueWarn").show();
 			}else {
 				$("#fc_appnValue").show();
@@ -121,13 +147,13 @@ function displayInfo(application,voluntrySel, scale, value,rent){
 		}
 		if (application.value == 'RV'){
 			$('#fc_appnValueRentDetailsInfo').show();
-			if (total == 0){
+			if (total === 0){
 				$("#fc_appnValueRentWarn").show();
-			}else if (rent == 0){ //Make sure rent is 0 here see line 68
+			}else if (rent === 0){ //Make sure rent is 0 here see line 68
 				$("#fc_appnValue").show();
 				$("#fc_appnValue").text("\u00A3"+total);
 				$("#fc_appnRentWarn").show();
-			}else if (value == 0){ //Make sure rent is 0 here see line 68
+			}else if (value === 0){ //Make sure rent is 0 here see line 68
 				$("#fc_appnValue").show();
 				$("#fc_appnValue").text("\u00A3"+total);
 				$("#fc_appnValueWarn").show();
@@ -149,14 +175,14 @@ function displayInfo(application,voluntrySel, scale, value,rent){
 				}
 			}
 		});
-		
+
 		$("#fc_appnFee").text("\u00A3"+calcFee);
 
-		if(application.eFee != null){
+		if(application.eFee !== null){
 			var appID = application.id;
 			if (appID == 206 || appID == 207 || appID == 9 || appID == 7 || appID == 14 || appID == 16 || appID == 30 || appID == 43 || appID == 44 || appID == 46 || appID == 49 || appID == 50){
-				$("#fc_appnFeeElectronic").text("\u00A3"+(calcFee/2));		
-			} else {		
+				$("#fc_appnFeeElectronic").text("\u00A3"+(calcFee/2));
+			} else {
 				$("#fc_appnFeeElectronic").text("\u00A3"+calcFee);
 			}
 		}
@@ -180,6 +206,7 @@ function setup(){
 	$('#fc_feePanel').hide();
 	$("#fc_appnElectronicRow").hide();
 	$("#fc_appnElectronicMsg").hide();
+	$("#fc_appnElectronicPartMsg").hide();
 	$('#fc_appnSel').append($('<option/>').attr("value", 0).text("Choose an application type"));
 	// Load the dropdown list of applications
 	$.each(sortByKey(data.applications,"appdesc"), function(i, option) {
@@ -217,12 +244,13 @@ function fc_reset(){
 	$('#fc_app_fieldset').show();
 	//Chrome Bug: White out
 	white_out();
-	
+
 }
 
 function isNumericKey(e){
-	if (window.event) { var charCode = window.event.keyCode; }
-	else if (e) { var charCode = e.which; }
+  var charCode;
+	if (window.event) { charCode = window.event.keyCode; }
+	else if (e) { charCode = e.which; }
 	else { return true; }
 	if (charCode > 31 && (charCode < 48 || charCode > 57)) { return false; }
 	return true;
@@ -238,20 +266,20 @@ function sortByKey(array, key) {
 function fc_validate(){
 	$('#fc_valueTxt_error').hide();
 	$('#fc_rentTxt_error').hide();
-	var noErrors = new Boolean(true);
+	var noErrors = true;
 	var x = $('#fc_valueTxt').val();
 	var y = $('#fc_rentTxt').val();
 	x = $.trim(x);
 	y = $.trim(y);
-	if ( x != ""){ //blanks are treated as 0
-		if(!x.match(/^(0|[1-9][0-9]*)$/)){ 
+	if ( x !== ""){ //blanks are treated as 0
+		if(!x.match(/^(0|[1-9][0-9]*)$/)){
 			$('#fc_valueTxt').val("");
 			$('#fc_valueTxt_error').show();
 			noErrors = false;
 		}
 	}
-	if ( y != ""){ //blanks are treated as 0
-		if(!y.match(/^(0|[1-9][0-9]*)$/)){ 
+	if ( y !== ""){ //blanks are treated as 0
+		if(!y.match(/^(0|[1-9][0-9]*)$/)){
 			$('#fc_rentTxt').val("");
 			$('#fc_rentTxt_error').show();
 			noErrors = false;
@@ -261,7 +289,7 @@ function fc_validate(){
 }
 
 function white_out(){
-	//Chrome Bug: White out. 
+	//Chrome Bug: White out.
 	//This is to clear the buttons background images from the browser cache
 	//by flashing an empty div with a white background over everything forcing
 	//the browser to empty the cache for that placeholder area.
