@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.8'
+gem 'rails', '4.2.4'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'data_services_api', git: "git@github.com:epimorphics/ds-api-ruby.git"
