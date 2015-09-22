@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: git@github.com:epimorphics/qonsole-rails.git
-  revision: e7952cb47f022b79f51c70de0e9417913a077070
+  revision: 0512e25cb08919c10e6aadf79cd4d0336678e8fb
   specs:
     qonsole-rails (0.0.1)
       fontawesome-rails
