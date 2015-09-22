@@ -127,7 +127,7 @@ class UserPreferences
     begin
       self.send( key, search_id )
     rescue
-      binding.pry
+      throw "Cannot access field #{key} of self.inspect"
     end
   end
 
