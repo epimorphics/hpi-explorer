@@ -162,9 +162,6 @@ class UserPreferences
       else
         raise "Do not know how to make path for #{controller}"
       end
-
-    # this shouldn't be necessay if ENV[RAILS_RELATIVE_ROOT] was working correctly
-    path.gsub( /^/, "#{ENV['RAILS_RELATIVE_URL_ROOT']}" )
   end
 
   # Return the given attribute, tagged with the given search id (e.g search_0)
