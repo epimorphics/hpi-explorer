@@ -1,6 +1,6 @@
-require 'test_helper'
+require "test_helper"
 
-describe "UserPreferences" do
+describe UserPreferences do
 
   it "should define a partial for the area comparison" do
     # TODO needs updating
@@ -38,6 +38,7 @@ describe "UserPreferences" do
     UserPreferences.new( {"m_hpi" => "1"} ).as_path( :hpi ).must_equal "/hpi?m_hpi=1"
     UserPreferences.new( {"m_hpi" => "1", "loc_0" => "hpi"} ).as_path( :hpi ).must_equal "/hpi?loc_0=hpi&m_hpi=1"
     UserPreferences.new( {"m_hpi" => "1", "blacklist" => "hpi"} ).as_path( :hpi ).must_equal "/hpi?m_hpi=1"
+    Rails.application.reload_routes!
   end
 
   it "should report whether the user wants a comparison area" do

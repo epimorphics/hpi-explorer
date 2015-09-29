@@ -1,3 +1,5 @@
+require "test_helper"
+
 describe "DataService" do
   before do
     VCR.insert_cassette name, :record => :new_episodes

@@ -39,7 +39,7 @@ group :test do
   gem 'minitest-capybara'
   gem 'capybara_minitest_spec'
   gem 'minitest-spec-rails', '~> 5.1.1'
-  gem 'minitest-rails'
+  gem 'minitest-rails-capybara'
   gem 'json_expressions', "~> 0.8"
   gem 'vcr'
   gem 'minitest-vcr'

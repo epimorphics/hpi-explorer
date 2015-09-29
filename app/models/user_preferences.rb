@@ -138,12 +138,14 @@ class UserPreferences
 
   # Return the current preferences as arguments to the given controller path
   def as_path( controller, options = {}, delete = [] )
-    path_params = params.merge( options )
-
-    delete.each do |key|
-      path_params.delete( key.to_sym )
-      path_params.delete( key.to_s )
-    end
+    path_params =
+      params
+        .merge( options )
+        .inject(Hash.new) do |m,v|
+          k = v[0].to_sym
+          m[k] = v[1] unless delete.include?( k )
+          m
+        end
 
     path =
       case controller
@@ -162,9 +164,6 @@ class UserPreferences
       else
         raise "Do not know how to make path for #{controller}"
       end
-
-    # this shouldn't be necessay if ENV[RAILS_RELATIVE_ROOT] was working correctly
-    path.gsub( /^/, "#{ENV['RAILS_RELATIVE_URL_ROOT']}" )
   end
 
   # Return the given attribute, tagged with the given search id (e.g search_0)
