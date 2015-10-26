@@ -53,7 +53,21 @@ document.body.className = ((document.body.className) ? document.body.className +
 
       <h3>What does the Price Paid Dataset consist of?</h3>
       <p>
-        Land Registry publish Price Paid Data for England and Wales on a monthly basis. New transactions are added to the existing price paid dataset which, in March 2014 contained over 18.5 million transactions. Price paid data is captured for single residential properties that were sold for full market value and lodged with LR for registration since 1995. Each transaction generates a number of triples resulting in a store that holds in excess of 400 million data items. Data held does not indicate the current value of any individual property, it is the price paid at the time of sale. Data is compiled from the price paid information supplied to Land Registry when a single residential property is sold for full market value.
+        Land Registry publish Price Paid Data for England and Wales on a monthly basis. New transactions are added
+        to the existing price paid dataset which, in September 2015 contained over 20 million transactions. 
+        Price paid data is captured for single residential properties that were sold for full market value and 
+        lodged with LR for registration since 1995. Each transaction generates a number of triples resulting in 
+        a store that holds in excess of 400 million data items. Data held does not indicate the current value of 
+        any individual property, it is the price paid at the time of sale. Data is compiled from the price paid 
+        information supplied to Land Registry when a single residential property is sold for full market value.      
+      </p>
+      <p>
+        From October 2015 Additional price paid data has been added to the data. This introduces new information 
+        captured since 14 October 2013 about property transactions previously excluded from Price Paid Data. 
+        Information such as transfers under a power of sale/repossessions, buy-to-lets where they can be 
+        identified by a mortgage and transfers to non-private individuals are now included. To differentiate 
+        the two a new field was added to the record, Category A indicates standard Price Paid Data. 
+        Category B indicates Additional Price Paid data.
       </p>
       <h3>Privacy</h3>
       <p>
@@ -68,15 +82,14 @@ document.body.className = ((document.body.className) ? document.body.className +
         There are a number of reasons that transactions are excluded from the dataset;
       </p>
       <ul>
-        <li>sale to a corporate body, company or business</li>
         <li>sale of part or a share of a property</li>
         <li>sale of a property at a discount, including right to buy properties</li>
         <li>sale of repossessed properties</li>
-        <li>sale subject to an existing mortgage</li>
         <li>transfers following divorce or by way of gift or exchange</li>
         <li>transfers under Compulsory Purchase Order or by Court Order</li>
         <li>transfer of more than one property as part of a portfolio</li>
-        <li>leases for 7 years or less.</li>
+        <li>first registration of leases for 7 years or less</li>
+        <li>Additional price paid transactions valued below £100 or above £99,999,999</li>
       </ul>
 
       <h3>
