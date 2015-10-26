@@ -125,7 +125,7 @@ document.body.className = ((document.body.className) ? document.body.className +
           LR Common <a href="http://landregistry.data.gov.uk/def/common">http://landregistry.data.gov.uk/def/common</a>
         </dt>
         <dd>
-          The Land Registry common vocabulary was created alongside the ppi vocabulary and contains terms that we may use in otherwiser linked data releases in the future that may not relate specifically to price paid data. Currently the vocabulary contains terms used to describe and address, at the time this vocabulary was created we could find no vocabulary that we could use to accurately describe the address information that we publish.
+          The Land Registry common vocabulary was created alongside the ppi vocabulary and contains terms that we may use in other linked data releases in the future that may not relate specifically to price paid data. Currently the vocabulary contains terms used to describe an address, at the time this vocabulary was created we could find no vocabulary that we could use to accurately describe the address information that we publish.
         </dd>
       </dl>
 
@@ -135,11 +135,16 @@ document.body.className = ((document.body.className) ? document.body.className +
       </p>
       <ul>
         <li>A transaction identifier</li>
+        <li>A transaction category (standard PPD transaction or additional PPD transaction)
         <li>The property address</li>
         <li>The price paid</li>
         <li>The date of the transaction</li>
         <li>Information about the property</li>
       </ul>
+      <p>
+        A standard PPD transaction concerns a single residential property sold for full market value to private individual.
+        An additional PPD transaction concerns repossessions, buy-to-lets and transfers of property sold to non-private individuals.
+      </p>
       <p>
         The conversion process used takes these items and generates a number of ‘triples’ that are uploaded to a triple store that’s made available using a cloud based triple store. Descriptions of linked data formats are widely described in various web resources and are not covered here, Land Registry generate .ru files each month and these are described below.
       </p>
@@ -210,6 +215,14 @@ document.body.className = ((document.body.className) ? document.body.className +
           </td>
           <td>
             <a href="http://landregistry.data.gov.uk/def/ppi/newBuild"><code>ppi:newBuild</code></a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            The transaction category
+          </td>
+          <td>
+            <a href="/def/ppi/transactionCategory"><code>ppi:transactionCategory</code></a>
           </td>
         </tr>
       </table>
@@ -317,7 +330,7 @@ EC1V 3AP</pre>
       <p>
         The property details supplied stated that this was a flat subject to a lease, the property was a new build and it sold for £860,000 on 31st October 2013. After transformation and upload to the Land Registry triplestore this property transaction can be found here
       </p>
-      <pre><a href="http://landregistry.data.gov.uk/data/ppi/transaction/5FC45A71-8E90-46A0-9CBB-0017294BBAFA/2014-01-00021">http://landregistry.data.gov.uk/data/ppi/transaction/5FC45A71-8E90-46A0-9CBB-0017294BBAFA/2014-01-00021</a></pre>
+      <pre><a href="/data/ppi/transaction/5FC45A71-8E90-46A0-9CBB-0017294BBAFA/current">http://landregistry.data.gov.uk/data/ppi/transaction/5FC45A71-8E90-46A0-9CBB-0017294BBAFA/current</a></pre>
 
       <p>
         This information is held as follows
@@ -353,6 +366,12 @@ EC1V 3AP</pre>
           <td>true</td>
           <td><a href="http://www.w3.org/2001/XMLSchema#boolean"><code>xs:boolean</code></a></td>
         </tr>
+        <tr>
+          <td class="definition-label">A transaction category</td>
+          <td><a href="/def/ppi/transactionCategory"><code>ppi:transactionCategory</code></a></td>
+          <td><a href="/def/ppi/standardPricePaidTransaction"><code>ppi:standardPricePaidTransaction<code></a></td>
+          <td></td>
+        </tr>
       </table>
 
       <p>
@@ -378,6 +397,8 @@ EC1V 3AP</pre>
           <td></td>
         </tr>
       </table>
+      
+      <p>Prior to October 2015 there was also a <code>ppi:publishDate</code> property.  This has since been removed.</p>
 
       <p>
         The record status was part of the first release of price paid data and has since been made obsolete but remains in the store so that queries that included it will still run. All transactions will have a record status of ‘add’.
@@ -386,7 +407,7 @@ EC1V 3AP</pre>
       <p>
         The triples generated for this transaction are:
       </p>
-      <pre>&lt;http://landregistry.data.gov.uk/data/ppi/transaction/5FC45A71-8E90-46A0-9CBB-0017294BBAFA/2014-01-00021&gt;
+      <pre>&lt;http://landregistry.data.gov.uk/data/ppi/transaction/5FC45A71-8E90-46A0-9CBB-0017294BBAFA/current&gt;
   a       ppi:TransactionRecord ;
   ppi:estateType common:leasehold ;
   ppi:hasTransaction <http://landregistry.data.gov.uk/data/ppi/transaction/5FC45A71-8E90-46A0-9CBB-0017294BBAFA> ;
@@ -396,6 +417,7 @@ EC1V 3AP</pre>
   ppi:propertyType common:flat-maisonette ;
   ppi:publishDate &quot;2014-01-23&quot;^^xs:date ;
   ppi:recordStatus ppi:add ;
+  ppi:transactionCategory  ppi:standardPricePaidTransaction ;
   ppi:transactionDate &quot;2013-10-31&quot;^^xs:date ;
   ppi:transactionId &quot;5FC45A71-8E90-46A0-9CBB-0017294BBAFA&quot;^^ppi:TransactionIdDatatype .</pre>
 
@@ -663,7 +685,7 @@ prefix lrcommon: &lt;http://landregistry.data.gov.uk/def/common/&gt;
 PREFIX  ppd:  &lt;http://landregistry.data.gov.uk/def/ppi/&gt;
 PREFIX  lrcommon: &lt;http://landregistry.data.gov.uk/def/common/&gt;
 
-SELECT  ?item ?ppd_hasTransaction ?ppd_pricePaid ?ppd_propertyAddress ?ppd_publishDate ?ppd_transactionDate ?ppd_transactionId ?ppd_estateType ?ppd_newBuild ?ppd_propertyAddressCounty ?ppd_propertyAddressDistrict ?ppd_propertyAddressLocality ?ppd_propertyAddressPaon ?ppd_propertyAddressPostcode ?ppd_propertyAddressSaon ?ppd_propertyAddressStreet ?ppd_propertyAddressTown ?ppd_propertyType
+SELECT  ?item ?ppd_hasTransaction ?ppd_pricePaid ?ppd_propertyAddress ?ppd_publishDate ?ppd_transactionDate ?ppd_transactionId ?ppd_estateType ?ppd_newBuild ?ppd_propertyAddressCounty ?ppd_propertyAddressDistrict ?ppd_propertyAddressLocality ?ppd_propertyAddressPaon ?ppd_propertyAddressPostcode ?ppd_propertyAddressSaon ?ppd_propertyAddressStreet ?ppd_propertyAddressTown ?ppd_propertyType ?ppd_transactionCategory
 WHERE
   { ?ppd_propertyAddress &lt;http://jena.apache.org/text#query&gt; _:b0 .
     _:b0 &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#first&gt; lrcommon:postcode .
@@ -675,9 +697,9 @@ WHERE
     ?item ppd:hasTransaction ?ppd_hasTransaction .
     ?item ppd:pricePaid ?ppd_pricePaid .
     ?item ppd:propertyAddress ?ppd_propertyAddress .
-    ?item ppd:publishDate ?ppd_publishDate .
     ?item ppd:transactionDate ?ppd_transactionDate .
-    ?item ppd:transactionId ?ppd_transactionId
+    ?item ppd:transactionId ?ppd_transactionId .
+    ?item ppd:transactionCategory ?ppd_transactionCategory .
     OPTIONAL
       { ?item ppd:estateType ?ppd_estateType }
     OPTIONAL
@@ -724,19 +746,19 @@ LIMIT   100</pre>
       </p>
 
 <pre>WHERE
-  { ?ppd_propertyAddress <http://jena.apache.org/text#query> _:b0 .
-    _:b0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> lrcommon:postcode .
-    _:b0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b1 .
-    _:b1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> &quot;( cv37 AND 7ae )&quot; .
-    _:b1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b2 .
-    _:b2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> 200000 .
-    _:b2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+  { ?ppd_propertyAddress &lt;http://jena.apache.org/text#query&gt; _:b0 .
+    _:b0 &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#first&gt; lrcommon:postcode .
+    _:b0 &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#rest&gt; _:b1 .
+    _:b1 &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#first&gt; &quot;( cv37 AND 7ae )&quot; .
+    _:b1 &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#rest&gt; _:b2 .
+    _:b2 &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#first&gt; 200000 .
+    _:b2 &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#rest&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#nil&gt; .
     ?item ppd:hasTransaction ?ppd_hasTransaction .
     ?item ppd:pricePaid ?ppd_pricePaid .
     ?item ppd:propertyAddress ?ppd_propertyAddress .
-    ?item ppd:publishDate ?ppd_publishDate .
     ?item ppd:transactionDate ?ppd_transactionDate .
     ?item ppd:transactionId ?ppd_transactionId .
+    ?item ppd:transactionCategory ?ppd_transactionCategory .
               ?item ppd:propertyAddress/lrcommon:paon ?ppd_propertyAddressPaon
             FILTER regex(?ppd_propertyAddressPaon,'alve','i')</pre>
 
