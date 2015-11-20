@@ -2,7 +2,7 @@ class HpiDataController < ApplicationController
   def show
     if is_explanation?
       explanation = ExplainCommand.new( preferences).load_explanation
-      redirect_to qonsole_rails.root_path( query: explanation[:sparql] )
+      redirect_to sparql_qonsole_path( explanation[:sparql] )
     else
       @query_command = QueryCommand.new( preferences )
 
@@ -21,5 +21,14 @@ class HpiDataController < ApplicationController
 
   def is_explanation?
     params[:explain]
+  end
+
+  :private
+
+  # Rails seems to have a problem automatically inserting the relative_url_path
+  # twice. So we do it manually here.
+  def sparql_qonsole_path( query )
+    request.protocol + request.host_with_port +
+    "#{Rails.application.config.relative_url_root}#{qonsole_rails.root_path( query: query )}"
   end
 end
