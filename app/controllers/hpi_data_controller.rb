@@ -31,8 +31,10 @@ class HpiDataController < ApplicationController
 
     # guard against various rails relative_url_root bugs
     # The relative_url_root should appear exactly once if given
+    Rails.logger.info "!!SQP '#{Rails.application.config.relative_url_root.inspect}'"
     if rur = Rails.application.config.relative_url_root
       path = path.gsub( /\A(#{rur})*\/?/, rur + "/" )
+      Rails.logger.info "!!SQP path now = '#{path.inspect}'"
     end
 
     path
