@@ -10,7 +10,6 @@ gem 'js-routes'
 gem 'leaflet-rails'
 gem 'haml-rails'
 
-#gem 'qonsole-rails', path: '/home/ian/workspace/qonsole-rails'
 gem 'qonsole-rails', git: 'git@github.com:epimorphics/qonsole-rails.git'
 
 gem 'font-awesome-rails'
