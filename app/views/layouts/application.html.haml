@@ -35,7 +35,7 @@
               - relative_root = Rails.application.config.relative_url_root || ""
               - ppd_active = request.original_url =~ /ppd/ ? :active : nil
               - qonsole_active = request.original_url =~ /qonsole/ ? :active : nil
-              - stdreports_active = request.original_url =~ /stdreps/ ? :active : nil
+              - stdreports_active = request.original_url =~ /standard-reports/ ? :active : nil
               - hpi_active = (ppd_active || qonsole_active || stdreports_active) ? nil : "active"
 
               %a#proposition-name{ href: "http://landregistry.data.gov.uk" }
@@ -50,7 +50,7 @@
                   %a{ href: "#{relative_root.gsub(/hpi/, "ppd")}", class: ppd_active }
                     Price Paid Data
                 %li
-                  %a{ href: "#{relative_root.gsub(/hpi/, "stdreps")}", class: stdreports_active }
+                  %a{ href: "#{relative_root.gsub(/hpi/, "standard-reports")}", class: stdreports_active }
                     Standard Reports
                 %li
                   %a{ href: "#{relative_root}/qonsole", class: qonsole_active }
