@@ -34,6 +34,32 @@ function fc_select(){
 				$("#fc_chosen_appdesc").text(application.appdesc);
 				$('#fc_capturePanel').show();
 				$('#fc_valuePanel').show();
+				$('#fc_valuePanel_id46').hide();
+				showVoluntary(application.voluntrycanapply);
+				$('#fc_furtherDetailsPanel').show();
+				$('#fc_valueTxt').focus();
+			}else if(application.value == 'V46'){
+				// As above but specific to id 46
+				$('#fc_app_fieldset').hide();
+				$('#fc_furtherDetailsPanel').hide();
+				$('#fc_rentPanel').hide();
+				$('#fc_voluntaryPanel').hide();
+				$('#fc_feePanel').hide();
+				if(application.eFee !== null){
+					$("#fc_appnElectronicRow").show();
+					if (application.ePartMsg !== null) {
+						$("#fc_appnElectronicPartMsg").show();
+					} else {
+						$("#fc_appnElectronicMsg").show();
+					}
+				}else {
+					$("#fc_appnElectronicPartMsg").hide();
+					$("#fc_appnElectronicMsg").hide();
+				}
+				$("#fc_chosen_appdesc").text(application.appdesc);
+				$('#fc_capturePanel').show();
+				$('#fc_valuePanel').hide();
+				$('#fc_valuePanel_id46').show();
 				showVoluntary(application.voluntrycanapply);
 				$('#fc_furtherDetailsPanel').show();
 				$('#fc_valueTxt').focus();
@@ -58,6 +84,7 @@ function fc_select(){
 				$('#fc_capturePanel').show();
 				$('#fc_rentPanel').show();
 				$('#fc_valuePanel').show();
+				$('#fc_valuePanel_id46').hide();
 				showVoluntary(application.voluntrycanapply);
 				$('#fc_furtherDetailsPanel').show();
 				$('#fc_valueTxt').focus();
@@ -65,6 +92,7 @@ function fc_select(){
 				// The appliaction has a static fee not based on any calculations
 				$('#fc_app_fieldset').hide();
 				$('#fc_valuePanel').hide();
+				$('#fc_valuePanel_id46').hide();
 				$('#fc_rentPanel').hide();
 				$('#fc_voluntaryPanel').hide();
 				if(application.eFee !== null){
@@ -200,6 +228,7 @@ function displayInfo(application,voluntrySel, scale, value,rent){
 function setup(){
 	$('#fc_capturePanel').hide();
 	$('#fc_valuePanel').hide();
+	$('#fc_valuePanel_id46').hide();
 	$('#fc_furtherDetailsPanel').hide();
 	$('#fc_rentPanel').hide();
 	$('#fc_voluntaryPanel').hide();
@@ -239,6 +268,7 @@ function fc_reset(){
 	$("#fc_appnElectronicMsg").hide();
 	$('#fc_furtherDetailsPanel').hide();
 	$('#fc_valuePanel').hide();
+	$('#fc_valuePanel_id46').hide();
 	$('#fc_rentPanel').hide();
 	$('#fc_voluntaryPanel').hide();
 	$('#fc_app_fieldset').show();
