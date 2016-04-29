@@ -37,11 +37,9 @@ document.body.className = ((document.body.className) ? document.body.className +
                   <li>
                     <a href="/app/ppd">Price Paid Data</a>
                   </li>
-                  <!--
                   <li>
                     <a href="/app/standard-reports">Standard Reports</a>
                   </li>
-                  -->
                   <li>
                     <a href="/app/hpi/qonsole">SPARQL query</a>
                   </li>
@@ -62,98 +60,123 @@ document.body.className = ((document.body.className) ? document.body.className +
           <h1>
             Open Data
           </h1>
-          <p>
-            As part of our commitment to the Government&rsquo;s priorities of economic growth and data transparency Land Registry publishes the following public datasets:
+          <p>Land Registry publishes the following public datasets on
+          GOV.UK as part of our commitment to the Government’s priorities of
+          economic growth and data transparency:
           </p>
           <ul>
             <li>
-              <a href="https://www.gov.uk/government/statistical-data-sets/house-price-index-background-tables">House Price Index background data</a> &ndash; available from January 1995 and updated in full each month.
+              <a href="https://www.gov.uk/government/statistical-data-sets/house-price-index-background-tables">House Price Index background tables</a>
+              updated monthly, data available from January 1995.
             </li>
             <li>
-              <a href="https://www.gov.uk/government/collections/price-paid-data">Price paid data</a> &ndash; available from January 1995 and updated in full each month.
+              <a href="https://www.gov.uk/government/collections/price-paid-data">Price paid data</a>
+              updated monthly, data available from 1995.
             </li>
             <li>
-              <a href="https://www.gov.uk/land-registry-transaction-data">Transaction data</a> &ndash; available from December 2011.
+              <a href="https://www.gov.uk/land-registry-transaction-data">Transaction data</a>
+              updated monthly, data available from December 2011.
             </li>
           </ul>
           <p>
-            The above datasets are provided in
+            These datasets are provided in
             <a href="http://en.wikipedia.org/wiki/Comma-separated_values">comma-separated value (csv)</a>
             and
             <a href="http://en.wikipedia.org/wiki/Linked_data">linked data</a> formats, with Price Paid Data also
             available as a text file. These datasets can be downloaded in full by accessing our
             <a href="https://www.gov.uk/government/publications/land-registry-data">Public Data</a>.
-            For more information on our linked data, please see <a href="#linked-data">below</a>.
           </p>
-          <p><strong>
-            For our Price Paid and House Price Index customers that do not require the full dataset but are
-            interested in running bespoke reports we have developed the following options:
-          </strong></p>
 
-          <h2>
-            <a href="/app/hpi">Search the House Price Index</a>
-          </h2>
+          <h2>Bespoke reports</h2>
           <p>
-            Use this search to find average price, sales volumes and property type for a
-            specified location over a defined period of time. Our House Price Index
-            compares average house price today to what it was in January 1995, with
-            the index set then at 100. It includes figures at national, regional, county
-            and Local Authority level. For more information visit
+            Price Paid Data and House Price Index customers who do not require
+            the full dataset can run bespoke reports with the following tools:
+          </p>
+          <ul>
+            <li>Search the <a href="/app/hpi">house price index</a></li>
+            <li>Build a <a href="/app/ppd">price paid data report</a></li>
+            <li>Build a <a href="/app/standard-reports">standard price paid data report</a></li>
+          </ul>
+
+          <h2>Search the House Price Index</h2>
+          <p>
+            Use <a href="/app/hpi">Search the House Price Index</a> to find:
+          </p>
+          <ul>
+            <li>average price</li>
+            <li>sales volumes </li>
+            <li>property type</li>
+            <li>for a specified location</li>
+            <li>over a defined period of time</li>
+          </ul>
+          <p>
+            Our House Price Index compares average house price today to what it was in
+            January 1995, with the index set then at 100. It includes figures at
+            national, regional, county and Local Authority level. For more information
+            read
             <a href="https://www.gov.uk/government/publications/about-the-house-price-index">About the House Price Index</a>.
           </p>
-          <h3>More help</h3>
-          <p>
-            Please see our <a href="http://www.youtube.com/watch?v=YLXgPjkHmGU" target="_">video tutorial</a> on using the search tool.
-          </p>
-          <p>To better understand the data model, or learn more about using the data, please
-            see the <a href="hpi-documentation.html">detailed documentation</a>.
-          </p>
+          <h3>Further information</h3>
+          <ul>
+            <li><a href="http://www.youtube.com/watch?v=YLXgPjkHmGU" target="_">YouTube video tutorial</a> on using the search tool</li>
+            <li><a href="hpi-documentation.html">detailed documentation about the House Price Index</a></li>
+          </ul>
 
-          <h2>
-            <a href="/app/ppd">Price Paid Data Report Builder</a>
-          </h2>
+          <h2>Price Paid Data Report Builder</h2>
           <p>
-            Use this search to build bespoke reports using our detailed price
-            paid data. Reports can be based on location, tenure, price paid or
-            property type over a defined period of time.
+            Use <a href="/app/ppd">Price Paid Data Reports</a>
+             to build bespoke reports using our detailed Price Paid Data. Reports
+             can be based on location, tenure, price paid or property type over a
+             defined period of time.
           </p>
           <p>
-            Our price paid data tracks the residential property sales in
-            England and Wales that are lodged with us for registration.
-            The dataset is a reliable source of house
-            price information and consists of more than 18.5 million
-            definitive records dating back to January 1995. For more
-            information on this dataset and what it does and doesn't
-            include, visit
+            Our Price Paid Data tracks the residential property sales in
+            England and Wales that are lodged with us for registration. The
+            dataset is a reliable source of house price information and
+            consists of more than 24 million definitive records dating back
+            to January 1995. For more information on this dataset and
+            what it does and doesn't include, read
             <a href="https://www.gov.uk/about-the-price-paid-data">about the Price Paid Data</a>.
           </p>
           <p>
-            We strive to ensure that our public data is as accurate as
-            possible but cannot guarantee that it is free from errors
-            or fit for your purpose or use.
-            Reports are based on data collected at the time a property
-            transaction is registered with us and will not necessarily
-            be up to date with the most recent information.
-            See <a href="https://www.gov.uk/government/publications/land-registry-data/public-data#accuracy-of-the-data">
-            &quot;how accurate is the data?&quot;</a>
+            We strive to ensure that our public data is as accurate as possible
+            but cannot guarantee that it is free from errors or fit for your
+            purpose or use. Reports are based on data collected at the time a
+            property transaction is registered with us and will not necessarily
+            be up to date with the most recent information. Read
+            <a href="https://www.gov.uk/government/publications/land-registry-data/public-data#accuracy-of-the-data">
+              &quot;how accurate is the data?&quot;</a>
             for more information.
           </p>
-          <h3>More help</h3>
+          <h3>Further information</h3>
+          <ul>
+            <li>
+              <a href="http://www.youtube.com/watch?v=g15OQ4j-bnA" target="_">YouTube video tutorial</a>
+              on using the report builder.
+            </li>
+            <li>
+              <a href="ppd-documentation.html">detailed documentation</a> about the Price Paid Data,
+              the data model, and using the data.
+            </li>
+          </ul>
+
+          <h2>Standard Report Builder</h2>
           <p>
-            Please see our <a href="http://www.youtube.com/watch?v=g15OQ4j-bnA" target="_">video tutorial</a>
-            on using the report builder.
-          </p>
-          <p>To better understand the data model, or learn more about using the data, please
-            see the <a href="ppd-documentation.html">detailed documentation</a>.
+            The <a href="/app/standard-reports">Standard Report Builder</a> is provided
+            using our Price Paid Data. Use this tool to build bespoke
+            reports that are aggregated price data. This service allows
+            you to configure a report for various geographical areas in
+            England and Wales, from the country level down to postcode sectors over a defined period of time.
           </p>
 
           <h2 id="linked-data">Linked Data</h2>
           <p>
-            We also publish this data in linked data format.
+            We also publish this data in linked data format, aiming for
+            <a href="http://5stardata.info/en/">five-star rating</a>
           </p>
           <p>
             If you would like to try out your own SPARQL queries against our
-            linked data publications, please use
+            linked data publications,  use
             <a href="/app/hpi/qonsole">this SPARQL form</a>.
             We have included some example queries with the form, and you can generate
             the output as a table, in plain text, as a JSON file or in XML.
@@ -166,7 +189,7 @@ document.body.className = ((document.body.className) ? document.body.className +
             You can even amend and re-run the SPARQL query as required.
           </p>
           <p>
-            The linked data datasets are:
+            The linked-data datasets:
           </p>
           <dl class="dl-horizontal">
             <dt>
@@ -176,9 +199,9 @@ document.body.className = ((document.body.className) ? document.body.className +
               <a href="http://www.ons.gov.uk/">ONS</a> and
               <a href="http://data.ordnancesurvey.co.uk/">Ordnance Survey</a>
               to describe the regions reported on within the HPI data.
-              See the <a href="/def/hpi">data definitions for this dataset</a>.
+              Read the <a href="/def/hpi">data definitions for the HPI dataset</a>.
               <br />
-              NB: Links to other sources of open data are provided under the Open
+              Links to other sources of open data are provided under the Open
               Government Licence (ONS) and Open Data Licence (OS). Land Registry
               is not responsible for the content or reliability of any linked websites.
             </dd>
@@ -187,13 +210,13 @@ document.body.className = ((document.body.className) ? document.body.className +
             </dt>
             <dd>4&#x2605; linked dataset containing over
               400 million triples.
-              See the <a href="/def/ppi">data definitions for this dataset</a>.
+              Read the <a href="/def/ppi">data definitions for the PPD dataset</a>.
             </dd>
             <dt>
               <a href="/data/trans/applications">Transaction Data</a>
             </dt>
             <dd>4&#x2605; linked dataset.
-              See the <a href="/def/trans">data definitions for this dataset</a>.
+              Read the <a href="/def/trans">data definitions for the transactions dataset</a>.
             </dd>
           </dl>
 
@@ -201,13 +224,13 @@ document.body.className = ((document.body.className) ? document.body.className +
             Who to contact
           </h2>
           <p>
-            If you are unable to access the data, please <a href="http://landregistry.custhelp.com/app/contactus_general/">fill in our contact form</a>.
+            If you need help to access the data, please <a href="http://landregistry.custhelp.com/app/contactus_general/">use our contact form</a>.
           </p>
           <p>
             For general transaction data enquiries email <a href="mailto:DRO@landregistry.gov.uk">DRO@landregistry.gov.uk</a>
           </p>
           <p>
-            For general price paid data enquiries contact <a href="mailto:commercial.services@landregistry.gov.uk">commercial.services@landregistry.gov.uk</a>.
+            For general Price Paid Data enquiries contact <a href="mailto:commercial.services@landregistry.gov.uk">commercial.services@landregistry.gov.uk</a>.
           </p>
         </div><!--/.col-md-12-->
       </div>
@@ -219,7 +242,7 @@ document.body.className = ((document.body.className) ? document.body.className +
         </h2>
         <ul class="list-inline">
           <li>
-            <a href="http://www.nationalarchives.gov.uk/information-management/our-services/crown-copyright.htm">&copy; Crown copyright 2014</a>
+            <a href="http://www.nationalarchives.gov.uk/information-management/our-services/crown-copyright.htm">&copy; Crown copyright 2014&ndash;2016</a>
           </li>
           <li>
             <a href="https://www.gov.uk/government/organisations/land-registry/about/personal-information-charter">Personal Information Charter</a>

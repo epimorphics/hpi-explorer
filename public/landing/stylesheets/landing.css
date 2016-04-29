@@ -152,7 +152,10 @@ Example usage:
 .lr #global-header {
   background-color: white; }
 .lr #global-header .header-proposition #proposition-links li a {
-  color: #a6d71c; }
+  color: #a6d71c;
+  font-weight: bold;
+  font-size: 16px;
+}
 .lr #global-header .header-proposition #proposition-links li a.active {
   color: #5a8006; }
 .lr #global-header .header-proposition #proposition-name {
@@ -180,8 +183,6 @@ Example usage:
   margin-bottom: 10px; }
 .lr #date-slider {
   margin-top: 10px; }
-.lr h1,   .lr h2, .lr h3 {
-  font-family: GeoHeadlineRegular; }
 .lr #map {
   width: 300px;
   height: 350px; }
